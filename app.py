@@ -65,7 +65,7 @@ def verify_email(token):
         return redirect(url_for('login'))
     return 'Invalid token!'
 
-# หน้า Login
+# หน้า Login g
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
