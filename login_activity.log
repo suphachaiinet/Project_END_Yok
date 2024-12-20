@@ -483,3 +483,6 @@ INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 167-854-857
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2024 16:16:15] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2024 16:16:21] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Dec/2024 16:16:28] "GET /register HTTP/1.1" 200 -
