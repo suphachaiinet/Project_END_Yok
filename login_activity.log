@@ -486,3 +486,167 @@ INFO:werkzeug: * Debugger PIN: 167-854-857
 INFO:werkzeug:127.0.0.1 - - [20/Dec/2024 16:16:15] "GET /register HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [20/Dec/2024 16:16:21] "GET /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [20/Dec/2024 16:16:28] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 135-073-219
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:27:39] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:27:40] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:27:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:40:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:40:18] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:40:22] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:41:36] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:41:37] "GET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:41:37] "GET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:41:37] "GET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Dec/2024 22:41:37] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:30:48] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:30:48] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:30:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:30:51] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:31:31] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:31:31] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:33:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:33:22] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:33:24] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:33:50] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 02:33:50] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:07:19] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:07:19] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:07:21] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:07:41] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:07:41] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:08:06] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:08:21] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:08:21] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:09:34] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:09:48] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:09:48] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:13:03] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:13:23] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:13:23] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:33:46] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:34:09] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:34:10] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:39:32] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:39:33] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:39:33] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:39:36] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:39:45] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 03:39:45] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:01:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:01:17] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:01:21] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:01:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:01:29] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:01:30] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:02:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:02:20] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:35:36] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:35:36] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:35:36] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:35:37] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:35:40] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:35:51] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:35:51] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 04:49:14] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:03:16] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:03:16] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:03:29] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:03:43] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:03:43] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:13:32] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:13:57] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:13:57] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:15:34] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:15:34] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:15:35] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:15:54] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:15:54] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:16:05] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2iPlg.1cT-5nEPPi9KjQGPlie-4l48MNg HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:16:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:16:39] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2iPlg.1cT-5nEPPi9KjQGPlie-4l48MNg HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:16:39] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:19:10] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:19:16] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 137-523-524
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:21:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:21:21] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:21:23] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:21:36] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:21:36] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:21:40] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:21:52] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2iQ7A.bTr5XprHENffwHwW6_f7Vofc8yk HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:21:52] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:22:28] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:22:28] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:22:35] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:22:35] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:27:49] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:27:49] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:27:50] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:28:40] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:28:40] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:28:59] "[32mGET /confirm/InN1cGhhY2hhaTEwOTc4QGdtYWlsLmNvbSI.Z2iSlA.fywAFZhR5aiEH0uVRbkW_ofYolM HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:28:59] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:29:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

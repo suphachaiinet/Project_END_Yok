@@ -18,10 +18,10 @@ app.secret_key = 'your_secret_key'  # กำหนด secret_key ที่เป
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your_email@gmail.com'  # ใช้อีเมลของคุณ
-app.config['MAIL_PASSWORD'] = 'your_app_password'  # ใช้รหัสแอปที่ได้
+app.config['MAIL_USERNAME'] = 's6506022410031@email.kmutnb.ac.th'  # ใช้อีเมลของคุณ
+app.config['MAIL_PASSWORD'] = 'y053645033'  # ใช้รหัสแอปที่ได้
+app.config['MAIL_DEFAULT_SENDER'] = 's6506022410031@email.kmutnb.ac.th'  # ตั้งค่า default sender
 mail = Mail(app)
-
 
 # ใช้ Flask-Session เพื่อจัดการเซสชัน
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -49,7 +49,11 @@ def send_confirmation_email(user_email, token):
     confirm_url = url_for('confirm_email', token=token, _external=True)
     msg = Message('Please confirm your email', recipients=[user_email])
     msg.body = f'Your confirmation link is: {confirm_url}'
-    mail.send(msg)
+    try:
+        mail.send(msg)
+    except Exception as e:
+        logging.error(f'Error sending email: {str(e)}')
+        flash(f'ไม่สามารถส่งอีเมลได้: {str(e)}', 'danger')
 
 @app.route('/')
 def home():
@@ -85,19 +89,13 @@ def register():
         if result.inserted_id:
             # สร้าง token และส่งอีเมลยืนยัน
             token = generate_confirmation_token(email)
-            try:
-                send_confirmation_email(email, token)
-                flash('สมัครสมาชิกสำเร็จ! โปรดยืนยันอีเมลของคุณ', 'success')
-                return redirect(url_for('login'))
-            except Exception as e:
-                flash(f'ไม่สามารถส่งอีเมลได้: {str(e)}', 'danger')
-                return redirect(url_for('register'))
+            send_confirmation_email(email, token)
+            flash('สมัครสมาชิกสำเร็จ! โปรดยืนยันอีเมลของคุณ', 'success')
+            return redirect(url_for('login'))
         else:
             flash('เกิดข้อผิดพลาดในการสมัคร โปรดลองใหม่อีกครั้ง', 'danger')
             return redirect(url_for('register'))
     return render_template('register.html')
-
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
