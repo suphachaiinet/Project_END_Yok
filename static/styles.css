@@ -1,42 +1,45 @@
+
 /* styles.css */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f0f8ff;
     color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-h1 {
-    color: #4CAF50;
-    text-align: center;
-    margin-top: 20px;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-}
-
-ul li {
+.container {
+    width: 100%;
+    max-width: 400px;
     background-color: #fff;
-    border: 1px solid #ddd;
-    margin: 5px 0;
-    padding: 10px;
-    display: inline-block;
-    width: 200px;
-    text-align: left;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
 }
 
-ul li a {
-    text-decoration: none;
+h1, h2 {
     color: #4CAF50;
-    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
-ul li a:hover {
-    color: #2c6e2f;
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"], input[type="password"] ,input[type="email"]  {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 button {
@@ -44,39 +47,55 @@ button {
     color: white;
     padding: 10px 20px;
     border: none;
-    cursor: pointer;
+    border-radius: 5px;
     font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #45a049;
 }
 
-pre {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    margin: 20px auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
 a {
-    text-decoration: none;
     color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 a:hover {
     color: #2c6e2f;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #777;
+}
+
+/* Specific adjustments for dashboard pages */
+.dashboard {
+    text-align: left;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.dashboard h1 {
+    color: #4CAF50;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.dashboard a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #4CAF50;
+}
+.dashboard a:hover {
+    color: #2c6e2f;
 }

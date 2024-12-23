@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>Welcome, Teacher {{ first_name }} {{ last_name }}</h1>
-    <a href="{{ url_for('logout') }}">Logout</a>
+    <div class="container">
+        <h1 class="title">Welcome, Teacher {{ first_name }} {{ last_name }}</h1>
+        <a href="{{ url_for('logout') }}" class="button">Logout</a>
+    </div>
 </body>
 </html>

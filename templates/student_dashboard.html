@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>Welcome, Student {{ first_name }} {{ last_name }}</h1>
-    <a href="{{ url_for('logout') }}">Logout</a>
+    <div class="container">
+        <h1 class="title">Welcome, Student {{ first_name }} </h1>
+        
+        
+        <h3><a href="{{ url_for('lab.lab1') }}" class="button">Go to Lab 1</a></h3>
+
+        
+        <br><a href="{{ url_for('logout') }}" class="button">Logout</a>
+    </div>
 </body>
 </html>

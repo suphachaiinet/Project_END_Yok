@@ -650,3 +650,583 @@ INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:28:40] "GET /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:28:59] "[32mGET /confirm/InN1cGhhY2hhaTEwOTc4QGdtYWlsLmNvbSI.Z2iSlA.fywAFZhR5aiEH0uVRbkW_ofYolM HTTP/1.1[0m" 302 -
 INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:28:59] "GET /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 05:29:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:35:44] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:35:44] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:35:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:35:50] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:36:25] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:36:25] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:36:27] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:36:38] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:36:38] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:36:46] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2jMsw.JXfe0BTo4tFgMcjQw5F4najPkwc HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:36:46] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:36:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:36:52] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:37:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:37:04] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:37:05] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:37:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:42:34] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:42:35] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:42:47] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:42:47] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:42:56] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2jOIw.6_Yu7hL-W3hbNi4N8XWkemwNfqE HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:42:56] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:42:58] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:43:14] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:43:17] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:44:24] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:44:24] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:44:36] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:48:35] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:48:35] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:48:36] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:48:46] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:48:46] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:49:15] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:49:15] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:51:27] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:51:27] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:51:30] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:51:31] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:12] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:12] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:25] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:27] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:27] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:36] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:36] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:46] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2jQcQ.ZoHGpmPlGKkbigJwZ6u8dY81UUQ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:46] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:47] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:52:52] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:53:04] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2jQcQ.ZoHGpmPlGKkbigJwZ6u8dY81UUQ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:53:04] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:53:05] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:53:27] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:53:27] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:53:29] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:53:30] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:53:55] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2jQow.kzfU3pOkGVYVdGbY_C_FrPEjDDc HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:53:55] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:55:25] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:55:25] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:55:27] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:55:29] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:55:46] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:55:46] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:55:54] "[32mGET /confirm/InN1cGhhY2hhaTEwOTc4QGdtYWlsLmNvbSI.Z2jRLw.ytdH1700l2Q4MU3ioQmiuVQQAsw HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:55:54] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:56:07] "[32mGET /confirm/InN1cGhhY2hhaTEwOTc4QGdtYWlsLmNvbSI.Z2jRLw.ytdH1700l2Q4MU3ioQmiuVQQAsw HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:56:07] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:56:12] "[32mGET /confirm/InN1cGhhY2hhaTEwOTc4QGdtYWlsLmNvbSI.Z2jRLw.ytdH1700l2Q4MU3ioQmiuVQQAsw HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 09:56:12] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:01:36] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:01:36] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:01:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:01:39] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:01:41] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:03:49] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:03:49] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:03:49] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:03:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:03:53] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:03:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:04:52] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:04:52] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:05:41] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:05:41] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:01] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:01] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:02] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:10] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:10] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:14] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:14] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:22] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:22] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:30] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:30] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:35] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:06:35] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:07:25] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:07:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:07:50] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:07:50] "[36mGET /register?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:07:50] "[36mGET /register?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:07:50] "GET /register?__debugger__=yes&cmd=resource&f=console.png&s=YvqFh3DGbL2VR0pyhzB2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:07:50] "[36mGET /register?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:14] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:14] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:21] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:21] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:26] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:56] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:10:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:22] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:22] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:32] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2jU1w.icoS8tKbv9XjoO4yUvHu60CD0WQ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:32] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:32] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:39] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:40] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:45] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:45] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:46] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:46] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:48] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:50] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2jU1w.icoS8tKbv9XjoO4yUvHu60CD0WQ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:50] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:11:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:05] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z2jU1w.icoS8tKbv9XjoO4yUvHu60CD0WQ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:05] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:36] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:36] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:40] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:40] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:43] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:43] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 10:12:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:22:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:22:20] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:22:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:22:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:22:27] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:22:27] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:22:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:22:46] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:22:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:23:03] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:23:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:23:53] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:23:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:02] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:04] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:06] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:12] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:24] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:50] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:52] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:53] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:24:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:25:38] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:25:38] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:25:59] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:25:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:26:04] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:26:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:17] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:17] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:17] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:17] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=bTdaBNGyD9DsYxpoqRt6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:17] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:23] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:23] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:23] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:23] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=bTdaBNGyD9DsYxpoqRt6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:23] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:26] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:26] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:26] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:26] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=bTdaBNGyD9DsYxpoqRt6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:26] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:27] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:27] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:27] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:27] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=bTdaBNGyD9DsYxpoqRt6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:27] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:30] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:30] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:30] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:30] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:30] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=bTdaBNGyD9DsYxpoqRt6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:33] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:33] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:33] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:33] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=bTdaBNGyD9DsYxpoqRt6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:33] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:36] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:36] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:36] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:36] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:28:36] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=bTdaBNGyD9DsYxpoqRt6 HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:07] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:07] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:10] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:16] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:16] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:16] "GET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:16] "GET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:16] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=JnQIQL2yDMgvRH8NFp5g HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:30:16] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:23] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:23] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:23] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:23] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=JnQIQL2yDMgvRH8NFp5g HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:23] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:26] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:26] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:26] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:26] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=JnQIQL2yDMgvRH8NFp5g HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:40] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:40] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:44] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:44] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:44] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:44] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:44] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=0rObp1si7honUfKq1JNI HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:31:44] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:32:03] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:32:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:32:06] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:32:06] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:32:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:32:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:32:11] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:32:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:04] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:04] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:04] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:04] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=0rObp1si7honUfKq1JNI HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:04] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:06] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:11] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:11] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:11] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:33:11] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=0rObp1si7honUfKq1JNI HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\Lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:36:13] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:36:13] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:36:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:36:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:36:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:36:17] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:36:17] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:36:17] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:36:17] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=JdMLQ8aNnC5r77cXk5ZP HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:39:45] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:39:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:39:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:39:45] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=ZMuq5xAvQDgkC8UAl34c HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:39:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:39:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:39:47] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:39:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:39:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:39:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=ZMuq5xAvQDgkC8UAl34c HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:43:24] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:43:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:43:29] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:43:29] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:43:29] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:43:29] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:43:29] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=lhxgPXuj55PNI7qlyCJu HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:45:42] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:45:42] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:45:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:45:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:45:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:45:47] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:45:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:45:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:45:47] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=N61yuolkJ123YfkyhJUV HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:46:11] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:46:11] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:46:11] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:46:11] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=N61yuolkJ123YfkyhJUV HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:46:11] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:46:13] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:46:13] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:46:13] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:46:13] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:46:13] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=N61yuolkJ123YfkyhJUV HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:47:53] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:47:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:03] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:10] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:10] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:10] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:10] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=N61yuolkJ123YfkyhJUV HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:10] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:13] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:21] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:29] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:29] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:45] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:48:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:49:03] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:49:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:49:03] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:49:10] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:49:48] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:49:50] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:49:55] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:49:56] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:49:56] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:49:56] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:50:49] "[35m[1mGET /lab1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:50:49] "GET /lab1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:50:49] "GET /lab1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:50:49] "GET /lab1?__debugger__=yes&cmd=resource&f=console.png&s=do4bR8A6Ys5U6EpAeiEI HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:50:49] "GET /lab1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:50:53] "[35m[1mGET /lab1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:50:53] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:50:53] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:50:53] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=console.png&s=do4bR8A6Ys5U6EpAeiEI HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:01] "[35m[1mGET /lab1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:01] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:01] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:01] "GET /lab1?__debugger__=yes&cmd=resource&f=console.png&s=StEiox2DBKRhWos9445h HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:01] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:01] "[35m[1mGET /lab1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:01] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:01] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:01] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=console.png&s=StEiox2DBKRhWos9445h HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:01] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[35m[1mGET /lab1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=console.png&s=StEiox2DBKRhWos9445h HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[35m[1mGET /lab1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=console.png&s=StEiox2DBKRhWos9445h HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[35m[1mGET /lab1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=console.png&s=StEiox2DBKRhWos9445h HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:51:02] "[36mGET /lab1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:08] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:08] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:12] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:12] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:13] "[35m[1mGET /lab1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:13] "GET /lab1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:13] "GET /lab1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:13] "GET /lab1?__debugger__=yes&cmd=resource&f=console.png&s=SEUI5Vu1BFJPF9U7FHaY HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:52:13] "GET /lab1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 105-598-412
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat

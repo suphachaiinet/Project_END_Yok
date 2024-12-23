@@ -3,33 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>สมัครสมาชิก</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h2>สมัครสมาชิก</h2>
-
-    <!-- แสดงข้อความแจ้งเตือนจาก flash -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <ul>
-            {% for category, message in messages %}
-                <li class="{{ category }}">{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-
-    <form method="POST">
-        <input type="text" name="username" placeholder="ชื่อผู้ใช้งาน" required><br>
-        <input type="text" name="first_name" placeholder="ชื่อ" required><br>
-        <input type="text" name="last_name" placeholder="นามสกุล" required><br>
-        <input type="email" name="email" placeholder="อีเมล" required><br>
-        <input type="password" name="password" placeholder="รหัสผ่าน" required><br>
-        <select name="role">
-            <option value="student">นักเรียน</option>
-            <option value="teacher">ครู</option>
-        </select><br>
-        <button type="submit">สมัครสมาชิก</button>
-    </form>
+    <div class="container">
+        <h2 class="title">สมัครสมาชิก</h2>
+        <form method="POST" class="form">
+            <input type="text" name="username" placeholder="ชื่อผู้ใช้งาน" class="input-field" required><br>
+            <input type="text" name="first_name" placeholder="ชื่อ" class="input-field" required><br>  <!-- เพิ่มฟิลด์ first_name -->
+            <input type="text" name="last_name" placeholder="นามสกุล" class="input-field" required><br>
+            <input type="email" name="email" placeholder="อีเมล" class="input-field" required><br>
+            <input type="password" name="password" placeholder="รหัสผ่าน" class="input-field" required><br>
+            <input type="password" name="confirm_password" placeholder="ยืนยันรหัสผ่าน" class="input-field" required><br>
+            
+            <!-- เลือก Role -->
+            <select name="role" class="input-field" required>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select><br>
+            
+            <button type="submit" class="button">สมัครสมาชิก</button>
+        </form>
+        <p>มีบัญชีอยู่แล้ว? <a href="{{ url_for('login') }}" class="link">เข้าสู่ระบบที่นี่</a></p>
+    </div>
 </body>
 </html>

@@ -4,9 +4,9 @@ from flask_bcrypt import Bcrypt
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer
 from flask_session import Session
-from datetime import datetime
 import logging
 from bson import ObjectId
+from lab import lab_bp  # นำเข้า lab_bp จาก lab.py
 
 app = Flask(__name__)
 
@@ -75,26 +75,27 @@ def register():
             flash('ชื่อผู้ใช้งานนี้ถูกใช้ไปแล้ว!', 'danger')
             return redirect(url_for('register'))
 
-        new_user = {
+        # สร้าง token และส่งอีเมลยืนยัน
+        token = generate_confirmation_token(email)
+        try:
+            send_confirmation_email(email, token)
+        except Exception as e:
+            logging.error(f'Error sending email: {str(e)}')
+            flash(f'ไม่สามารถส่งอีเมลได้: {str(e)}', 'danger')
+            return redirect(url_for('register'))
+
+        # เพิ่มข้อมูลผู้ใช้เฉพาะหลังจากยืนยันอีเมล
+        session['pending_user'] = {
             "username": username,
             "first_name": first_name,
             "last_name": last_name,
             "email": email,
             "password": password,
-            "role": role,
-            "is_verified": False  # ตั้งค่าเป็น False จนกว่าจะยืนยันอีเมล
+            "role": role
         }
 
-        result = mongo.db.users_all.insert_one(new_user)
-        if result.inserted_id:
-            # สร้าง token และส่งอีเมลยืนยัน
-            token = generate_confirmation_token(email)
-            send_confirmation_email(email, token)
-            flash('สมัครสมาชิกสำเร็จ! โปรดยืนยันอีเมลของคุณ', 'success')
-            return redirect(url_for('login'))
-        else:
-            flash('เกิดข้อผิดพลาดในการสมัคร โปรดลองใหม่อีกครั้ง', 'danger')
-            return redirect(url_for('register'))
+        flash('สมัครสมาชิกสำเร็จ! โปรดยืนยันอีเมลของคุณเพื่อเปิดใช้งานบัญชี', 'success')
+        return redirect(url_for('login'))
     return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -116,11 +117,25 @@ def login():
             flash('กรุณายืนยันอีเมลของคุณก่อนเข้าสู่ระบบ', 'danger')
             return redirect(url_for('login'))
 
+        # ตรวจสอบบทบาทและการย้ายข้อมูล
+        role = user.get('role', 'user')
+        if role == 'teacher':
+            teacher_data = mongo.db.teachers.find_one({"user_id": str(user['_id'])})
+            if not teacher_data:
+                flash('ข้อมูลของคุณยังไม่ได้ถูกย้ายเข้าสู่ระบบสำหรับครู', 'danger')
+                return redirect(url_for('login'))
+        elif role == 'student':
+            student_data = mongo.db.students.find_one({"user_id": str(user['_id'])})
+            if not student_data:
+                flash('ข้อมูลของคุณยังไม่ได้ถูกย้ายเข้าสู่ระบบสำหรับนักเรียน', 'danger')
+                return redirect(url_for('login'))
+
+        # บันทึก session
         session['user_id'] = str(user['_id'])
         session['username'] = user['username']
-        session['role'] = user['role']  # เก็บบทบาทผู้ใช้ใน session
-        
-        flash('Login successful!', 'success')
+        session['role'] = role
+
+        flash('เข้าสู่ระบบสำเร็จ!', 'success')
         return redirect(url_for('dashboard'))
     
     return render_template('login.html')
@@ -149,23 +164,42 @@ def dashboard():
 @app.route('/confirm/<token>')
 def confirm_email(token):
     try:
+        # ยืนยัน Token และดึงอีเมล
         serializer = URLSafeTimedSerializer(app.secret_key)
-        email = serializer.loads(token, salt='email-confirm', max_age=3600)  # ตั้งเวลาให้ลิงก์หมดอายุหลัง 1 ชั่วโมง
+        email = serializer.loads(token, salt='email-confirm', max_age=3600)  # หมดอายุภายใน 1 ชั่วโมง
     except:
         flash('ลิงก์ยืนยันหมดอายุหรือไม่ถูกต้อง', 'danger')
         return redirect(url_for('login'))
 
-    # อัปเดตสถานะ is_verified เป็น True
-    user = mongo.db.users_all.find_one({"email": email})
-    if user:
-        mongo.db.users_all.update_one(
-            {"email": email},
-            {"$set": {"is_verified": True}}
-        )
-        flash('อีเมลของคุณได้รับการยืนยันแล้ว', 'success')
+    # ค้นหาผู้ใช้ใน session ที่ยังไม่ยืนยัน
+    pending_user = session.get('pending_user')
+    if pending_user and pending_user.get('email') == email:
+        # เพิ่มข้อมูลลงในฐานข้อมูล
+        pending_user['is_verified'] = True
+        mongo.db.users_all.insert_one(pending_user)
+
+        # ย้ายข้อมูลไปยัง collection ตาม role
+        role = pending_user['role']
+        if role == 'teacher':
+            mongo.db.teachers.insert_one({
+                "user_id": str(pending_user['_id']),
+                "first_name": pending_user['first_name'],
+                "last_name": pending_user['last_name'],
+                "email": pending_user['email']
+            })
+        elif role == 'student':
+            mongo.db.students.insert_one({
+                "user_id": str(pending_user['_id']),
+                "first_name": pending_user['first_name'],
+                "last_name": pending_user['last_name'],
+                "email": pending_user['email']
+            })
+
+        session.pop('pending_user', None)  # ลบข้อมูลผู้ใช้ที่รอการยืนยัน
+        flash('อีเมลของคุณได้รับการยืนยันแล้วและข้อมูลถูกเพิ่มในระบบเรียบร้อย', 'success')
         return redirect(url_for('login'))
     else:
-        flash('ผู้ใช้ไม่พบ', 'danger')
+        flash('ไม่พบข้อมูลผู้ใช้ที่รอการยืนยัน', 'danger')
         return redirect(url_for('login'))
 
 @app.route('/logout')
@@ -173,6 +207,9 @@ def logout():
     session.clear()  # ลบข้อมูลใน session
     flash('You have been logged out.', 'success')
     return redirect(url_for('login'))
+
+# ลงทะเบียน Blueprint สำหรับ lab
+app.register_blueprint(lab_bp)
 
 if __name__ == '__main__':
     app.run(debug=True)
