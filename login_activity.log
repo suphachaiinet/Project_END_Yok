@@ -1244,3 +1244,213 @@ INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:55:32] "[32mPOST /login HTTP/1.1[0
 INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:55:32] "GET /dashboard HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:55:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [23/Dec/2024 11:55:34] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:24:05] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:24:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:24:05] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:24:05] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:24:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:24:18] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:24:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:24:50] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:24:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:25:22] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:25:22] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:25:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:25:34] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z3F37g.FI6gwCfLUWeT18kH5z9e455AQBs HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:25:34] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:25:34] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:25:46] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:25:46] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:25:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:25:48] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:26:10] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:26:10] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:26:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:26:12] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:26:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:26:18] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:26:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:26:24] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:26:24] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:26:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:33:02] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [29/Dec/2024 23:33:33] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:45:14] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:48:01] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:48:01] "[33mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:48:51] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:48:52] "GET /static/pdfs/lab1.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:50:04] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:50:06] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:52:10] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:52:28] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:52:33] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:54:40] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 01:54:42] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:03:56] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:04:00] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:05:50] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:05:52] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:06:02] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:06:11] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:06:42] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:06:42] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:06:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:06:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:06:47] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:06:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:06:48] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:07:14] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:09:17] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:09:20] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:09:21] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:09:33] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:19:10] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:19:13] "[33mPOST /check_config HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:22:28] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:22:28] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:22:35] "POST /check_switch_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:22:43] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:23:43] "POST /check_switch_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:24:03] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:24:14] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:27:53] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:27:56] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:27:57] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:27:59] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:28:00] "POST /check_switch_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:28:06] "POST /check_switch_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:28:20] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:28:25] "POST /check_switch_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:28:26] "POST /check_switch_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:28:30] "POST /check_switch_config HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:28:56] "POST /check_switch_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:29:04] "POST /check_switch_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:29:10] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 02:29:17] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:21:57] "POST /check_switch_config HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:22:01] "POST /check_pc_config HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:23:48] "[33mPOST /check_switch_config HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:26:05] "[33mPOST /check_pc_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:26:07] "[33mPOST /check_pc_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:26:09] "[33mPOST /check_switch_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:26:14] "[33mPOST /check_pc_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:27:38] "[33mPOST /check_pc_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:27:40] "[33mPOST /check_switch_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:27:44] "[33mPOST /check_pc_config HTTP/1.1[0m" 404 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:28:13] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:28:13] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:28:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:28:20] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:28:20] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:28:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:28:22] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:28:26] "POST /check_config/lab1_sw1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:28:29] "POST /check_config/lab1_pc1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [30/Dec/2024 16:28:32] "POST /check_config/lab1_pc1 HTTP/1.1" 200 -
