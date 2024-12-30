@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 1 - Basic Switch Configuration</title>
     <style>
-        .pdf-container {
-            display: none; /* ซ่อน PDF เป็นค่าเริ่มต้น */
-            margin-top: 20px;
-        }
-        .form-container {
-            margin-top: 20px;
-        }
         .result-container {
             margin-top: 20px;
             padding: 10px;
@@ -23,52 +16,34 @@
             padding: 8px 12px;
             font-size: 14px;
         }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to Lab 1 - Basic Switch Configuration</h1>
+    <div class="container">
+        <h1>Lab 1 - Basic Switch Configuration</h1>
 
-    <!-- ปุ่มสำหรับแสดง/ซ่อน PDF -->
-    <button id="toggleButton">Show PDF</button>
-    
-    <!-- พื้นที่แสดง PDF -->
-    <div id="pdfContainer" class="pdf-container">
-        <embed src="{{ url_for('static', filename='pdfs/lab1.pdf') }}" width="800" height="600" type="application/pdf">
-    </div>
-
-    <!-- ฟอร์มสำหรับการตรวจสอบ Configuration -->
-    <div class="form-container">
-        <h2>Switch Configuration</h2>
-        <form action="{{ url_for('lab.check_config_lab1_sw1') }}" method="POST">
+        <!-- ฟอร์มสำหรับการตรวจสอบ Configuration -->
+        <form action="{{ url_for('lab.check_config_lab1') }}" method="POST">
+            <h2>Switch Configuration</h2>
             <textarea name="config_switch" rows="10" cols="50" placeholder="ใส่การตั้งค่า Switch ที่นี่..." required></textarea><br>
-            <button type="submit">Check Switch Config</button>
-        </form>
-    </div>
 
-    <div class="form-container">
-        <h2>PC Configuration</h2>
-        <form action="{{ url_for('lab.check_config_lab1_pc1') }}" method="POST">
+            <h2>PC Configuration</h2>
             <textarea name="config_pc" rows="10" cols="50" placeholder="ใส่การตั้งค่า PC ที่นี่..." required></textarea><br>
-            <button type="submit">Check PC Config</button>
+
+            <button type="submit">ตรวจสอบและส่งคะแนน</button>
         </form>
-    </div>
 
-    <!-- พื้นที่แสดงผลลัพธ์ -->
-    {% if result %}
-    <div class="result-container">
-        <h3>ผลการตรวจสอบ:</h3>
-        <p>{{ result }}</p>
+        <!-- พื้นที่แสดงผลลัพธ์ -->
+        {% if result %}
+        <div class="result-container">
+            <h3>ผลการตรวจสอบ:</h3>
+            <p>{{ result|safe }}</p>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
-
-    <script>
-        // JavaScript สำหรับเปิด/ปิด PDF
-        document.getElementById('toggleButton').addEventListener('click', function() {
-            const pdfContainer = document.getElementById('pdfContainer');
-            const isHidden = pdfContainer.style.display === 'none';
-            pdfContainer.style.display = isHidden ? 'block' : 'none';
-            this.textContent = isHidden ? 'Hide PDF' : 'Show PDF';
-        });
-    </script>
 </body>
 </html>
