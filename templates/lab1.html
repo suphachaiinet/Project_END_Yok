@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 1 - Basic Switch Configuration</title>
     <style>
+        .pdf-container {
+            display: none; /* ซ่อน PDF เป็นค่าเริ่มต้น */
+            margin-top: 20px;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
         .result-container {
             margin-top: 20px;
             padding: 10px;
@@ -26,13 +33,28 @@
     <div class="container">
         <h1>Lab 1 - Basic Switch Configuration</h1>
 
+        <!-- ปุ่มสำหรับแสดง/ซ่อน PDF -->
+        <button id="toggleButton">Show PDF</button>
+        
+        <!-- พื้นที่แสดง PDF -->
+        <div id="pdfContainer" class="pdf-container">
+            <!-- 
+                ตรงนี้จะเป็น PDF ชื่อ lab1.pdf ที่อยู่ในโฟลเดอร์ static/pdfs 
+                เช่น static/pdfs/lab1.pdf
+            -->
+            <embed src="{{ url_for('static', filename='pdfs/lab1.pdf') }}"
+                   width="800" height="600" type="application/pdf">
+        </div>
+
         <!-- ฟอร์มสำหรับการตรวจสอบ Configuration -->
         <form action="{{ url_for('lab.check_config_lab1') }}" method="POST">
             <h2>Switch Configuration</h2>
-            <textarea name="config_switch" rows="10" cols="50" placeholder="ใส่การตั้งค่า Switch ที่นี่..." required></textarea><br>
+            <textarea name="config_switch" rows="10" cols="50"
+                      placeholder="ใส่การตั้งค่า Switch ที่นี่..." required></textarea><br>
 
             <h2>PC Configuration</h2>
-            <textarea name="config_pc" rows="10" cols="50" placeholder="ใส่การตั้งค่า PC ที่นี่..." required></textarea><br>
+            <textarea name="config_pc" rows="10" cols="50"
+                      placeholder="ใส่การตั้งค่า PC ที่นี่..." required></textarea><br>
 
             <button type="submit">ตรวจสอบและส่งคะแนน</button>
         </form>
@@ -45,5 +67,23 @@
         </div>
         {% endif %}
     </div>
+
+    <script>
+        // JavaScript สำหรับเปิด/ปิด PDF
+        const toggleButton = document.getElementById('toggleButton');
+        const pdfContainer = document.getElementById('pdfContainer');
+
+        toggleButton.addEventListener('click', () => {
+            // ถ้าถูกซ่อนอยู่ (display: none) => แสดง
+            if (pdfContainer.style.display === 'none') {
+                pdfContainer.style.display = 'block';
+                toggleButton.textContent = 'Hide PDF';
+            } else {
+                // ถ้าแสดงอยู่ => ซ่อน
+                pdfContainer.style.display = 'none';
+                toggleButton.textContent = 'Show PDF';
+            }
+        });
+    </script>
 </body>
 </html>

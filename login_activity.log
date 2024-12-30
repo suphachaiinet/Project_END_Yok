@@ -1578,3 +1578,21 @@ INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 127-093-191
 INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:26:12] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:29:37] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:30:31] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:35:48] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:35:54] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:35:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:35:55] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:36:11] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:38:56] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:40:35] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:40:37] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
