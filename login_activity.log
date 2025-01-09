@@ -1596,3 +1596,129 @@ INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:36:11] "POST /check_config/lab1 HTTP
 INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:38:56] "POST /check_config/lab1 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:40:35] "POST /check_config/lab1 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:40:37] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:47:05] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:47:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:47:05] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:47:12] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:47:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:47:35] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:47:35] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:47:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:48:16] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:48:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:48:21] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:48:21] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:48:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:48:23] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:48:23] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:48:24] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:48:48] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:48:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:49:50] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:49:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:14] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:14] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:31] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:32] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:34] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:34] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:35] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:35] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:36] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:36] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:50:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:51:48] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:51:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:52:00] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:52:00] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:52:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:52:14] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z3F37g.FI6gwCfLUWeT18kH5z9e455AQBs HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:52:14] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:52:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:53:25] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:53:25] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:53:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:53:28] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z3L6MQ.ll7aJpdnyW43KtEW_xGjh_13Uug HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:53:28] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:53:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:53:32] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:53:32] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:53:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:56:53] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:56:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:06] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:06] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:17] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z3L7Dg.LrY1CoCfDPC0sAC5DNywiuegcF8 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:17] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:24] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:24] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:32] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:32] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:46] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:46] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:47] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 02:57:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+ERROR:root:Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-842b1ce1fd5sm17932915a12.25 - gsmtp')
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:25] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:25] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:28] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z3L7Dg.LrY1CoCfDPC0sAC5DNywiuegcF8 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:28] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:36] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:37] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:38] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:38] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:41] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:00:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:01:18] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:01:18] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:01:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:01:27] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:01:27] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:01:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-1\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 127-093-191
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:27] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:27] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:27] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:31] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:31] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:32] "GET /lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:43] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:52] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:54] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:56] "GET /lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:57] "[33mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:07:00] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:07:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -

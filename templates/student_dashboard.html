@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1 class="title">Welcome, Student {{ first_name }} </h1>
-        
-        
-        <h3><a href="{{ url_for('lab.lab1') }}" class="button">Lab 1 - Basic Switch Configuration</a></h3>
+        <h1 class="title">Welcome, Student {{ first_name }} {{ last_name }}</h1>
 
-        
-        <br><a href="{{ url_for('logout') }}" class="button">Logout</a>
+        <!-- ไป Lab 1 และ Lab 2 -->
+        <a href="{{ url_for('lab.lab1') }}" class="button">Lab 1</a>
+        <br>
+        <br>
+        <a href="{{ url_for('lab2.lab2') }}" class="button">Lab 2</a>
+
+        <!-- Logout -->
+        <br><br>
+        <a href="{{ url_for('logout') }}" class="button logout-btn">Logout</a>
     </div>
 </body>
 </html>

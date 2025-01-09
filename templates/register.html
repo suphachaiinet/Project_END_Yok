@@ -4,28 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สมัครสมาชิก</title>
+    <!-- เรียกใช้งาน styles.css -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
         <h2 class="title">สมัครสมาชิก</h2>
+
+        <!-- ฟอร์มสมัครสมาชิก -->
         <form method="POST" class="form">
-            <input type="text" name="username" placeholder="ชื่อผู้ใช้งาน" class="input-field" required><br>
-            <input type="text" name="first_name" placeholder="ชื่อ" class="input-field" required><br>  <!-- เพิ่มฟิลด์ first_name -->
-            <input type="text" name="last_name" placeholder="นามสกุล" class="input-field" required><br>
-            <input type="email" name="email" placeholder="อีเมล" class="input-field" required><br>
-            <input type="password" name="password" placeholder="รหัสผ่าน" class="input-field" required><br>
-            <input type="password" name="confirm_password" placeholder="ยืนยันรหัสผ่าน" class="input-field" required><br>
+            <input type="text" name="username" placeholder="ชื่อผู้ใช้งาน" class="input" required>
+            <input type="text" name="first_name" placeholder="ชื่อ" class="input" required>
+            <input type="text" name="last_name" placeholder="นามสกุล" class="input" required>
+            <input type="email" name="email" placeholder="อีเมล" class="input" required>
+            <input type="password" name="password" placeholder="รหัสผ่าน" class="input" required>
+            <input type="password" name="confirm_password" placeholder="ยืนยันรหัสผ่าน" class="input" required>
             
-            <!-- เลือก Role -->
-            <select name="role" class="input-field" required>
+            <!-- เลือก Role (Student หรือ Teacher) -->
+            <select name="role" class="input" required>
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
-            </select><br>
+            </select>
             
             <button type="submit" class="button">สมัครสมาชิก</button>
         </form>
-        <p>มีบัญชีอยู่แล้ว? <a href="{{ url_for('login') }}" class="link">เข้าสู่ระบบที่นี่</a></p>
+
+        <!-- ข้อความเพิ่มเติม -->
+        <p class="note">
+            มีบัญชีอยู่แล้ว? 
+            <a href="{{ url_for('login') }}" class="link">เข้าสู่ระบบที่นี่</a>
+        </p>
     </div>
 </body>
 </html>

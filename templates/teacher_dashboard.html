@@ -9,7 +9,14 @@
 <body>
     <div class="container">
         <h1 class="title">Welcome, Teacher {{ first_name }} {{ last_name }}</h1>
-        <a href="{{ url_for('logout') }}" class="button">Logout</a>
+
+        <!-- ตัวอย่างเมนูหรือปุ่มเพิ่มเติมสำหรับครู -->
+        <a href="#" class="button">Manage Students</a>
+        <a href="#" class="button">View Scores</a>
+
+        <!-- ปุ่ม Logout -->
+        <br><br>
+        <a href="{{ url_for('logout') }}" class="button logout-btn">Logout</a>
     </div>
 </body>
 </html>
