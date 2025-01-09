@@ -1722,3 +1722,77 @@ INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:56] "[36mGET /static/styles.css 
 INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:06:57] "[33mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 404 -
 INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:07:00] "GET /dashboard HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [31/Dec/2024 03:07:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 894-363-957
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:11] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:11] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:11] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:19] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:19] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:24] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:24] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:27] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:27] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:31] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:31] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:39] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:35:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+ERROR:root:Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-72aad8310d0sm35937672b3a.42 - gsmtp')
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:36:36] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:36:36] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:36:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:37:37] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:37:38] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+ERROR:root:Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-219dc9cde0dsm336384425ad.140 - gsmtp')
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:37:47] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:37:47] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:37:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:44:53] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:44:53] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:44:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:44:55] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:44:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+ERROR:root:Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-72aad6cc885sm36480732b3a.0 - gsmtp')
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:45:05] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:45:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:45:05] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:48:41] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:48:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+ERROR:root:Error sending email: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-2f5593feae0sm453297a91.17 - gsmtp')
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:48:50] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:48:50] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:48:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\project_yok\\Project_END_Yok-1\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 894-363-957
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:30] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:30] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:35] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:35] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:48] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:48] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:53] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z39jtQ.ve5xsEcNs3OyhkgHKcpKJVJmcsw HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:53] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:50:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:51:00] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:51:00] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:51:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:51:01] "GET /lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:51:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:51:02] "[33mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:54:13] "GET /lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:54:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:54:15] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Jan/2025 12:54:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
