@@ -20,19 +20,16 @@
         </div>
 
         <!-- ฟอร์มสำหรับการตรวจสอบ Configuration -->
-        <form action="{{ url_for('lab.check_config_lab1') }}" method="POST" class="form-container">
+        <form action="{{ url_for('lab.check_config_lab1') }}" method="POST">
             <h2>Switch Configuration</h2>
-            <textarea name="config_switch" rows="8" cols="50"
-                      placeholder="ใส่การตั้งค่า Switch ที่นี่..." required
-                      style="width: 100%;"></textarea><br>
-
+            <textarea name="config_switch" rows="10" cols="50" required></textarea><br>
+        
             <h2>PC Configuration</h2>
-            <textarea name="config_pc" rows="8" cols="50"
-                      placeholder="ใส่การตั้งค่า PC ที่นี่..." required
-                      style="width: 100%;"></textarea><br>
-
-            <button type="submit" class="button">ตรวจสอบและส่งคะแนน</button>
+            <textarea name="config_pc" rows="10" cols="50" required></textarea><br>
+        
+            <button type="submit">ตรวจสอบและส่งคะแนน</button>
         </form>
+        
 
         <!-- พื้นที่แสดงผลลัพธ์ -->
         {% if result %}
