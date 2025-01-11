@@ -157,7 +157,7 @@ def check_config_lab1():
         user_pc_gateway == "192.168.1.1"
     )
 
-    pc_status = "ถูกต้อง" if pc_correct else f"ผิดพลาด (IP={user_pc_ip}, Subnet={user_pc_subnet}, Gateway={user_pc_gateway})"
+    pc_status = "ถูกต้อง" if pc_correct else f"ผิดพลาด "
 
     # ตรวจสอบ Switch Config ด้วยคีย์เวิร์ด
     switch_score, missing_keywords = check_keywords(user_switch_config, KEYWORDS)
@@ -191,7 +191,7 @@ def check_config_lab1():
     # สร้างผลลัพธ์สำหรับแสดงในหน้าเว็บ
     result = f"""
     ชื่อผู้ใช้: {username}<br>
-    คะแนน Switch: {switch_score:.2f}/100<br>
+    คะแนน Switch: {switch_score:.2f}%<br>
     PC: {pc_status}<br>
     {missing_str}
     """

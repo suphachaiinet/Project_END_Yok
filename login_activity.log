@@ -2310,3 +2310,54 @@ INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:54:55] "POST /check_config/lab1 HTTP
 INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:54:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:55:19] "POST /check_config/lab1 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:55:19] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:58:28] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:58:28] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:58:42] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:59:10] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:59:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:59:10] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:59:22] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:59:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:59:23] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:59:54] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:59:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:59:59] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 15:59:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:05] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:05] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:12] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:20] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:28] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:36] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:54] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:00:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:01:00] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:01:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:01:26] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:01:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\project_yok\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 894-363-957
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:02:51] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:02:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:03:02] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:03:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\project_yok\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 894-363-957
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\project_yok\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 894-363-957
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:05:16] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 16:05:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\project_yok\\Project_END_Yok-1\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 894-363-957

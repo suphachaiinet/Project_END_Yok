@@ -17,6 +17,8 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+
 /* ชื่อหัวข้อ (title) */
 .title {
     margin-bottom: 20px;
@@ -215,4 +217,50 @@
 }
 .logout-btn:hover {
     background-color: #c0392b;
+}
+
+/* lab1 */
+.container_lab1 {
+    max-width: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tapbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+.tapbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.tapbar a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.tapbar .left {
+    display: flex;
+    gap: 15px;
+}
+
+.tapbar .right {
+    display: flex;
+    gap: 15px;
+}
+
+/* เพิ่ม padding เพื่อให้แถบ tapbar ไม่ทับ */
+.container_lab1 {
+    padding-top: 60px;
 }
