@@ -23,7 +23,7 @@ app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 's6506022410031@email.kmutnb.ac.th'
 app.config['MAIL_PASSWORD'] = 'y053645033'
-app.config['MAIL_DEFAULT_SENDER'] = 'ys6506022410031@email.kmutnb.ac.th'
+app.config['MAIL_DEFAULT_SENDER'] = 's6506022410031@email.kmutnb.ac.th'
 mail = Mail(app)
 
 # ใช้ Flask-Session เพื่อจัดการเซสชัน
