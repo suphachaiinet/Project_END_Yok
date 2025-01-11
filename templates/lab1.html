@@ -21,15 +21,25 @@
 
         <!-- ฟอร์มสำหรับการตรวจสอบ Configuration -->
         <form action="{{ url_for('lab.check_config_lab1') }}" method="POST">
-            <h2>Switch Configuration</h2>
+            <h3>Switch Config</h3>
             <textarea name="config_switch" rows="10" cols="50" required></textarea><br>
-        
-            <h2>PC Configuration</h2>
-            <textarea name="config_pc" rows="10" cols="50" required></textarea><br>
-        
-            <button type="submit">ตรวจสอบและส่งคะแนน</button>
+
+            <h3>PC Config</h3>
+            <div>
+                <label for="pc_ip_address">IP Address:</label>
+                <input type="text" name="pc_ip_address" id="pc_ip_address" required placeholder="กรอก ip "><br>
+            </div>
+            <div>
+                <label for="pc_subnet_mask">Subnet Mask:</label>
+                <input type="text" name="pc_subnet_mask" id="pc_subnet_mask" required placeholder="กรอก subnet mask"><br>
+            </div>
+            <div>
+                <label for="pc_default_gateway">Default Gateway:</label>
+                <input type="text" name="pc_default_gateway" id="pc_default_gateway" required placeholder="กรอก default gateway "><br>
+            </div>
+
+            <button type="submit">Check & Submit</button>
         </form>
-        
 
         <!-- พื้นที่แสดงผลลัพธ์ -->
         {% if result %}
@@ -40,7 +50,6 @@
         {% endif %}
 
         <!-- ปุ่ม Back -->
-        <!-- ปรับ url_for(...) ให้ไปยังหน้า Dashboard หรือหน้าอื่นที่ต้องการ -->
         <a href="{{ url_for('dashboard') }}" class="button" style="margin-top: 20px; display: inline-block;">
             Back
         </a>
