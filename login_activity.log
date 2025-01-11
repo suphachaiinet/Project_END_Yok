@@ -1884,3 +1884,7 @@ INFO:werkzeug: * Detected change in 'c:\\Users\\B415\\Desktop\\project_yok\\Proj
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 894-363-957
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 12:34:08] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 12:34:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 12:34:14] "POST /check_config/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Jan/2025 12:34:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
