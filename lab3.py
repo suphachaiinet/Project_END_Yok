@@ -122,8 +122,8 @@ def check_config_lab3():
     user_pc2_gateway = request.form.get('pc2_default_gateway', '').strip()
 
     # Check PC Configurations
-    pc1_correct = check_pc_config(user_pc1_ip, user_pc1_subnet, user_pc1_gateway, "192.168.1.10", "255.255.255.0", "192.168.1.1")
-    pc2_correct = check_pc_config(user_pc2_ip, user_pc2_subnet, user_pc2_gateway, "192.168.1.20", "255.255.255.0", "192.168.1.1")
+    pc1_correct = check_pc_config(user_pc1_ip, user_pc1_subnet, user_pc1_gateway, "192.168.1.3", "255.255.255.0", "192.168.1.1")
+    pc2_correct = check_pc_config(user_pc2_ip, user_pc2_subnet, user_pc2_gateway, "192.168.1.4", "255.255.255.0", "192.168.1.1")
 
     # Check Switch Configurations
     sw1_score, sw1_missing_keywords = check_keywords(user_sw1_config, SW1_KEYWORDS)

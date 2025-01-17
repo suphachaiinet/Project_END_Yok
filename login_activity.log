@@ -2790,3 +2790,17 @@ INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:36:00] "POST /lab3/check_config/lab3
 INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:36:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:36:21] "POST /lab3/check_config/lab3 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:36:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:51:09] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:51:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:51:10] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:51:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:52:04] "POST /lab2/check_config/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:52:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:52:49] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:52:49] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:53:29] "POST /lab3/check_config/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:53:29] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab3.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
