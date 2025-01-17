@@ -10,8 +10,40 @@ from bson import ObjectId
 # นำเข้า Blueprint ของ Lab 1 และ Lab 2
 from lab import lab_bp
 from lab2 import lab2_bp
+from lab3 import lab3_bp
+from lab4 import lab4_bp
+from lab5 import lab5_bp
+from lab6 import lab6_bp
+from lab7 import lab7_bp
+from lab8 import lab8_bp
+from lab9 import lab9_bp
+from lab10 import lab10_bp
+from lab11 import lab11_bp
+from lab12 import lab12_bp
+from lab13 import lab13_bp
+from lab14 import lab14_bp
+from lab15 import lab15_bp
+from lab16 import lab16_bp
+
 
 app = Flask(__name__)
+# ลงทะเบียน Blueprint สำหรับ lab ต่าง ๆ
+app.register_blueprint(lab_bp, url_prefix='/lab')
+app.register_blueprint(lab2_bp, url_prefix='/lab2')
+app.register_blueprint(lab3_bp, url_prefix='/lab3')
+app.register_blueprint(lab4_bp, url_prefix='/lab4')
+app.register_blueprint(lab5_bp, url_prefix='/lab5')
+app.register_blueprint(lab6_bp, url_prefix='/lab6')
+app.register_blueprint(lab7_bp, url_prefix='/lab7')
+app.register_blueprint(lab8_bp, url_prefix='/lab8')
+app.register_blueprint(lab9_bp, url_prefix='/lab9')
+app.register_blueprint(lab10_bp, url_prefix='/lab10')
+app.register_blueprint(lab11_bp, url_prefix='/lab11')
+app.register_blueprint(lab12_bp, url_prefix='/lab12')
+app.register_blueprint(lab13_bp, url_prefix='/lab13')
+app.register_blueprint(lab14_bp, url_prefix='/lab14')
+app.register_blueprint(lab15_bp, url_prefix='/lab15')
+app.register_blueprint(lab16_bp, url_prefix='/lab16')
 
 # ตั้งค่า URI ของ MongoDB
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/yourdatabase'
@@ -214,9 +246,6 @@ def logout():
     flash('You have been logged out.', 'success')
     return redirect(url_for('login'))
 
-# ลงทะเบียน Blueprint สำหรับ lab1 และ lab2
-app.register_blueprint(lab_bp)
-app.register_blueprint(lab2_bp)
 
 if __name__ == '__main__':
     app.run(debug=True)

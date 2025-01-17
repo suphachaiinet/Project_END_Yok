@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 2 - Configure VLANs and Trunking</title>
+    <title>Lab 3 - Implement VLANs and Trunking</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
@@ -17,60 +17,54 @@
         </div>
     </div>
 
-    <div class="container_lab2">
-        <h1 class="title">Lab 2 - Configure VLANs and Trunking</h1>
+    <div class="container_lab3">
+        <h1 class="title">Lab 3 - Implement VLANs and Trunking</h1>
 
         <!-- ปุ่มสำหรับแสดง/ซ่อน PDF -->
         <button id="toggleButton" class="button toggle-btn">Show PDF</button>
-        
+
         <!-- พื้นที่แสดง PDF -->
         <div id="pdfContainer" class="pdf-container">
-            <embed src="{{ url_for('static', filename='pdfs/lab2.pdf') }}"
-                   width="100%" height="800" type="application/pdf">
+            <embed src="{{ url_for('static', filename='pdfs/lab3.pdf') }}" width="100%" height="800" type="application/pdf">
         </div>
 
         <!-- ฟอร์มสำหรับการตรวจสอบ Configuration -->
-        <form action="{{ url_for('lab2.check_config_lab2') }}" method="POST">
-            <!-- Switch 1 Config -->
+        <form action="{{ url_for('lab3.check_config_lab3') }}" method="POST">
             <h3>Switch 1 Config</h3>
-            <textarea name="config_switch1" rows="15" cols="100" required placeholder="กรอกคำสั่ง Switch 1"></textarea><br>
+            <textarea name="config_switch1" rows="10" cols="100" required></textarea><br>
 
-            <!-- Switch 2 Config -->
             <h3>Switch 2 Config</h3>
-            <textarea name="config_switch2" rows="15" cols="100" required placeholder="กรอกคำสั่ง Switch 2"></textarea><br>
+            <textarea name="config_switch2" rows="10" cols="100" required></textarea><br>
 
-            <!-- PC 1 Config -->
             <h3>PC 1 Config</h3>
             <div>
                 <label for="pc1_ip_address">IP Address:</label>
-                <input type="text" name="pc1_ip_address" id="pc1_ip_address" required placeholder="กรอก IP PC1"><br>
+                <input type="text" name="pc1_ip_address" id="pc1_ip_address" required placeholder="กรอก IP"><br>
             </div>
             <div>
                 <label for="pc1_subnet_mask">Subnet Mask:</label>
-                <input type="text" name="pc1_subnet_mask" id="pc1_subnet_mask" required placeholder="กรอก Subnet Mask PC1"><br>
+                <input type="text" name="pc1_subnet_mask" id="pc1_subnet_mask" required placeholder="กรอก Subnet Mask"><br>
             </div>
             <div>
                 <label for="pc1_default_gateway">Default Gateway:</label>
-                <input type="text" name="pc1_default_gateway" id="pc1_default_gateway" required placeholder="กรอก Default Gateway PC1"><br>
+                <input type="text" name="pc1_default_gateway" id="pc1_default_gateway" required placeholder="กรอก Gateway"><br>
             </div>
 
-            <!-- PC 2 Config -->
             <h3>PC 2 Config</h3>
             <div>
                 <label for="pc2_ip_address">IP Address:</label>
-                <input type="text" name="pc2_ip_address" id="pc2_ip_address" required placeholder="กรอก IP PC2"><br>
+                <input type="text" name="pc2_ip_address" id="pc2_ip_address" required placeholder="กรอก IP"><br>
             </div>
             <div>
                 <label for="pc2_subnet_mask">Subnet Mask:</label>
-                <input type="text" name="pc2_subnet_mask" id="pc2_subnet_mask" required placeholder="กรอก Subnet Mask PC2"><br>
+                <input type="text" name="pc2_subnet_mask" id="pc2_subnet_mask" required placeholder="กรอก Subnet Mask"><br>
             </div>
             <div>
                 <label for="pc2_default_gateway">Default Gateway:</label>
-                <input type="text" name="pc2_default_gateway" id="pc2_default_gateway" required placeholder="กรอก Default Gateway PC2"><br>
+                <input type="text" name="pc2_default_gateway" id="pc2_default_gateway" required placeholder="กรอก Gateway"><br>
             </div>
 
-            <!-- ปุ่ม Submit -->
-            <button type="submit" class="button submit-btn">Check & Submit</button>
+            <button type="submit">Check & Submit</button>
         </form>
 
         <!-- พื้นที่แสดงผลลัพธ์ -->
@@ -82,7 +76,7 @@
         {% endif %}
 
         <!-- ปุ่ม Back -->
-        <a href="{{ url_for('dashboard') }}" class="button back-btn" style="margin-top: 20px; display: inline-block;">
+        <a href="{{ url_for('dashboard') }}" class="button" style="margin-top: 20px; display: inline-block;">
             Back
         </a>
     </div>

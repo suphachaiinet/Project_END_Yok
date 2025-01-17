@@ -2487,3 +2487,306 @@ INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:28:52] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:28:52] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:28:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:28:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:28:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:28:56] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:28:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:28:58] "GET /lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:28:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:29:00] "GET /lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:29:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:31:27] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:31:27] "GET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:31:27] "GET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:31:27] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:31:27] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:34:45] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:34:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:34:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:34:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:34:45] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:34:47] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:34:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:34:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:34:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:34:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:35:07] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:35:07] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:35:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:35:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:35:11] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:35:11] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:35:11] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:35:11] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab4.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:39] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:40] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:40] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:40] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:40] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:41] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:45] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:46] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:46] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:43:46] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:49:24] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:49:24] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:49:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:49:28] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:49:28] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:49:28] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:49:28] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:49:28] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:49:28] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab3.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab4.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:56:43] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:56:46] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:56:46] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:56:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:56:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 03:56:47] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:15] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:15] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:19] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:19] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:21] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:22] "GET /static/pdfs/lab2.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:27] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:02:29] "GET /static/pdfs/lab3.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:07] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:09] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:10] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:15] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:16] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:21] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:24] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:26] "GET /lab8/lab8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:29] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:31] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:34] "GET /lab11/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:36] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:38] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:40] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:43] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:03:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:04:55] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:04:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:04:56] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:04:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:04:57] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:04:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:04:59] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:04:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:05:00] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:07:28] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:07:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:07:30] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:07:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:07:32] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:07:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:07:34] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:07:35] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:07:36] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:07:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:08:27] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:08:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:08:28] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:08:31] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:08:31] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:08:32] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:08:51] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:08:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:08:52] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:10:52] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:10:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:33] "GET /lab16/lab16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:35] "GET /static/pdfs/lab16.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:40] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:42] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:43] "GET /static/pdfs/lab15.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:45] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:46] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:47] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:49] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:49] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:50] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:51] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:52] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:54] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:55] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:56] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:12:57] "GET /static/pdfs/lab4.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:13:00] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:13:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:13:01] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:13:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:13:02] "GET /static/pdfs/lab5.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:13:04] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 04:13:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 07:39:48] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 07:39:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 07:39:53] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 07:39:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 07:39:55] "GET /static/pdfs/lab9.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 07:40:05] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 07:40:05] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 07:40:07] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 07:40:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 07:40:09] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:00:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:01:48] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:01:48] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:01:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:02:03] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:02:03] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:02:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:02:04] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:02:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:02:29] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:12:42] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:12:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:12:43] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:12:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:13:30] "POST /lab2/check_config/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:13:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:15:52] "POST /lab2/check_config/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:15:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:17:59] "POST /lab2/check_config/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:17:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:19:16] "POST /lab2/check_config/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 08:19:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab3.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:33:17] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:33:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:33:18] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:33:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:33:49] "POST /lab3/check_config/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:33:49] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab3.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug: * Detected change in 'c:\\Users\\Yokky\\Desktop\\project\\Project_END_Yok-2\\lab3.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 113-968-842
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:35:47] "POST /lab3/check_config/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:35:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:36:00] "POST /lab3/check_config/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:36:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:36:21] "POST /lab3/check_config/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Jan/2025 09:36:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
