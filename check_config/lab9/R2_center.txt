@@ -1,0 +1,102 @@
+Building configuration...
+
+Current configuration : 1964 bytes
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname Central
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 4 06YFDUHH61wAE/kLkDq9BGho1QM5EnRtoyr8cHAUg.2
+!
+no aaa new-model
+memory-size iomem 15
+!
+ip cef
+!
+no ip domain lookup
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+username Branch3 password 7 1511021F0725
+username Branch1 password 7 05080F1C2243
+!
+redundancy
+!
+interface Loopback0
+ip address 209.165.200.225 255.255.255.224
+!
+interface Embedded-Service-Engine0/0
+no ip address
+shutdown
+!
+interface GigabitEthernet0/0
+no ip address
+shutdown
+duplex auto
+speed auto
+!
+interface GigabitEthernet0/1
+no ip address
+shutdown
+duplex auto
+speed auto
+!
+interface Serial0/0/0
+ip address 10.1.1.2 255.255.255.252
+encapsulation ppp
+ppp authentication chap
+!
+interface Serial0/0/1
+ip address 10.2.2.2 255.255.255.252
+encapsulation ppp
+ppp authentication chap
+clock rate 128000
+!
+router ospf 1
+network 10.1.1.0 0.0.0.3 area 0
+network 10.2.2.0 0.0.0.3 area 0
+default-information originate
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip route 0.0.0.0 0.0.0.0 Loopback0
+!
+control-plane
+!
+banner motd ^C
+Unauthorized Access Prohibited.^C
+!
+line con 0
+password 7 00071A150754
+logging synchronous
+login
+line aux 0
+line 2
+no activation-character
+no exec
+transport preferred none
+transport input all
+transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+stopbits 1
+line vty 0 4
+password 7 060506324F41
+login
+transport input all
+line vty 5 15
+password 7 14141B180F0B
+login
+transport input all
+!
+scheduler allocate 20000 1000
+!
+end

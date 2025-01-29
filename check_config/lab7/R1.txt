@@ -1,0 +1,105 @@
+Building configuration...
+
+Current configuration : 4347 bytes
+!
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 5 $1$1Al2$hVlCY2CB18CBDtaHd48hq/
+!
+no aaa new-model
+!
+no ip domain lookup
+!
+ip dhcp pool webuidhcp
+!
+login on-success log
+!
+subscriber templating
+!
+multilink bundle-name authenticated
+!
+spanning-tree extend system-id
+!
+redundancy
+ mode none
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet0/0/1.10
+ description Management Network
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+!
+interface GigabitEthernet0/0/1.20
+ description Sales network
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+!
+interface GigabitEthernet0/0/1.30
+ description Operations Network
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+!
+interface GigabitEthernet0/0/1.1000
+ description Native VLAN
+ encapsulation dot1Q 1000 native
+!
+interface Serial0/1/0
+ no ip address
+ shutdown
+!
+interface Serial0/1/1
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ negotiation auto
+!
+ip forward-protocol nd
+no ip http server
+ip http secure-server
+ip tftp source-interface GigabitEthernet0
+!
+control-plane
+!
+banner motd ^C Authorized Users Only! ^C
+!
+line con 0
+password 7 070C285F4D06
+ login
+ transport input none
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ password 7 104D000A0618
+ login
+!
+end

@@ -1,0 +1,138 @@
+Building configuration...
+
+
+Current configuration : 5264 bytes
+!
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 5 $1$.Dkb$dhzFCwC9TtcbWur3lMEe10
+!
+no aaa new-model
+!
+no ip domain lookup
+ip domain name ccna-lab.com
+!
+!
+login on-success log
+!
+subscriber templating
+!
+multilink bundle-name authenticated
+!
+<output omitted>
+!
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+username SSHadmin secret 5 $1$829R$mk6kzq/CCkw0irnUoa.tM1
+!
+redundancy
+ mode none
+!
+!
+interface Loopback1
+ ip address 172.16.1.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet0/0/1.20
+ description Management Network
+ encapsulation dot1Q 20
+ ip address 10.20.0.1 255.255.255.0
+!
+interface GigabitEthernet0/0/1.30
+ description Operations Network
+ encapsulation dot1Q 30
+ ip address 10.30.0.1 255.255.255.0
+ ip access-group 102 in
+!
+interface GigabitEthernet0/0/1.40
+ description Sales Network
+ encapsulation dot1Q 40
+ ip address 10.40.0.1 255.255.255.0
+ ip access-group 101 in
+!
+interface GigabitEthernet0/0/1.1000
+ description Native VLAN
+ encapsulation dot1Q 1000 native
+!
+interface Serial0/1/0
+ no ip address
+!
+interface Serial0/1/1
+ no ip address
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ negotiation auto
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+ip http secure-server
+ip tftp source-interface GigabitEthernet0
+!
+!
+ip access-list extended 101
+ remark ACL 101 fulfills policies 1, 2, and 3
+ deny   tcp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 eq 22
+ deny   tcp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 eq www
+ deny   tcp 10.40.0.0 0.0.0.255 host 10.30.0.1 eq www
+ deny   tcp 10.40.0.0 0.0.0.255 host 10.40.0.1 eq www
+ deny   tcp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 eq 443
+ deny   tcp 10.40.0.0 0.0.0.255 host 10.30.0.1 eq 443
+ deny   tcp 10.40.0.0 0.0.0.255 host 10.40.0.1 eq 443
+ deny   icmp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 echo
+ deny   icmp 10.40.0.0 0.0.0.255 10.30.0.0 0.0.0.255 echo
+ permit ip any any
+ip access-list extended 102
+ remark ACL 102 fulfills policy 4
+ deny   icmp 10.30.0.0 0.0.0.255 10.40.0.0 0.0.0.255 echo
+ permit ip any any
+!
+!
+control-plane
+!
+banner motd ^C Authorized Users Only! ^C
+!
+line con 0
+ password 7 094F471A1A0A
+ login
+ transport input none
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ password 7 14141B180F0B
+ login local
+ transport input ssh
+!
+end

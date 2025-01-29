@@ -1,0 +1,91 @@
+Building configuration...
+
+
+Current configuration : 1660 bytes
+!
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 5 $1$DKlp$gTX20dmMb.E9aCzmg74EY1
+!
+no aaa new-model
+!
+no ip domain lookup
+ip domain name ccna-lab.com
+!
+!
+login on-success log
+!
+subscriber templating
+!
+multilink bundle-name authenticated
+!
+spanning-tree extend system-id
+!
+username SSHadmin secret 5 $1$eGZ8$ltf/V6F6X90aLyQmlnyyk/
+!
+redundancy
+ mode none
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ ip address 10.20.0.4 255.255.255.0
+ negotiation auto
+!
+interface Serial0/1/0
+ no ip address
+!
+interface Serial0/1/1
+ no ip address
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ negotiation auto
+!
+ip forward-protocol nd
+no ip http server
+ip http secure-server
+ip tftp source-interface GigabitEthernet0
+ip route 0.0.0.0 0.0.0.0 10.20.0.1
+!
+!
+control-plane
+!
+banner motd ^C Authorized Users Only! ^C
+!
+line con 0
+ password 7 02050D480809
+ login
+ transport input none
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ password 7 070C285F4D06
+ login local
+ transport input ssh
+!
+end

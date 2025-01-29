@@ -1,0 +1,85 @@
+Building configuration...
+
+Current configuration : 1319 bytes
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 4 06YFDUHH61wAE/kLkDq9BGho1QM5EnRtoyr8cHAUg.2
+!
+no aaa new-model
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+multilink bundle-name authenticated
+!
+interface Embedded-Service-Engine0/0
+no ip address
+shutdown
+!
+interface GigabitEthernet0/0
+no ip address
+shutdown
+duplex auto
+speed auto
+!
+interface GigabitEthernet0/1
+ip address 192.168.1.3 255.255.255.0
+standby version 2
+standby 1 ip 192.168.1.254
+standby 1 priority 200
+standby 1 preempt
+duplex auto
+speed auto
+!
+interface Serial0/0/0
+no ip address
+shutdown
+clock rate 2000000
+!
+interface Serial0/0/1
+ip address 10.2.2.1 255.255.255.252
+!
+!
+router rip
+network 10.2.2.0
+network 192.168.1.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+control-plane
+!
+line con 0
+password cisco
+logging synchronous
+login
+line aux 0
+line 2
+no activation-character
+no exec
+transport preferred none
+transport input all
+transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+stopbits 1
+line vty 0 4
+password cisco
+login
+transport input all
+!
+scheduler allocate 20000 1000
+!
+end

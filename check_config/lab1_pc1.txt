@@ -1,3 +1,0 @@
-IP address: 192.168.1.10
-Subnet mask: 255.255.255.0
-Default gateway: 192.168.1.1

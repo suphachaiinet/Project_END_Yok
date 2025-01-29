@@ -1,0 +1,112 @@
+Building configuration...
+
+
+Current configuration : 2225 bytes
+!
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+no platform punt-keepalive disable-kernel-core
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 5 $1$lzpq$ribRztM6WUv/dsnQ7x24a/
+!
+no aaa new-model
+!
+!
+no ip domain-lookup
+ip dhcp excluded-address 192.168.1.1 192.168.1.5
+ip dhcp excluded-address 192.168.1.97 192.168.1.101
+!
+ip dhcp pool R1_Client_LAN
+ network 192.168.1.0 255.255.255.192
+ domain-name ccna-lab.com
+ default-router 192.168.1.1
+ lease 2 12 30
+!
+ip dhcp pool R2_Client_LAN
+ network 192.168.1.96 255.255.255.240
+ default-router 192.168.1.97
+ domain-name ccna-lab.com
+ lease 2 12 30
+!
+!
+subscriber templating
+!
+multilink bundle-name authenticated
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+ mode none
+!
+!
+interface GigabitEthernet0/0/0
+ip address 10.0.0.1 255.255.255.252
+ negotiation auto
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet0/0/1.100
+ description Connected to Client Network
+ encapsulation dot1Q 100
+ ip address 192.168.1.1 255.255.255.192
+!
+interface GigabitEthernet0/0/1.200
+ description Connected to Management Network
+ encapsulation dot1Q 200
+ ip address 192.168.1.65 255.255.255.224
+!
+interface GigabitEthernet0/0/1.1000
+ description Connected to Native VLAN
+ encapsulation dot1Q 1000 native
+!
+interface Serial0/1/0
+!
+interface Serial0/1/1
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ shutdown
+ negotiation auto
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+ip tftp source-interface GigabitEthernet0
+ip route 0.0.0.0 0.0.0.0 10.0.0.2
+!
+!
+control-plane
+!
+banner motd ^C Authorized Users Only! ^C
+!
+line con 0
+ password 7 01100F175804
+ login
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ password 7 02050D480809
+ login
+!
+end

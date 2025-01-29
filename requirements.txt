@@ -1,8 +1,4 @@
-Flask==2.2.3
-Flask-PyMongo==2.3.0
-Flask-Bcrypt==1.0.1
-Flask-Mail==0.9.1
-Flask-Session==0.4.0
-itsdangerous==2.0.1
-flask-pymongo
-flask_session
+
+pip install pytz
+pip install flask flask-pymongo flask-bcrypt flask-mail itsdangerous flask-session
+pip install tzdata
