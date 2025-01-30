@@ -265,4 +265,19 @@ def check_config_lab3():
     SW1:<br>{missing_config_sw1 if missing_config_sw1 else "ไม่มี"}<br>
     SW2:<br>{missing_config_sw2 if missing_config_sw2 else "ไม่มี"}<br>
     """
+
+    # Save Result to MongoDB
+    username = session.get('username', 'unknown')
+    scores_collection.insert_one({
+        "username": username,
+        "total_score": total_score,
+        "sw1_score": sw1_score,
+        "sw2_score": sw2_score,
+        "pc1_status": "ถูกต้อง" if pc1_correct else "ผิดพลาด",
+        "pc2_status": "ถูกต้อง" if pc2_correct else "ผิดพลาด",
+        "vlan_sw1_status": vlan_status_sw1,
+        "vlan_sw2_status": vlan_status_sw2,
+        "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
+    })
+
     return render_template('lab3.html', result=result)

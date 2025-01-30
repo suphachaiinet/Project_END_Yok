@@ -3,55 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 5 - Configuring Rapid PVST+, PortFast, and BPDU Guard </title>
+    <title>Lab 5 - Configuring Rapid PVST+, PortFast, and BPDU Guard</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <!-- Tapbar ด้านบน -->
+    <!-- Navigation Bar -->
     <div class="tapbar">
-        <div class="left">
-            <a href="{{ url_for('dashboard') }}">Home</a>
-        </div>
-        <div class="right">
-            <a href="{{ url_for('logout') }}">Log Out</a>
-        </div>
+        <div class="left"><a href="{{ url_for('dashboard') }}">Home</a></div>
+        <div class="right"><a href="{{ url_for('logout') }}">Log Out</a></div>
     </div>
 
-    <div class="container_lab1">
-        <h1 class="title">Lab 5 - Configuring Rapid PVST+, PortFast, and BPDU Guard </h1>
+    <!-- Main Content -->
+    <div class="container_lab5">
+        <h1 class="title">Lab 5 - Configuring Rapid PVST+, PortFast, and BPDU Guard</h1>
 
-        <!-- ปุ่มสำหรับแสดง/ซ่อน PDF -->
+        <!-- Button to Show/Hide PDF -->
         <button id="toggleButton" class="button toggle-btn">Show PDF</button>
-        
-        <!-- พื้นที่แสดง PDF -->
-        <div id="pdfContainer" class="pdf-container">
-            <embed src="{{ url_for('static', filename='pdfs/lab5.pdf') }}"
-                   width="100%" height="800" type="application/pdf">
+        <div id="pdfContainer" class="pdf-container" style="display: none;">
+            <embed src="{{ url_for('static', filename='pdfs/lab5.pdf') }}" width="100%" height="800" type="application/pdf">
         </div>
 
-        <!-- ฟอร์มสำหรับการตรวจสอบ Configuration -->
-        <form action="{{ url_for('lab.check_config_lab1') }}" method="POST">
-            <h3>Switch Config</h3>
-            <textarea name="config_switch" rows="25" cols="300" required></textarea><br>
+        <!-- Form for Configuration Submission -->
+        <form action="{{ url_for('lab5.check_config_lab5') }}" method="POST">
+            <!-- SW1 Configuration -->
+            <h3>SW1 Configuration</h3>
+            <textarea name="config_sw1" rows="10" cols="100" required placeholder="Enter SW1 configuration here..."></textarea><br>
 
-            <h3>PC Config</h3>
-            <div>
-                <label for="pc_ip_address">IP Address:</label>
-                <input type="text" name="pc_ip_address" id="pc_ip_address" required placeholder="กรอก ip "><br>
-            </div>
-            <div>
-                <label for="pc_subnet_mask">Subnet Mask:</label>
-                <input type="text" name="pc_subnet_mask" id="pc_subnet_mask" required placeholder="กรอก subnet mask"><br>
-            </div>
-            <div>
-                <label for="pc_default_gateway">Default Gateway:</label>
-                <input type="text" name="pc_default_gateway" id="pc_default_gateway" required placeholder="กรอก default gateway "><br>
-            </div>
+            <!-- SW2 Configuration -->
+            <h3>SW2 Configuration</h3>
+            <textarea name="config_sw2" rows="10" cols="100" required placeholder="Enter SW2 configuration here..."></textarea><br>
 
-            <button type="submit">Check & Submit</button>
+            <!-- SW3 Configuration -->
+            <h3>SW3 Configuration</h3>
+            <textarea name="config_sw3" rows="10" cols="100" required placeholder="Enter SW3 configuration here..."></textarea><br>
+
+            <!-- PC A Configuration -->
+            <h3>PC A Configuration</h3>
+            <label for="pca_ip">IP Address:</label>
+            <input type="text" name="pca_ip" id="pca_ip" required placeholder="e.g., 192.168.1.2"><br>
+            <label for="pca_subnet">Subnet Mask:</label>
+            <input type="text" name="pca_subnet" id="pca_subnet" required placeholder="e.g., 255.255.255.0"><br>
+
+            <!-- PC C Configuration -->
+            <h3>PC C Configuration</h3>
+            <label for="pcc_ip">IP Address:</label>
+            <input type="text" name="pcc_ip" id="pcc_ip" required placeholder="e.g., 192.168.1.3"><br>
+            <label for="pcc_subnet">Subnet Mask:</label>
+            <input type="text" name="pcc_subnet" id="pcc_subnet" required placeholder="e.g., 255.255.255.0"><br>
+
+            <!-- Submit Button -->
+            <button type="submit" class="button submit-btn">Check & Submit</button>
         </form>
 
-        <!-- พื้นที่แสดงผลลัพธ์ -->
+        <!-- Display Results -->
         {% if result %}
         <div class="result-container">
             <h3>ผลการตรวจสอบ:</h3>
@@ -59,19 +63,17 @@
         </div>
         {% endif %}
 
-        <!-- ปุ่ม Back -->
-        <a href="{{ url_for('dashboard') }}" class="button" style="margin-top: 20px; display: inline-block;">
-            Back
-        </a>
+        <a href="{{ url_for('dashboard') }}" class="button back-btn" style="margin-top: 20px;">Back</a>
+
     </div>
 
     <script>
-        // JavaScript สำหรับเปิด/ปิด PDF
+        // JavaScript to Toggle PDF Display
         const toggleButton = document.getElementById('toggleButton');
         const pdfContainer = document.getElementById('pdfContainer');
 
         toggleButton.addEventListener('click', () => {
-            if (pdfContainer.style.display === 'none' || pdfContainer.style.display === '') {
+            if (pdfContainer.style.display === 'none') {
                 pdfContainer.style.display = 'block';
                 toggleButton.textContent = 'Hide PDF';
             } else {
