@@ -20,29 +20,55 @@
         <h1 class="title">Lab 6 - Configure Router-on-a-Stick Inter-VLAN Routing</h1>
 
         <button id="toggleButton" class="button toggle-btn">Show PDF</button>
-        <div id="pdfContainer" class="pdf-container">
+        <div id="pdfContainer" class="pdf-container" style="display: none;">
             <embed src="{{ url_for('static', filename='pdfs/lab6.pdf') }}" width="100%" height="800" type="application/pdf">
         </div>
 
-        <form action="{{ url_for('lab3.check_config_lab3') }}" method="POST">
-            <h3>Switch Config</h3>
-            <textarea name="config_switch" rows="25" cols="300" required></textarea><br>
+        <form action="{{ url_for('lab6.check_config_lab6') }}" method="POST">
+            <h3>Router 1 Configuration</h3>
+            <textarea name="config_router1" rows="10" cols="100" required></textarea><br>
 
-            <h3>PC Config</h3>
+            <h3>Switch 1 Configuration</h3>
+            <textarea name="config_sw1" rows="10" cols="100" required></textarea><br>
+
+            <h3>Switch 1 VLAN Config</h3>
+            <textarea name="vlan_sw1" rows="5" cols="100" required></textarea><br>
+
+            <h3>Switch 2 Configuration</h3>
+            <textarea name="config_sw2" rows="10" cols="100" required></textarea><br>
+
+            <h3>Switch 2 VLAN Config</h3>
+            <textarea name="vlan_sw2" rows="5" cols="100" required></textarea><br>
+
+            <h3>PC A Configuration</h3>
             <div>
-                <label for="pc_ip_address">IP Address:</label>
-                <input type="text" name="pc_ip_address" id="pc_ip_address" required><br>
+                <label for="pca_ip">IP Address:</label>
+                <input type="text" name="pca_ip" id="pca_ip" required><br>
             </div>
             <div>
-                <label for="pc_subnet_mask">Subnet Mask:</label>
-                <input type="text" name="pc_subnet_mask" id="pc_subnet_mask" required><br>
+                <label for="pca_subnet">Subnet Mask:</label>
+                <input type="text" name="pca_subnet" id="pca_subnet" required><br>
             </div>
             <div>
-                <label for="pc_default_gateway">Default Gateway:</label>
-                <input type="text" name="pc_default_gateway" id="pc_default_gateway" required><br>
+                <label for="pca_gateway">Default Gateway:</label>
+                <input type="text" name="pca_gateway" id="pca_gateway" required><br>
             </div>
 
-            <button type="submit">Check & Submit</button>
+            <h3>PC B Configuration</h3>
+            <div>
+                <label for="pcb_ip">IP Address:</label>
+                <input type="text" name="pcb_ip" id="pcb_ip" required><br>
+            </div>
+            <div>
+                <label for="pcb_subnet">Subnet Mask:</label>
+                <input type="text" name="pcb_subnet" id="pcb_subnet" required><br>
+            </div>
+            <div>
+                <label for="pcb_gateway">Default Gateway:</label>
+                <input type="text" name="pcb_gateway" id="pcb_gateway" required><br>
+            </div>
+
+            <button type="submit" class="button submit-btn">Check & Submit</button>
         </form>
 
         {% if result %}
