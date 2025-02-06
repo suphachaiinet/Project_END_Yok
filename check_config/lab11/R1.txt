@@ -1,54 +1,46 @@
 Building configuration...
 
-
-Current configuration : 5264 bytes
+Current configuration : 2380 bytes
 !
-version 16.9
-service timestamps debug datetime msec
-service timestamps log datetime msec
+version 16.6.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
 service password-encryption
-platform qfp utilization monitor load 80
-no platform punt-keepalive disable-kernel-core
 !
 hostname R1
 !
-boot-start-marker
-boot-end-marker
-!
-vrf definition Mgmt-intf
- !
- address-family ipv4
- exit-address-family
- !
- address-family ipv6
- exit-address-family
-!
-enable secret 5 $1$.Dkb$dhzFCwC9TtcbWur3lMEe10
-!
-no aaa new-model
-!
-no ip domain lookup
-ip domain name ccna-lab.com
 !
 !
-login on-success log
-!
-subscriber templating
-!
-multilink bundle-name authenticated
-!
-<output omitted>
-!
-no license smart enable
-diagnostic bootup level minimal
-!
-spanning-tree extend system-id
+enable secret 5 $1$mERr$9cTjUIEqNGurQiFU.ZeCi1
 !
 !
-username SSHadmin secret 5 $1$829R$mk6kzq/CCkw0irnUoa.tM1
 !
-redundancy
- mode none
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username SSHadmin secret 5 $1$mERr$jnsDknF4Wwkgx2tzKw49w1
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+ip domain-name ccna-lab.com
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
 !
 !
 interface Loopback1
@@ -56,11 +48,14 @@ interface Loopback1
 !
 interface GigabitEthernet0/0/0
  no ip address
- negotiation auto
+ duplex auto
+ speed auto
+ shutdown
 !
 interface GigabitEthernet0/0/1
  no ip address
- negotiation auto
+ duplex auto
+ speed auto
 !
 interface GigabitEthernet0/0/1.20
  description Management Network
@@ -82,57 +77,54 @@ interface GigabitEthernet0/0/1.40
 interface GigabitEthernet0/0/1.1000
  description Native VLAN
  encapsulation dot1Q 1000 native
-!
-interface Serial0/1/0
  no ip address
 !
-interface Serial0/1/1
+interface GigabitEthernet0/0/2
  no ip address
+ duplex auto
+ speed auto
+ shutdown
 !
-interface GigabitEthernet0
- vrf forwarding Mgmt-intf
+interface Vlan1
  no ip address
- negotiation auto
+ shutdown
 !
-ip forward-protocol nd
-no ip http server
-ip http authentication local
-ip http secure-server
-ip tftp source-interface GigabitEthernet0
+ip classless
+!
+ip flow-export version 9
 !
 !
-ip access-list extended 101
- remark ACL 101 fulfills policies 1, 2, and 3
- deny   tcp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 eq 22
- deny   tcp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 eq www
- deny   tcp 10.40.0.0 0.0.0.255 host 10.30.0.1 eq www
- deny   tcp 10.40.0.0 0.0.0.255 host 10.40.0.1 eq www
- deny   tcp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 eq 443
- deny   tcp 10.40.0.0 0.0.0.255 host 10.30.0.1 eq 443
- deny   tcp 10.40.0.0 0.0.0.255 host 10.40.0.1 eq 443
- deny   icmp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 echo
- deny   icmp 10.40.0.0 0.0.0.255 10.30.0.0 0.0.0.255 echo
- permit ip any any
-ip access-list extended 102
- remark ACL 102 fulfills policy 4
- deny   icmp 10.30.0.0 0.0.0.255 10.40.0.0 0.0.0.255 echo
- permit ip any any
-!
-!
-control-plane
+access-list 101 remark ACL 101 fulfills policies 1, 2, and 3
+access-list 101 deny tcp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 eq 22
+access-list 101 deny tcp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 eq www
+access-list 101 deny tcp 10.40.0.0 0.0.0.255 host 10.30.0.1 eq www
+access-list 101 deny tcp 10.40.0.0 0.0.0.255 host 10.40.0.1 eq www
+access-list 101 deny tcp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 eq 443
+access-list 101 deny tcp 10.40.0.0 0.0.0.255 host 10.30.0.1 eq 443
+access-list 101 deny tcp 10.40.0.0 0.0.0.255 host 10.40.0.1 eq 443
+access-list 101 deny icmp 10.40.0.0 0.0.0.255 10.20.0.0 0.0.0.255 echo
+access-list 101 deny icmp 10.40.0.0 0.0.0.255 10.30.0.0 0.0.0.255 echo
+access-list 101 permit ip any any
+access-list 102 remark ACL 102 fulfills policy 4
+access-list 102 deny icmp 10.30.0.0 0.0.0.255 10.40.0.0 0.0.0.255 echo
+access-list 102 permit ip any any
 !
 banner motd ^C Authorized Users Only! ^C
 !
+!
+!
+!
 line con 0
- password 7 094F471A1A0A
+ password 7 0822455D0A16
  login
- transport input none
- stopbits 1
+!
 line aux 0
- stopbits 1
+!
 line vty 0 4
- password 7 14141B180F0B
+ password 7 0822455D0A16
  login local
  transport input ssh
+!
+!
 !
 end

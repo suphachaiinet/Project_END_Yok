@@ -4141,3 +4141,70 @@ WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 634-005-923
 INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:17:19] "POST /lab10/check_config/lab10 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:17:22] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:18:22] "GET /lab11/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:18:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:18:22] "GET /static/pdfs/lab11.pdf HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:26:44] "GET /lab11/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:29:46] "GET /lab11/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:30:27] "[36mGET /static/pdfs/lab11.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:31:25] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:38:15] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:38:21] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:38:29] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:39:36] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:41:32] "[36mGET /static/pdfs/lab11.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:33:08] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:35:57] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:36:20] "[36mGET /static/pdfs/lab11.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:38:33] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:38:38] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:39:25] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:41:47] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:44:32] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:46:25] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:49:07] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 12:51:15] "POST /lab11/check_config/lab11 HTTP/1.1" 200 -
