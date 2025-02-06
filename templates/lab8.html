@@ -3,81 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 8 - Implement EtherChannel </title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <title>Lab 8 - Inter-VLAN Routing Configuration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        .config-textarea {
+            font-family: monospace;
+            white-space: pre;
+            resize: vertical;
+            min-height: 200px;
+        }
+    </style>
 </head>
-<body>
-    <!-- Tapbar ด้านบน -->
-    <div class="tapbar">
-        <div class="left">
-            <a href="{{ url_for('dashboard') }}">Home</a>
-        </div>
-        <div class="right">
-            <a href="{{ url_for('logout') }}">Log Out</a>
-        </div>
-    </div>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
+        <a href="{{ url_for('dashboard') }}" class="hover:text-gray-200">Home</a>
+        <a href="{{ url_for('logout') }}" class="hover:text-gray-200">Log Out</a>
+    </nav>
 
-    <div class="container_lab1">
-        <h1 class="title">Lab 8 -  Implement EtherChannel </h1>
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <h1 class="text-3xl font-bold mb-8 text-center">Lab 8 - Inter-VLAN Routing Configuration</h1>
 
-        <!-- ปุ่มสำหรับแสดง/ซ่อน PDF -->
-        <button id="toggleButton" class="button toggle-btn">Show PDF</button>
-        
-        <!-- พื้นที่แสดง PDF -->
-        <div id="pdfContainer" class="pdf-container">
-            <embed src="{{ url_for('static', filename='pdfs/lab8.pdf') }}"
-                   width="100%" height="800" type="application/pdf">
+        <div class="mb-6">
+            <button id="toggleButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Show PDF
+            </button>
         </div>
 
-        <!-- ฟอร์มสำหรับการตรวจสอบ Configuration -->
-        <form action="{{ url_for('lab.check_config_lab1') }}" method="POST">
-            <h3>Switch Config</h3>
-            <textarea name="config_switch" rows="25" cols="300" required></textarea><br>
+        <div id="pdfContainer" class="hidden mb-8">
+            <object data="{{ url_for('static', filename='pdfs/lab8.pdf') }}" type="application/pdf" class="w-full h-screen">
+                <p>Your browser doesn't support PDF viewing. 
+                <a href="{{ url_for('static', filename='pdfs/lab8.pdf') }}">Download the PDF</a> instead.</p>
+            </object>
+        </div>
 
-            <h3>PC Config</h3>
-            <div>
-                <label for="pc_ip_address">IP Address:</label>
-                <input type="text" name="pc_ip_address" id="pc_ip_address" required placeholder="กรอก ip "><br>
+        <form action="{{ url_for('lab8.check_config_lab8') }}" method="POST" class="space-y-6 bg-white p-6 rounded-lg shadow">
+            <!-- Switch 1 Configuration -->
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold">Switch 1 Configuration</h3>
+                <textarea name="config_sw1" class="config-textarea w-full p-3 border rounded" required></textarea>
             </div>
-            <div>
-                <label for="pc_subnet_mask">Subnet Mask:</label>
-                <input type="text" name="pc_subnet_mask" id="pc_subnet_mask" required placeholder="กรอก subnet mask"><br>
-            </div>
-            <div>
-                <label for="pc_default_gateway">Default Gateway:</label>
-                <input type="text" name="pc_default_gateway" id="pc_default_gateway" required placeholder="กรอก default gateway "><br>
+            
+            <!-- Switch 1 VLAN -->
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold">Switch 1 Show VLAN Brief</h3>
+                <textarea name="vlan_sw1" class="config-textarea w-full p-3 border rounded" required></textarea>
             </div>
 
-            <button type="submit">Check & Submit</button>
+            <!-- Switch 2 Configuration -->
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold">Switch 2 Configuration</h3>
+                <textarea name="config_sw2" class="config-textarea w-full p-3 border rounded" required></textarea>
+            </div>
+
+            <!-- Switch 2 VLAN -->
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold">Switch 2 Show VLAN Brief</h3>
+                <textarea name="vlan_sw2" class="config-textarea w-full p-3 border rounded" required></textarea>
+            </div>
+
+            <!-- PC A Configuration -->
+            <div class="space-y-4 mt-6">
+                <h3 class="text-xl font-semibold">PC A Configuration</h3>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <label class="block">IP Address:</label>
+                        <input type="text" name="pc_a_ip" class="w-full p-2 border rounded" required>
+                    </div>
+                    <div>
+                        <label class="block">Subnet Mask:</label>
+                        <input type="text" name="pc_a_subnet" class="w-full p-2 border rounded" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PC B Configuration -->
+            <div class="space-y-4 mt-6">
+                <h3 class="text-xl font-semibold">PC B Configuration</h3>
+                <div class="grid grid-cols-1 gap-4">
+                    <div>
+                        <label class="block">IP Address:</label>
+                        <input type="text" name="pc_b_ip" class="w-full p-2 border rounded" required>
+                    </div>
+                    <div>
+                        <label class="block">Subnet Mask:</label>
+                        <input type="text" name="pc_b_subnet" class="w-full p-2 border rounded" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">
+                    Check & Submit
+                </button>
+            </div>
         </form>
 
-        <!-- พื้นที่แสดงผลลัพธ์ -->
+        <!-- Results Display -->
         {% if result %}
-        <div class="result-container">
-            <h3>ผลการตรวจสอบ:</h3>
-            <p>{{ result|safe }}</p>
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold mb-4">ผลการตรวจสอบ</h3>
+            <p class="text-lg">{{ result|safe }}</p>
         </div>
         {% endif %}
 
-        <!-- ปุ่ม Back -->
-        <a href="{{ url_for('dashboard') }}" class="button" style="margin-top: 20px; display: inline-block;">
-            Back
-        </a>
+        <!-- Back Button -->
+        <div class="mt-8">
+            <a href="{{ url_for('dashboard') }}" class="inline-block bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">
+                Back
+            </a>
+        </div>
     </div>
 
     <script>
-        // JavaScript สำหรับเปิด/ปิด PDF
         const toggleButton = document.getElementById('toggleButton');
         const pdfContainer = document.getElementById('pdfContainer');
 
         toggleButton.addEventListener('click', () => {
-            if (pdfContainer.style.display === 'none' || pdfContainer.style.display === '') {
-                pdfContainer.style.display = 'block';
-                toggleButton.textContent = 'Hide PDF';
-            } else {
-                pdfContainer.style.display = 'none';
-                toggleButton.textContent = 'Show PDF';
-            }
+            const isHidden = pdfContainer.classList.contains('hidden');
+            pdfContainer.classList.toggle('hidden');
+            toggleButton.textContent = isHidden ? 'Hide PDF' : 'Show PDF';
         });
     </script>
 </body>
