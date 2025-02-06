@@ -4,36 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สมัครสมาชิก</title>
-    <!-- เรียกใช้งาน styles.css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 </head>
-<body>
-    <div class="container">
-        <h2 class="title">สมัครสมาชิก</h2>
-
-        <!-- ฟอร์มสมัครสมาชิก -->
-        <form method="POST" class="form">
-            <input type="text" name="username" placeholder="ชื่อผู้ใช้งาน" class="input" required>
-            <input type="text" name="first_name" placeholder="ชื่อ" class="input" required>
-            <input type="text" name="last_name" placeholder="นามสกุล" class="input" required>
-            <input type="email" name="email" placeholder="อีเมล" class="input" required>
-            <input type="password" name="password" placeholder="รหัสผ่าน" class="input" required>
-            <input type="password" name="confirm_password" placeholder="ยืนยันรหัสผ่าน" class="input" required>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-lg shadow-md">
+            <div>
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                    สมัครสมาชิก
+                </h2>
+            </div>
             
-            <!-- เลือก Role (Student หรือ Teacher) -->
-            <select name="role" class="input" required>
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-            </select>
-            
-            <button type="submit" class="button">สมัครสมาชิก</button>
-        </form>
+            <form method="POST" class="mt-8 space-y-6">
+                <div class="rounded-md shadow-sm space-y-4">
+                    <!-- Username -->
+                    <div>
+                        <label for="username" class="sr-only">ชื่อผู้ใช้งาน</label>
+                        <input id="username" name="username" type="text" required
+                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                                   placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
+                                   focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="ชื่อผู้ใช้งาน">
+                    </div>
 
-        <!-- ข้อความเพิ่มเติม -->
-        <p class="note">
-            มีบัญชีอยู่แล้ว? 
-            <a href="{{ url_for('login') }}" class="link">เข้าสู่ระบบที่นี่</a>
-        </p>
+                    <!-- First Name -->
+                    <div>
+                        <label for="first_name" class="sr-only">ชื่อ</label>
+                        <input id="first_name" name="first_name" type="text" required
+                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                                   placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
+                                   focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="ชื่อ">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div>
+                        <label for="last_name" class="sr-only">นามสกุล</label>
+                        <input id="last_name" name="last_name" type="text" required
+                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                                   placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
+                                   focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="นามสกุล">
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="sr-only">อีเมล</label>
+                        <input id="email" name="email" type="email" required
+                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                                   placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
+                                   focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="อีเมล">
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="password" class="sr-only">รหัสผ่าน</label>
+                        <input id="password" name="password" type="password" required
+                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                                   placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
+                                   focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="รหัสผ่าน">
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <label for="confirm_password" class="sr-only">ยืนยันรหัสผ่าน</label>
+                        <input id="confirm_password" name="confirm_password" type="password" required
+                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                                   placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
+                                   focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="ยืนยันรหัสผ่าน">
+                    </div>
+
+                    <!-- Role Selection -->
+                    <div>
+                        <label for="role" class="sr-only">เลือกประเภทผู้ใช้</label>
+                        <select id="role" name="role" required
+                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                                   text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 
+                                   focus:border-blue-500 focus:z-10 sm:text-sm">
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent 
+                               text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 
+                               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        สมัครสมาชิก
+                    </button>
+                </div>
+            </form>
+
+            <div class="text-center mt-4">
+                <p class="text-sm text-gray-600">
+                    มีบัญชีอยู่แล้ว?
+                    <a href="{{ url_for('login') }}" 
+                        class="font-medium text-blue-600 hover:text-blue-500">
+                        เข้าสู่ระบบที่นี่
+                    </a>
+                </p>
+            </div>
+
+            {% if error %}
+            <div class="mt-4 text-center text-sm text-red-600">
+                {{ error }}
+            </div>
+            {% endif %}
+        </div>
     </div>
 </body>
 </html>

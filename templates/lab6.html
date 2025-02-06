@@ -4,79 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 6 - Configure Router-on-a-Stick Inter-VLAN Routing</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        .config-textarea {
+            font-family: monospace;
+            white-space: pre;
+            resize: vertical;
+            min-height: 150px;
+        }
+        .vlan-textarea {
+            font-family: monospace;
+            white-space: pre;
+            resize: vertical;
+            min-height: 100px;
+        }
+    </style>
 </head>
-<body>
-    <div class="tapbar">
-        <div class="left">
-            <a href="{{ url_for('dashboard') }}">Home</a>
-        </div>
-        <div class="right">
-            <a href="{{ url_for('logout') }}">Log Out</a>
-        </div>
-    </div>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
+        <a href="{{ url_for('dashboard') }}" class="hover:text-gray-200">Home</a>
+        <a href="{{ url_for('logout') }}" class="hover:text-gray-200">Log Out</a>
+    </nav>
 
-    <div class="container_lab3">
-        <h1 class="title">Lab 6 - Configure Router-on-a-Stick Inter-VLAN Routing</h1>
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <h1 class="text-3xl font-bold mb-8 text-center">Lab 6 - Configure Router-on-a-Stick Inter-VLAN Routing</h1>
 
-        <button id="toggleButton" class="button toggle-btn">Show PDF</button>
-        <div id="pdfContainer" class="pdf-container" style="display: none;">
-            <embed src="{{ url_for('static', filename='pdfs/lab6.pdf') }}" width="100%" height="800" type="application/pdf">
+        <div class="mb-6">
+            <button id="toggleButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Show PDF
+            </button>
         </div>
 
-        <form action="{{ url_for('lab6.check_config_lab6') }}" method="POST">
-            <h3>Router 1 Configuration</h3>
-            <textarea name="config_router1" rows="10" cols="100" required></textarea><br>
+        <div id="pdfContainer" class="hidden mb-8">
+            <embed src="{{ url_for('static', filename='pdfs/lab6.pdf') }}"
+                   class="w-full h-screen">
+        </div>
 
-            <h3>Switch 1 Configuration</h3>
-            <textarea name="config_sw1" rows="10" cols="100" required></textarea><br>
-
-            <h3>Switch 1 VLAN Config</h3>
-            <textarea name="vlan_sw1" rows="5" cols="100" required></textarea><br>
-
-            <h3>Switch 2 Configuration</h3>
-            <textarea name="config_sw2" rows="10" cols="100" required></textarea><br>
-
-            <h3>Switch 2 VLAN Config</h3>
-            <textarea name="vlan_sw2" rows="5" cols="100" required></textarea><br>
-
-            <h3>PC A Configuration</h3>
-            <div>
-                <label for="pca_ip">IP Address:</label>
-                <input type="text" name="pca_ip" id="pca_ip" required><br>
-            </div>
-            <div>
-                <label for="pca_subnet">Subnet Mask:</label>
-                <input type="text" name="pca_subnet" id="pca_subnet" required><br>
-            </div>
-            <div>
-                <label for="pca_gateway">Default Gateway:</label>
-                <input type="text" name="pca_gateway" id="pca_gateway" required><br>
+        <form action="{{ url_for('lab6.check_config_lab6') }}" method="POST" class="space-y-6 bg-white p-6 rounded-lg shadow">
+            <!-- Router Configuration -->
+            <div class="space-y-2">
+                <h3 class="text-xl font-semibold">Router 1 Configuration</h3>
+                <textarea name="config_router1" class="config-textarea w-full p-3 border rounded" required 
+                    placeholder="Enter Router 1 configuration..."></textarea>
             </div>
 
-            <h3>PC B Configuration</h3>
-            <div>
-                <label for="pcb_ip">IP Address:</label>
-                <input type="text" name="pcb_ip" id="pcb_ip" required><br>
-            </div>
-            <div>
-                <label for="pcb_subnet">Subnet Mask:</label>
-                <input type="text" name="pcb_subnet" id="pcb_subnet" required><br>
-            </div>
-            <div>
-                <label for="pcb_gateway">Default Gateway:</label>
-                <input type="text" name="pcb_gateway" id="pcb_gateway" required><br>
+            <!-- Switch Configurations -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- SW1 Configuration -->
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold">Switch 1 Configuration</h3>
+                        <textarea name="config_sw1" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter Switch 1 configuration..."></textarea>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Switch 1 VLAN Configuration</h3>
+                        <textarea name="vlan_sw1" class="vlan-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter Switch 1 VLAN configuration..."></textarea>
+                    </div>
+                </div>
+
+                <!-- SW2 Configuration -->
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold">Switch 2 Configuration</h3>
+                        <textarea name="config_sw2" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter Switch 2 configuration..."></textarea>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">Switch 2 VLAN Configuration</h3>
+                        <textarea name="vlan_sw2" class="vlan-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter Switch 2 VLAN configuration..."></textarea>
+                    </div>
+                </div>
             </div>
 
-            <button type="submit" class="button submit-btn">Check & Submit</button>
+            <!-- PC Configurations -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- PC A Configuration -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">PC A Configuration</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <label class="block text-gray-700 mb-2">IP Address:</label>
+                            <input type="text" name="pca_ip" class="w-full p-2 border rounded" required 
+                                placeholder="Enter IP Address for PC A">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Subnet Mask:</label>
+                            <input type="text" name="pca_subnet" class="w-full p-2 border rounded" required 
+                                placeholder="Enter Subnet Mask for PC A">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Default Gateway:</label>
+                            <input type="text" name="pca_gateway" class="w-full p-2 border rounded" required 
+                                placeholder="Enter Default Gateway for PC A">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PC B Configuration -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">PC B Configuration</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <label class="block text-gray-700 mb-2">IP Address:</label>
+                            <input type="text" name="pcb_ip" class="w-full p-2 border rounded" required 
+                                placeholder="Enter IP Address for PC B">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Subnet Mask:</label>
+                            <input type="text" name="pcb_subnet" class="w-full p-2 border rounded" required 
+                                placeholder="Enter Subnet Mask for PC B">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Default Gateway:</label>
+                            <input type="text" name="pcb_gateway" class="w-full p-2 border rounded" required 
+                                placeholder="Enter Default Gateway for PC B">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">
+                    Check & Submit
+                </button>
+            </div>
         </form>
 
         {% if result %}
-        <div class="result-container">
-            <h3>ผลการตรวจสอบ:</h3>
-            <p>{{ result|safe }}</p>
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold mb-4">ผลการตรวจสอบ</h3>
+            <p class="text-lg">{{ result|safe }}</p>
         </div>
         {% endif %}
+
+        <div class="mt-8">
+            <a href="{{ url_for('dashboard') }}" class="inline-block bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">
+                Back
+            </a>
+        </div>
     </div>
 
     <script>
@@ -84,13 +152,9 @@
         const pdfContainer = document.getElementById('pdfContainer');
 
         toggleButton.addEventListener('click', () => {
-            if (pdfContainer.style.display === 'none' || pdfContainer.style.display === '') {
-                pdfContainer.style.display = 'block';
-                toggleButton.textContent = 'Hide PDF';
-            } else {
-                pdfContainer.style.display = 'none';
-                toggleButton.textContent = 'Show PDF';
-            }
+            const isHidden = pdfContainer.classList.contains('hidden');
+            pdfContainer.classList.toggle('hidden');
+            toggleButton.textContent = isHidden ? 'Hide PDF' : 'Show PDF';
         });
     </script>
 </body>

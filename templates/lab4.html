@@ -4,79 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 4 - Building a Switched Network with Redundant Links</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        .config-textarea {
+            font-family: monospace;
+            white-space: pre;
+            resize: vertical;
+            min-height: 150px;
+        }
+    </style>
 </head>
-<body>
-    <!-- Tapbar ด้านบน -->
-    <div class="tapbar">
-        <div class="left">
-            <a href="{{ url_for('dashboard') }}">Home</a>
-        </div>
-        <div class="right">
-            <a href="{{ url_for('logout') }}">Log Out</a>
-        </div>
-    </div>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
+        <a href="{{ url_for('dashboard') }}" class="hover:text-gray-200">Home</a>
+        <a href="{{ url_for('logout') }}" class="hover:text-gray-200">Log Out</a>
+    </nav>
 
-    <div class="container_lab4">
-        <h1 class="title">Lab 4 - Building a Switched Network with Redundant Links</h1>
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <h1 class="text-3xl font-bold mb-8 text-center">Lab 4 - Building a Switched Network with Redundant Links</h1>
 
-        <!-- ปุ่มสำหรับแสดง/ซ่อน PDF -->
-        <button id="toggleButton" class="button toggle-btn">Show PDF</button>
-
-        <!-- พื้นที่แสดง PDF -->
-        <div id="pdfContainer" class="pdf-container" style="display: none;">
-            <embed src="{{ url_for('static', filename='pdfs/lab4.pdf') }}" width="100%" height="800" type="application/pdf">
+        <div class="mb-6">
+            <button id="toggleButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Show PDF
+            </button>
         </div>
 
-        <!-- ฟอร์มสำหรับการตรวจสอบ Configuration -->
-        <form action="{{ url_for('lab4.check_config_lab4') }}" method="POST">
-            <!-- Config SW1 -->
-            <h3>Switch Configuration for SW1</h3>
-            <textarea name="config_sw1" rows="10" cols="100" required placeholder="กรอก Config ของ SW1"></textarea><br>
-            <h3>Spanning Tree Configuration for SW1</h3>
-            <textarea name="spanning_config_sw1" rows="10" cols="100" required placeholder="กรอก Spanning Tree Config ของ SW1"></textarea><br>
+        <div id="pdfContainer" class="hidden mb-8">
+            <embed src="{{ url_for('static', filename='pdfs/lab4.pdf') }}"
+                   class="w-full h-screen">
+        </div>
 
-            <!-- Config SW2 -->
-            <h3>Switch Configuration for SW2</h3>
-            <textarea name="config_sw2" rows="10" cols="100" required placeholder="กรอก Config ของ SW2"></textarea><br>
-            <h3>Spanning Tree Configuration for SW2</h3>
-            <textarea name="spanning_config_sw2" rows="10" cols="100" required placeholder="กรอก Spanning Tree Config ของ SW2"></textarea><br>
+        <form action="{{ url_for('lab4.check_config_lab4') }}" method="POST" class="space-y-6 bg-white p-6 rounded-lg shadow">
+            <!-- Switch 1 Configurations -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold">Switch 1 Configurations</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Base Configuration</label>
+                        <textarea name="config_sw1" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter SW1 base configuration"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Spanning Tree Configuration</label>
+                        <textarea name="spanning_config_sw1" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter SW1 spanning tree configuration"></textarea>
+                    </div>
+                </div>
+            </div>
 
-            <!-- Config SW3 -->
-            <h3>Switch Configuration for SW3</h3>
-            <textarea name="config_sw3" rows="10" cols="100" required placeholder="กรอก Config ของ SW3"></textarea><br>
-            <h3>Spanning Tree Configuration for SW3</h3>
-            <textarea name="spanning_config_sw3" rows="10" cols="100" required placeholder="กรอก Spanning Tree Config ของ SW3"></textarea><br>
+            <!-- Switch 2 Configurations -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold">Switch 2 Configurations</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Base Configuration</label>
+                        <textarea name="config_sw2" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter SW2 base configuration"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Spanning Tree Configuration</label>
+                        <textarea name="spanning_config_sw2" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter SW2 spanning tree configuration"></textarea>
+                    </div>
+                </div>
+            </div>
 
-            <!-- Submit -->
-            <button type="submit" class="button submit-btn">Check & Submit</button>
+            <!-- Switch 3 Configurations -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold">Switch 3 Configurations</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Base Configuration</label>
+                        <textarea name="config_sw3" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter SW3 base configuration"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Spanning Tree Configuration</label>
+                        <textarea name="spanning_config_sw3" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter SW3 spanning tree configuration"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">
+                    Check & Submit
+                </button>
+            </div>
         </form>
 
-        <!-- พื้นที่แสดงผลลัพธ์ -->
         {% if result %}
-        <div class="result-container">
-            <h3>ผลการตรวจสอบ:</h3>
-            <p>{{ result|safe }}</p>
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold mb-4">ผลการตรวจสอบ</h3>
+            <p class="text-lg">{{ result|safe }}</p>
         </div>
         {% endif %}
 
-        <!-- ปุ่ม Back -->
-        <a href="{{ url_for('dashboard') }}" class="button back-btn" style="margin-top: 20px;">Back</a>
+        <div class="mt-8">
+            <a href="{{ url_for('dashboard') }}" class="inline-block bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">
+                Back
+            </a>
+        </div>
     </div>
 
     <script>
-        // JavaScript สำหรับเปิด/ปิด PDF
         const toggleButton = document.getElementById('toggleButton');
         const pdfContainer = document.getElementById('pdfContainer');
 
         toggleButton.addEventListener('click', () => {
-            if (pdfContainer.style.display === 'none') {
-                pdfContainer.style.display = 'block';
-                toggleButton.textContent = 'Hide PDF';
-            } else {
-                pdfContainer.style.display = 'none';
-                toggleButton.textContent = 'Show PDF';
-            }
+            const isHidden = pdfContainer.classList.contains('hidden');
+            pdfContainer.classList.toggle('hidden');
+            toggleButton.textContent = isHidden ? 'Hide PDF' : 'Show PDF';
         });
     </script>
 </body>

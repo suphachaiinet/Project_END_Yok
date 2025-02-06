@@ -4,138 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 3 - Implement VLANs and Trunking</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <style>
-        /* เพิ่ม CSS สำหรับการจัดวางฟอร์ม */
-        .form-group {
-            margin-bottom: 15px;
-        }
-        textarea {
-            width: 100%;
+        .config-textarea {
+            font-family: monospace;
+            white-space: pre;
             resize: vertical;
-        }
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .button.submit-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .button.submit-btn:hover {
-            background-color: #45a049;
+            min-height: 150px;
         }
     </style>
 </head>
-<body>
-    <!-- Tapbar ด้านบน -->
-    <div class="tapbar">
-        <div class="left">
-            <a href="{{ url_for('dashboard') }}">Home</a>
-        </div>
-        <div class="right">
-            <a href="{{ url_for('logout') }}">Log Out</a>
-        </div>
-    </div>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
+        <a href="{{ url_for('dashboard') }}" class="hover:text-gray-200">Home</a>
+        <a href="{{ url_for('logout') }}" class="hover:text-gray-200">Log Out</a>
+    </nav>
 
-    <div class="container_lab3">
-        <h1 class="title">Lab 3 - Implement VLANs and Trunking</h1>
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <h1 class="text-3xl font-bold mb-8 text-center">Lab 3 - Implement VLANs and Trunking</h1>
 
-        <!-- Button to toggle PDF display -->
-        <button id="toggleButton" class="button toggle-btn">Show PDF</button>
-
-        <!-- PDF display container -->
-        <div id="pdfContainer" class="pdf-container" style="display: none;">
-            <embed src="{{ url_for('static', filename='pdfs/lab3.pdf') }}" width="100%" height="800" type="application/pdf">
+        <div class="mb-6">
+            <button id="toggleButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Show PDF
+            </button>
         </div>
 
-        <!-- Form for configurations -->
-        <form action="{{ url_for('lab3.check_config_lab3') }}" method="POST" class="form-container">
-            <div>
-                <h3>Switch 1 Config</h3>
-                <textarea name="config_switch1" rows="10" required placeholder="กรอก Configuration ของ SW1 เช่น interface หรือคำสั่งการตั้งค่า"></textarea>
-            </div>
+        <div id="pdfContainer" class="hidden mb-8">
+            <embed src="{{ url_for('static', filename='pdfs/lab3.pdf') }}" class="w-full h-screen">
+        </div>
 
-            <div>
-                <h3>Switch 1 VLAN Config</h3>
-                <textarea name="vlan_config_switch1" rows="5" required placeholder="กรอก VLAN Configuration เช่น VLAN ID และ Ports"></textarea>
-            </div>
+        <form action="{{ url_for('lab3.check_config_lab3') }}" method="POST" class="space-y-6 bg-white p-6 rounded-lg shadow">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Switch 1 Configurations -->
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-semibold">Switch 1 Configuration</h3>
+                        <textarea name="config_switch1" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter SW1 configuration commands"></textarea>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-semibold">Switch 1 VLAN Configuration</h3>
+                        <textarea name="vlan_config_switch1" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter VLAN configuration for SW1"></textarea>
+                    </div>
+                </div>
 
-            <div>
-                <h3>Switch 2 Config</h3>
-                <textarea name="config_switch2" rows="10" required placeholder="กรอก Configuration ของ SW2 เช่น interface หรือคำสั่งการตั้งค่า"></textarea>
-            </div>
-
-            <div>
-                <h3>Switch 2 VLAN Config</h3>
-                <textarea name="vlan_config_switch2" rows="5" required placeholder="กรอก VLAN Configuration เช่น VLAN ID และ Ports"></textarea>
-            </div>
-
-            <div>
-                <h3>PC 1 Config</h3>
-                <div class="form-group">
-                    <label for="pc1_ip_address">IP Address:</label>
-                    <input type="text" name="pc1_ip_address" id="pc1_ip_address" required placeholder="เช่น 192.168.x.x">
-                </div>
-                <div class="form-group">
-                    <label for="pc1_subnet_mask">Subnet Mask:</label>
-                    <input type="text" name="pc1_subnet_mask" id="pc1_subnet_mask" required placeholder="เช่น 255.255.255.x">
-                </div>
-                <div class="form-group">
-                    <label for="pc1_default_gateway">Default Gateway:</label>
-                    <input type="text" name="pc1_default_gateway" id="pc1_default_gateway" required placeholder="เช่น 192.168.x.x">
-                </div>
-            </div>
-
-            <div>
-                <h3>PC 2 Config</h3>
-                <div class="form-group">
-                    <label for="pc2_ip_address">IP Address:</label>
-                    <input type="text" name="pc2_ip_address" id="pc2_ip_address" required placeholder="เช่น 192.168.x.x">
-                </div>
-                <div class="form-group">
-                    <label for="pc2_subnet_mask">Subnet Mask:</label>
-                    <input type="text" name="pc2_subnet_mask" id="pc2_subnet_mask" required placeholder="เช่น 255.255.255.x">
-                </div>
-                <div class="form-group">
-                    <label for="pc2_default_gateway">Default Gateway:</label>
-                    <input type="text" name="pc2_default_gateway" id="pc2_default_gateway" required placeholder="เช่น 192.168.x.x">
+                <!-- Switch 2 Configurations -->
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-semibold">Switch 2 Configuration</h3>
+                        <textarea name="config_switch2" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter SW2 configuration commands"></textarea>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <h3 class="text-xl font-semibold">Switch 2 VLAN Configuration</h3>
+                        <textarea name="vlan_config_switch2" class="config-textarea w-full p-3 border rounded" required 
+                            placeholder="Enter VLAN configuration for SW2"></textarea>
+                    </div>
                 </div>
             </div>
 
-            <button type="submit" class="button submit-btn">Check & Submit</button>
+            <!-- PC Configurations -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                <!-- PC 1 Config -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">PC 1 Configuration</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <label class="block">IP Address:</label>
+                            <input type="text" name="pc1_ip_address" class="w-full p-2 border rounded" required placeholder="e.g., 192.168.x.x">
+                        </div>
+                        <div>
+                            <label class="block">Subnet Mask:</label>
+                            <input type="text" name="pc1_subnet_mask" class="w-full p-2 border rounded" required placeholder="e.g., 255.255.255.x">
+                        </div>
+                        <div>
+                            <label class="block">Default Gateway:</label>
+                            <input type="text" name="pc1_default_gateway" class="w-full p-2 border rounded" required placeholder="e.g., 192.168.x.x">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PC 2 Config -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold">PC 2 Configuration</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <label class="block">IP Address:</label>
+                            <input type="text" name="pc2_ip_address" class="w-full p-2 border rounded" required placeholder="e.g., 192.168.x.x">
+                        </div>
+                        <div>
+                            <label class="block">Subnet Mask:</label>
+                            <input type="text" name="pc2_subnet_mask" class="w-full p-2 border rounded" required placeholder="e.g., 255.255.255.x">
+                        </div>
+                        <div>
+                            <label class="block">Default Gateway:</label>
+                            <input type="text" name="pc2_default_gateway" class="w-full p-2 border rounded" required placeholder="e.g., 192.168.x.x">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">
+                    Check & Submit
+                </button>
+            </div>
         </form>
 
-        <!-- Result display -->
         {% if result %}
-        <div class="result-container">
-            <h3>ผลการตรวจสอบ:</h3>
-            <p>{{ result|safe }}</p>
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold mb-4">ผลการตรวจสอบ</h3>
+            <p class="text-lg">{{ result|safe }}</p>
         </div>
         {% endif %}
 
-        <!-- Back button -->
-        <a href="{{ url_for('dashboard') }}" class="button back-btn" style="margin-top: 20px;">Back</a>
+        <div class="mt-8">
+            <a href="{{ url_for('dashboard') }}" class="inline-block bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">
+                Back
+            </a>
+        </div>
     </div>
 
     <script>
-        // JavaScript for toggling PDF display
         const toggleButton = document.getElementById('toggleButton');
         const pdfContainer = document.getElementById('pdfContainer');
 
         toggleButton.addEventListener('click', () => {
-            if (pdfContainer.style.display === 'none') {
-                pdfContainer.style.display = 'block';
-                toggleButton.textContent = 'Hide PDF';
-            } else {
-                pdfContainer.style.display = 'none';
-                toggleButton.textContent = 'Show PDF';
-            }
+            const isHidden = pdfContainer.classList.contains('hidden');
+            pdfContainer.classList.toggle('hidden');
+            toggleButton.textContent = isHidden ? 'Hide PDF' : 'Show PDF';
         });
     </script>
 </body>
