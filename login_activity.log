@@ -4108,3 +4108,36 @@ INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 08:56:16] "GET /lab10/lab10 HTTP/1.1" 2
 INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 08:56:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 08:56:16] "GET /static/pdfs/lab10.pdf HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 08:56:18] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 08:56:51] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 08:56:51] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 08:57:00] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 08:57:00] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 09:43:29] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 09:43:29] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 09:43:31] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:04:02] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:04:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:04:03] "[36mGET /static/pdfs/lab10.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab10.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:11:54] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:11:54] "[36mGET /static/pdfs/lab10.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:11:58] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:11:59] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:12:00] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:13:29] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:13:30] "[36mGET /static/pdfs/lab10.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:14:38] "POST /lab10/check_config/lab10 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab10.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:16:37] "POST /lab10/check_config/lab10 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab10.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:17:19] "POST /lab10/check_config/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Feb/2025 10:17:22] "GET /dashboard HTTP/1.1" 200 -
