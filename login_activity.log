@@ -4269,3 +4269,55 @@ INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:06:16] "GET /dashboard HTTP/1.1" 200
 INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:06:17] "GET /lab15/lab15 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:06:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:06:17] "GET /static/pdfs/lab15.pdf HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab15.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:09:35] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:09:37] "[36mGET /static/pdfs/lab15.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab15.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:13:15] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:13:20] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:13:55] "[36mGET /static/pdfs/lab15.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab15.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:19:45] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:21:12] "POST /lab15/check_config/lab15 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab15.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:21:49] "POST /lab15/check_config/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:21:52] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:21:54] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:21:57] "GET /lab16/lab16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:21:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:21:57] "GET /static/pdfs/lab16.pdf HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab16.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab15.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:26:00] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:26:01] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:26:40] "POST /lab15/check_config/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:26:44] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:26:45] "GET /lab16/lab16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:26:51] "[36mGET /static/pdfs/lab16.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 08:27:22] "POST /lab16/check_config/lab16 HTTP/1.1" 200 -

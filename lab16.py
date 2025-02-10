@@ -3,89 +3,196 @@ import re
 from flask import Blueprint, render_template, request, session
 from datetime import datetime
 from pymongo import MongoClient
-from zoneinfo import ZoneInfo  # สำหรับเวลาไทย (Python 3.9+), ถ้าเวอร์ชันต่ำกว่านี้ใช้ pytz
+from zoneinfo import ZoneInfo
 
-# สร้าง Blueprint สำหรับ Lab 16
 lab16_bp = Blueprint('lab16', __name__)
 
-# โฟลเดอร์เก็บไฟล์เฉลย (config) ของ lab16
-CONFIG_FOLDER = os.path.join(os.getcwd(), 'check_config')
-
-def read_config_file(filename):
-    """ อ่านไฟล์เฉลยจากโฟลเดอร์ check_config/ """
-    file_path = os.path.join(CONFIG_FOLDER, filename)
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return f.read().strip()
-    return ""
-
-def check_config(user_config, correct_config):
-    """
-    เปรียบเทียบค่า config ของผู้ใช้กับค่าที่ถูกต้อง:
-    1) ลดรูป whitespace (space/tab/newline) ให้เหลือ space เดียว
-    2) เปรียบเทียบ string
-    """
-    user_config_cleaned = re.sub(r'\s+', ' ', user_config.strip())
-    correct_config_cleaned = re.sub(r'\s+', ' ', correct_config.strip())
-    return user_config_cleaned == correct_config_cleaned
-
-# เชื่อมต่อ MongoDB (กำหนดตามค่าจริงของคุณ)
+# MongoDB connection
 client = MongoClient('mongodb://localhost:27017/')
 db = client['network_lab']
-scores_collection = db['lab16_scores']  # แยก Collection สำหรับ Lab 2
+scores_collection = db['lab16_scores']
+
+# Keywords for checking configurations
+R1_KEYWORDS = [
+    "hostname R1",
+    "no ip domain-lookup",
+    {"interface Loopback0": [
+        "ip address 10.10.1.1 255.255.255.0"
+    ]},
+    {"interface GigabitEthernet0/0/1": [
+        "description Link to S1 Port 5",
+        "ip address 192.168.10.1 255.255.255.0"
+    ]},
+    "ip dhcp excluded-address 192.168.10.1 192.168.10.9",
+    "ip dhcp excluded-address 192.168.10.201 192.168.10.202",
+    {"ip dhcp pool Students": [
+        "network 192.168.10.0 255.255.255.0",
+        "default-router 192.168.10.1",
+        "domain-name CCNA2.Lab-11.6.1"
+    ]}
+]
+
+SW1_KEYWORDS = [
+    "hostname S1",
+    "no ip domain-lookup",
+    "spanning-tree mode pvst",
+    {"vlan 10": ["name Management"]},
+    {"vlan 333": ["name Native"]},
+    {"vlan 999": ["name ParkingLot"]},
+    {"interface FastEthernet0/1": [
+        "description Link to S2",
+        "switchport trunk encapsulation dot1q",
+        "switchport trunk native vlan 333",
+        "switchport mode trunk",
+        "switchport nonegotiate"
+    ]},
+    {"interface FastEthernet0/5": [
+        "description Link to R1",
+        "switchport access vlan 10",
+        "switchport mode access",
+        "spanning-tree portfast"
+    ]},
+    {"interface FastEthernet0/6": [
+        "description Link to PC-A",
+        "switchport access vlan 10",
+        "switchport mode access",
+        "switchport port-security maximum 3",
+        "switchport port-security violation restrict",
+        "switchport port-security aging time 60",
+        "switchport port-security aging type inactivity",
+        "switchport port-security",
+        "spanning-tree portfast",
+        "spanning-tree bpduguard enable"
+    ]},
+    {"interface Vlan10": [
+        "description Management SVI",
+        "ip address 192.168.10.201 255.255.255.0"
+    ]},
+    "ip default-gateway 192.168.10.1"
+]
+
+SW2_KEYWORDS = [
+    "hostname S2",
+    "no ip domain-lookup",
+    "ip dhcp snooping vlan 10",
+    "ip dhcp snooping",
+    "spanning-tree mode pvst",
+    {"vlan 10": ["name Students"]},
+    {"vlan 333": ["name Native"]},
+    {"vlan 999": ["name ParkingLot"]},
+    {"interface FastEthernet0/1": [
+        "description Link to S1",
+        "switchport trunk native vlan 333",
+        "switchport mode trunk",
+        "switchport nonegotiate",
+        "ip dhcp snooping trust"
+    ]},
+    {"interface FastEthernet0/18": [
+        "description Link to PC-B",
+        "switchport access vlan 10",
+        "switchport mode access",
+        "switchport port-security maximum 2",
+        "switchport port-security violation protect",
+        "switchport port-security mac-address sticky",
+        "switchport port-security aging time 60",
+        "switchport port-security",
+        "spanning-tree portfast",
+        "spanning-tree bpduguard enable",
+        "ip dhcp snooping limit rate 5"
+    ]},
+    {"interface Vlan10": [
+        "description Management SVI",
+        "ip address 192.168.10.202 255.255.255.0"
+    ]},
+    "ip default-gateway 192.168.10.1"
+]
+
+def check_keywords(user_config, keywords):
+    """Check if configuration contains required keywords"""
+    user_lines = user_config.splitlines()
+    missing_keywords = []
+
+    for keyword in keywords:
+        if isinstance(keyword, dict):
+            interface_name = list(keyword.keys())[0]
+            expected_commands = keyword[interface_name]
+            block_found = False
+
+            for i, line in enumerate(user_lines):
+                if re.match(rf"^\s*{re.escape(interface_name)}\s*$", line.strip()):
+                    block_found = True
+                    block_content = []
+                    for l in user_lines[i + 1:]:
+                        if re.match(r"^\s*(interface|!|router|vlan)\s*", l):
+                            break
+                        block_content.append(l.strip())
+
+                    missing_in_block = [
+                        cmd for cmd in expected_commands if not any(cmd in line for line in block_content)
+                    ]
+                    if missing_in_block:
+                        missing_keywords.append(
+                            f"{interface_name}: ขาด {', '.join(missing_in_block)}"
+                        )
+                    break
+
+            if not block_found:
+                missing_keywords.append(f"{interface_name}: missing block")
+
+        elif isinstance(keyword, str):
+            keyword_found = any(
+                re.search(rf"^\s*{re.escape(keyword)}\s*", line) for line in user_lines
+            )
+            if not keyword_found:
+                missing_keywords.append(f"{keyword}: missing")
+
+    score = (len(keywords) - len(missing_keywords)) / len(keywords) * 100
+    return score, missing_keywords
 
 @lab16_bp.route('/lab16')
 def lab16():
-    """ แสดงหน้า lab16.html """
+    """Display lab16.html"""
     return render_template('lab16.html')
 
 @lab16_bp.route('/check_config/lab16', methods=['POST'])
 def check_config_lab16():
-    """
-    รับค่าการตั้งค่า Switch, PC จากฟอร์มใน lab16.html
-    ตรวจสอบความถูกต้อง
-    บันทึกคะแนนลงฐานข้อมูล (เป็นเปอร์เซ็นต์)
-    ส่งผลลัพธ์ไปแสดงใน lab16.html
-    """
-    # รับค่าที่ผู้ใช้กรอก
-    user_switch_config = request.form.get('config_switch', '').strip()
-    user_pc_config = request.form.get('config_pc', '').strip()
+    """Check configurations and return results"""
+    # Get configurations from form
+    user_r1_config = request.form.get('config_r1', '').strip()
+    user_sw1_config = request.form.get('config_sw1', '').strip()
+    user_sw2_config = request.form.get('config_sw2', '').strip()
+    
+    # Check device configurations
+    r1_score, r1_missing = check_keywords(user_r1_config, R1_KEYWORDS)
+    sw1_score, sw1_missing = check_keywords(user_sw1_config, SW1_KEYWORDS)
+    sw2_score, sw2_missing = check_keywords(user_sw2_config, SW2_KEYWORDS)
 
-    # อ่านค่าที่ถูกต้องจากไฟล์ (อยู่ใน check_config/lab16_sw1.txt, lab16_pc1.txt)
-    correct_switch_config = read_config_file('lab16_sw1.txt')
-    correct_pc_config = read_config_file('lab16_pc1.txt')
+    # Calculate total score
+    # Router: 30%, Switch1: 35%, Switch2: 35%
+    total_score = (r1_score * 0.3) + (sw1_score * 0.35) + (sw2_score * 0.35)
 
-    # ตรวจสอบความถูกต้อง
-    switch_correct = check_config(user_switch_config, correct_switch_config)
-    pc_correct = check_config(user_pc_config, correct_pc_config)
-
-    # คำนวณคะแนน (สมมติให้ Switch 50, PC 50)
-    switch_score = 50 if switch_correct else 0
-    pc_score = 50 if pc_correct else 0
-    total_score = switch_score + pc_score
-
-    # ดึง username จาก session (กรณีคุณมีระบบ Login)
-    username = session.get('username', 'unknown')
-
-    # เวลาปัจจุบันตาม Timezone ไทย
+    # Get current time in Bangkok timezone
     bangkok_time = datetime.now(ZoneInfo("Asia/Bangkok"))
 
-    # บันทึกลง MongoDB
+    # Save to MongoDB
     scores_collection.insert_one({
-        "username": username,
+        "username": session.get('username', 'unknown'),
         "lab": "Lab 16",
-        "switch_score": f"{switch_score}%",
-        "pc_score": f"{pc_score}%",
-        "total_score": f"{total_score}%",
+        "r1_score": r1_score,
+        "sw1_score": sw1_score,
+        "sw2_score": sw2_score,
+        "total_score": total_score,
         "timestamp": bangkok_time
     })
 
-    # ผลลัพธ์ที่จะส่งไปแสดง
+    # Format result message
     result = f"""
-    ชื่อผู้ใช้: {username}<br>
-    คะแนนรวม: {total_score}%<br>
-    Switch Configuration: {"ถูกต้อง" if switch_correct else "ผิดพลาด"}<br>
-    PC Configuration: {"ถูกต้อง" if pc_correct else "ผิดพลาด"}<br>
+    คะแนนรวม: {total_score:.2f}%<br>
+    Router Configuration:
+    - R1: คะแนน {r1_score:.2f}% ({'ถูกต้อง' if not r1_missing else f"ขาด: {', '.join(r1_missing)}"})<br>
+    Switch Configurations:
+    - S1: คะแนน {sw1_score:.2f}% ({'ถูกต้อง' if not sw1_missing else f"ขาด: {', '.join(sw1_missing)}"})<br>
+    - S2: คะแนน {sw2_score:.2f}% ({'ถูกต้อง' if not sw2_missing else f"ขาด: {', '.join(sw2_missing)}"})<br>
     เวลาบันทึก: {bangkok_time.strftime('%Y-%m-%d %H:%M:%S')} (Asia/Bangkok)
     """
 
