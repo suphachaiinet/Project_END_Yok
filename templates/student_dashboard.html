@@ -2,112 +2,183 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Network Lab II{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        .sidebar {
+            transition: all 0.3s ease;
+            width: 280px;
+            min-width: 280px;
+        }
+        .sidebar.collapsed {
+            width: 0;
+            min-width: 0;
+        }
+        .main-content {
+            transition: all 0.3s ease;
+        }
+        .config-textarea {
+            font-family: monospace;
+            white-space: pre;
+            resize: vertical;
+            min-height: 150px;
+            font-size: 14px;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
 </head>
-<body class="bg-gray-100">
-    <nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
-        <a href="{{ url_for('dashboard') }}" class="hover:text-gray-200">Home</a>
-        <div class="flex items-center space-x-4">
-            <span>{{ first_name }} {{ last_name }}</span>
-            <a href="{{ url_for('logout') }}" class="hover:text-gray-200">Log Out</a>
+<body class="bg-gray-50">
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-full mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <button id="sidebarToggle" class="p-2 rounded-md text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <h1 class="ml-4 text-lg font-semibold text-gray-900">Network Lab II</h1>
+                </div>
+                <div class="flex items-center">
+                    <a href="{{ url_for('dashboard') }}" class="text-gray-600 hover:text-gray-900 mr-4">Dashboard</a>
+                    <span class="text-gray-600 mr-4">{{ first_name }} {{ last_name }}</span>
+                    <a href="{{ url_for('logout') }}" class="text-gray-600 hover:text-gray-900">Logout</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold mb-8 text-center">Network Configuration Labs</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Basic Switch Configuration Group -->
-            <div class="space-y-4">
-                <h2 class="text-xl font-semibold text-blue-600">Basic Switch Configuration</h2>
-                <div class="space-y-2">
-                    <a href="{{ url_for('lab.lab1') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 1 - Basic Switch Configuration
-                    </a>
-                    <a href="{{ url_for('lab2.lab2') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 2 - Configure VLANs and Trunking
-                    </a>
-                    <a href="{{ url_for('lab3.lab3') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 3 - Implement VLANs and Trunking
-                    </a>
-                </div>
-            </div>
+    <div class="flex min-h-screen pt-16">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar bg-white shadow-sm overflow-y-auto">
+            <div class="p-4">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Network labs </h2>
+                <!-- Lab Categories -->
+                <nav class="space-y-6">
+                    <!-- Basic Switch Configuration -->
+                    <div>
+                        <div class="space-y-1">
+                            <a href="{{ url_for('lab.lab1') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab1' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 1 - Basic Switch Configuration
+                            </a>
+                            <a href="{{ url_for('lab2.lab2') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab2' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 2 - Configure VLANs and Trunking
+                            </a>
+                            <a href="{{ url_for('lab3.lab3') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab3' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 3 - Implement VLANs and Trunking
+                            </a>
+                        </div>
+                    </div>
 
-            <!-- Advanced Switch Configuration Group -->
-            <div class="space-y-4">
-                <h2 class="text-xl font-semibold text-green-600">Advanced Switch Features</h2>
-                <div class="space-y-2">
-                    <a href="{{ url_for('lab4.lab4') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 4 - Redundant Links
-                    </a>
-                    <a href="{{ url_for('lab5.lab5') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 5 - Rapid PVST+ Configuration
-                    </a>
-                    <a href="{{ url_for('lab8.lab8') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 8 - Implement EtherChannel
-                    </a>
-                </div>
-            </div>
+                    <!-- Advanced Switch Features -->
+                    <div>
+                        <div class="space-y-1">
+                            <a href="{{ url_for('lab4.lab4') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab4' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 4 - Redundant Links
+                            </a>
+                            <a href="{{ url_for('lab5.lab5') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab5' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 5 - Rapid PVST+ Configuration
+                            </a>
+                            <a href="{{ url_for('lab8.lab8') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab8' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 8 - Implement EtherChannel
+                            </a>
+                        </div>
+                    </div>
 
-            <!-- Inter-VLAN Routing Group -->
-            <div class="space-y-4">
-                <h2 class="text-xl font-semibold text-purple-600">Inter-VLAN Routing</h2>
-                <div class="space-y-2">
-                    <a href="{{ url_for('lab6.lab6') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 6 - Router-on-a-Stick Inter-VLAN
-                    </a>
-                    <a href="{{ url_for('lab7.lab7') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 7 - Implement Inter-VLAN Routing
-                    </a>
-                </div>
-            </div>
+                    <!-- Inter-VLAN Routing -->
+                    <div>
+                        <div class="space-y-1">
+                            <a href="{{ url_for('lab6.lab6') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab6' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 6 - Router-on-a-Stick Inter-VLAN
+                            </a>
+                            <a href="{{ url_for('lab7.lab7') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab7' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 7 - Implement Inter-VLAN Routing
+                            </a>
+                        </div>
+                    </div>
 
-            <!-- WAN Protocols Group -->
-            <div class="space-y-4">
-                <h2 class="text-xl font-semibold text-red-600">WAN & Security</h2>
-                <div class="space-y-2">
-                    <a href="{{ url_for('lab9.lab9') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 9 - Basic PPP Authentication
-                    </a>
-                    <a href="{{ url_for('lab10.lab10') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 10 - Standard IPv4 ACLs
-                    </a>
-                    <a href="{{ url_for('lab11.lab11') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 11 - Extended IPv4 ACLs
-                    </a>
-                </div>
-            </div>
+                    <!-- WAN and Security -->
+                    <div>
+                        <div class="space-y-1">
+                            <a href="{{ url_for('lab9.lab9') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab9' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 9 - Basic PPP Authentication
+                            </a>
+                            <a href="{{ url_for('lab10.lab10') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab10' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 10 - Standard IPv4 ACLs
+                            </a>
+                            <a href="{{ url_for('lab11.lab11') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab11' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 11 - Extended IPv4 ACLs
+                            </a>
+                        </div>
+                    </div>
 
-            <!-- Network Services Group -->
-            <div class="space-y-4">
-                <h2 class="text-xl font-semibold text-yellow-600">Network Services</h2>
-                <div class="space-y-2">
-                    <a href="{{ url_for('lab12.lab12') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 12 - Implement DHCPv4
-                    </a>
-                    <a href="{{ url_for('lab13.lab13') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 13 - Configure DHCPv6
-                    </a>
-                    <a href="{{ url_for('lab14.lab14') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 14 - Configure NAT
-                    </a>
-                </div>
-            </div>
+                    <!-- Network Services -->
+                    <div>
+                        <div class="space-y-1">
+                            <a href="{{ url_for('lab12.lab12') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab12' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 12 - Implement DHCPv4
+                            </a>
+                            <a href="{{ url_for('lab13.lab13') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab13' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 13 - Configure DHCPv6
+                            </a>
+                            <a href="{{ url_for('lab14.lab14') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab14' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 14 - Configure NAT
+                            </a>
+                        </div>
+                    </div>
 
-            <!-- Advanced Features Group -->
-            <div class="space-y-4">
-                <h2 class="text-xl font-semibold text-indigo-600">Advanced Features</h2>
-                <div class="space-y-2">
-                    <a href="{{ url_for('lab15.lab15') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 15 - Configuring HSRP
-                    </a>
-                    <a href="{{ url_for('lab16.lab16') }}" class="block p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
-                        Lab 16 - Switch Security
-                    </a>
-                </div>
+                    <!-- Advanced Features -->
+                    <div>
+                        <div class="space-y-1">
+                            <a href="{{ url_for('lab15.lab15') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab15' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 15 - Configuring HSRP
+                            </a>
+                            <a href="{{ url_for('lab16.lab16') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab16' %}bg-blue-50 text-blue-600{% endif %}">
+                                Lab 16 - Switch Security
+                            </a>
+                        </div>
+                    </div>
+                </nav>
             </div>
-        </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 overflow-auto">
+            <div class="max-w-7xl mx-auto">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
     </div>
+
+    <script>
+        // Sidebar Toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            saveSidebarState(sidebar.classList.contains('collapsed'));
+        });
+
+        // Save sidebar state
+        function saveSidebarState(isCollapsed) {
+            localStorage.setItem('sidebarCollapsed', isCollapsed);
+        }
+
+        // Load sidebar state
+        function loadSidebarState() {
+            const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+            if (isCollapsed) {
+                sidebar.classList.add('collapsed');
+            }
+        }
+
+        // Initialize
+        loadSidebarState();
+    </script>
+
+    {% block extra_js %}{% endblock %}
 </body>
 </html>
