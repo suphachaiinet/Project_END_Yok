@@ -4240,3 +4240,15 @@ INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 634-005-923
 INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 07:19:13] "POST /lab12/check_config/lab12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 07:20:04] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab13.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab13.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 07:23:45] "GET /lab13/lab13 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 07:23:47] "GET /static/pdfs/lab13.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Feb/2025 07:39:49] "POST /lab13/check_config/lab13 HTTP/1.1" 200 -
