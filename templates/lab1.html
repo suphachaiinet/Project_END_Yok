@@ -54,7 +54,7 @@
     /* Right Panel */
     .right-panel {
         display: grid;
-        grid-template-rows: auto 200px;
+        grid-template-rows: auto 250px;
         height: 100%;
         background: white;
         border: 1px solid #e5e7eb;
@@ -217,7 +217,7 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-end">
+                    <div class="flex justify-end mb-1">  <!-- เปลี่ยนจาก mb-0 เป็น mb-2 -->
                         <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
                             Check Configuration
                         </button>
@@ -226,7 +226,7 @@
             </div>
 
             <!-- Results Panel -->
-            <div class="results-panel">
+            <div class="results-panel pt-1 pb-1">
                 <div class="flex h-full">
                     <!-- Status Bar -->
                     <div class="status-bar {% if result %}
@@ -240,53 +240,53 @@
                     <div class="results-content">
                         <h3 class="text-lg font-medium text-gray-900 mb-3">Results</h3>
                         {% if result %}
-                            <!-- Student Info -->
-                            <div class="result-section">
-                                <div class="text-sm">
-                                    <span class="font-medium">ชื่อผู้ใช้:</span> 
-                                    <span>{{ result.student_id }}</span>
-                                </div>
+                        <!-- Student Info -->
+                        <div class="result-section">
+                            <div class="text-sm">
+                                <span class="font-medium">ชื่อผู้ใช้:</span> 
+                                <span>{{ result.student_id }}</span>
                             </div>
-                            
-                            <!-- Switch Configuration -->
-                            <div class="result-section">
-                                <div class="flex items-center gap-2 mb-2">
-                                    <span class="font-medium">คะแนน Switch:</span>
-                                    <span class="{% if result.switch_score == 100 %}text-green-600
-                                        {% elif result.switch_score > 0 %}text-yellow-600
-                                        {% else %}text-red-600{% endif %}">
-                                        {{ result.switch_score }}%
-                                    </span>
-                                </div>
-                                {% if result.missing_commands %}
-                                    <div class="missing-commands">
-                                        <div class="font-medium mb-1">คำสั่งที่ยังไม่ได้ Configure:</div>
-                                        <ul class="list-disc pl-4 space-y-1">
-                                        {% for cmd in result.missing_commands %}
-                                            <li>{{ cmd }}</li>
-                                        {% endfor %}
-                                        </ul>
-                                    </div>
-                                {% endif %}
+                        </div>
+                        
+                        <!-- Switch Configuration -->
+                        <div class="result-section">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="font-medium">คะแนน Switch:</span>
+                                <span class="{% if result.switch_score == 100 %}text-green-600
+                                    {% elif result.switch_score > 0 %}text-yellow-600
+                                    {% else %}text-red-600{% endif %}">
+                                    {{ result.switch_score }}%
+                                </span>
                             </div>
-
-                            <!-- PC Configuration -->
-                            <div class="result-section">
-                                <div class="flex items-center gap-2 mb-2">
-                                    <span class="font-medium">PC Configuration:</span>
-                                    <span class="{% if result.pc_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
-                                        {{ "ถูกต้อง" if result.pc_status == 'correct' else "ไม่ถูกต้อง" }}
-                                    </span>
+                            {% if result.missing_commands %}
+                                <div class="missing-commands">
+                                    <div class="font-medium mb-1">คำสั่งที่ยังไม่ได้ Configure:</div>
+                                    <ul class="list-disc pl-4 space-y-1">
+                                    {% for cmd in result.missing_commands %}
+                                        <li>{{ cmd }}</li>
+                                    {% endfor %}
+                                    </ul>
                                 </div>
-                                {% if result.pc_status != 'correct' %}
-                                    <div class="text-red-600 text-sm">
-                                        กรุณาตรวจสอบการตั้งค่า IP Address, Subnet Mask และ Default Gateway
-                                    </div>
-                                {% endif %}
+                            {% endif %}
+                        </div>
+                    
+                        <!-- PC Configuration -->
+                        <div class="result-section">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="font-medium">PC Configuration:</span>
+                                <span class="{% if result.pc_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
+                                    {{ "ถูกต้อง" if result.pc_status == 'correct' else "ไม่ถูกต้อง" }}
+                                </span>
                             </div>
-                        {% else %}
-                            <p class="text-gray-500">ผลลัพธ์จะแสดงที่นี่หลังจากตรวจสอบ</p>
-                        {% endif %}
+                            {% if result.pc_status != 'correct' %}
+                                <div class="text-red-600 text-sm">
+                                    กรุณาตรวจสอบการตั้งค่า IP Address, Subnet Mask และ Default Gateway
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <p class="text-gray-500">ผลลัพธ์จะแสดงที่นี่หลังจากตรวจสอบ</p>
+                    {% endif %}
                     </div>
                 </div>
             </div>

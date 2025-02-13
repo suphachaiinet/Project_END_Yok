@@ -82,41 +82,49 @@ def lab1():
 
 @lab_bp.route('/check_config/lab1', methods=['POST'])
 def check_config_lab1():
-    username = session.get('username', 'unknown')
-    user_switch_config = request.form.get('config_switch', '').strip()
+   username = session.get('username', 'unknown')
+   user_switch_config = request.form.get('config_switch', '').strip()
 
-    # PC Config
-    user_pc_ip = request.form.get('pc_ip_address', '').strip()
-    user_pc_subnet = request.form.get('pc_subnet_mask', '').strip()
-    user_pc_gateway = request.form.get('pc_default_gateway', '').strip()
+   # PC Config
+   user_pc_ip = request.form.get('pc_ip_address', '').strip()
+   user_pc_subnet = request.form.get('pc_subnet_mask', '').strip()
+   user_pc_gateway = request.form.get('pc_default_gateway', '').strip()
 
-    # ตรวจสอบ Switch Config
-    switch_score, missing_keywords = check_keywords(user_switch_config, KEYWORDS)
+   # ตรวจสอบ Switch Config
+   switch_score, missing_keywords = check_keywords(user_switch_config, KEYWORDS)
 
-    # ตรวจสอบ PC Config
-    pc_correct = (
-        user_pc_ip == "192.168.1.10" and
-        user_pc_subnet == "255.255.255.0" and
-        user_pc_gateway == "192.168.1.1"
-    )
+   # ตรวจสอบ PC Config
+   pc_correct = (
+       user_pc_ip == "192.168.1.10" and
+       user_pc_subnet == "255.255.255.0" and
+       user_pc_gateway == "192.168.1.1"
+   )
 
-    # สร้าง result dictionary
-    result = {
-        'student_id': username,
-        'switch_score': round(switch_score, 2),
-        'missing_commands': missing_keywords,
-        'pc_status': 'correct' if pc_correct else 'incorrect',
-        'status': 'success' if switch_score == 100 and pc_correct else 'partial' if switch_score > 0 or pc_correct else 'failed'
-    }
+   # สร้าง result dictionary
+   result = {
+       'student_id': username,
+       'switch_score': round(switch_score, 2),
+       'missing_commands': missing_keywords,
+       'pc_status': 'correct' if pc_correct else 'incorrect',
+       'status': 'success' if switch_score == 100 and pc_correct else 'partial' if switch_score > 0 or pc_correct else 'failed'
+   }
 
-    # บันทึกลงฐานข้อมูล
-    scores_collection.insert_one({
-        "username": username,
-        "lab": "Lab 1",
-        "switch_score": f"{switch_score:.2f}/100",
-        "pc_status": "ถูกต้อง" if pc_correct else "ไม่ถูกต้อง",
-        "missing_keywords": missing_keywords,
-        "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
-    })
+   # อัปเดตลงฐานข้อมูล
+   scores_collection.update_one(
+       {"username": username, "lab": "Lab 1"},  # filter
+       {"$set": {  # update
+           "switch_score": f"{switch_score:.2f}/100",
+           "pc_status": "ถูกต้อง" if pc_correct else "ไม่ถูกต้อง",
+           "missing_keywords": missing_keywords,
+           "switch_config": user_switch_config,
+           "pc_config": {
+               "ip_address": user_pc_ip,
+               "subnet_mask": user_pc_subnet,
+               "default_gateway": user_pc_gateway
+           },
+           "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
+       }},
+       upsert=True  # สร้างเอกสารใหม่หากไม่มี
+   )
 
-    return render_template('lab1.html', result=result)
+   return render_template('lab1.html', result=result)
