@@ -12,13 +12,7 @@ except ImportError:
 
 lab_bp = Blueprint('lab', __name__)
 
-# ----------------------------------------------------------------------
-# ฟังก์ชันแยกบล็อกของ interface
-# ----------------------------------------------------------------------
 def parse_interfaces(config_text):
-    """
-    แยก interface และคำสั่งที่เกี่ยวข้องออกเป็นบล็อก
-    """
     interfaces = {}
     current_interface = None
     lines = config_text.splitlines()
@@ -32,35 +26,20 @@ def parse_interfaces(config_text):
             interfaces[current_interface].append(line)
     return interfaces
 
-# ----------------------------------------------------------------------
-# ฟังก์ชันตรวจสอบคำสั่งในบล็อกของ interface
-# ----------------------------------------------------------------------
 def check_interface_block(interface_block, expected_commands):
-    """
-    ตรวจสอบว่า interface block มีคำสั่งครบถ้วนตาม expected_commands หรือไม่
-    """
     missing_commands = [cmd for cmd in expected_commands if cmd not in interface_block]
     return missing_commands
 
-# ----------------------------------------------------------------------
-# ฟังก์ชันตรวจสอบคีย์เวิร์ด
-# ----------------------------------------------------------------------
 def check_keywords(user_config, keywords):
-    """
-    เปรียบเทียบคำตอบของผู้ใช้กับคีย์เวิร์ดที่กำหนดในระบบ
-    """
     user_interfaces = parse_interfaces(user_config)
-
     missing_keywords = []
     found_keywords = []
 
-    # ตรวจสอบแต่ละ interface
     for keyword in keywords:
-        if isinstance(keyword, dict):  # ตรวจสอบแบบบล็อก
+        if isinstance(keyword, dict):
             interface_name = list(keyword.keys())[0]
             expected_commands = keyword[interface_name]
 
-            # ตรวจสอบว่ามีบล็อกนี้ใน config ผู้ใช้หรือไม่
             if interface_name in user_interfaces:
                 missing = check_interface_block(user_interfaces[interface_name], expected_commands)
                 if not missing:
@@ -69,13 +48,12 @@ def check_keywords(user_config, keywords):
                     missing_keywords.extend([f"{interface_name}: {cmd}" for cmd in missing])
             else:
                 missing_keywords.append(f"{interface_name}: (missing block)")
-        else:  # ตรวจสอบคีย์เวิร์ดทั่วไป
+        else:
             if any(keyword in line for line in user_config.lower().splitlines()):
                 found_keywords.append(keyword)
             else:
                 missing_keywords.append(keyword)
 
-    # คำนวณคะแนน
     total_keywords = len(keywords)
     if total_keywords == 0:
         score = 0
@@ -84,39 +62,6 @@ def check_keywords(user_config, keywords):
 
     return score, missing_keywords
 
-# ----------------------------------------------------------------------
-# ฟังก์ชันตรวจสอบ PC Config
-# ----------------------------------------------------------------------
-def check_pc_config(pc_config):
-    """
-    ใช้ Regular Expressions เพื่อตรวจสอบ PC Config
-    """
-    # ดึงค่าจาก PC Config
-    ip_match = re.search(r'ip address\s+([\d.]+)\s+([\d.]+)', pc_config, re.IGNORECASE)
-    gateway_match = re.search(r'ip default-gateway\s+([\d.]+)', pc_config, re.IGNORECASE)
-
-    if ip_match:
-        user_pc_ip, user_pc_subnet = ip_match.groups()
-    else:
-        user_pc_ip, user_pc_subnet = None, None
-
-    if gateway_match:
-        user_pc_gateway = gateway_match.group(1)
-    else:
-        user_pc_gateway = None
-
-    # ตรวจสอบค่าที่ผู้ใช้ส่งมา
-    pc_correct = (
-        user_pc_ip == "192.168.1.10" and
-        user_pc_subnet == "255.255.255.0" and
-        user_pc_gateway == "192.168.1.1"
-    )
-
-    return pc_correct, user_pc_ip, user_pc_subnet, user_pc_gateway
-
-# ----------------------------------------------------------------------
-# คีย์เวิร์ดสำหรับตรวจสอบ (เฉลยบังคับในโค้ด)
-# ----------------------------------------------------------------------
 KEYWORDS = [
     "service password-encryption",
     "hostname s1",
@@ -127,28 +72,26 @@ KEYWORDS = [
     {"interface Vlan99": ["ip address 192.168.1.2 255.255.255.0", "ip default-gateway 192.168.1.1"]}
 ]
 
-# ----------------------------------------------------------------------
-# เชื่อมต่อ MongoDB
-# ----------------------------------------------------------------------
 client = MongoClient('mongodb://localhost:27017/')
 db = client['network_lab']
 scores_collection = db['lab_scores']
 
-# ----------------------------------------------------------------------
-# Route: /lab1
-# ----------------------------------------------------------------------
 @lab_bp.route('/lab1')
 def lab1():
     return render_template('lab1.html')
 
 @lab_bp.route('/check_config/lab1', methods=['POST'])
 def check_config_lab1():
+    username = session.get('username', 'unknown')
     user_switch_config = request.form.get('config_switch', '').strip()
 
-    # อ่านค่าจากฟอร์มสำหรับ PC Config
+    # PC Config
     user_pc_ip = request.form.get('pc_ip_address', '').strip()
     user_pc_subnet = request.form.get('pc_subnet_mask', '').strip()
     user_pc_gateway = request.form.get('pc_default_gateway', '').strip()
+
+    # ตรวจสอบ Switch Config
+    switch_score, missing_keywords = check_keywords(user_switch_config, KEYWORDS)
 
     # ตรวจสอบ PC Config
     pc_correct = (
@@ -157,42 +100,23 @@ def check_config_lab1():
         user_pc_gateway == "192.168.1.1"
     )
 
-    pc_status = "ถูกต้อง" if pc_correct else f"ผิดพลาด "
-
-    # ตรวจสอบ Switch Config ด้วยคีย์เวิร์ด
-    switch_score, missing_keywords = check_keywords(user_switch_config, KEYWORDS)
-
-    # แปลง missing_keywords เป็นข้อความ
-    missing_str = ""
-    if missing_keywords:
-        missing_str = "<br><strong>ขาดคอนฟิก:</strong><br>"
-        for kw in missing_keywords:
-            missing_str += f"- {kw}<br>"
-
-    # เวลาไทย
-    try:
-        bangkok_time = datetime.now(ZoneInfo("Asia/Bangkok"))
-    except:
-        import pytz
-        tz = pytz.timezone('Asia/Bangkok')
-        bangkok_time = datetime.now(tz)
+    # สร้าง result dictionary
+    result = {
+        'student_id': username,
+        'switch_score': round(switch_score, 2),
+        'missing_commands': missing_keywords,
+        'pc_status': 'correct' if pc_correct else 'incorrect',
+        'status': 'success' if switch_score == 100 and pc_correct else 'partial' if switch_score > 0 or pc_correct else 'failed'
+    }
 
     # บันทึกลงฐานข้อมูล
-    username = session.get('username', 'unknown')
     scores_collection.insert_one({
         "username": username,
         "lab": "Lab 1",
         "switch_score": f"{switch_score:.2f}/100",
-        "pc_status": pc_status,
+        "pc_status": "ถูกต้อง" if pc_correct else "ไม่ถูกต้อง",
         "missing_keywords": missing_keywords,
-        "timestamp": bangkok_time
+        "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
     })
 
-    # สร้างผลลัพธ์สำหรับแสดงในหน้าเว็บ
-    result = f"""
-    ชื่อผู้ใช้: {username}<br>
-    คะแนน Switch: {switch_score:.2f}%<br>
-    PC: {pc_status}<br>
-    {missing_str}
-    """
     return render_template('lab1.html', result=result)

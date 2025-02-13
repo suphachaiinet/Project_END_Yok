@@ -6,31 +6,191 @@
     <title>{% block title %}Network Lab II{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <style>
-        .sidebar {
-            transition: all 0.3s ease;
-            width: 280px;
-            min-width: 280px;
+        /* Core Layout Styles */
+        body {
+            overflow: hidden;
         }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            z-index: 50;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 280px;
+            height: calc(100vh - 64px);
+            transition: all 0.3s ease;
+            z-index: 40;
+            border-right: 1px solid #f3f4f6;
+        }
+
+        .sidebar-content {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        /* Custom Scrollbar Styles */
+        .sidebar-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        .sidebar.collapsed .sidebar-content {
+            overflow: hidden;
+       
+        }
+        .sidebar-content::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+            transition: background 0.2s ease;
+        }
+
+        .sidebar-content::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Firefox Scrollbar */
+        .sidebar-content {
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 #f1f1f1;
+        }
+
+        
         .sidebar.collapsed {
             width: 0;
             min-width: 0;
         }
+
         .main-content {
+            margin-left: 280px;
+            margin-top: 64px;
+            height: calc(100vh - 64px);
             transition: all 0.3s ease;
         }
-        .config-textarea {
-            font-family: monospace;
-            white-space: pre;
-            resize: vertical;
-            min-height: 150px;
-            font-size: 14px;
+
+        .main-content.sidebar-collapsed {
+            margin-left: 0;
+        }
+
+        .lab-content {
+            height: 100%;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        /* Lab Content Scrollbar */
+        .lab-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .lab-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .lab-content::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .lab-content::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .lab-content {
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 #f1f1f1;
+        }
+
+        /* Lab Link Styles */
+        .lab-link {
+            position: relative;
+            padding: 0.75rem 1rem;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .lab-link.active {
+            background-color: #EBF5FF;
+            color: #2563EB;
+            border-left-color: #2563EB;
+        }
+
+        .lab-link:hover:not(.active) {
+            background-color: #F3F4F6;
+        }
+
+        /* Score Modal Styles */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 0.5rem;
+            max-width: 32rem;
+            width: 100%;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #E5E7EB;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progress-value {
+            height: 100%;
+            background-color: #2563EB;
+            transition: width 0.3s ease;
+        }
+
+        /* Modal Content Scrollbar */
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .modal-content {
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 #f1f1f1;
         }
     </style>
     {% block extra_css %}{% endblock %}
 </head>
 <body class="bg-gray-50">
     <!-- Top Navigation -->
-    <nav class="bg-white shadow-sm fixed w-full z-10">
+    <nav class="navbar bg-white shadow-sm">
         <div class="max-w-full mx-auto px-4">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -41,141 +201,248 @@
                     </button>
                     <h1 class="ml-4 text-lg font-semibold text-gray-900">Network Lab II</h1>
                 </div>
-                <div class="flex items-center">
-                    <a href="{{ url_for('dashboard') }}" class="text-gray-600 hover:text-gray-900 mr-4">Dashboard</a>
-                    <span class="text-gray-600 mr-4">{{ first_name }} {{ last_name }}</span>
+                <div class="flex items-center space-x-4">
+                    <button id="scoreToggle" class="px-3 py-2 text-gray-600 hover:text-gray-900">
+                        View Scores
+                    </button>
+                    <span class="text-gray-600">{{ first_name }} {{ last_name }}</span>
                     <a href="{{ url_for('logout') }}" class="text-gray-600 hover:text-gray-900">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="flex min-h-screen pt-16">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="sidebar bg-white shadow-sm overflow-y-auto">
-            <div class="p-4">
-                <h2 class="text-lg font-semibold text-gray-900 mb-4">Network labs </h2>
-                <!-- Lab Categories -->
-                <nav class="space-y-6">
-                    <!-- Basic Switch Configuration -->
-                    <div>
-                        <div class="space-y-1">
-                            <a href="{{ url_for('lab.lab1') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab1' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 1 - Basic Switch Configuration
-                            </a>
-                            <a href="{{ url_for('lab2.lab2') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab2' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 2 - Configure VLANs and Trunking
-                            </a>
-                            <a href="{{ url_for('lab3.lab3') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab3' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 3 - Implement VLANs and Trunking
-                            </a>
-                        </div>
-                    </div>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar bg-white shadow-sm">
+        <div class="sidebar-content p-4">
+            <nav class="space-y-1">
+                <a href="{{ url_for('lab.lab1') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab1' %}active{% endif %}">
+                    <span>Lab 1 - Basic Switch Configuration</span>
+                    {% if active_lab == 'lab1' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <!-- Lab 2-16 links similar to Lab 1 -->
+                <a href="{{ url_for('lab2.lab2') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab2' %}active{% endif %}">
+                    <span>Lab 2 - Configure VLANs and Trunking</span>
+                    {% if active_lab == 'lab2' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <!-- Continue with Lab 3-16 -->
+                <a href="{{ url_for('lab3.lab3') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab3' %}active{% endif %}">
+                    <span>Lab 3 - Implement VLANs and Trunking</span>
+                    {% if active_lab == 'lab3' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab4.lab4') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab4' %}active{% endif %}">
+                    <span>Lab 4 - Redundant Links</span>
+                    {% if active_lab == 'lab4' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab5.lab5') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab5' %}active{% endif %}">
+                    <span>Lab 5 - Rapid PVST+</span>
+                    {% if active_lab == 'lab5' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab6.lab6') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab6' %}active{% endif %}">
+                    <span>Lab 6 - Router-on-a-Stick Inter-VLAN</span>
+                    {% if active_lab == 'lab6' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab7.lab7') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab7' %}active{% endif %}">
+                    <span>Lab 7 - Inter-VLAN Routing</span>
+                    {% if active_lab == 'lab7' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab8.lab8') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab8' %}active{% endif %}">
+                    <span>Lab 8 - EtherChannel</span>
+                    {% if active_lab == 'lab8' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab9.lab9') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab9' %}active{% endif %}">
+                    <span>Lab 9 - PPP Authentication</span>
+                    {% if active_lab == 'lab9' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab10.lab10') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab10' %}active{% endif %}">
+                    <span>Lab 10 - Standard IPv4 ACLs</span>
+                    {% if active_lab == 'lab10' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab11.lab11') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab11' %}active{% endif %}">
+                    <span>Lab 11 - Extended IPv4 ACLs</span>
+                    {% if active_lab == 'lab11' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab12.lab12') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab12' %}active{% endif %}">
+                    <span>Lab 12 - DHCPv4</span>
+                    {% if active_lab == 'lab12' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab13.lab13') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab13' %}active{% endif %}">
+                    <span>Lab 13 - DHCPv6</span>
+                    {% if active_lab == 'lab13' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab14.lab14') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab14' %}active{% endif %}">
+                    <span>Lab 14 - NAT</span>
+                    {% if active_lab == 'lab14' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab15.lab15') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab15' %}active{% endif %}">
+                    <span>Lab 15 - HSRP</span>
+                    {% if active_lab == 'lab15' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('lab16.lab16') }}" class="lab-link rounded-md flex items-center justify-between text-sm {% if active_lab == 'lab16' %}active{% endif %}">
+                    <span>Lab 16 - Switch Security</span>
+                    {% if active_lab == 'lab16' %}
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    {% endif %}
+                </a>
+            </nav>
+        </div>
+    </aside>
 
-                    <!-- Advanced Switch Features -->
-                    <div>
-                        <div class="space-y-1">
-                            <a href="{{ url_for('lab4.lab4') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab4' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 4 - Redundant Links
-                            </a>
-                            <a href="{{ url_for('lab5.lab5') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab5' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 5 - Rapid PVST+ Configuration
-                            </a>
-                            <a href="{{ url_for('lab8.lab8') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab8' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 8 - Implement EtherChannel
-                            </a>
-                        </div>
-                    </div>
+    <!-- Main Content -->
+    <main id="mainContent" class="main-content">
+        <div class="lab-content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
 
-                    <!-- Inter-VLAN Routing -->
-                    <div>
-                        <div class="space-y-1">
-                            <a href="{{ url_for('lab6.lab6') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab6' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 6 - Router-on-a-Stick Inter-VLAN
-                            </a>
-                            <a href="{{ url_for('lab7.lab7') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab7' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 7 - Implement Inter-VLAN Routing
-                            </a>
+    <!-- Score Modal -->
+    <div id="scoreModal" class="modal-backdrop hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="modal-content">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-medium text-gray-900">Lab Scores</h3>
+                        <button id="closeScoreModal" class="text-gray-400 hover:text-gray-500">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="px-6 py-4">
+                    <div class="space-y-3">
+                        {% for lab in range(1, 17) %}
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-gray-700">Lab {{ lab }}</span>
+                            <div class="flex items-center">
+                                <div class="w-32 bg-gray-200 rounded-full h-2 mr-3">
+                                    <div class="bg-blue-600 rounded-full h-2" style="width: {{ scores[lab-1] if scores else '0' }}%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-gray-900">{{ scores[lab-1] if scores else '0' }}%</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-200">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-medium text-gray-900">Overall Progress</span>
+                            <span class="font-medium text-gray-900">{{ overall_score if overall_score else '0' }}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-value" style="width: {{ overall_score if overall_score else '0' }}%"></div>
                         </div>
                     </div>
-
-                    <!-- WAN and Security -->
-                    <div>
-                        <div class="space-y-1">
-                            <a href="{{ url_for('lab9.lab9') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab9' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 9 - Basic PPP Authentication
-                            </a>
-                            <a href="{{ url_for('lab10.lab10') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab10' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 10 - Standard IPv4 ACLs
-                            </a>
-                            <a href="{{ url_for('lab11.lab11') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab11' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 11 - Extended IPv4 ACLs
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Network Services -->
-                    <div>
-                        <div class="space-y-1">
-                            <a href="{{ url_for('lab12.lab12') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab12' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 12 - Implement DHCPv4
-                            </a>
-                            <a href="{{ url_for('lab13.lab13') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab13' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 13 - Configure DHCPv6
-                            </a>
-                            <a href="{{ url_for('lab14.lab14') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab14' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 14 - Configure NAT
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Advanced Features -->
-                    <div>
-                        <div class="space-y-1">
-                            <a href="{{ url_for('lab15.lab15') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab15' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 15 - Configuring HSRP
-                            </a>
-                            <a href="{{ url_for('lab16.lab16') }}" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-md {% if active_lab == 'lab16' %}bg-blue-50 text-blue-600{% endif %}">
-                                Lab 16 - Switch Security
-                            </a>
-                        </div>
-                    </div>
-                </nav>
+                </div>
             </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="flex-1 p-6 overflow-auto">
-            <div class="max-w-7xl mx-auto">
-                {% block content %}{% endblock %}
-            </div>
-        </main>
+        </div>
     </div>
 
     <script>
         // Sidebar Toggle
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
         
         sidebarToggle.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('sidebar-collapsed');
             saveSidebarState(sidebar.classList.contains('collapsed'));
         });
 
-        // Save sidebar state
+        // Score Modal Toggle
+        const scoreToggle = document.getElementById('scoreToggle');
+        const scoreModal = document.getElementById('scoreModal');
+        const closeScoreModal = document.getElementById('closeScoreModal');
+        
+        scoreToggle.addEventListener('click', () => {
+            scoreModal.classList.remove('hidden');
+        });
+
+        closeScoreModal.addEventListener('click', () => {
+            scoreModal.classList.add('hidden');
+        });
+
+        scoreModal.addEventListener('click', (e) => {
+            if (e.target === scoreModal) {
+                scoreModal.classList.add('hidden');
+            }
+        });
+
+        // Save/Load sidebar state
         function saveSidebarState(isCollapsed) {
             localStorage.setItem('sidebarCollapsed', isCollapsed);
         }
 
-        // Load sidebar state
         function loadSidebarState() {
             const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
             if (isCollapsed) {
                 sidebar.classList.add('collapsed');
+                mainContent.classList.add('sidebar-collapsed');
             }
         }
 
-        // Initialize
         loadSidebarState();
     </script>
 
