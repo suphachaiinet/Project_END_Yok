@@ -6,6 +6,7 @@ from itsdangerous import URLSafeTimedSerializer
 from flask_session import Session
 import logging
 from bson import ObjectId
+from lab import scores_collection  # เพิ่มบรรทัดนี้
 
 # นำเข้า Blueprint ของ Lab 1 และ Lab 2
 from lab import lab_bp
@@ -60,6 +61,9 @@ mail = Mail(app)
 
 # ใช้ Flask-Session เพื่อจัดการเซสชัน
 app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_USE_SIGNER'] = True
+app.config['SECRET_KEY'] = 'your_strong_secret_key_here'  # ใช้คีย์ที่ซับซ้อนและปลอดภัย
 Session(app)
 
 mongo = PyMongo(app)
@@ -189,6 +193,33 @@ def dashboard():
         return redirect(url_for('login'))
 
     role = session.get('role', 'user')
+    
+    # Debug: พิมพ์ username
+    print(f"Username: {user['username']}")
+    
+    # ดึงคะแนนแล็ปจาก MongoDB
+    lab_scores = [0] * 16  # สำหรับ Lab 1-16
+    
+    # ค้นหาคะแนนสำหรับผู้ใช้งานปัจจุบัน
+    user_lab_scores = list(scores_collection.find({"username": user['username']}))
+    
+    # Debug: พิมพ์คะแนนที่พบ
+    print(f"Lab Scores found: {user_lab_scores}")
+    
+    for score_entry in user_lab_scores:
+        try:
+            lab_num = int(score_entry['lab'].replace('Lab ', '')) - 1
+            score = float(score_entry['switch_score'].split('/')[0])
+            lab_scores[lab_num] = score
+            
+            # Debug: พิมพ์คะแนนแต่ละแล็บ
+            print(f"Lab {lab_num + 1} Score: {score}")
+        except Exception as e:
+            print(f"Error processing score: {e}")
+
+    # คำนวณคะแนนรวม
+    overall_score = sum(lab_scores) / 16
+
     if role == 'teacher':
         return render_template('teacher_dashboard.html',
                                first_name=user['first_name'],
@@ -196,11 +227,13 @@ def dashboard():
     elif role == 'student':
         return render_template('student_dashboard.html',
                                first_name=user['first_name'],
-                               last_name=user['last_name'])
+                               last_name=user['last_name'],
+                               scores=lab_scores,
+                               overall_score=overall_score)
     else:
         flash('Invalid role detected.', 'danger')
         return redirect(url_for('login'))
-
+    
 @app.route('/confirm/<token>')
 def confirm_email(token):
     try:

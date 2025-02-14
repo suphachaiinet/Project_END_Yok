@@ -1,6 +1,6 @@
 import os
 import re
-from flask import Blueprint, render_template, request, session
+from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 from datetime import datetime
 from pymongo import MongoClient
 
@@ -11,6 +11,12 @@ except ImportError:
     ZoneInfo = lambda tz: pytz.timezone(tz)
 
 lab_bp = Blueprint('lab', __name__)
+
+# สร้าง MongoDB client
+mongo_client = MongoClient('mongodb://localhost:27017/')
+db = mongo_client['network_lab']
+scores_collection = db['lab_scores']
+users_collection = db['users_all']
 
 def parse_interfaces(config_text):
     interfaces = {}
@@ -72,59 +78,100 @@ KEYWORDS = [
     {"interface Vlan99": ["ip address 192.168.1.2 255.255.255.0", "ip default-gateway 192.168.1.1"]}
 ]
 
-client = MongoClient('mongodb://localhost:27017/')
-db = client['network_lab']
-scores_collection = db['lab_scores']
-
-@lab_bp.route('/lab1')
+@lab_bp.route('/lab1', methods=['GET', 'POST'])
 def lab1():
-    return render_template('lab1.html')
+    # ตรวจสอบว่ามี username ใน session หรือไม่
+    if 'username' not in session:
+        flash('กรุณาเข้าสู่ระบบก่อน', 'danger')
+        return redirect(url_for('login'))
+        
+    # ดึงข้อมูล scores ทั้งหมดของผู้ใช้
+    username = session.get('username')
+    user_scores = list(scores_collection.find({"username": username}))
+    
+    # สร้าง array เก็บคะแนนแต่ละ lab
+    lab_scores = [0] * 16  # สำหรับ Lab 1-16
+    
+    for score_entry in user_scores:
+        try:
+            lab_num = int(score_entry['lab'].replace('Lab ', '')) - 1
+            score = float(score_entry['switch_score'].split('/')[0])
+            lab_scores[lab_num] = score
+        except Exception as e:
+            print(f"Error processing score: {e}")
+    
+    # คำนวณคะแนนรวม
+    overall_score = sum(lab_scores) / 16
 
-@lab_bp.route('/check_config/lab1', methods=['POST'])
-def check_config_lab1():
-   username = session.get('username', 'unknown')
-   user_switch_config = request.form.get('config_switch', '').strip()
+    if request.method == 'POST':
+        username = session.get('username', 'unknown')
+        user_switch_config = request.form.get('config_switch', '').strip()
 
-   # PC Config
-   user_pc_ip = request.form.get('pc_ip_address', '').strip()
-   user_pc_subnet = request.form.get('pc_subnet_mask', '').strip()
-   user_pc_gateway = request.form.get('pc_default_gateway', '').strip()
+        # PC Config
+        user_pc_ip = request.form.get('pc_ip_address', '').strip()
+        user_pc_subnet = request.form.get('pc_subnet_mask', '').strip()
+        user_pc_gateway = request.form.get('pc_default_gateway', '').strip()
 
-   # ตรวจสอบ Switch Config
-   switch_score, missing_keywords = check_keywords(user_switch_config, KEYWORDS)
+        # ตรวจสอบ Switch Config
+        switch_score, missing_keywords = check_keywords(user_switch_config, KEYWORDS)
 
-   # ตรวจสอบ PC Config
-   pc_correct = (
-       user_pc_ip == "192.168.1.10" and
-       user_pc_subnet == "255.255.255.0" and
-       user_pc_gateway == "192.168.1.1"
-   )
+        # ตรวจสอบ PC Config
+        pc_correct = (
+            user_pc_ip == "192.168.1.10" and
+            user_pc_subnet == "255.255.255.0" and
+            user_pc_gateway == "192.168.1.1"
+        )
 
-   # สร้าง result dictionary
-   result = {
-       'student_id': username,
-       'switch_score': round(switch_score, 2),
-       'missing_commands': missing_keywords,
-       'pc_status': 'correct' if pc_correct else 'incorrect',
-       'status': 'success' if switch_score == 100 and pc_correct else 'partial' if switch_score > 0 or pc_correct else 'failed'
-   }
+        # สร้าง result dictionary
+        result = {
+            'student_id': username,
+            'switch_score': round(switch_score, 2),
+            'missing_commands': missing_keywords,
+            'pc_status': 'correct' if pc_correct else 'incorrect',
+            'status': 'success' if switch_score == 100 and pc_correct else 'partial' if switch_score > 0 or pc_correct else 'failed'
+        }
 
-   # อัปเดตลงฐานข้อมูล
-   scores_collection.update_one(
-       {"username": username, "lab": "Lab 1"},  # filter
-       {"$set": {  # update
-           "switch_score": f"{switch_score:.2f}/100",
-           "pc_status": "ถูกต้อง" if pc_correct else "ไม่ถูกต้อง",
-           "missing_keywords": missing_keywords,
-           "switch_config": user_switch_config,
-           "pc_config": {
-               "ip_address": user_pc_ip,
-               "subnet_mask": user_pc_subnet,
-               "default_gateway": user_pc_gateway
-           },
-           "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
-       }},
-       upsert=True  # สร้างเอกสารใหม่หากไม่มี
-   )
+        # บันทึกลงฐานข้อมูลและ session
+        try:
+            scores_collection.update_one(
+                {"username": username, "lab": "Lab 1"},  # filter
+                {"$set": {  # update
+                    "switch_score": f"{switch_score:.2f}/100",
+                    "pc_status": "ถูกต้อง" if pc_correct else "ไม่ถูกต้อง",
+                    "missing_keywords": missing_keywords,
+                    "switch_config": user_switch_config,
+                    "pc_config": {
+                        "ip_address": user_pc_ip,
+                        "subnet_mask": user_pc_subnet,
+                        "default_gateway": user_pc_gateway
+                    },
+                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
+                }},
+                upsert=True  # สร้างเอกสารใหม่หากไม่มี
+            )
 
-   return render_template('lab1.html', result=result)
+            # เก็บคะแนนใน session
+            session['lab1_score'] = round(switch_score, 2)
+            session['lab1_result'] = result
+            session.modified = True  # บอกให้ Flask รู้ว่า session ถูกแก้ไข
+
+            print(f"Saved score for {username}: {switch_score}")
+        except Exception as e:
+            print(f"Error saving score: {e}")
+
+        return redirect(url_for('lab.lab1'))
+    
+    # กรณี GET
+    result = session.get('lab1_result')
+    user = users_collection.find_one({"username": username})
+    
+    # ถ้าไม่พบข้อมูลผู้ใช้ ใช้ข้อมูลจาก session แทน
+    first_name = user['first_name'] if user else session.get('first_name', 'Unknown')
+    last_name = user['last_name'] if user else session.get('last_name', 'User')
+    
+    return render_template('lab1.html', 
+                         result=result,
+                         scores=lab_scores,
+                         overall_score=overall_score,
+                         first_name=first_name,
+                         last_name=last_name)

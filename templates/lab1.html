@@ -190,7 +190,7 @@
         <div class="right-panel">
             <!-- Configuration Form -->
             <div class="config-panel">
-                <form action="{{ url_for('lab.check_config_lab1') }}" method="POST">
+                <form action="{{ url_for('lab.lab1') }}" method="POST">                    
                     <div class="mb-6">
                         <h3 class="text-lg font-medium text-gray-900 mb-3">Switch Configuration</h3>
                         <textarea name="config_switch" 
@@ -304,6 +304,25 @@
         const isHidden = pdfContainer.style.display === 'none';
         pdfContainer.style.display = isHidden ? 'block' : 'none';
         toggleButton.textContent = isHidden ? 'Hide PDF' : 'Show PDF';
+    });
+
+    // เพิ่มโค้ดนี้
+    document.querySelector('form').addEventListener('submit', function(e) {
+        // ป้องกันการส่งฟอร์มแบบปกติ
+        e.preventDefault();
+        
+        // ส่งข้อมูลฟอร์ม
+        fetch(this.action, {
+            method: this.method,
+            body: new FormData(this)
+        })
+        .then(response => {
+            // รีเฟรชหน้า
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error('เกิดข้อผิดพลาด:', error);
+        });
     });
 </script>
 {% endblock %}

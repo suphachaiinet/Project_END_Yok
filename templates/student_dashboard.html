@@ -392,7 +392,7 @@
                             <span class="font-medium text-gray-900">{{ overall_score if overall_score else '0' }}%</span>
                         </div>
                         <div class="progress-bar">
-                            <div class="progress-value" style="width: {{ overall_score if overall_score else '0' }}%"></div>
+                            <div class="progress-value" style="width: {{ overall_score if overall_score else '0' }}"></div>
                         </div>
                     </div>
                 </div>
@@ -447,6 +447,35 @@
         loadSidebarState();
     </script>
 
-    {% block extra_js %}{% endblock %}
-</body>
+{% block extra_js %}
+<script>
+    const toggleButton = document.getElementById('toggleButton');
+    const pdfContainer = document.getElementById('pdfContainer');
+
+    toggleButton.addEventListener('click', () => {
+        const isHidden = pdfContainer.style.display === 'none';
+        pdfContainer.style.display = isHidden ? 'block' : 'none';
+        toggleButton.textContent = isHidden ? 'Hide PDF' : 'Show PDF';
+    });
+
+    // เพิ่มโค้ดนี้
+    document.querySelector('form').addEventListener('submit', function(e) {
+        // ป้องกันการส่งฟอร์มแบบปกติ
+        e.preventDefault();
+        
+        // ส่งข้อมูลฟอร์ม
+        fetch(this.action, {
+            method: this.method,
+            body: new FormData(this)
+        })
+        .then(response => {
+            // รีเฟรชหน้า
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error('เกิดข้อผิดพลาด:', error);
+        });
+    });
+</script>
+{% endblock %}</body>
 </html>

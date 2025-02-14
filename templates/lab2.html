@@ -1,124 +1,311 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 2 - Configure VLANs and Trunking</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <style>
-        .config-textarea {
-            font-family: monospace;
-            white-space: pre;
-            resize: vertical;
-            min-height: 200px;
-        }
-    </style>
-</head>
-<body class="bg-gray-100">
-    <nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
-        <a href="{{ url_for('dashboard') }}" class="hover:text-gray-200">Home</a>
-        <a href="{{ url_for('logout') }}" class="hover:text-gray-200">Log Out</a>
-    </nav>
+{% extends "student_dashboard.html" %}
 
-    <div class="container mx-auto px-4 py-8 max-w-6xl">
-        <h1 class="text-3xl font-bold mb-8 text-center">Lab 2 - Configure VLANs and Trunking</h1>
+{% block title %}Lab 2 - Configure VLANs and Trunking{% endblock %}
 
-        <div class="mb-6">
-            <button id="toggleButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                Show PDF
-            </button>
-        </div>
+{% block extra_css %}
+<style>
+    .lab-content {
+        padding: 0;
+        height: calc(100vh - 64px);
+        overflow: hidden;
+    }
 
-        <div id="pdfContainer" class="hidden mb-8">
-            <embed src="{{ url_for('static', filename='pdfs/lab2.pdf') }}"
-                   class="w-full h-screen">
-        </div>
+    .lab-header {
+        background-color: #1a56db;
+        color: white;
+        padding: 1rem;
+    }
 
-        <form action="{{ url_for('lab2.check_config_lab2') }}" method="POST" class="space-y-6 bg-white p-6 rounded-lg shadow">
-            <!-- Switch Configurations -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="space-y-2">
-                    <h3 class="text-xl font-semibold">Switch 1 Configuration</h3>
-                    <textarea name="config_switch1" class="config-textarea w-full p-3 border rounded" required placeholder="Enter Switch 1 commands"></textarea>
-                </div>
+    .lab-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        height: calc(100vh - 112px);
+        padding: 1rem 2rem;
+    }
 
-                <div class="space-y-2">
-                    <h3 class="text-xl font-semibold">Switch 2 Configuration</h3>
-                    <textarea name="config_switch2" class="config-textarea w-full p-3 border rounded" required placeholder="Enter Switch 2 commands"></textarea>
-                </div>
-            </div>
+    .instructions-panel {
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+    }
 
-            <!-- PC Configurations -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- PC 1 Config -->
-                <div class="space-y-4">
-                    <h3 class="text-xl font-semibold">PC 1 Configuration</h3>
-                    <div class="space-y-2">
-                        <div>
-                            <label class="block">IP Address:</label>
-                            <input type="text" name="pc1_ip_address" class="w-full p-2 border rounded" required placeholder="Enter PC1 IP">
-                        </div>
-                        <div>
-                            <label class="block">Subnet Mask:</label>
-                            <input type="text" name="pc1_subnet_mask" class="w-full p-2 border rounded" required placeholder="Enter PC1 Subnet Mask">
-                        </div>
-                        <div>
-                            <label class="block">Default Gateway:</label>
-                            <input type="text" name="pc1_default_gateway" class="w-full p-2 border rounded" required placeholder="Enter PC1 Default Gateway">
-                        </div>
-                    </div>
-                </div>
+    .instructions-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid #e5e7eb;
+    }
 
-                <!-- PC 2 Config -->
-                <div class="space-y-4">
-                    <h3 class="text-xl font-semibold">PC 2 Configuration</h3>
-                    <div class="space-y-2">
-                        <div>
-                            <label class="block">IP Address:</label>
-                            <input type="text" name="pc2_ip_address" class="w-full p-2 border rounded" required placeholder="Enter PC2 IP">
-                        </div>
-                        <div>
-                            <label class="block">Subnet Mask:</label>
-                            <input type="text" name="pc2_subnet_mask" class="w-full p-2 border rounded" required placeholder="Enter PC2 Subnet Mask">
-                        </div>
-                        <div>
-                            <label class="block">Default Gateway:</label>
-                            <input type="text" name="pc2_default_gateway" class="w-full p-2 border rounded" required placeholder="Enter PC2 Default Gateway">
-                        </div>
-                    </div>
-                </div>
-            </div>
+    #pdfContainer {
+        flex: 1;
+        overflow: hidden;
+    }
 
-            <div class="text-center">
-                <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">
-                    Check & Submit
-                </button>
-            </div>
-        </form>
+    #pdfContainer embed {
+        width: 100%;
+        height: 100%;
+    }
 
-        {% if result %}
-        <div class="mt-8 bg-white p-6 rounded-lg shadow">
-            <h3 class="text-xl font-semibold mb-4">ผลการตรวจสอบ</h3>
-            <p class="text-lg">{{ result|safe }}</p>
-        </div>
-        {% endif %}
+    .right-panel {
+        display: grid;
+        grid-template-rows: auto 250px;
+        height: 100%;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
 
-        <div class="mt-8">
-            <a href="{{ url_for('dashboard') }}" class="inline-block bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">
-                Back
-            </a>
-        </div>
+    .config-panel {
+        padding: 1.5rem;
+        overflow-y: auto;
+    }
+
+     /* Results Panel */
+     .results-panel {
+        background: #f8fafc;
+        border-top: 1px solid #e5e7eb;
+        padding: 1rem;
+        overflow-y: auto;
+    }
+
+    /* Custom scrollbar for results panel */
+    .results-panel::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .results-panel::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+
+    .results-panel::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 3px;
+    }
+
+    .results-panel::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+
+    .results-panel {
+        scrollbar-width: thin;
+        scrollbar-color: #cbd5e1 #f1f1f1;
+    }
+
+    .config-textarea {
+        font-family: monospace;
+        white-space: pre;
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .status-bar {
+        width: 4px;
+        height: 100%;
+        margin-right: 1rem;
+        border-radius: 9999px;
+        flex-shrink: 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="lab-content">
+    <div class="lab-header">
+        <h1 class="text-xl font-semibold">Lab 2: Configure VLANs and Trunking</h1>
     </div>
 
-    <script>
-        const toggleButton = document.getElementById('toggleButton');
-        const pdfContainer = document.getElementById('pdfContainer');
+    <div class="lab-container">
+        <!-- Left Panel - Instructions -->
+        <div class="instructions-panel">
+            <div class="instructions-header">
+                <h2>Lab Instructions</h2>
+                <button class="hide-pdf-button" id="toggleButton">Hide PDF</button>
+            </div>
+            <div id="pdfContainer">
+                <embed src="{{ url_for('static', filename='pdfs/lab2.pdf') }}" class="w-full">
+            </div>
+        </div>
 
-        toggleButton.addEventListener('click', () => {
-            const isHidden = pdfContainer.classList.contains('hidden');
-            pdfContainer.classList.toggle('hidden');
-            toggleButton.textContent = isHidden ? 'Hide PDF' : 'Show PDF';
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <!-- Configuration Form -->
+            <div class="config-panel">
+                <form action="{{ url_for('lab2.lab2') }}" method="POST">
+                    <!-- Switch Configurations -->
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-medium text-gray-900">Switch 1 Configuration</h3>
+                            <textarea name="config_switch1" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required></textarea>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-medium text-gray-900">Switch 2 Configuration</h3>
+                            <textarea name="config_switch2" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- PC Configurations -->
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <!-- PC 1 Config -->
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-medium text-gray-900">PC 1 Configuration</h3>
+                            <div class="space-y-2">
+                                <input type="text" name="pc1_ip_address" class="w-full p-2 border rounded" placeholder="IP Address" required>
+                                <input type="text" name="pc1_subnet_mask" class="w-full p-2 border rounded" placeholder="Subnet Mask" required>
+                                <input type="text" name="pc1_default_gateway" class="w-full p-2 border rounded" placeholder="Default Gateway" required>
+                            </div>
+                        </div>
+                        <!-- PC 2 Config -->
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-medium text-gray-900">PC 2 Configuration</h3>
+                            <div class="space-y-2">
+                                <input type="text" name="pc2_ip_address" class="w-full p-2 border rounded" placeholder="IP Address" required>
+                                <input type="text" name="pc2_subnet_mask" class="w-full p-2 border rounded" placeholder="Subnet Mask" required>
+                                <input type="text" name="pc2_default_gateway" class="w-full p-2 border rounded" placeholder="Default Gateway" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                            Check Configuration
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="results-panel">
+                <div class="flex h-full">
+                    <!-- Status Bar -->
+                    <div class="status-bar {% if result %}
+                        {% if result.status == 'success' %}bg-green-500
+                        {% elif result.status == 'partial' %}bg-yellow-500
+                        {% else %}bg-red-500{% endif %}
+                        {% else %}bg-gray-300{% endif %}">
+                    </div>
+
+                    <!-- Results Content -->
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">Results</h3>
+                        {% if result %}
+                        <!-- Student Info -->
+                        <div class="bg-white p-3 rounded-lg border mb-3">
+                            <div class="text-sm">
+                                <span class="font-medium">รหัสนักศึกษา:</span> 
+                                <span>{{ result.student_id }}</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Switch Scores -->
+                        <div class="bg-white p-3 rounded-lg border mb-3">
+                            <div class="mb-2">
+                                <span class="font-medium">Switch 1 Score:</span>
+                                <span class="{% if result.sw1_score == 100 %}text-green-600
+                                    {% elif result.sw1_score > 0 %}text-yellow-600
+                                    {% else %}text-red-600{% endif %}">
+                                    {{ result.sw1_score }}%
+                                </span>
+                            </div>
+                            <div class="mb-2">
+                                <span class="font-medium">Switch 2 Score:</span>
+                                <span class="{% if result.sw2_score == 100 %}text-green-600
+                                    {% elif result.sw2_score > 0 %}text-yellow-600
+                                    {% else %}text-red-600{% endif %}">
+                                    {{ result.sw2_score }}%
+                                </span>
+                            </div>
+                            <div>
+                                <span class="font-medium">Total Score:</span>
+                                <span class="{% if result.total_score == 100 %}text-green-600
+                                    {% elif result.total_score > 0 %}text-yellow-600
+                                    {% else %}text-red-600{% endif %}">
+                                    {{ result.total_score }}%
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Missing Commands -->
+                        {% if result.sw1_missing or result.sw2_missing %}
+                        <div class="bg-white p-3 rounded-lg border mb-3">
+                            <div class="font-medium mb-2">Missing Commands:</div>
+                            {% if result.sw1_missing %}
+                            <div class="mb-2">
+                                <div class="font-medium text-sm text-red-600">Switch 1:</div>
+                                <ul class="list-disc pl-4 text-sm">
+                                    {% for cmd in result.sw1_missing %}
+                                    <li>{{ cmd }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+                            {% if result.sw2_missing %}
+                            <div>
+                                <div class="font-medium text-sm text-red-600">Switch 2:</div>
+                                <ul class="list-disc pl-4 text-sm">
+                                    {% for cmd in result.sw2_missing %}
+                                    <li>{{ cmd }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+
+                        <!-- PC Status -->
+                        <div class="bg-white p-3 rounded-lg border">
+                            <div class="mb-2">
+                                <span class="font-medium">PC1 Status:</span>
+                                <span class="{% if result.pc1_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
+                                    {{ "ถูกต้อง" if result.pc1_status == 'correct' else "ไม่ถูกต้อง" }}
+                                </span>
+                            </div>
+                            <div>
+                                <span class="font-medium">PC2 Status:</span>
+                                <span class="{% if result.pc2_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
+                                    {{ "ถูกต้อง" if result.pc2_status == 'correct' else "ไม่ถูกต้อง" }}
+                                </span>
+                            </div>
+                        </div>
+                        {% else %}
+                        <p class="text-gray-500">ผลลัพธ์จะแสดงที่นี่หลังจากตรวจสอบ</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const toggleButton = document.getElementById('toggleButton');
+    const pdfContainer = document.getElementById('pdfContainer');
+
+    toggleButton.addEventListener('click', () => {
+        const isHidden = pdfContainer.style.display === 'none';
+        pdfContainer.style.display = isHidden ? 'block' : 'none';
+        toggleButton.textContent = isHidden ? 'Hide PDF' : 'Show PDF';
+    });
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        fetch(this.action, {
+            method: this.method,
+            body: new FormData(this)
+        })
+        .then(response => {
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
-    </script>
-</body>
-</html>
+    });
+</script>
+{% endblock %}
