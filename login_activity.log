@@ -5450,3 +5450,1585 @@ INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:53:20] "GET /lab6/lab6 HTTP/1.1" 200
 INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:53:20] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:53:44] "GET /lab6/lab6 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:53:44] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:15] "[32mPOST /lab6/lab6 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:15] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:15] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:15] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:21] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:24] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:24] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:27] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:27] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:30] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:30] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:32] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:32] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:35] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:35] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:37] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:37] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:38] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:38] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:38] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:38] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:42] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:42] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:42] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 08:56:42] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:24] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:24] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:26] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:26] "GET /static/pdfs/lab1.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:27] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:27] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:28] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:28] "GET /static/pdfs/lab2.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:29] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:30] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:31] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:31] "GET /static/pdfs/lab3.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:31] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:31] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:32] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:32] "GET /static/pdfs/lab4.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:33] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:33] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:34] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:34] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:35] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:35] "GET /static/pdfs/lab5.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:36] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:36] "GET /static/pdfs/lab6.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:37] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:37] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:37] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:37] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:38] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:38] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:53] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:21:53] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:03] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:03] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:03] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:03] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:04] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:04] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:05] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:05] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:05] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:05] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:07] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:07] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:07] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:07] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:09] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:09] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:10] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:10] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:10] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:10] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:11] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:11] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:11] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:11] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:13] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:13] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:14] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:14] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:14] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:14] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:15] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:15] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:15] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:15] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:15] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:16] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:16] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:16] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:17] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:17] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:17] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:17] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:18] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:18] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:19] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:19] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:21] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:21] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:27] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:27] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:32] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:32] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:33] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:33] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:34] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:34] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:34] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:34] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:34] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:35] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:35] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:22:35] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:44] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:44] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:44] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:44] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:45] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:48] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:49] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:49] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:51] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:52] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:52] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:53] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:53] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:58] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:58] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:27:58] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:00] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:00] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:07] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:07] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:07] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:08] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:08] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:08] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:08] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:08] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:09] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:09] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:09] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:09] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:11] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:11] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:12] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:12] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:13] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:13] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:13] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:13] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:14] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:18] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:18] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:28:18] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:30:27] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:30:27] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:33:01] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:33:01] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:33:06] "[32mPOST /lab/lab1 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:33:06] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:33:06] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:33:06] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:34:42] "[32mPOST /lab/lab1 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:34:42] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:34:42] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:34:42] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:35:17] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:35:17] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:35:18] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:35:18] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:35:19] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:35:21] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:35:21] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:36:29] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:37:42] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:37:42] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:37:43] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:37:43] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:37:43] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [14/Feb/2025 09:37:43] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:29] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:33] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:33] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:35] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:35] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:36] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:36] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:37] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:37] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:37] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:37] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:40] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:41] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:41] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:43] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:43] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:44] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:44] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:46] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:46] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:47] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:48] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:48] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:48] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:48] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:49] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:49] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:49] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:49] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:49] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:50] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:51] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:51] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:53] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:53] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:54] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:54] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:54] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:54] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:55] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:55] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:56] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:56] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:57] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:57] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:57] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:32:59] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:33:00] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:33:39] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:33:47] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:33:47] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:33:56] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:33:59] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:33:59] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:00] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:06] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:06] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:07] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:10] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:10] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:15] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:15] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:16] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:16] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:16] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:16] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:34:33] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:47:53] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:47:54] "GET /static/pdfs/lab7.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:49:18] "[32mPOST /lab7/lab7 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:49:18] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:49:18] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:49:18] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:50:40] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:50:41] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:50:52] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:50:52] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:30] "[32mPOST /lab7/lab7 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:31] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:31] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:31] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:35] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:39] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:39] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:41] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:41] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:41] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:41] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:41] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:41] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:42] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:42] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:43] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:43] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:43] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:43] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:43] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:43] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:44] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:44] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:44] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:44] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:46] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:46] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:49] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:51:49] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:52:22] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:59:46] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:59:46] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:59:49] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:59:49] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:59:49] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:59:49] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:59:50] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:59:50] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:59:50] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 16:59:50] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:31] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:31] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:32] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:32] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:33] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:33] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:34] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:34] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:34] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:34] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:34] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:34] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:35] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:35] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:37] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:38] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:38] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:38] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:01:38] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:03:19] "[35m[1mGET /lab7/lab7 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:03:19] "GET /lab7/lab7?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:03:19] "GET /lab7/lab7?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:03:19] "GET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png&s=3bsKpmuCQntoKFRj6NC3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:03:19] "GET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:29] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:29] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:35] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:37] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:38] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:38] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:38] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:38] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:39] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:39] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:40] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:04:40] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:05:08] "[35m[1mGET /lab7/lab7 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:05:08] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:05:08] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:05:08] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png&s=3bsKpmuCQntoKFRj6NC3 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:05:08] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:05:25] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:05:25] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:32:51] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:32:51] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:33:31] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:33:31] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:44:12] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:44:13] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:45:41] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:45:41] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:47:51] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:47:51] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:47:52] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:47:52] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:09] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:09] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:10] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:10] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:12] "[35m[1mGET /lab7/lab7 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:12] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:12] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:12] "GET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png&s=IrME90TmIPWb7GAbeC1R HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:12] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:15] "[35m[1mGET /lab7/lab7 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:15] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:15] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [16/Feb/2025 17:48:15] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png&s=IrME90TmIPWb7GAbeC1R HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:28:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:28:17] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:28:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:28:22] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:28:23] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:28:29] "[35m[1mGET /lab7/lab7 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:28:29] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:28:29] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:28:29] "GET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png&s=YtlnVLE4NSxEFRrdsnvR HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:30:45] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:30:45] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:31:13] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:31:13] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:35:07] "[35m[1mGET /lab7/lab7 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:35:07] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:35:07] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:35:07] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png&s=YtlnVLE4NSxEFRrdsnvR HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:35:07] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:35:10] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:35:10] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:37:43] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:37:43] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:37:57] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:37:57] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:37:58] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:37:58] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:38:01] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:38:03] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:38:03] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:38:05] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:38:12] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:38:12] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:40:19] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:40:20] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:41:07] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:41:07] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:41:09] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:41:10] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:41:10] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:41:11] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:41:11] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:41:12] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:41:12] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:34] "[32mGET /lab7/lab7 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:34] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:39] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:41] "[32mGET /lab7/lab7 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:41] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:52] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:52] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:53] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:53] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:54] "[32mGET /lab7/lab7 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:43:54] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:45:53] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:45:53] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:45:54] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:45:54] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:50:55] "[35m[1mGET /lab7/lab7 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:50:55] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:50:55] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:50:55] "GET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png&s=n9evAhMrQTbPC0kwrQfG HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:50:55] "[36mGET /lab7/lab7?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:43] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:43] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:46] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:46] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:47] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:47] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:49] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:49] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:50] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:50] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:51] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:51] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:51] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:51] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:53] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:53] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:53] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:53] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:54] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:54] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:54] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:54] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:55] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:55] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:55] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:52:55] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:53:12] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:53:12] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab6.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:53:36] "[35m[1mGET /lab6/lab6 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:53:36] "GET /lab6/lab6?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:53:36] "GET /lab6/lab6?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:53:36] "GET /lab6/lab6?__debugger__=yes&cmd=resource&f=console.png&s=kNheTFvmRmivoTPNolB9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:53:36] "GET /lab6/lab6?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab5.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab4.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab3.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:31] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:31] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:33] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:33] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:33] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:33] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:33] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:34] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:34] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:34] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:36] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:37] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:37] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:55:37] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:56:13] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:56:13] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:56:14] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 10:56:14] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:00:35] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:00:35] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:00:37] "GET /register HTTP/1.1" 200 -
+ERROR:root:Error sending email: (534, b'5.7.9 Application-specific password required. For more information, go to\n5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d2e1a72fcca58-73275615173sm1643074b3a.168 - gsmtp')
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:00:44] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:00:44] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:06:11] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:06:19] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:06:19] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:06:50] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:07:10] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:07:10] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:07:32] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:07:51] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:07:51] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:07:56] "[32mGET /confirm/InM2NTA2MDIyNDEwMDMxQGVtYWlsLmttdXRuYi5hYy50aCI.Z7K2FA.KFFDbYiVkyPuoj4Apr1XDJyYtuU HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:07:56] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:07:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:07:59] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:07:59] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab7.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab5.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:11:11] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:11:22] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:11:22] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:11:28] "[32mGET /confirm/InN1cGhhY2hhaTEwOTc4QGdtYWlsLmNvbSI.Z7K1uA.Qz94dHIA0uaM5MM6DN5VqVZBwuQ HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:11:28] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:11:30] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:11:30] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:11:50] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:11:59] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:11:59] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:05] "[32mGET /confirm/InN1cGhhY2hhaTEwOTc4QGdtYWlsLmNvbSI.Z7K3DA.XG1OplZNNpbW6gRJSVVo26GJwZI HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:08] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:08] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:28] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:28] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:29] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:29] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:29] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:29] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:30] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:30] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:30] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:30] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:30] "GET /lab8/lab8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:32] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:33] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:33] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:34] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:34] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:35] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:35] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:36] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:12:36] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab6.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:13:23] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:13:23] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:13:24] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:13:24] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab6.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:13:40] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:13:40] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:39] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:39] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:39] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:39] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:40] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:40] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:40] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:40] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:41] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:41] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:42] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:44] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:44] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:44] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:44] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [17/Feb/2025 11:57:45] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:11:54] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:11:54] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:11:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:03] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:08] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:08] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:09] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:10] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:12] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:12] "GET /static/pdfs/lab1.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:13] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:13] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:13] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:13] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:14] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:14] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:16] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:12:16] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:14:54] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:14:54] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:14:55] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:14:55] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:15:04] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:15:04] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:15:04] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:15:04] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:15:05] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:15:05] "GET /static/pdfs/lab2.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:15:06] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:15:06] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:15:07] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:18] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:18] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:19] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:19] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:20] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:20] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:29] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:29] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:30] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:30] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:31] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:31] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:34] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:34] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:37] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:38] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:38] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:39] "GET /lab8/lab8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:41] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:42] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:42] "GET /static/pdfs/lab7.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:44] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:20:44] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:23:19] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:23:23] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:23:23] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:22] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:22] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:24] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:24] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:25] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:25] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:28] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:28] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:30] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:30] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:36] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:36] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:39] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:39] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:42] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:43] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:43] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:43] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:43] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:56] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:56] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:59] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:28:59] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:30:17] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:30:17] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:30:18] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:30:18] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:30:19] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:30:19] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:32:08] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:32:08] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:34:24] "[35m[1mGET /lab/lab1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:34:24] "[36mGET /lab/lab1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:34:24] "[36mGET /lab/lab1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:34:24] "GET /lab/lab1?__debugger__=yes&cmd=resource&f=console.png&s=ErZqtBAObm7zlpjoQnNq HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:34:24] "[36mGET /lab/lab1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:35:25] "[35m[1mGET /lab/lab1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:35:25] "[36mGET /lab/lab1?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:35:25] "[36mGET /lab/lab1?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:35:25] "GET /lab/lab1?__debugger__=yes&cmd=resource&f=console.png&s=LG7iwVLcNhWe1hYbygAr HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:35:25] "[36mGET /lab/lab1?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:36:41] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:36:41] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab2.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:36:57] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:36:57] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:36:58] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:36:58] "GET /static/pdfs/lab3.pdf HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab3.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab4.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab5.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab6.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:29] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:29] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:30] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:30] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:30] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:30] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:31] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:31] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:31] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:31] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:32] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:32] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:33] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:33] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:33] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:33] "GET /static/pdfs/lab5.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:34] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:34] "GET /static/pdfs/lab6.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:35] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:35] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:35] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:35] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:36] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:36] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:36] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:36] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:37] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:37] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:38] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:38] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:38] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:38] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:39] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:39] "GET /static/pdfs/lab4.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:39] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:39] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:41] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:41] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:41] "GET /lab8/lab8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:37:43] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab8.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:39:40] "GET /lab8/lab8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:39:41] "GET /static/pdfs/lab8.pdf HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab9.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:41:28] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 16:41:28] "GET /static/pdfs/lab9.pdf HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:22] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:22] "[36mGET /static/pdfs/lab9.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:23] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:23] "GET /static/pdfs/lab10.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:28] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:28] "[36mGET /static/pdfs/lab9.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:29] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:29] "[36mGET /static/pdfs/lab10.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:31] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:31] "[36mGET /static/pdfs/lab9.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:31] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:32] "[36mGET /static/pdfs/lab10.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:33] "GET /lab11/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:34] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:38] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:38] "[36mGET /static/pdfs/lab10.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:39] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:39] "[36mGET /static/pdfs/lab9.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:40] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:47:40] "[36mGET /static/pdfs/lab10.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab11.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:56:29] "GET /lab11/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 18:56:30] "GET /static/pdfs/lab11.pdf HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab12.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab12.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:05:20] "[35m[1mGET /lab12/lab12 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:05:20] "GET /lab12/lab12?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:05:20] "GET /lab12/lab12?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:05:20] "GET /lab12/lab12?__debugger__=yes&cmd=resource&f=console.png&s=CAR3pgzTvryWmRTz6AMO HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:05:20] "GET /lab12/lab12?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:05:48] "[35m[1mGET /lab12/lab12 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:05:48] "[36mGET /lab12/lab12?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:05:48] "[36mGET /lab12/lab12?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:05:48] "[36mGET /lab12/lab12?__debugger__=yes&cmd=resource&f=console.png&s=CAR3pgzTvryWmRTz6AMO HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:05:48] "[36mGET /lab12/lab12?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:07:27] "GET /lab12/lab12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:07:27] "GET /static/pdfs/lab12.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:08:53] "GET /lab13/lab13 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:08:53] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab13.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:11:31] "GET /lab13/lab13 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:11:31] "GET /static/pdfs/lab13.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:11:35] "GET /lab12/lab12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:11:35] "[36mGET /static/pdfs/lab12.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:11:36] "GET /lab13/lab13 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:11:37] "[36mGET /static/pdfs/lab13.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:11:38] "GET /lab14/lab14 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 19:11:39] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab14.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab14.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 21:18:18] "[35m[1mGET /lab14/lab14 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 21:18:18] "GET /lab14/lab14?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 21:18:18] "GET /lab14/lab14?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 21:18:18] "GET /lab14/lab14?__debugger__=yes&cmd=resource&f=console.png&s=4VDj2ei1wmB04dWFjj6A HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Feb/2025 21:18:18] "GET /lab14/lab14?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:09:46] "GET /lab14/lab14 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:09:46] "GET /static/pdfs/lab14.pdf HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab15.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:38:59] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:38:59] "GET /static/pdfs/lab15.pdf HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab16.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:43:51] "[35m[1mGET /lab16/lab16 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:43:51] "GET /lab16/lab16?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:43:51] "GET /lab16/lab16?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:43:51] "GET /lab16/lab16?__debugger__=yes&cmd=resource&f=console.png&s=au2VRZMuji133PoD1KPL HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:43:51] "GET /lab16/lab16?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab16.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:47:41] "GET /lab16/lab16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:47:41] "GET /static/pdfs/lab16.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:47:42] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:47:42] "[36mGET /static/pdfs/lab15.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:47:44] "GET /lab16/lab16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:47:44] "[36mGET /static/pdfs/lab16.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:47:45] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:47:45] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:42] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:42] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:42] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:42] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:43] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:43] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:44] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:44] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:45] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:45] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:45] "GET /lab8/lab8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:45] "GET /static/pdfs/lab8.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:46] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:46] "[36mGET /static/pdfs/lab9.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:46] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:46] "[36mGET /static/pdfs/lab10.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:46] "GET /lab11/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:47] "[36mGET /static/pdfs/lab11.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:47] "GET /lab11/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:47] "[36mGET /static/pdfs/lab11.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:47] "GET /lab12/lab12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:47] "[36mGET /static/pdfs/lab12.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:48] "GET /lab14/lab14 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:48] "[36mGET /static/pdfs/lab14.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:48] "GET /lab13/lab13 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:49] "[36mGET /static/pdfs/lab13.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:49] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:49] "[36mGET /static/pdfs/lab15.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:50] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:50] "[36mGET /static/pdfs/lab15.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:50] "GET /lab16/lab16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:50] "[36mGET /static/pdfs/lab16.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:52] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:58] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 04:48:58] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:10:55] "GET /lab16/lab16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:10:55] "[36mGET /static/pdfs/lab16.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:00] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:00] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:01] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:01] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:03] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:03] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:04] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:04] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:04] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:04] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:05] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:05] "GET /static/pdfs/lab4.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:05] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:05] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:07] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:07] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:07] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:07] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:08] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:08] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:08] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:08] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:09] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:09] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:09] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:09] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:10] "GET /lab8/lab8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:10] "[36mGET /static/pdfs/lab8.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:11] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:11] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:11] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:12] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:12] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:12] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:12] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:12] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:13] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:13] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:16] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:16] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:21] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:21] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:24] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:24] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:28] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:11:29] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'c:\\project\\Project_END_Yok\\lab.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:16:28] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:16:29] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:16:31] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:16:31] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:16:32] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:16:32] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:16:41] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:16:41] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:16:49] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:16:49] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:19:52] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:19:52] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:20:02] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:20:02] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:20:11] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:20:11] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:20:14] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:20:14] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:20:54] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:20:54] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:21:34] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:21:34] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:21:38] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:21:38] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:23:55] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:23:55] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:23:59] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:23:59] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:00] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:00] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:00] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:00] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:01] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:01] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:12] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:12] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:13] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:13] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:14] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:14] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:14] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:15] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:15] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:15] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:16] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:16] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:17] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:18] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:19] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:19] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:19] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:20] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:20] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:20] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:25] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:25] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:26] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:26] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:27] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:27] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:37] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:37] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:39] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:39] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:46] "GET /lab12/lab12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:46] "[36mGET /static/pdfs/lab12.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:49] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:49] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:52] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:52] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:56] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:56] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:58] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:24:58] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:00] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:00] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:00] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:00] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:11] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:11] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:25] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:25] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:26] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:26] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:38] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:38] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:51] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:51] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:51] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:51] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:59] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:25:59] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:00] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:00] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:00] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:00] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:05] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:05] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:05] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:05] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:24] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:24] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:25] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:25] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:46] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:46] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:47] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:47] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:47] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:47] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:48] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:48] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:49] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:49] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:49] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:49] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:50] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:50] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:50] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:50] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:50] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:50] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:51] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:51] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:51] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:51] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:52] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:52] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:52] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:26:52] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:28] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:29] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:30] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:30] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:30] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:30] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:30] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:31] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:31] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:31] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:45] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:45] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:45] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:46] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:46] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:46] "[36mGET /static/pdfs/lab9.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:47] "GET /lab12/lab12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:47] "[36mGET /static/pdfs/lab12.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:47] "GET /lab13/lab13 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:47] "[36mGET /static/pdfs/lab13.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:48] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:48] "[36mGET /static/pdfs/lab15.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:49] "GET /lab15/lab15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:49] "[36mGET /static/pdfs/lab15.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:50] "GET /lab16/lab16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:50] "[36mGET /static/pdfs/lab16.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:51] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:51] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:51] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:51] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:52] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:52] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:52] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:52] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:53] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:53] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:53] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:53] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:54] "GET /lab8/lab8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:54] "[36mGET /static/pdfs/lab8.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:54] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:54] "[36mGET /static/pdfs/lab9.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:54] "GET /lab10/lab10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:54] "[36mGET /static/pdfs/lab10.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:55] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:55] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:56] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:56] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:56] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:56] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:57] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:57] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:57] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:57] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:58] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:58] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:59] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:59] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:59] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:48:59] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:00] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:00] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:00] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:00] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:00] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:00] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:00] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:00] "[36mGET /static/pdfs/lab9.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:01] "GET /lab11/lab11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:01] "[36mGET /static/pdfs/lab11.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:01] "GET /lab12/lab12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:01] "[36mGET /static/pdfs/lab12.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:02] "GET /lab13/lab13 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:02] "[36mGET /static/pdfs/lab13.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:02] "GET /lab14/lab14 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:02] "[36mGET /static/pdfs/lab14.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:03] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:03] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:03] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:03] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:04] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:04] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:06] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:06] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:10] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:10] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:10] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:10] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:11] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:11] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:11] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:49:11] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:03] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:03] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:04] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:04] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:05] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:05] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:05] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:05] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:05] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:05] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:06] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:06] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:07] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:07] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:08] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:08] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:09] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:09] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:09] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:09] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:09] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:09] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:10] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:10] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:16] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:16] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:16] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:16] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:16] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:16] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:17] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:17] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:17] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:17] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:18] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:18] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:18] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:18] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:19] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:19] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:19] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:19] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:19] "GET /lab8/lab8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:20] "[36mGET /static/pdfs/lab8.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:20] "GET /lab9/lab9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:20] "[36mGET /static/pdfs/lab9.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:20] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:20] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:21] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:21] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:21] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:21] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:21] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:21] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:22] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:22] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:23] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:23] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:23] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:23] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:24] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:24] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:25] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:25] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:25] "GET /lab5/lab5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:25] "[36mGET /static/pdfs/lab5.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:25] "GET /lab6/lab6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:25] "[36mGET /static/pdfs/lab6.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:26] "GET /lab7/lab7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:26] "[36mGET /static/pdfs/lab7.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:26] "GET /lab8/lab8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:26] "[36mGET /static/pdfs/lab8.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:26] "GET /lab3/lab3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:26] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:27] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:27] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:27] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:27] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:30] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:30] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:31] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:31] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:31] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:31] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:32] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:32] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:36] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:36] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:38] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:38] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:39] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:39] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:40] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:40] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:40] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:40] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:40] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:40] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:40] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:51:40] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:52:05] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:52:05] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:52:07] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 05:52:07] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:44:43] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:44:44] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:44:44] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:44:44] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:44:45] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:44:45] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:44:47] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:44:47] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:44:50] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:44:50] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:21] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:21] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:42] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:42] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:43] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:43] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:43] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:43] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:43] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:43] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:47] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:47] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:47] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:47] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:47] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:47] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:48] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:48] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:48] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:48] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:48] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:48] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:48] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:48] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:48] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:48] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:49] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:49] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:49] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:49] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:49] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:50] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:50] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:50] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:50] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:50] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:50] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:50] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:50] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:50] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:51] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:51] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:51] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:51] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:51] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:51] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:51] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:51] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:52] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:52] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:52] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:52] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:53] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:53] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:53] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:46:53] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:47:01] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:47:01] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:47:02] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 10:47:02] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 11:22:18] "GET /lab2/lab2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 11:22:18] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 11:22:20] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Feb/2025 11:22:20] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -

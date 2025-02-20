@@ -47,8 +47,8 @@ app.register_blueprint(lab15_bp, url_prefix='/lab15')
 app.register_blueprint(lab16_bp, url_prefix='/lab16')
 
 # ตั้งค่า URI ของ MongoDB
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/yourdatabase'
-app.secret_key = 'your_secret_key'
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/network_users'
+app.secret_key = 'admin_123'
 
 # ตั้งค่าอีเมล (ถ้าจำเป็น)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -63,7 +63,7 @@ mail = Mail(app)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
-app.config['SECRET_KEY'] = 'your_strong_secret_key_here'  # ใช้คีย์ที่ซับซ้อนและปลอดภัย
+app.config['SECRET_KEY'] = 'admin_123'  # ใช้คีย์ที่ซับซ้อนและปลอดภัย
 Session(app)
 
 mongo = PyMongo(app)

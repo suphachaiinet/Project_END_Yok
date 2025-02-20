@@ -24,7 +24,6 @@
         padding: 1rem 2rem;
     }
 
-    /* Left Panel */
     .instructions-panel {
         background-color: white;
         border: 1px solid #e5e7eb;
@@ -51,7 +50,6 @@
         height: 100%;
     }
 
-    /* Right Panel */
     .right-panel {
         display: grid;
         grid-template-rows: auto 250px;
@@ -67,32 +65,8 @@
         overflow-y: auto;
     }
 
-    /* Custom scrollbar for config panel */
-    .config-panel::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    .config-panel::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 3px;
-    }
-
-    .config-panel::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 3px;
-    }
-
-    .config-panel::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-    }
-
-    .config-panel {
-        scrollbar-width: thin;
-        scrollbar-color: #cbd5e1 #f1f1f1;
-    }
-
-    /* Results Panel */
-    .results-panel {
+     /* Results Panel */
+     .results-panel {
         background: #f8fafc;
         border-top: 1px solid #e5e7eb;
         padding: 1rem;
@@ -123,6 +97,13 @@
         scrollbar-color: #cbd5e1 #f1f1f1;
     }
 
+    .config-textarea {
+        font-family: monospace;
+        white-space: pre;
+        resize: vertical;
+        min-height: 120px;
+    }
+
     .status-bar {
         width: 4px;
         height: 100%;
@@ -130,103 +111,67 @@
         border-radius: 9999px;
         flex-shrink: 0;
     }
-
-    .hide-pdf-button {
-        color: #2563eb;
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
-        transition: background-color 0.2s;
-    }
-
-    .hide-pdf-button:hover {
-        background-color: #f3f4f6;
-    }
-
-    /* Results content styles */
-    .results-content {
-        flex: 1;
-        min-height: min-content;
-    }
-
-    .result-section {
-        margin-bottom: 1rem;
-        padding: 0.75rem;
-        background: white;
-        border-radius: 0.5rem;
-        border: 1px solid #e5e7eb;
-    }
-
-    .missing-commands {
-        margin-top: 0.5rem;
-        padding: 0.75rem;
-        background: #fef2f2;
-        border-radius: 0.375rem;
-        border: 1px solid #fee2e2;
-    }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="lab-content">
+<div class="lab-content bg-gray-50">
     <div class="lab-header">
         <h1 class="text-xl font-semibold">Lab 1: Basic Switch Configuration</h1>
     </div>
 
     <div class="lab-container">
         <!-- Left Panel - Instructions -->
-        <div class="instructions-panel">
+        <div class="instructions-panel shadow-sm">
             <div class="instructions-header">
-                <h2>Lab Instructions</h2>
-                <button class="hide-pdf-button" id="toggleButton">Hide PDF</button>
+                <h2 class="font-medium">Lab Instructions</h2>
+                <button class="button-primary text-sm" id="toggleButton">Hide PDF</button>
             </div>
             <div id="pdfContainer">
-                <embed src="{{ url_for('static', filename='pdfs/lab1.pdf') }}"
-                       class="w-full">
+                <embed src="{{ url_for('static', filename='pdfs/lab1.pdf') }}" class="w-full">
             </div>
         </div>
 
         <!-- Right Panel -->
-        <div class="right-panel">
+        <div class="right-panel shadow-sm">
             <!-- Configuration Form -->
             <div class="config-panel">
-                <form action="{{ url_for('lab.lab1') }}" method="POST">                    
+                <form action="{{ url_for('lab.lab1') }}" method="POST">
+                    <!-- Switch Configuration -->
                     <div class="mb-6">
-                        <h3 class="text-lg font-medium text-gray-900 mb-3">Switch Configuration</h3>
-                        <textarea name="config_switch" 
-                                  class="w-full h-48 bg-gray-900 text-gray-100 font-mono p-4 rounded-lg"
-                                  placeholder="Enter switch configuration..."
-                                  required></textarea>
+                        <h2 class="text-lg font-medium text-gray-900 mb-4">Switch Configuration</h2>
+                        <textarea name="config_switch" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required placeholder="Enter switch configuration..."></textarea>
                     </div>
 
-                    <div class="mb-6">
-                        <h3 class="text-lg font-medium text-gray-900 mb-3">PC Configuration</h3>
-                        <div class="grid grid-cols-3 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">IP Address</label>
-                                <input type="text" name="pc_ip_address" class="w-full p-2 border rounded-lg" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Subnet Mask</label>
-                                <input type="text" name="pc_subnet_mask" class="w-full p-2 border rounded-lg" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Default Gateway</label>
-                                <input type="text" name="pc_default_gateway" class="w-full p-2 border rounded-lg" required>
+                    <!-- PC Configuration -->
+                    <div class="grid grid-cols-1 gap-4 mb-6">
+                        <div class="space-y-2">
+                            <h3 class="text-lg font-medium text-gray-900">PC Configuration</h3>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">IP Address</label>
+                                    <input type="text" name="pc_ip_address" class="w-full p-2 border rounded-lg" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Subnet Mask</label>
+                                    <input type="text" name="pc_subnet_mask" class="w-full p-2 border rounded-lg" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Default Gateway</label>
+                                    <input type="text" name="pc_default_gateway" class="w-full p-2 border rounded-lg" required>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex justify-end mb-1">  <!-- เปลี่ยนจาก mb-0 เป็น mb-2 -->
-                        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
-                            Check Configuration
-                        </button>
+                    <div class="flex justify-end">
+                        <button type="submit" class="button-primary">Check Configuration</button>
                     </div>
                 </form>
             </div>
 
             <!-- Results Panel -->
-            <div class="results-panel pt-1 pb-1">
+            <div class="results-panel">
                 <div class="flex h-full">
                     <!-- Status Bar -->
                     <div class="status-bar {% if result %}
@@ -237,56 +182,55 @@
                     </div>
 
                     <!-- Results Content -->
-                    <div class="results-content">
+                    <div class="flex-1">
                         <h3 class="text-lg font-medium text-gray-900 mb-3">Results</h3>
                         {% if result %}
                         <!-- Student Info -->
-                        <div class="result-section">
+                        <div class="bg-white p-3 rounded-lg border mb-3">
                             <div class="text-sm">
-                                <span class="font-medium">ชื่อผู้ใช้:</span> 
+                                <span class="font-medium">รหัสนักศึกษา:</span> 
                                 <span>{{ result.student_id }}</span>
                             </div>
                         </div>
                         
-                        <!-- Switch Configuration -->
-                        <div class="result-section">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="font-medium">คะแนน Switch:</span>
+                        <!-- Switch Score -->
+                        <div class="bg-white p-3 rounded-lg border mb-3">
+                            <div class="mb-2">
+                                <span class="font-medium">Switch Score:</span>
                                 <span class="{% if result.switch_score == 100 %}text-green-600
                                     {% elif result.switch_score > 0 %}text-yellow-600
                                     {% else %}text-red-600{% endif %}">
                                     {{ result.switch_score }}%
                                 </span>
                             </div>
-                            {% if result.missing_commands %}
-                                <div class="missing-commands">
-                                    <div class="font-medium mb-1">คำสั่งที่ยังไม่ได้ Configure:</div>
-                                    <ul class="list-disc pl-4 space-y-1">
-                                    {% for cmd in result.missing_commands %}
-                                        <li>{{ cmd }}</li>
-                                    {% endfor %}
-                                    </ul>
-                                </div>
-                            {% endif %}
                         </div>
-                    
-                        <!-- PC Configuration -->
-                        <div class="result-section">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="font-medium">PC Configuration:</span>
+
+                        <!-- Missing Commands -->
+                        {% if result.missing_commands %}
+                        <div class="bg-white p-3 rounded-lg border mb-3">
+                            <div class="font-medium mb-2">Missing Commands:</div>
+                            <div>
+                                <ul class="list-disc pl-4 text-sm">
+                                    {% for cmd in result.missing_commands %}
+                                    <li>{{ cmd }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <!-- PC Status -->
+                        <div class="bg-white p-3 rounded-lg border">
+                            <div>
+                                <span class="font-medium">PC Status:</span>
                                 <span class="{% if result.pc_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
                                     {{ "ถูกต้อง" if result.pc_status == 'correct' else "ไม่ถูกต้อง" }}
                                 </span>
                             </div>
-                            {% if result.pc_status != 'correct' %}
-                                <div class="text-red-600 text-sm">
-                                    กรุณาตรวจสอบการตั้งค่า IP Address, Subnet Mask และ Default Gateway
-                                </div>
-                            {% endif %}
                         </div>
-                    {% else %}
+                        {% else %}
                         <p class="text-gray-500">ผลลัพธ์จะแสดงที่นี่หลังจากตรวจสอบ</p>
-                    {% endif %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -306,22 +250,17 @@
         toggleButton.textContent = isHidden ? 'Hide PDF' : 'Show PDF';
     });
 
-    // เพิ่มโค้ดนี้
     document.querySelector('form').addEventListener('submit', function(e) {
-        // ป้องกันการส่งฟอร์มแบบปกติ
         e.preventDefault();
-        
-        // ส่งข้อมูลฟอร์ม
         fetch(this.action, {
             method: this.method,
             body: new FormData(this)
         })
         .then(response => {
-            // รีเฟรชหน้า
             window.location.reload();
         })
         .catch(error => {
-            console.error('เกิดข้อผิดพลาด:', error);
+            console.error('Error:', error);
         });
     });
 </script>

@@ -11,11 +11,11 @@ except ImportError:
 
 lab4_bp = Blueprint('lab4', __name__)
 
-# MongoDB Connection
+# แก้ไขในส่วน MongoDB Connection ของ lab.py
 mongo_client = MongoClient('mongodb://localhost:27017/')
-db = mongo_client['network_lab']
+db = mongo_client['network_users']  # ชื่อ database ที่ใช้
 scores_collection = db['lab_scores']
-users_collection = db['users_all']
+users_collection = db['users_all']  # เพิ่มบรรทัดนี้ให้ชัดเจน
 
 def check_config(config, expected_keywords):
     missing = []

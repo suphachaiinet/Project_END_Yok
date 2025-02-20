@@ -1,6 +1,6 @@
 import os
 import re
-from flask import Blueprint, render_template, request, session
+from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 from datetime import datetime
 from pymongo import MongoClient
 from zoneinfo import ZoneInfo
@@ -8,9 +8,9 @@ from zoneinfo import ZoneInfo
 lab16_bp = Blueprint('lab16', __name__)
 
 # MongoDB connection
-client = MongoClient('mongodb://localhost:27017/')
-db = client['network_lab']
-scores_collection = db['lab16_scores']
+mongo_client = MongoClient('mongodb://localhost:27017/')
+db = mongo_client['network_users']
+scores_collection = db['lab_scores']
 
 # Keywords for checking configurations
 R1_KEYWORDS = [
@@ -111,6 +111,7 @@ def check_keywords(user_config, keywords):
     """Check if configuration contains required keywords"""
     user_lines = user_config.splitlines()
     missing_keywords = []
+    found_keywords = []
 
     for keyword in keywords:
         if isinstance(keyword, dict):
@@ -123,7 +124,7 @@ def check_keywords(user_config, keywords):
                     block_found = True
                     block_content = []
                     for l in user_lines[i + 1:]:
-                        if re.match(r"^\s*(interface|!|router|vlan)\s*", l):
+                        if re.match(r"^\s*(interface|!|router|vlan|ip dhcp pool)\s*", l):
                             break
                         block_content.append(l.strip())
 
@@ -134,6 +135,8 @@ def check_keywords(user_config, keywords):
                         missing_keywords.append(
                             f"{interface_name}: ขาด {', '.join(missing_in_block)}"
                         )
+                    else:
+                        found_keywords.append(interface_name)
                     break
 
             if not block_found:
@@ -143,57 +146,113 @@ def check_keywords(user_config, keywords):
             keyword_found = any(
                 re.search(rf"^\s*{re.escape(keyword)}\s*", line) for line in user_lines
             )
-            if not keyword_found:
+            if keyword_found:
+                found_keywords.append(keyword)
+            else:
                 missing_keywords.append(f"{keyword}: missing")
 
-    score = (len(keywords) - len(missing_keywords)) / len(keywords) * 100
+    total_keywords = len(keywords)
+    score = (len(found_keywords) / total_keywords) * 100 if total_keywords > 0 else 0
     return score, missing_keywords
 
-@lab16_bp.route('/lab16')
+@lab16_bp.route('/lab16', methods=['GET', 'POST'])
 def lab16():
-    """Display lab16.html"""
-    return render_template('lab16.html')
+    """Display lab16.html and handle form submission"""
+    if 'username' not in session:
+        flash('กรุณาเข้าสู่ระบบก่อน', 'danger')
+        return redirect(url_for('login'))
 
-@lab16_bp.route('/check_config/lab16', methods=['POST'])
-def check_config_lab16():
-    """Check configurations and return results"""
-    # Get configurations from form
-    user_r1_config = request.form.get('config_r1', '').strip()
-    user_sw1_config = request.form.get('config_sw1', '').strip()
-    user_sw2_config = request.form.get('config_sw2', '').strip()
+    username = session.get('username')
     
-    # Check device configurations
-    r1_score, r1_missing = check_keywords(user_r1_config, R1_KEYWORDS)
-    sw1_score, sw1_missing = check_keywords(user_sw1_config, SW1_KEYWORDS)
-    sw2_score, sw2_missing = check_keywords(user_sw2_config, SW2_KEYWORDS)
+    # ดึงข้อมูล user จาก db.users_all
+    user = db.users_all.find_one({"username": username})
+    first_name = "Unknown"
+    last_name = "User"
+    
+    if user:
+        first_name = user.get('first_name', first_name)
+        last_name = user.get('last_name', last_name)
+    
+    # ดึงคะแนน
+    user_scores = list(scores_collection.find({"username": username}))
+    lab_scores = [0] * 16
+    
+    for score_entry in user_scores:
+        try:
+            lab_num = int(score_entry['lab'].replace('Lab ', '')) - 1
+            score = float(score_entry['switch_score'].split('/')[0])
+            lab_scores[lab_num] = score
+        except Exception as e:
+            print(f"Error processing score: {e}")
+    
+    overall_score = sum(lab_scores) / 16
 
-    # Calculate total score
-    # Router: 30%, Switch1: 35%, Switch2: 35%
-    total_score = (r1_score * 0.3) + (sw1_score * 0.35) + (sw2_score * 0.35)
+    if request.method == 'POST':
+        # Get configurations from form
+        user_r1_config = request.form.get('config_r1', '').strip()
+        user_sw1_config = request.form.get('config_sw1', '').strip()
+        user_sw2_config = request.form.get('config_sw2', '').strip()
 
-    # Get current time in Bangkok timezone
-    bangkok_time = datetime.now(ZoneInfo("Asia/Bangkok"))
+        # Check device configurations
+        r1_score, r1_missing = check_keywords(user_r1_config, R1_KEYWORDS)
+        sw1_score, sw1_missing = check_keywords(user_sw1_config, SW1_KEYWORDS)
+        sw2_score, sw2_missing = check_keywords(user_sw2_config, SW2_KEYWORDS)
 
-    # Save to MongoDB
-    scores_collection.insert_one({
-        "username": session.get('username', 'unknown'),
-        "lab": "Lab 16",
-        "r1_score": r1_score,
-        "sw1_score": sw1_score,
-        "sw2_score": sw2_score,
-        "total_score": total_score,
-        "timestamp": bangkok_time
-    })
+        # Calculate total score
+        # Router: 30%, Switch1: 35%, Switch2: 35%
+        router_score = r1_score * 0.3
+        switch_score = (sw1_score * 0.35) + (sw2_score * 0.35)
+        total_score = router_score + switch_score
 
-    # Format result message
-    result = f"""
-    คะแนนรวม: {total_score:.2f}%<br>
-    Router Configuration:
-    - R1: คะแนน {r1_score:.2f}% ({'ถูกต้อง' if not r1_missing else f"ขาด: {', '.join(r1_missing)}"})<br>
-    Switch Configurations:
-    - S1: คะแนน {sw1_score:.2f}% ({'ถูกต้อง' if not sw1_missing else f"ขาด: {', '.join(sw1_missing)}"})<br>
-    - S2: คะแนน {sw2_score:.2f}% ({'ถูกต้อง' if not sw2_missing else f"ขาด: {', '.join(sw2_missing)}"})<br>
-    เวลาบันทึก: {bangkok_time.strftime('%Y-%m-%d %H:%M:%S')} (Asia/Bangkok)
-    """
+        # Create result object
+        result = {
+            'student_id': username,
+            'total_score': round(total_score, 2),
+            'router_score': round(router_score, 2),
+            'switch_score': round(switch_score, 2),
+            'r1_score': round(r1_score, 2),
+            'sw1_score': round(sw1_score, 2),
+            'sw2_score': round(sw2_score, 2),
+            'r1_missing': r1_missing,
+            'sw1_missing': sw1_missing,
+            'sw2_missing': sw2_missing,
+            'status': 'success' if (r1_score >= 90 and sw1_score >= 90 and sw2_score >= 90) else 'partial'
+        }
 
-    return render_template('lab16.html', result=result)
+        try:
+            scores_collection.update_one(
+                {"username": username, "lab": "Lab 16"},
+                {"$set": {
+                    "switch_score": f"{total_score:.2f}/100",
+                    "r1_score": f"{r1_score:.2f}/100",
+                    "sw1_score": f"{sw1_score:.2f}/100",
+                    "sw2_score": f"{sw2_score:.2f}/100",
+                    "router_score": f"{router_score:.2f}",
+                    "switch_score": f"{switch_score:.2f}",
+                    "configs": {
+                        "r1_config": user_r1_config,
+                        "sw1_config": user_sw1_config,
+                        "sw2_config": user_sw2_config
+                    },
+                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
+                }},
+                upsert=True
+            )
+            
+            session['lab16_result'] = result
+            session.modified = True
+            
+        except Exception as e:
+            print(f"Error saving score: {e}")
+            
+        return redirect(url_for('lab16.lab16'))
+
+    result = session.get('lab16_result')
+
+    return render_template('lab16.html', 
+                        result=result,
+                        scores=lab_scores,
+                        overall_score=overall_score,
+                        first_name=first_name,
+                        last_name=last_name,
+                        active_lab='lab16')

@@ -12,11 +12,11 @@ except ImportError:
 
 lab_bp = Blueprint('lab', __name__)
 
-# สร้าง MongoDB client
+# แก้ไขในส่วน MongoDB Connection ของ lab.py
 mongo_client = MongoClient('mongodb://localhost:27017/')
-db = mongo_client['network_lab']
+db = mongo_client['network_users']  # ชื่อ database ที่ใช้
 scores_collection = db['lab_scores']
-users_collection = db['users_all']
+users_collection = db['users_all']  # เพิ่มบรรทัดนี้ให้ชัดเจน
 
 def parse_interfaces(config_text):
     interfaces = {}
@@ -80,17 +80,27 @@ KEYWORDS = [
 
 @lab_bp.route('/lab1', methods=['GET', 'POST'])
 def lab1():
-    # ตรวจสอบว่ามี username ใน session หรือไม่
     if 'username' not in session:
         flash('กรุณาเข้าสู่ระบบก่อน', 'danger')
         return redirect(url_for('login'))
-        
-    # ดึงข้อมูล scores ทั้งหมดของผู้ใช้
+
     username = session.get('username')
-    user_scores = list(scores_collection.find({"username": username}))
     
-    # สร้าง array เก็บคะแนนแต่ละ lab
-    lab_scores = [0] * 16  # สำหรับ Lab 1-16
+    # ดึงข้อมูล user จาก db.users_all
+    user = db.users_all.find_one({"username": username})
+    first_name = "Unknown"
+    last_name = "User"
+    
+    if user:
+        first_name = user.get('first_name', first_name)
+        last_name = user.get('last_name', last_name)
+    
+    # ดึงคะแนน
+    user_scores = list(scores_collection.find({"username": username}))
+    lab_scores = [0] * 16
+    # ดึงคะแนน
+    user_scores = list(scores_collection.find({"username": username}))
+    lab_scores = [0] * 16
     
     for score_entry in user_scores:
         try:
@@ -100,8 +110,8 @@ def lab1():
         except Exception as e:
             print(f"Error processing score: {e}")
     
-    # คำนวณคะแนนรวม
     overall_score = sum(lab_scores) / 16
+
 
     if request.method == 'POST':
         username = session.get('username', 'unknown')
@@ -125,6 +135,7 @@ def lab1():
         # สร้าง result dictionary
         result = {
             'student_id': username,
+            'first_name': session.get('first_name', 'Unknown'),
             'switch_score': round(switch_score, 2),
             'missing_commands': missing_keywords,
             'pc_status': 'correct' if pc_correct else 'incorrect',
@@ -170,8 +181,9 @@ def lab1():
     last_name = user['last_name'] if user else session.get('last_name', 'User')
     
     return render_template('lab1.html', 
-                         result=result,
-                         scores=lab_scores,
-                         overall_score=overall_score,
-                         first_name=first_name,
-                         last_name=last_name)
+                     result=result,
+                     scores=lab_scores,
+                     overall_score=overall_score,
+                     first_name=first_name,
+                     last_name=last_name,
+                     active_lab='lab1')  # เพิ่ม active_lab เพื่อไฮไลท์เมนู
