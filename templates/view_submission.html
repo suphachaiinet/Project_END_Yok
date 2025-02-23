@@ -1,0 +1,357 @@
+{% extends "teacher_dashboard.html" %}
+
+{% block content %}
+<div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+    <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+        <div>
+            <h2 class="text-lg leading-6 font-medium text-gray-900">รายละเอียดการส่งงาน Lab {{ lab_num }}</h2>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">{{ student.first_name }} {{ student.last_name }} ({{ student.username }})</p>
+        </div>
+        <a href="{{ url_for('teacher.lab_management', lab_num=lab_num) }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+            <svg class="mr-2 -ml-1 h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            กลับไปหน้าจัดการแล็บ
+        </a>
+    </div>
+</div>
+
+<!-- Score Information -->
+<div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+    <div class="px-4 py-5 sm:p-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ข้อมูลคะแนน</h3>
+        <div class="mt-2">
+            <form action="{{ url_for('teacher.update_grade') }}" method="POST" class="space-y-4">
+                <input type="hidden" name="student_id" value="{{ student.username }}">
+                <input type="hidden" name="lab_num" value="{{ lab_num }}">
+                
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">คะแนนปัจจุบัน</label>
+                        <div class="mt-1 text-3xl font-bold {% if submission.score >= 80 %}text-green-600{% elif submission.score >= 60 %}text-yellow-600{% else %}text-red-600{% endif %}">
+                            {{ "%.2f"|format(submission.score) }}%
+                        </div>
+                    </div>
+                    <div>
+                        <label for="manual_score" class="block text-sm font-medium text-gray-700">ปรับคะแนนด้วยตนเอง</label>
+                        <div class="mt-1 flex items-center space-x-2">
+                            <input type="number" name="manual_score" id="manual_score" min="0" max="100" step="0.1"
+                                   value="{{ submission.score }}"
+                                   class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-32 sm:text-sm border-gray-300 rounded-md">
+                            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none">
+                                บันทึกคะแนน
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Configuration Details -->
+{% if lab_num == 1 %}
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Switch Configuration</h3>
+        </div>
+        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm">{{ submission.configs.switch_config }}</pre>
+            
+            {% if submission.missing_commands %}
+            <div class="mt-4">
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Missing Commands:</h4>
+                <ul class="list-disc pl-5 text-sm text-red-600 space-y-1">
+                    {% for cmd in submission.missing_commands %}
+                    <li>{{ cmd }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">PC Configuration</h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                สถานะ: 
+                <span class="{% if submission.pc_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
+                    {{ submission.pc_status }}
+                </span>
+            </p>
+        </div>
+        <div class="border-t border-gray-200">
+            <dl>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">IP Address</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.ip_address }}</dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.subnet_mask }}</dd>
+                </div>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.default_gateway }}</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>
+
+{% elif lab_num == 2 %}
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Switch 1 Configuration</h3>
+        </div>
+        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm">{{ submission.configs.sw1_config }}</pre>
+            
+            {% if submission.sw1_missing %}
+            <div class="mt-4">
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Missing Commands:</h4>
+                <ul class="list-disc pl-5 text-sm text-red-600 space-y-1">
+                    {% for cmd in submission.sw1_missing %}
+                    <li>{{ cmd }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Switch 2 Configuration</h3>
+        </div>
+        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm">{{ submission.configs.sw2_config }}</pre>
+            
+            {% if submission.sw2_missing %}
+            <div class="mt-4">
+                <h4 class="text-sm font-medium text-gray-700 mb-2">Missing Commands:</h4>
+                <ul class="list-disc pl-5 text-sm text-red-600 space-y-1">
+                    {% for cmd in submission.sw2_missing %}
+                    <li>{{ cmd }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">PC 1 Configuration</h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                สถานะ: 
+                <span class="{% if submission.pc1_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
+                    {{ submission.pc1_status }}
+                </span>
+            </p>
+        </div>
+        <div class="border-t border-gray-200">
+            <dl>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">IP Address</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc1_config.ip }}</dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc1_config.subnet }}</dd>
+                </div>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc1_config.gateway }}</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">PC 2 Configuration</h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                สถานะ: 
+                <span class="{% if submission.pc2_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
+                    {{ submission.pc2_status }}
+                </span>
+            </p>
+        </div>
+        <div class="border-t border-gray-200">
+            <dl>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">IP Address</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc2_config.ip }}</dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc2_config.subnet }}</dd>
+                </div>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc2_config.gateway }}</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Configuration</h3>
+    </div>
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
+        <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm">{{ submission.configs.general_config }}</pre>
+        
+        {% if submission.missing_commands %}
+        <div class="mt-4">
+            <h4 class="text-sm font-medium text-gray-700 mb-2">Missing Commands:</h4>
+            <ul class="list-disc pl-5 text-sm text-red-600 space-y-1">
+                {% for cmd in submission.missing_commands %}
+                <li>{{ cmd }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Submission History -->
+<div class="mt-6 bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">ประวัติการส่งงาน</h3>
+    </div>
+    <div class="border-t border-gray-200">
+        <div class="px-4 py-5 sm:p-6">
+            <div class="flow-root">
+                <ul role="list" class="-mb-8">
+                    {% for history in submission.history %}
+                    <li>
+                        <div class="relative pb-8">
+                            {% if not loop.last %}
+                            <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                            {% endif %}
+                            <div class="relative flex space-x-3">
+                                <div>
+                                    <span class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white 
+                                        {% if history.type == 'submit' %}bg-blue-500
+                                        {% elif history.type == 'grade' %}bg-green-500
+                                        {% else %}bg-gray-500{% endif %}">
+                                        {% if history.type == 'submit' %}
+                                        <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                                        </svg>
+                                        {% elif history.type == 'grade' %}
+                                        <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        {% else %}
+                                        <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                                        </svg>
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                                    <div>
+                                        <p class="text-sm text-gray-500">{{ history.message }}</p>
+                                    </div>
+                                    <div class="text-right text-sm whitespace-nowrap text-gray-500">
+                                        <time datetime="{{ history.timestamp }}">{{ history.timestamp }}</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Submission Button -->
+<div class="mt-6 flex justify-end">
+    <button type="button" id="deleteSubmissionBtn" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+        <svg class="mr-2 -ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+        </svg>
+        ลบการส่งงาน
+    </button>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="deleteConfirmModal" class="fixed inset-0 overflow-y-auto hidden z-50">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                        <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                    </div>
+                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                            ยืนยันการลบการส่งงาน
+                        </h3>
+                        <div class="mt-2">
+                            <p class="text-sm text-gray-500">
+                                คุณแน่ใจหรือไม่ที่จะลบการส่งงานนี้? การกระทำนี้ไม่สามารถยกเลิกได้
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <form action="{{ url_for('teacher.delete_submission') }}" method="POST">
+                    <input type="hidden" name="student_id" value="{{ student.username }}">
+                    <input type="hidden" name="lab_num" value="{{ lab_num }}">
+                    <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
+                        ลบ
+                    </button>
+                    <button type="button" id="cancelDelete" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        ยกเลิก
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Delete Modal
+    const deleteBtn = document.getElementById('deleteSubmissionBtn');
+    const deleteModal = document.getElementById('deleteConfirmModal');
+    const cancelDelete = document.getElementById('cancelDelete');
+
+    deleteBtn.addEventListener('click', () => {
+        deleteModal.classList.remove('hidden');
+    });
+
+    cancelDelete.addEventListener('click', () => {
+        deleteModal.classList.add('hidden');
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === deleteModal) {
+            deleteModal.classList.add('hidden');
+        }
+    });
+</script>
+{% endblock %}

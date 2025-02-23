@@ -65,36 +65,11 @@
         overflow-y: auto;
     }
 
-     /* Results Panel */
-     .results-panel {
+    .results-panel {
         background: #f8fafc;
         border-top: 1px solid #e5e7eb;
         padding: 1rem;
         overflow-y: auto;
-    }
-
-    /* Custom scrollbar for results panel */
-    .results-panel::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    .results-panel::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 3px;
-    }
-
-    .results-panel::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 3px;
-    }
-
-    .results-panel::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-    }
-
-    .results-panel {
-        scrollbar-width: thin;
-        scrollbar-color: #cbd5e1 #f1f1f1;
     }
 
     .config-textarea {
@@ -104,12 +79,40 @@
         min-height: 120px;
     }
 
+    .vlan-textarea {
+        font-family: monospace;
+        white-space: pre;
+        resize: vertical;
+        min-height: 100px;
+    }
+
     .status-bar {
         width: 4px;
         height: 100%;
         margin-right: 1rem;
         border-radius: 9999px;
         flex-shrink: 0;
+    }
+
+    .button-primary {
+        background-color: #2563eb;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        font-weight: 500;
+        transition: background-color 0.2s;
+    }
+
+    .button-primary:hover {
+        background-color: #1d4ed8;
+    }
+
+    .input-field {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.375rem;
+        font-family: monospace;
     }
 </style>
 {% endblock %}

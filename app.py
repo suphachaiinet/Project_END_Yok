@@ -4,9 +4,16 @@ from flask_bcrypt import Bcrypt
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer
 from flask_session import Session
-import logging
+from datetime import datetime  # เพิ่มบรรทัดนี้
 from bson import ObjectId
-from lab import scores_collection  # เพิ่มบรรทัดนี้
+import logging
+from lab import scores_collection
+
+try:
+    from zoneinfo import ZoneInfo
+except ImportError:
+    import pytz
+    ZoneInfo = lambda tz: pytz.timezone(tz)
 
 # นำเข้า Blueprint ของ Lab 1 และ Lab 2
 from lab import lab_bp
@@ -25,6 +32,7 @@ from lab13 import lab13_bp
 from lab14 import lab14_bp
 from lab15 import lab15_bp
 from lab16 import lab16_bp
+from teacher import teacher_bp
 
 
 app = Flask(__name__)
@@ -45,7 +53,10 @@ app.register_blueprint(lab13_bp, url_prefix='/lab13')
 app.register_blueprint(lab14_bp, url_prefix='/lab14')
 app.register_blueprint(lab15_bp, url_prefix='/lab15')
 app.register_blueprint(lab16_bp, url_prefix='/lab16')
+app.register_blueprint(teacher_bp, url_prefix='/teacher')
 
+
+# ลงทะเบียน Blueprint สำหรับอาจารย์
 # ตั้งค่า URI ของ MongoDB
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/network_users'
 app.secret_key = 'admin_123'
@@ -187,92 +198,71 @@ def dashboard():
         return redirect(url_for('login'))
     
     user = mongo.db.users_all.find_one({"_id": ObjectId(session['user_id'])})
-
-    if user is None:
-        flash('User not found in the database.', 'danger')
-        return redirect(url_for('login'))
-
     role = session.get('role', 'user')
-    
-    # Debug: พิมพ์ username
-    print(f"Username: {user['username']}")
-    
-    # ดึงคะแนนแล็ปจาก MongoDB
-    lab_scores = [0] * 16  # สำหรับ Lab 1-16
-    
-    # ค้นหาคะแนนสำหรับผู้ใช้งานปัจจุบัน
-    user_lab_scores = list(scores_collection.find({"username": user['username']}))
-    
-    # Debug: พิมพ์คะแนนที่พบ
-    print(f"Lab Scores found: {user_lab_scores}")
-    
-    for score_entry in user_lab_scores:
-        try:
-            lab_num = int(score_entry['lab'].replace('Lab ', '')) - 1
-            score = float(score_entry['switch_score'].split('/')[0])
-            lab_scores[lab_num] = score
-            
-            # Debug: พิมพ์คะแนนแต่ละแล็บ
-            print(f"Lab {lab_num + 1} Score: {score}")
-        except Exception as e:
-            print(f"Error processing score: {e}")
-
-    # คำนวณคะแนนรวม
-    overall_score = sum(lab_scores) / 16
 
     if role == 'teacher':
+        # คำนวณข้อมูลสถิติสำหรับอาจารย์
+        total_students = mongo.db.students.count_documents({})
+        all_scores = list(scores_collection.find())
+        
+        # คำนวณคะแนนเฉลี่ย
+        total_score = 0
+        num_scores = 0
+        for score in all_scores:
+            try:
+                score_value = float(score['switch_score'].split('/')[0])
+                total_score += score_value
+                num_scores += 1
+            except:
+                continue
+        
+        avg_score = total_score / num_scores if num_scores > 0 else 0
+        
+        # จำนวนนักศึกษาที่ส่งงานทั้งหมด
+        completed_students = len(set(score['username'] for score in all_scores))
+        completion_rate = (completed_students / total_students * 100) if total_students > 0 else 0
+        
+        # หาเวลาที่มีการส่งงานล่าสุด
+        latest_submission = max([score.get('timestamp', datetime.min) for score in all_scores], default=None)
+        
         return render_template('teacher_dashboard.html',
-                               first_name=user['first_name'],
-                               last_name=user['last_name'])
+                            first_name=user['first_name'],
+                            last_name=user['last_name'],
+                            total_students=total_students,
+                            avg_score=avg_score,
+                            completion_rate=completion_rate,
+                            last_activity_time=latest_submission)
+                            
     elif role == 'student':
+        # ดึงคะแนนของนักศึกษา
+        username = session.get('username')
+        user_scores = list(scores_collection.find({"username": username}))
+        
+        # สร้างรายการคะแนนสำหรับแต่ละแล็บ
+        lab_scores = [0] * 16  # สร้างรายการคะแนนว่างสำหรับ 16 แล็บ
+        
+        # ใส่คะแนนที่มีอยู่
+        for score in user_scores:
+            try:
+                lab_num = int(score['lab'].replace('Lab ', '')) - 1  # ลบ 1 เพราะ index เริ่มที่ 0
+                score_value = float(score['switch_score'].split('/')[0])
+                lab_scores[lab_num] = score_value
+            except Exception as e:
+                print(f"Error processing score: {e}")
+        
+        # คำนวณคะแนนรวม
+        overall_score = sum(lab_scores) / len(lab_scores) if lab_scores else 0
+        
         return render_template('student_dashboard.html',
-                               first_name=user['first_name'],
-                               last_name=user['last_name'],
-                               scores=lab_scores,
-                               overall_score=overall_score)
+                            first_name=user['first_name'],
+                            last_name=user['last_name'],
+                            scores=lab_scores,
+                            overall_score=overall_score)
+    
     else:
         flash('Invalid role detected.', 'danger')
         return redirect(url_for('login'))
     
-@app.route('/confirm/<token>')
-def confirm_email(token):
-    try:
-        serializer = URLSafeTimedSerializer(app.secret_key)
-        email = serializer.loads(token, salt='email-confirm', max_age=3600)
-    except:
-        flash('ลิงก์ยืนยันหมดอายุหรือไม่ถูกต้อง', 'danger')
-        return redirect(url_for('login'))
-
-    pending_user = session.get('pending_user')
-    if pending_user and pending_user.get('email') == email:
-        # เพิ่มข้อมูลลงในฐานข้อมูล
-        pending_user['is_verified'] = True
-        mongo.db.users_all.insert_one(pending_user)
-
-        # ย้ายข้อมูลตาม role (ใช้ username แทน user_id)
-        role = pending_user['role']
-        if role == 'teacher':
-            mongo.db.teachers.insert_one({
-                "username": pending_user['username'],
-                "first_name": pending_user['first_name'],
-                "last_name": pending_user['last_name'],
-                "email": pending_user['email']
-            })
-        elif role == 'student':
-            mongo.db.students.insert_one({
-                "username": pending_user['username'],
-                "first_name": pending_user['first_name'],
-                "last_name": pending_user['last_name'],
-                "email": pending_user['email']
-            })
-
-        session.pop('pending_user', None)
-        flash('อีเมลของคุณได้รับการยืนยันแล้วและข้อมูลถูกเพิ่มในระบบเรียบร้อย', 'success')
-        return redirect(url_for('login'))
-    else:
-        flash('ไม่พบข้อมูลผู้ใช้ที่รอการยืนยัน', 'danger')
-        return redirect(url_for('login'))
-
 @app.route('/logout')
 def logout():
     session.clear()

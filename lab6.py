@@ -238,5 +238,7 @@ def lab6():
                          scores=lab_scores,
                          overall_score=overall_score,
                          first_name=first_name,
-                         last_name=last_name
-                         )
+                         last_name=last_name,
+                            active_lab='lab6'
+                            )
+                     

@@ -86,6 +86,23 @@
         border-radius: 9999px;
         flex-shrink: 0;
     }
+
+        .button-primary {
+        background-color: #2563eb;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        font-weight: 500;
+        transition: background-color 0.2s;
+    }
+
+    .button-primary:hover {
+        background-color: #1d4ed8;
+    }
+
+    .hide-pdf {
+        display: none !important;
+    }
 </style>
 {% endblock %}
 
@@ -97,10 +114,10 @@
 
     <div class="lab-container">
         <!-- Left Panel - Instructions -->
-        <div class="instructions-panel">
+        <div class="instructions-panel shadow-sm">
             <div class="instructions-header">
-                <h2>Lab Instructions</h2>
-                <button class="hide-pdf-button" id="toggleButton">Hide PDF</button>
+                <h2 class="font-medium">Lab Instructions</h2>
+                <button class="button-primary text-sm" id="toggleButton">Hide PDF</button>
             </div>
             <div id="pdfContainer">
                 <embed src="{{ url_for('static', filename='pdfs/lab4.pdf') }}" class="w-full">
@@ -146,9 +163,7 @@
                     </div>
 
                     <div class="flex justify-end">
-                        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
-                            Check Configuration
-                        </button>
+                        <button type="submit" class="button-primary">Check Configuration</button>
                     </div>
                 </form>
             </div>
