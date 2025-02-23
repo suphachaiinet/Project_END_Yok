@@ -2,7 +2,6 @@
 
 {% block title %}Lab 2 - Configure VLANs and Trunking{% endblock %}
 
-
 {% block extra_css %}
 <style>
     .lab-content {
@@ -115,27 +114,11 @@
         border-radius: 0.375rem;
         font-family: monospace;
     }
-
-        .button-primary {
-        background-color: #2563eb;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
-        font-weight: 500;
-        transition: background-color 0.2s;
-    }
-
-    .button-primary:hover {
-        background-color: #1d4ed8;
-    }
-
-    .hide-pdf {
-        display: none !important;
-    }
 </style>
 {% endblock %}
+
 {% block content %}
-<div class="lab-content">
+<div class="lab-content bg-gray-50">
     <div class="lab-header">
         <h1 class="text-xl font-semibold">Lab 2: Configure VLANs and Trunking</h1>
     </div>
@@ -153,47 +136,68 @@
         </div>
 
         <!-- Right Panel -->
-        <div class="right-panel">
+        <div class="right-panel shadow-sm">
             <!-- Configuration Form -->
             <div class="config-panel">
                 <form action="{{ url_for('lab2.lab2') }}" method="POST">
                     <!-- Switch Configurations -->
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="space-y-2">
-                            <h3 class="text-lg font-medium text-gray-900">Switch 1 Configuration</h3>
-                            <textarea name="config_switch1" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required></textarea>
-                        </div>
-                        <div class="space-y-2">
-                            <h3 class="text-lg font-medium text-gray-900">Switch 2 Configuration</h3>
-                            <textarea name="config_switch2" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required></textarea>
+                    <div class="mb-6">
+                        <h2 class="text-lg font-medium text-gray-900 mb-4">Switch Configurations</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="text-md font-medium text-gray-700 mb-2">Switch 1</h3>
+                                <textarea name="config_switch1" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required placeholder="Enter switch 1 configuration..."></textarea>
+                            </div>
+                            <div>
+                                <h3 class="text-md font-medium text-gray-700 mb-2">Switch 2</h3>
+                                <textarea name="config_switch2" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required placeholder="Enter switch 2 configuration..."></textarea>
+                            </div>
                         </div>
                     </div>
 
                     <!-- PC Configurations -->
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <!-- PC 1 Config -->
+                    <div class="grid grid-cols-1 gap-4 mb-6">
+                        <!-- PC 1 -->
                         <div class="space-y-2">
                             <h3 class="text-lg font-medium text-gray-900">PC 1 Configuration</h3>
-                            <div class="space-y-2">
-                                <input type="text" name="pc1_ip_address" class="w-full p-2 border rounded" placeholder="IP Address" required>
-                                <input type="text" name="pc1_subnet_mask" class="w-full p-2 border rounded" placeholder="Subnet Mask" required>
-                                <input type="text" name="pc1_default_gateway" class="w-full p-2 border rounded" placeholder="Default Gateway" required>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">IP Address</label>
+                                    <input type="text" name="pc1_ip_address" class="w-full p-2 border rounded-lg" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Subnet Mask</label>
+                                    <input type="text" name="pc1_subnet_mask" class="w-full p-2 border rounded-lg" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Default Gateway</label>
+                                    <input type="text" name="pc1_default_gateway" class="w-full p-2 border rounded-lg" required>
+                                </div>
                             </div>
                         </div>
-                        <!-- PC 2 Config -->
+                        
+                        <!-- PC 2 -->
                         <div class="space-y-2">
                             <h3 class="text-lg font-medium text-gray-900">PC 2 Configuration</h3>
-                            <div class="space-y-2">
-                                <input type="text" name="pc2_ip_address" class="w-full p-2 border rounded" placeholder="IP Address" required>
-                                <input type="text" name="pc2_subnet_mask" class="w-full p-2 border rounded" placeholder="Subnet Mask" required>
-                                <input type="text" name="pc2_default_gateway" class="w-full p-2 border rounded" placeholder="Default Gateway" required>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">IP Address</label>
+                                    <input type="text" name="pc2_ip_address" class="w-full p-2 border rounded-lg" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Subnet Mask</label>
+                                    <input type="text" name="pc2_subnet_mask" class="w-full p-2 border rounded-lg" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Default Gateway</label>
+                                    <input type="text" name="pc2_default_gateway" class="w-full p-2 border rounded-lg" required>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex justify-end">
                         <button type="submit" class="button-primary">Check Configuration</button>
-                    </div>
                     </div>
                 </form>
             </div>
