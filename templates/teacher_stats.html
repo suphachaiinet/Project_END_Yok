@@ -1,0 +1,86 @@
+{% extends "teacher_dashboard.html" %}
+
+{% block content %}
+<div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+    <div class="px-4 py-5 sm:px-6">
+        <h2 class="text-lg leading-6 font-medium text-gray-900">สถิติภาพรวมของระบบ</h2>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">แสดงข้อมูลสถิติการทำแล็บของนักศึกษาทั้งหมด</p>
+    </div>
+</div>
+
+<!-- Lab Statistics -->
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    {% for lab_num, data in labs_data.items() %}
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Lab {{ lab_num }}</h3>
+                <a href="{{ url_for('teacher.lab_management', lab_num=lab_num) }}" class="text-sm text-indigo-600 hover:text-indigo-900">
+                    ดูรายละเอียด
+                </a>
+            </div>
+            
+            <!-- Submissions -->
+            <div class="mb-4">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-sm font-medium text-gray-500">จำนวนการส่งงาน</span>
+                    <span class="text-sm text-gray-900">{{ data.total_submissions }}</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-indigo-600 h-2 rounded-full" style="width: {{ (data.total_submissions / total_students * 100)|round if total_students > 0 else 0 }}%"></div>
+                </div>
+            </div>
+            
+            <!-- Average Score -->
+            <div class="mb-4">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-sm font-medium text-gray-500">คะแนนเฉลี่ย</span>
+                    <span class="text-sm text-gray-900">{{ "%.2f"|format(data.avg_score) }}%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: {{ data.avg_score }}%"></div>
+                </div>
+            </div>
+            
+            <!-- Completion Rate -->
+            <div>
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-sm font-medium text-gray-500">อัตราการทำเสร็จ</span>
+                    <span class="text-sm text-gray-900">{{ "%.2f"|format(data.completion_rate) }}%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: {{ data.completion_rate }}%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Overall Statistics -->
+<div class="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">สถิติโดยรวม</h3>
+    </div>
+    <div class="border-t border-gray-200">
+        <dl>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">จำนวนนักศึกษา</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ total_students }}</dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">คะแนนเฉลี่ยโดยรวม</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ "%.2f"|format(overall_avg_score) }}%</dd>
+            </div>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">แล็บที่มีนักศึกษาทำเสร็จมากที่สุด</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Lab {{ highest_completion_lab }} ({{ "%.2f"|format(highest_completion_rate) }}%)</dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">แล็บที่มีนักศึกษาทำเสร็จน้อยที่สุด</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Lab {{ lowest_completion_lab }} ({{ "%.2f"|format(lowest_completion_rate) }}%)</dd>
+            </div>
+        </dl>
+    </div>
+</div>
+{% endblock %}

@@ -49,15 +49,26 @@
     </div>
 </div>
 
-<!-- Configuration Details -->
-{% if lab_num == 1 %}
-<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Switch Configuration -->
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900">Switch Configuration</h3>
+            {% if submission.switch_score is defined %}
+            <p class="mt-1 max-w-2xl text-sm">
+                สถานะ: 
+                {% if submission.switch_score|float >= 80 %}
+                    <span class="text-green-600 font-medium">ถูกต้อง</span>
+                {% elif submission.switch_score|float >= 60 %}
+                    <span class="text-yellow-600 font-medium">ผ่าน</span>
+                {% else %}
+                    <span class="text-red-600 font-medium">ไม่ถูกต้อง</span>
+                {% endif %}
+            </p>
+            {% endif %}
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm">{{ submission.configs.switch_config }}</pre>
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm">{{ submission.switch_config if submission.switch_config is defined else 'ไม่มีข้อมูล' }}</pre>
             
             {% if submission.missing_commands %}
             <div class="mt-4">
@@ -72,157 +83,37 @@
         </div>
     </div>
 
+    <!-- PC Configuration -->
     <div class="bg-white shadow overflow-hidden sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900">PC Configuration</h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+            <p class="mt-1 max-w-2xl text-sm">
                 สถานะ: 
-                <span class="{% if submission.pc_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
-                    {{ submission.pc_status }}
-                </span>
+                {% if submission.pc_status == 'correct' %}
+                    <span class="text-green-600 font-medium">ถูกต้อง</span>
+                {% else %}
+                    <span class="text-red-600 font-medium">ไม่ถูกต้อง</span>
+                {% endif %}
             </p>
         </div>
         <div class="border-t border-gray-200">
             <dl>
                 <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">IP Address</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.ip_address }}</dd>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.ip_address if submission.pc_config is defined and submission.pc_config.ip_address is defined else submission.pc_ip_address }}</dd>
                 </div>
                 <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.subnet_mask }}</dd>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.subnet_mask if submission.pc_config is defined and submission.pc_config.subnet_mask is defined else submission.pc_subnet_mask }}</dd>
                 </div>
                 <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.default_gateway }}</dd>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.default_gateway if submission.pc_config is defined and submission.pc_config.default_gateway is defined else submission.pc_default_gateway }}</dd>
                 </div>
             </dl>
         </div>
     </div>
 </div>
-
-{% elif lab_num == 2 %}
-<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Switch 1 Configuration</h3>
-        </div>
-        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm">{{ submission.configs.sw1_config }}</pre>
-            
-            {% if submission.sw1_missing %}
-            <div class="mt-4">
-                <h4 class="text-sm font-medium text-gray-700 mb-2">Missing Commands:</h4>
-                <ul class="list-disc pl-5 text-sm text-red-600 space-y-1">
-                    {% for cmd in submission.sw1_missing %}
-                    <li>{{ cmd }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Switch 2 Configuration</h3>
-        </div>
-        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm">{{ submission.configs.sw2_config }}</pre>
-            
-            {% if submission.sw2_missing %}
-            <div class="mt-4">
-                <h4 class="text-sm font-medium text-gray-700 mb-2">Missing Commands:</h4>
-                <ul class="list-disc pl-5 text-sm text-red-600 space-y-1">
-                    {% for cmd in submission.sw2_missing %}
-                    <li>{{ cmd }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-</div>
-
-<div class="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">PC 1 Configuration</h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                สถานะ: 
-                <span class="{% if submission.pc1_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
-                    {{ submission.pc1_status }}
-                </span>
-            </p>
-        </div>
-        <div class="border-t border-gray-200">
-            <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">IP Address</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc1_config.ip }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc1_config.subnet }}</dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc1_config.gateway }}</dd>
-                </div>
-            </dl>
-        </div>
-    </div>
-
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">PC 2 Configuration</h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                สถานะ: 
-                <span class="{% if submission.pc2_status == 'correct' %}text-green-600{% else %}text-red-600{% endif %}">
-                    {{ submission.pc2_status }}
-                </span>
-            </p>
-        </div>
-        <div class="border-t border-gray-200">
-            <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">IP Address</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc2_config.ip }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc2_config.subnet }}</dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.configs.pc2_config.gateway }}</dd>
-                </div>
-            </dl>
-        </div>
-    </div>
-</div>
-
-{% else %}
-<div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="px-4 py-5 sm:px-6">
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Configuration</h3>
-    </div>
-    <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-        <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm">{{ submission.configs.general_config }}</pre>
-        
-        {% if submission.missing_commands %}
-        <div class="mt-4">
-            <h4 class="text-sm font-medium text-gray-700 mb-2">Missing Commands:</h4>
-            <ul class="list-disc pl-5 text-sm text-red-600 space-y-1">
-                {% for cmd in submission.missing_commands %}
-                <li>{{ cmd }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
-    </div>
-</div>
-{% endif %}
 
 <!-- Submission History -->
 <div class="mt-6 bg-white shadow overflow-hidden sm:rounded-lg">
@@ -231,49 +122,22 @@
     </div>
     <div class="border-t border-gray-200">
         <div class="px-4 py-5 sm:p-6">
-            <div class="flow-root">
-                <ul role="list" class="-mb-8">
-                    {% for history in submission.history %}
-                    <li>
-                        <div class="relative pb-8">
-                            {% if not loop.last %}
-                            <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-                            {% endif %}
-                            <div class="relative flex space-x-3">
-                                <div>
-                                    <span class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white 
-                                        {% if history.type == 'submit' %}bg-blue-500
-                                        {% elif history.type == 'grade' %}bg-green-500
-                                        {% else %}bg-gray-500{% endif %}">
-                                        {% if history.type == 'submit' %}
-                                        <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-                                        </svg>
-                                        {% elif history.type == 'grade' %}
-                                        <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                        </svg>
-                                        {% else %}
-                                        <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                                        </svg>
-                                        {% endif %}
-                                    </span>
-                                </div>
-                                <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                                    <div>
-                                        <p class="text-sm text-gray-500">{{ history.message }}</p>
-                                    </div>
-                                    <div class="text-right text-sm whitespace-nowrap text-gray-500">
-                                        <time datetime="{{ history.timestamp }}">{{ history.timestamp }}</time>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    {% endfor %}
-                </ul>
+            {% if submission.timestamp is defined %}
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center">
+                        <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-700">ส่งงานเมื่อ: <span class="font-medium">{{ submission.timestamp }}</span></p>
+                </div>
             </div>
+            {% else %}
+            <p class="text-sm text-gray-500">ไม่มีข้อมูลประวัติการส่งงาน</p>
+            {% endif %}
         </div>
     </div>
 </div>

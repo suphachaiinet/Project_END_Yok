@@ -202,7 +202,6 @@ def dashboard():
 
     if role == 'teacher':
         # คำนวณข้อมูลสถิติสำหรับอาจารย์
-        total_students = mongo.db.students.count_documents({})
         all_scores = list(scores_collection.find())
         
         # คำนวณคะแนนเฉลี่ย
@@ -217,6 +216,7 @@ def dashboard():
                 continue
         
         avg_score = total_score / num_scores if num_scores > 0 else 0
+        total_students = mongo.db.students.count_documents({})
         
         # จำนวนนักศึกษาที่ส่งงานทั้งหมด
         completed_students = len(set(score['username'] for score in all_scores))
@@ -226,13 +226,13 @@ def dashboard():
         latest_submission = max([score.get('timestamp', datetime.min) for score in all_scores], default=None)
         
         return render_template('teacher_dashboard.html',
-                            first_name=user['first_name'],
-                            last_name=user['last_name'],
-                            total_students=total_students,
-                            avg_score=avg_score,
-                            completion_rate=completion_rate,
-                            last_activity_time=latest_submission)
-                            
+                           first_name=user.get('first_name', 'Unknown'),
+                           last_name=user.get('last_name', 'User'),
+                           total_students=total_students,
+                           avg_score=avg_score,
+                           completion_rate=completion_rate,
+                           last_activity_time=latest_submission)
+                           
     elif role == 'student':
         # ดึงคะแนนของนักศึกษา
         username = session.get('username')
@@ -257,7 +257,8 @@ def dashboard():
                             first_name=user['first_name'],
                             last_name=user['last_name'],
                             scores=lab_scores,
-                            overall_score=overall_score)
+                            overall_score=overall_score,
+                            active_lab=None)
     
     else:
         flash('Invalid role detected.', 'danger')

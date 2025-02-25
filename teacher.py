@@ -91,6 +91,9 @@ def stats():
         flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
         return redirect(url_for('login'))
     
+    # ดึงข้อมูลนักศึกษาทั้งหมด
+    total_students = students_collection.count_documents({})
+    
     # ดึงข้อมูลคะแนนทั้งหมด
     all_scores = list(scores_collection.find())
     
@@ -115,6 +118,23 @@ def stats():
                 'completion_rate': 0
             }
     
+    # หาแล็บที่มีอัตราการทำเสร็จสูงสุดและต่ำสุด
+    completion_rates = [(lab_num, lab_data['completion_rate']) for lab_num, lab_data in labs_data.items()]
+    
+    # คำนวณค่าเฉลี่ยรวม
+    all_scores_values = []
+    for lab_scores in [s for s in all_scores if 'switch_score' in s]:
+        try:
+            score_value = float(lab_scores['switch_score'].split('/')[0])
+            all_scores_values.append(score_value)
+        except:
+            continue
+    
+    overall_avg_score = sum(all_scores_values) / len(all_scores_values) if all_scores_values else 0
+    
+    highest_completion = max(completion_rates, key=lambda x: x[1]) if completion_rates else (0, 0)
+    lowest_completion = min(completion_rates, key=lambda x: x[1]) if completion_rates else (0, 0)
+    
     user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
     first_name = user['first_name'] if user else session.get('first_name', 'Unknown')
     last_name = user['last_name'] if user else session.get('last_name', 'User')
@@ -122,7 +142,13 @@ def stats():
     return render_template('teacher_stats.html', 
                           labs_data=labs_data,
                           first_name=first_name,
-                          last_name=last_name)
+                          last_name=last_name,
+                          total_students=total_students,  # เพิ่มตัวแปร total_students
+                          overall_avg_score=overall_avg_score,
+                          highest_completion_lab=highest_completion[0],
+                          highest_completion_rate=highest_completion[1],
+                          lowest_completion_lab=lowest_completion[0],
+                          lowest_completion_rate=lowest_completion[1])
 
 # แสดงหน้าจัดการแล็บ
 @teacher_bp.route('/lab/<int:lab_num>')
