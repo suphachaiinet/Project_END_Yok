@@ -200,10 +200,10 @@
                             <!-- Lab 1 Keywords -->
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch Keywords</label>
-                                <textarea name="switch_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter one keyword per line">{{ switch_keywords|join('\n') }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                                <textarea name="switch_keywords" rows="12" 
+                                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md font-mono"
+                                    placeholder="Enter one keyword per line">{{ switch_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง (เริ่มด้วยช่องว่าง)</p>
                             </div>
                             
                             <div class="grid grid-cols-3 gap-4">
@@ -228,18 +228,18 @@
                             <!-- Lab 2 Keywords -->
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                <textarea name="switch1_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter one keyword per line">{{ switch1_keywords|join('\n') }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                                <textarea name="switch1_keywords" rows="12" 
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md font-mono"
+                                          placeholder="Enter one keyword per line">{{ switch1_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง (เริ่มด้วยช่องว่าง)</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                <textarea name="switch2_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter one keyword per line">{{ switch2_keywords|join('\n') }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                                <textarea name="switch2_keywords" rows="12" 
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md font-mono"
+                                          placeholder="Enter one keyword per line">{{ switch2_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง (เริ่มด้วยช่องว่าง)</p>
                             </div>
 
                             <div class="grid grid-cols-2 gap-4">
@@ -268,11 +268,22 @@
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Keywords</label>
                                 <textarea name="general_keywords" rows="12" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords or JSON configuration">{{ general_keywords|join('\n') }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หรือใช้ JSON format สำหรับคอนฟิกที่ซับซ้อน</p>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md font-mono"
+                                          placeholder="Enter keywords or JSON configuration">{{ general_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง (เริ่มด้วยช่องว่าง)</p>
                             </div>
                             {% endif %}
+                            
+                            <!-- ตัวเลือกลบการส่งงานทั้งหมด -->
+                            <div class="mt-4">
+                                <div class="flex items-center">
+                                    <input id="delete_submissions" name="delete_submissions" type="checkbox" value="yes"
+                                        class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                                    <label for="delete_submissions" class="ml-2 block text-sm text-red-600">
+                                        ลบการส่งงานทั้งหมดในแล็บนี้ (ข้อมูลจะสูญหายอย่างถาวร)
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

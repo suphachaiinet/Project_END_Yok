@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from datetime import datetime
 from bson import ObjectId
 import json
+import re
 
 try:
     from zoneinfo import ZoneInfo
@@ -143,12 +144,42 @@ def stats():
                           labs_data=labs_data,
                           first_name=first_name,
                           last_name=last_name,
-                          total_students=total_students,  # เพิ่มตัวแปร total_students
+                          total_students=total_students,
                           overall_avg_score=overall_avg_score,
                           highest_completion_lab=highest_completion[0],
                           highest_completion_rate=highest_completion[1],
                           lowest_completion_lab=lowest_completion[0],
                           lowest_completion_rate=lowest_completion[1])
+
+def format_keywords_for_display(keywords):
+    """
+    จัดรูปแบบ keywords เพื่อแสดงผลในหน้าเว็บ
+    
+    Parameters:
+    keywords (list): รายการ keywords ที่เก็บใน MongoDB
+    
+    Returns:
+    str: ข้อความ keywords ที่จัดรูปแบบสำหรับแสดงผลแล้ว
+    """
+    if not keywords:
+        return ""
+        
+    formatted_text = ""
+    
+    for item in keywords:
+        if isinstance(item, dict):
+            # กรณีเป็น interface
+            for interface, commands in item.items():
+                # เขียนชื่อ interface
+                formatted_text += f"{interface}\n"
+                # เขียนคำสั่งย่อย
+                for cmd in commands:
+                    formatted_text += f"  {cmd}\n"
+        else:
+            # กรณีเป็นคำสั่งปกติ
+            formatted_text += f"{item}\n"
+    
+    return formatted_text.rstrip()
 
 # แสดงหน้าจัดการแล็บ
 @teacher_bp.route('/lab/<int:lab_num>')
@@ -159,7 +190,7 @@ def lab_management(lab_num):
     
     # ดึงข้อมูล keyword ของแล็บนี้
     lab_keywords = lab_keywords_collection.find_one({"lab_num": lab_num})
-    
+
     if not lab_keywords:
         # ถ้ายังไม่มีคีย์เวิร์ด ให้ใช้ค่าเริ่มต้นจากไฟล์ lab.py หรือ lab<n>.py
         if lab_num == 1:
@@ -252,7 +283,7 @@ def lab_management(lab_num):
             lab_keywords = {
                 "general_keywords": default_keywords
             }
-    
+
     # ดึงข้อมูลการส่งแล็บของนักศึกษาทั้งหมด
     submissions = list(scores_collection.find({"lab": f"Lab {lab_num}"}))
     
@@ -317,6 +348,24 @@ def lab_management(lab_num):
     user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
     first_name = user['first_name'] if user else session.get('first_name', 'Unknown')
     last_name = user['last_name'] if user else session.get('last_name', 'User')
+
+    # แปลงคีย์เวิร์ดเป็นข้อความเพื่อแสดงผล
+    switch_keywords_text = ""
+    switch1_keywords_text = ""
+    switch2_keywords_text = ""
+    general_keywords_text = ""
+    
+    if lab_num == 1:
+        switch_keywords = lab_keywords.get('switch_keywords', [])
+        switch_keywords_text = format_keywords_for_display(switch_keywords)
+    elif lab_num == 2:
+        switch1_keywords = lab_keywords.get('switch1_keywords', [])
+        switch2_keywords = lab_keywords.get('switch2_keywords', [])
+        switch1_keywords_text = format_keywords_for_display(switch1_keywords)
+        switch2_keywords_text = format_keywords_for_display(switch2_keywords)
+    else:
+        general_keywords = lab_keywords.get('general_keywords', [])
+        general_keywords_text = format_keywords_for_display(general_keywords)
     
     return render_template('lab_management.html',
                          lab_num=lab_num,
@@ -328,166 +377,16 @@ def lab_management(lab_num):
                          avg_score=round(avg_score, 2),
                          max_score=round(max_score, 2),
                          min_score=round(min_score, 2),
-                         switch_keywords=lab_keywords.get('switch_keywords', []),
-                         switch1_keywords=lab_keywords.get('switch1_keywords', []),
-                         switch2_keywords=lab_keywords.get('switch2_keywords', []),
-                         general_keywords=lab_keywords.get('general_keywords', []),
+                         switch_keywords_text=switch_keywords_text,
+                         switch1_keywords_text=switch1_keywords_text,
+                         switch2_keywords_text=switch2_keywords_text,
+                         general_keywords_text=general_keywords_text,
                          pc_config=lab_keywords.get('pc_config', {}),
                          pc1_config=lab_keywords.get('pc1_config', {}),
                          pc2_config=lab_keywords.get('pc2_config', {}),
                          active_lab=lab_num,
                          first_name=first_name,
                          last_name=last_name)
-
-# อัพเดทคีย์เวิร์ด
-@teacher_bp.route('/lab/<int:lab_num>/update', methods=['POST'])
-def update_keywords(lab_num):
-    if 'user_id' not in session or session.get('role') != 'teacher':
-        flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
-        return redirect(url_for('login'))
-    
-    if lab_num == 1:
-        # อัพเดทสำหรับ Lab 1
-        switch_keywords_text = request.form.get('switch_keywords', '')
-        pc_ip = request.form.get('pc_ip', '')
-        pc_subnet = request.form.get('pc_subnet', '')
-        pc_gateway = request.form.get('pc_gateway', '')
-        
-        # แปลงข้อความเป็นรายการคีย์เวิร์ด
-        switch_keywords = []
-        for line in switch_keywords_text.strip().split('\n'):
-            line = line.strip()
-            if not line:
-                continue
-                
-            if line.startswith('interface'):
-                # เริ่มต้นบล็อก interface ใหม่
-                current_interface = line
-                interface_commands = []
-                switch_keywords.append({current_interface: interface_commands})
-            elif line.startswith(' ') and switch_keywords and isinstance(switch_keywords[-1], dict):
-                # คำสั่งในบล็อก interface
-                interface_commands = list(switch_keywords[-1].values())[0]
-                interface_commands.append(line.strip())
-            else:
-                # คีย์เวิร์ดปกติ
-                switch_keywords.append(line)
-        
-        # บันทึกลงฐานข้อมูล
-        lab_keywords_collection.update_one(
-            {"lab_num": lab_num},
-            {"$set": {
-                "switch_keywords": switch_keywords,
-                "pc_config": {
-                    "ip": pc_ip,
-                    "subnet": pc_subnet,
-                    "gateway": pc_gateway
-                },
-                "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
-            }},
-            upsert=True
-        )
-        
-    elif lab_num == 2:
-        # อัพเดทสำหรับ Lab 2
-        switch1_keywords_text = request.form.get('switch1_keywords', '')
-        switch2_keywords_text = request.form.get('switch2_keywords', '')
-        
-        pc1_ip = request.form.get('pc1_ip', '')
-        pc1_subnet = request.form.get('pc1_subnet', '')
-        pc1_gateway = request.form.get('pc1_gateway', '')
-        
-        pc2_ip = request.form.get('pc2_ip', '')
-        pc2_subnet = request.form.get('pc2_subnet', '')
-        pc2_gateway = request.form.get('pc2_gateway', '')
-        
-        # แปลงข้อความเป็นรายการคีย์เวิร์ด
-        switch1_keywords = []
-        for line in switch1_keywords_text.strip().split('\n'):
-            line = line.strip()
-            if not line:
-                continue
-                
-            if line.startswith('interface'):
-                # เริ่มต้นบล็อก interface ใหม่
-                current_interface = line
-                interface_commands = []
-                switch1_keywords.append({current_interface: interface_commands})
-            elif line.startswith(' ') and switch1_keywords and isinstance(switch1_keywords[-1], dict):
-                # คำสั่งในบล็อก interface
-                interface_commands = list(switch1_keywords[-1].values())[0]
-                interface_commands.append(line.strip())
-            else:
-                # คีย์เวิร์ดปกติ
-                switch1_keywords.append(line)
-        
-        switch2_keywords = []
-        for line in switch2_keywords_text.strip().split('\n'):
-            line = line.strip()
-            if not line:
-                continue
-                
-            if line.startswith('interface'):
-                # เริ่มต้นบล็อก interface ใหม่
-                current_interface = line
-                interface_commands = []
-                switch2_keywords.append({current_interface: interface_commands})
-            elif line.startswith(' ') and switch2_keywords and isinstance(switch2_keywords[-1], dict):
-                # คำสั่งในบล็อก interface
-                interface_commands = list(switch2_keywords[-1].values())[0]
-                interface_commands.append(line.strip())
-            else:
-                # คีย์เวิร์ดปกติ
-                switch2_keywords.append(line)
-        
-        # บันทึกลงฐานข้อมูล
-        lab_keywords_collection.update_one(
-            {"lab_num": lab_num},
-            {"$set": {
-                "switch1_keywords": switch1_keywords,
-                "switch2_keywords": switch2_keywords,
-                "pc1_config": {
-                    "ip": pc1_ip,
-                    "subnet": pc1_subnet,
-                    "gateway": pc1_gateway
-                },
-                "pc2_config": {
-                    "ip": pc2_ip,
-                    "subnet": pc2_subnet,
-                    "gateway": pc2_gateway
-                },
-                "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
-            }},
-            upsert=True
-        )
-    else:
-        # อัพเดทสำหรับแล็บอื่นๆ
-        general_keywords_text = request.form.get('general_keywords', '')
-        
-        # แปลงข้อความเป็นรายการคีย์เวิร์ด
-        try:
-            # พยายามแปลงเป็น JSON ก่อน
-            general_keywords = json.loads(general_keywords_text)
-        except json.JSONDecodeError:
-            # ถ้าไม่ใช่ JSON ให้แปลงเป็นรายการคีย์เวิร์ดแบบปกติ
-            general_keywords = []
-            for line in general_keywords_text.strip().split('\n'):
-                line = line.strip()
-                if line:
-                    general_keywords.append(line)
-        
-        # บันทึกลงฐานข้อมูล
-        lab_keywords_collection.update_one(
-            {"lab_num": lab_num},
-            {"$set": {
-                "general_keywords": general_keywords,
-                "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
-            }},
-            upsert=True
-        )
-    
-    flash('อัพเดทคีย์เวิร์ดเรียบร้อยแล้ว', 'success')
-    return redirect(url_for('teacher.lab_management', lab_num=lab_num))
 
 # ดูรายละเอียดการส่งงานของนักศึกษา
 @teacher_bp.route('/submission/<int:lab_num>/<student_id>')
@@ -581,4 +480,180 @@ def delete_submission():
     scores_collection.delete_one({"username": student_id, "lab": f"Lab {lab_num}"})
     
     flash('ลบการส่งงานเรียบร้อยแล้ว', 'success')
+    return redirect(url_for('teacher.lab_management', lab_num=lab_num))
+
+def clean_keywords(keywords):
+    """
+    ทำความสะอาดคีย์เวิร์ด - ลบเครื่องหมาย quotes และอื่นๆ
+    
+    Parameters:
+    keywords (list): รายการคีย์เวิร์ดที่ต้องการทำความสะอาด
+    
+    Returns:
+    list: รายการคีย์เวิร์ดที่ทำความสะอาดแล้ว
+    """
+    clean_list = []
+    
+    for item in keywords:
+        if isinstance(item, dict):
+            clean_dict = {}
+            for key, values in item.items():
+                # ลบเครื่องหมาย quotes จากชื่อ interface
+                clean_key = key.strip('"\'')
+                # ลบเครื่องหมาย quotes จากคำสั่งใน interface
+                clean_values = [val.strip('"\'"[]') for val in values]
+                clean_dict[clean_key] = clean_values
+            clean_list.append(clean_dict)
+        else:
+            # ลบเครื่องหมาย quotes จากคำสั่งทั่วไป
+            clean_list.append(item.strip('"\''))
+    
+    return clean_list
+
+def parse_keywords_from_text(text):
+    """
+    แปลงข้อความเป็นรายการคีย์เวิร์ดตามรูปแบบที่ใช้ในการตรวจสอบ
+    
+    Parameters:
+    text (str): ข้อความที่ประกอบด้วยคีย์เวิร์ดและคำสั่งใน interface
+    
+    Returns:
+    list: รายการคีย์เวิร์ดในรูปแบบที่ใช้ในการตรวจสอบ
+    """
+    keywords = []
+    current_interface = None
+    interface_commands = []
+    
+    lines = text.strip().split('\n')
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        if not line:
+            i += 1
+            continue
+            
+        if line.startswith('interface'):
+            # เก็บ interface ก่อนหน้า (ถ้ามี)
+            if current_interface and interface_commands:
+                keywords.append({current_interface: interface_commands})
+            
+            # เริ่มต้นบล็อก interface ใหม่
+            current_interface = line
+            interface_commands = []
+            
+            # ดึงคำสั่งย่อยทั้งหมดของ interface นี้
+            i += 1
+            while i < len(lines) and lines[i].strip() and lines[i].strip().startswith(' '):
+                interface_commands.append(lines[i].strip())
+                i += 1
+            
+            # เพิ่ม interface นี้พร้อมคำสั่งย่อยลงในรายการคีย์เวิร์ด
+            keywords.append({current_interface: interface_commands})
+            current_interface = None
+            interface_commands = []
+        else:
+            # คีย์เวิร์ดปกติ
+            keywords.append(line)
+            i += 1
+    
+    return keywords
+
+# อัพเดทคีย์เวิร์ด
+@teacher_bp.route('/lab/<int:lab_num>/update', methods=['POST'])
+def update_keywords(lab_num):
+    if 'user_id' not in session or session.get('role') != 'teacher':
+        flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
+        return redirect(url_for('login'))
+    
+    try:
+        if lab_num == 1:
+            # อัพเดทสำหรับ Lab 1
+            switch_keywords_text = request.form.get('switch_keywords', '')
+            pc_ip = request.form.get('pc_ip', '')
+            pc_subnet = request.form.get('pc_subnet', '')
+            pc_gateway = request.form.get('pc_gateway', '')
+            
+            # แปลงข้อความเป็นรายการคีย์เวิร์ด
+            switch_keywords = parse_keywords_from_text(switch_keywords_text)
+            
+            # บันทึกลงฐานข้อมูล
+            lab_keywords_collection.update_one(
+                {"lab_num": lab_num},
+                {"$set": {
+                    "switch_keywords": switch_keywords,
+                    "pc_config": {
+                        "ip": pc_ip,
+                        "subnet": pc_subnet,
+                        "gateway": pc_gateway
+                    },
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                }},
+                upsert=True
+            )
+            
+        elif lab_num == 2:
+            # อัพเดทสำหรับ Lab 2
+            switch1_keywords_text = request.form.get('switch1_keywords', '')
+            switch2_keywords_text = request.form.get('switch2_keywords', '')
+            pc1_ip = request.form.get('pc1_ip', '')
+            pc1_subnet = request.form.get('pc1_subnet', '')
+            pc1_gateway = request.form.get('pc1_gateway', '')
+            pc2_ip = request.form.get('pc2_ip', '')
+            pc2_subnet = request.form.get('pc2_subnet', '')
+            pc2_gateway = request.form.get('pc2_gateway', '')
+            
+            # แปลงข้อความเป็นรายการคีย์เวิร์ด
+            switch1_keywords = parse_keywords_from_text(switch1_keywords_text)
+            switch2_keywords = parse_keywords_from_text(switch2_keywords_text)
+            
+            # บันทึกลงฐานข้อมูล
+            lab_keywords_collection.update_one(
+                {"lab_num": lab_num},
+                {"$set": {
+                    "switch1_keywords": switch1_keywords,
+                    "switch2_keywords": switch2_keywords,
+                    "pc1_config": {
+                        "ip": pc1_ip,
+                        "subnet": pc1_subnet,
+                        "gateway": pc1_gateway
+                    },
+                    "pc2_config": {
+                        "ip": pc2_ip,
+                        "subnet": pc2_subnet,
+                        "gateway": pc2_gateway
+                    },
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                }},
+                upsert=True
+            )
+        else:
+            # อัพเดทสำหรับแล็บอื่นๆ
+            general_keywords_text = request.form.get('general_keywords', '')
+            general_keywords = parse_keywords_from_text(general_keywords_text)
+            
+            # บันทึกลงฐานข้อมูล
+            lab_keywords_collection.update_one(
+                {"lab_num": lab_num},
+                {"$set": {
+                    "general_keywords": general_keywords,
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                }},
+                upsert=True
+            )
+        
+        # ลบการส่งงานทั้งหมดในแล็บนี้หรือไม่
+        delete_submissions = request.form.get('delete_submissions', 'no')
+        deleted_count = 0
+        
+        if delete_submissions == 'yes':
+            delete_result = scores_collection.delete_many({"lab": f"Lab {lab_num}"})
+            deleted_count = delete_result.deleted_count
+            flash(f'อัพเดทคีย์เวิร์ดเรียบร้อยแล้ว และลบการส่งงาน {deleted_count} รายการ', 'success')
+        else:
+            flash('อัพเดทคีย์เวิร์ดเรียบร้อยแล้ว', 'success')
+            
+    except Exception as e:
+        print(f"Error updating keywords: {str(e)}")
+        flash(f'เกิดข้อผิดพลาดในการอัพเดทคีย์เวิร์ด: {str(e)}', 'danger')
+    
     return redirect(url_for('teacher.lab_management', lab_num=lab_num))
