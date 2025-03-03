@@ -9072,3 +9072,6 @@ INFO:werkzeug:127.0.0.1 - - [03/Mar/2025 15:44:37] "GET /teacher/lab/5 HTTP/1.1"
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
