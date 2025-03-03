@@ -168,7 +168,6 @@ def format_keywords_for_display(keywords):
     
     for item in keywords:
         if isinstance(item, dict):
-            # กรณีเป็น interface
             for interface, commands in item.items():
                 # เขียนชื่อ interface
                 formatted_text += f"{interface}\n"
@@ -176,11 +175,12 @@ def format_keywords_for_display(keywords):
                 for cmd in commands:
                     formatted_text += f"  {cmd}\n"
         else:
-            # กรณีเป็นคำสั่งปกติ
+            # เขียนคำสั่งปกติ
             formatted_text += f"{item}\n"
     
     return formatted_text.rstrip()
 
+# แสดงหน้าจัดการแล็บ
 # แสดงหน้าจัดการแล็บ
 @teacher_bp.route('/lab/<int:lab_num>')
 def lab_management(lab_num):
@@ -269,6 +269,203 @@ def lab_management(lab_num):
                 "pc1_config": pc1_config,
                 "pc2_config": pc2_config
             }
+        elif lab_num == 3:
+            # ตัวอย่างสำหรับ Lab 3 จากไฟล์ lab3.py
+            switch1_keywords = [
+                "hostname S1",
+                "no ip domain-lookup",
+                {"interface FastEthernet0/1": ["switchport trunk native vlan 1000", "switchport trunk allowed vlan 10,20,30,1000", "switchport mode trunk"]},
+                {"interface FastEthernet0/6": ["switchport access vlan 20", "switchport mode access"]},
+                {"interface Vlan1": ["no ip address"]},
+                {"interface Vlan10": ["ip address 192.168.10.11 255.255.255.0"]},
+                {"interface Vlan20": ["ip address 192.168.20.11 255.255.255.0"]},
+                {"interface Vlan30": ["ip address 192.168.30.11 255.255.255.0"]}
+            ]
+
+            switch2_keywords = [
+                "hostname S2",
+                "no ip domain-lookup",
+                {"interface FastEthernet0/1": ["switchport trunk native vlan 1000", "switchport trunk allowed vlan 10,20,30,1000", "switchport mode trunk"]},
+                {"interface FastEthernet0/18": ["switchport access vlan 30", "switchport mode access"]},
+                {"interface Vlan1": ["no ip address"]},
+                {"interface Vlan10": ["ip address 192.168.10.12 255.255.255.0"]}
+            ]
+
+            expected_vlans_sw1 = {
+                "1": {"name": "default", "ports": []},
+                "10": {"name": "Management", "ports": []},
+                "20": {"name": "Sales", "ports": ["Fa0/6"]},
+                "30": {"name": "Operations", "ports": []},
+                "999": {"name": "ParkingLot", "ports": ["Fa0/2", "Fa0/3", "Fa0/4", "Fa0/5", "Fa0/7", "Fa0/8", "Fa0/9", "Fa0/10", 
+                                                        "Fa0/11", "Fa0/12", "Fa0/13", "Fa0/14", "Fa0/15", "Fa0/16", "Fa0/17", "Fa0/18", 
+                                                        "Fa0/19", "Fa0/20", "Fa0/21", "Fa0/22", "Fa0/23", "Fa0/24", "Gig0/1", "Gig0/2"]},
+                "1000": {"name": "Native", "ports": []}
+            }
+
+            expected_vlans_sw2 = {
+                "1": {"name": "default", "ports": []},
+                "10": {"name": "Management", "ports": []},
+                "20": {"name": "Sales", "ports": []},
+                "30": {"name": "Operations", "ports": ["Fa0/18"]},
+                "999": {"name": "ParkingLot", "ports": ["Fa0/2", "Fa0/3", "Fa0/4", "Fa0/5", "Fa0/6", "Fa0/7", "Fa0/8", "Fa0/9", 
+                                                        "Fa0/10", "Fa0/11", "Fa0/12", "Fa0/13", "Fa0/14", "Fa0/15", "Fa0/16", "Fa0/17", 
+                                                        "Fa0/19", "Fa0/20", "Fa0/21", "Fa0/22", "Fa0/23", "Fa0/24", "Gig0/1", "Gig0/2"]}
+            }
+            
+            pc1_config = {
+                "ip": "192.168.20.13",
+                "subnet": "255.255.255.0",
+                "gateway": "192.168.20.11"
+            }
+            
+            pc2_config = {
+                "ip": "192.168.30.13",
+                "subnet": "255.255.255.0",
+                "gateway": "192.168.30.11"
+            }
+            
+            # บันทึกลงฐานข้อมูลเพื่อใช้ครั้งต่อไป
+            lab_keywords_collection.insert_one({
+                "lab_num": lab_num,
+                "switch1_keywords": switch1_keywords,
+                "switch2_keywords": switch2_keywords,
+                "expected_vlans_sw1": expected_vlans_sw1,
+                "expected_vlans_sw2": expected_vlans_sw2,
+                "pc1_config": pc1_config,
+                "pc2_config": pc2_config,
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+            })
+            
+            lab_keywords = {
+                "switch1_keywords": switch1_keywords,
+                "switch2_keywords": switch2_keywords,
+                "expected_vlans_sw1": expected_vlans_sw1,
+                "expected_vlans_sw2": expected_vlans_sw2,
+                "pc1_config": pc1_config,
+                "pc2_config": pc2_config
+            }
+        elif lab_num == 4:
+            # ตัวอย่างสำหรับ Lab 4 จากไฟล์ lab4.py
+            switch1_keywords = [
+                "hostname S1",
+                "spanning-tree mode pvst",
+                {"interface FastEthernet0/1": ["switchport mode trunk"]},
+                {"interface Vlan1": ["ip address 192.168.1.1 255.255.255.0"]},
+            ]
+            
+            switch2_keywords = [
+                "hostname S2",
+                "spanning-tree mode pvst",
+                {"interface FastEthernet0/2": ["switchport mode trunk"]},
+                {"interface Vlan1": ["ip address 192.168.1.2 255.255.255.0"]},
+            ]
+            
+            switch3_keywords = [
+                "hostname S3",
+                "spanning-tree mode pvst",
+                {"interface FastEthernet0/3": ["switchport mode trunk"]},
+                {"interface Vlan1": ["ip address 192.168.1.3 255.255.255.0"]},
+            ]
+            
+            spanning_tree_sw1 = {
+                "Fa0/2": "Root FWD",
+                "Fa0/4": "Altn BLK",
+            }
+            
+            spanning_tree_sw2 = {
+                "Fa0/2": "Desg FWD",
+                "Fa0/4": "Desg FWD",
+            }
+            
+            spanning_tree_sw3 = {
+                "Fa0/2": "Root FWD",
+                "Fa0/4": "Desg FWD",
+            }
+            
+            # บันทึกลงฐานข้อมูลเพื่อใช้ครั้งต่อไป
+            lab_keywords_collection.insert_one({
+                "lab_num": lab_num,
+                "switch1_keywords": switch1_keywords,
+                "switch2_keywords": switch2_keywords,
+                "switch3_keywords": switch3_keywords,
+                "spanning_tree_sw1": spanning_tree_sw1,
+                "spanning_tree_sw2": spanning_tree_sw2,
+                "spanning_tree_sw3": spanning_tree_sw3,
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+            })
+            
+            lab_keywords = {
+                "switch1_keywords": switch1_keywords,
+                "switch2_keywords": switch2_keywords,
+                "switch3_keywords": switch3_keywords,
+                "spanning_tree_sw1": spanning_tree_sw1,
+                "spanning_tree_sw2": spanning_tree_sw2,
+                "spanning_tree_sw3": spanning_tree_sw3
+            }
+        elif lab_num == 5:
+            # ตรวจสอบว่า lab_keywords เป็น dict ที่มีค่าว่างหรือไม่
+            if not lab_keywords or all(not val for val in lab_keywords.values() if val not in ['lab_num', 'general_keywords', 'created_at']):
+                # ตั้งค่าเริ่มต้นสำหรับ Lab 5
+                switch1_keywords = [
+                    "hostname S1",
+                    "spanning-tree mode rapid-pvst",
+                    {"interface FastEthernet0/1": ["switchport trunk native vlan 99", "switchport mode trunk"]},
+                    {"interface FastEthernet0/3": ["switchport trunk native vlan 99", "switchport mode trunk"]},
+                    {"interface FastEthernet0/6": ["switchport access vlan 10", "switchport mode access", 
+                                                "spanning-tree portfast", "spanning-tree bpduguard enable"]},
+                    {"interface Vlan99": ["ip address 192.168.1.11 255.255.255.0"]}
+                ]
+                
+                switch2_keywords = [
+                    "hostname S2",
+                    "spanning-tree mode rapid-pvst",
+                    {"interface FastEthernet0/1": ["switchport trunk native vlan 99", "switchport mode trunk"]},
+                    {"interface FastEthernet0/3": ["switchport trunk native vlan 99", "switchport mode trunk"]},
+                    {"interface Vlan99": ["ip address 192.168.1.12 255.255.255.0"]}
+                ]
+                
+                switch3_keywords = [
+                    "hostname S3",
+                    "spanning-tree mode rapid-pvst",
+                    "spanning-tree portfast default",
+                    "spanning-tree portfast bpduguard default",
+                    {"interface FastEthernet0/1": ["switchport trunk native vlan 99", "switchport mode trunk"]},
+                    {"interface FastEthernet0/3": ["switchport trunk native vlan 99", "switchport mode trunk"]},
+                    {"interface FastEthernet0/18": ["switchport access vlan 10", "switchport mode access"]},
+                    {"interface Vlan99": ["ip address 192.168.1.13 255.255.255.0"]}
+                ]
+                
+                pca_config = {
+                    "ip": "192.168.0.2",
+                    "subnet": "255.255.255.0"
+                }
+                
+                pcc_config = {
+                    "ip": "192.168.0.3",
+                    "subnet": "255.255.255.0"
+                }
+                
+                # ลบข้อมูลเดิมและสร้างใหม่
+                lab_keywords_collection.delete_one({"lab_num": lab_num})
+                
+                # บันทึกลงฐานข้อมูลเพื่อใช้ครั้งต่อไป
+                lab_keywords_collection.insert_one({
+                    "lab_num": lab_num,
+                    "switch1_keywords": switch1_keywords,
+                    "switch2_keywords": switch2_keywords,
+                    "switch3_keywords": switch3_keywords,
+                    "pca_config": pca_config,
+                    "pcc_config": pcc_config,
+                    "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                })
+                
+                lab_keywords = {
+                    "switch1_keywords": switch1_keywords,
+                    "switch2_keywords": switch2_keywords,
+                    "switch3_keywords": switch3_keywords,
+                    "pca_config": pca_config,
+                    "pcc_config": pcc_config
+                }
         else:
             # สำหรับแล็บอื่นๆ
             default_keywords = []
@@ -353,6 +550,7 @@ def lab_management(lab_num):
     switch_keywords_text = ""
     switch1_keywords_text = ""
     switch2_keywords_text = ""
+    switch3_keywords_text = ""
     general_keywords_text = ""
     
     if lab_num == 1:
@@ -363,30 +561,55 @@ def lab_management(lab_num):
         switch2_keywords = lab_keywords.get('switch2_keywords', [])
         switch1_keywords_text = format_keywords_for_display(switch1_keywords)
         switch2_keywords_text = format_keywords_for_display(switch2_keywords)
+    elif lab_num == 3:
+        switch1_keywords = lab_keywords.get('switch1_keywords', [])
+        switch2_keywords = lab_keywords.get('switch2_keywords', [])
+        switch1_keywords_text = format_keywords_for_display(switch1_keywords)
+        switch2_keywords_text = format_keywords_for_display(switch2_keywords)
+    elif lab_num == 4:
+        switch1_keywords = lab_keywords.get('switch1_keywords', [])
+        switch2_keywords = lab_keywords.get('switch2_keywords', [])
+        switch3_keywords = lab_keywords.get('switch3_keywords', [])
+        switch1_keywords_text = format_keywords_for_display(switch1_keywords)
+        switch2_keywords_text = format_keywords_for_display(switch2_keywords)
+        switch3_keywords_text = format_keywords_for_display(switch3_keywords)
+    elif lab_num == 5:
+        switch1_keywords = lab_keywords.get('switch1_keywords', [])
+        switch2_keywords = lab_keywords.get('switch2_keywords', [])
+        switch3_keywords = lab_keywords.get('switch3_keywords', [])
+        switch1_keywords_text = format_keywords_for_display(switch1_keywords)
+        switch2_keywords_text = format_keywords_for_display(switch2_keywords)
+        switch3_keywords_text = format_keywords_for_display(switch3_keywords)
     else:
         general_keywords = lab_keywords.get('general_keywords', [])
         general_keywords_text = format_keywords_for_display(general_keywords)
     
     return render_template('lab_management.html',
-                         lab_num=lab_num,
-                         lab_title=lab_titles.get(lab_num, f"Lab {lab_num}"),
-                         students=students_data,
-                         completed_count=completed_count,
-                         total_students=total_students,
-                         completion_rate=round(completion_rate, 2),
-                         avg_score=round(avg_score, 2),
-                         max_score=round(max_score, 2),
-                         min_score=round(min_score, 2),
-                         switch_keywords_text=switch_keywords_text,
-                         switch1_keywords_text=switch1_keywords_text,
-                         switch2_keywords_text=switch2_keywords_text,
-                         general_keywords_text=general_keywords_text,
-                         pc_config=lab_keywords.get('pc_config', {}),
-                         pc1_config=lab_keywords.get('pc1_config', {}),
-                         pc2_config=lab_keywords.get('pc2_config', {}),
-                         active_lab=lab_num,
-                         first_name=first_name,
-                         last_name=last_name)
+                        lab_num=lab_num,
+                        lab_title=lab_titles.get(lab_num, f"Lab {lab_num}"),
+                        students=students_data,
+                        completed_count=completed_count,
+                        total_students=total_students,
+                        completion_rate=round(completion_rate, 2),
+                        avg_score=round(avg_score, 2),
+                        max_score=round(max_score, 2),
+                        min_score=round(min_score, 2),
+                        switch_keywords_text=switch_keywords_text,
+                        switch1_keywords_text=switch1_keywords_text,
+                        switch2_keywords_text=switch2_keywords_text,
+                        switch3_keywords_text=switch3_keywords_text,
+                        general_keywords_text=general_keywords_text,
+                        pc_config=lab_keywords.get('pc_config', {}),
+                        pc1_config=lab_keywords.get('pc1_config', {}),
+                        pc2_config=lab_keywords.get('pc2_config', {}),
+                        pca_config=lab_keywords.get('pca_config', {'ip': '', 'subnet': ''}),
+                        pcc_config=lab_keywords.get('pcc_config', {'ip': '', 'subnet': ''}),
+                        spanning_tree_sw1=lab_keywords.get('spanning_tree_sw1', {}),
+                        spanning_tree_sw2=lab_keywords.get('spanning_tree_sw2', {}),
+                        spanning_tree_sw3=lab_keywords.get('spanning_tree_sw3', {}),
+                        active_lab=lab_num,
+                        first_name=first_name,
+                        last_name=last_name)
 
 # ดูรายละเอียดการส่งงานของนักศึกษา
 @teacher_bp.route('/submission/<int:lab_num>/<student_id>')
@@ -558,6 +781,53 @@ def parse_keywords_from_text(text):
     
     return keywords
 
+def format_vlan_config_for_display(vlan_config):
+    """
+    แปลง VLAN config เป็นข้อความสำหรับแสดงผล
+    """
+    if not vlan_config:
+        return ""
+    
+    vlan_lines = []
+    for vlan_id, vlan_data in vlan_config.items():
+        vlan_line = f"{vlan_id}:{vlan_data['name']}"
+        if vlan_data.get('ports'):  # ใช้ .get() เพื่อป้องกัน KeyError
+            vlan_line += f":{','.join(vlan_data['ports'])}"
+        vlan_lines.append(vlan_line)
+    
+    return "\n".join(vlan_lines)
+
+def parse_vlan_config(vlan_config_text):
+    """
+    แปลง VLAN config text เป็น dictionary
+    """
+    vlan_configs = {}
+    for line in vlan_config_text.strip().split('\n'):
+        if line and ':' in line:
+            parts = line.split(':')
+            vlan_id = parts[0].strip()
+            vlan_name = parts[1].strip()
+            ports = parts[2].split(',') if len(parts) > 2 and parts[2].strip() else []
+            
+            vlan_configs[vlan_id] = {
+                "name": vlan_name,
+                "ports": [port.strip() for port in ports]
+            }
+    
+    return vlan_configs
+def format_spanning_config_for_display(spanning_config):
+    """
+    แปลง Spanning Tree config เป็นข้อความสำหรับแสดงผล
+    """
+    if not spanning_config:
+        return ""
+    
+    spanning_lines = []
+    for interface, state in spanning_config.items():
+        spanning_lines.append(f"{interface}: {state}")
+    
+    return "\n".join(spanning_lines)
+# อัพเดทคีย์เวิร์ด
 # อัพเดทคีย์เวิร์ด
 @teacher_bp.route('/lab/<int:lab_num>/update', methods=['POST'])
 def update_keywords(lab_num):
@@ -621,6 +891,173 @@ def update_keywords(lab_num):
                         "ip": pc2_ip,
                         "subnet": pc2_subnet,
                         "gateway": pc2_gateway
+                    },
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                }},
+                upsert=True
+            )
+        elif lab_num == 3:
+            # อัพเดทสำหรับ Lab 3
+            switch1_keywords_text = request.form.get('switch1_keywords', '')
+            switch2_keywords_text = request.form.get('switch2_keywords', '')
+            vlan_config_sw1_text = request.form.get('vlan_config_sw1', '')
+            vlan_config_sw2_text = request.form.get('vlan_config_sw2', '')
+            pc1_ip = request.form.get('pc1_ip', '')
+            pc1_subnet = request.form.get('pc1_subnet', '')
+            pc1_gateway = request.form.get('pc1_gateway', '')
+            pc2_ip = request.form.get('pc2_ip', '')
+            pc2_subnet = request.form.get('pc2_subnet', '')
+            pc2_gateway = request.form.get('pc2_gateway', '')
+            
+            # แปลงข้อความเป็นรายการคีย์เวิร์ด
+            switch1_keywords = parse_keywords_from_text(switch1_keywords_text)
+            switch2_keywords = parse_keywords_from_text(switch2_keywords_text)
+            
+            # แปลงข้อความการกำหนดค่า VLAN เป็นพจนานุกรม
+            # หมายเหตุ: ในเว็บจะต้องใช้รูปแบบที่เฉพาะเจาะจงในการกรอกข้อมูล VLAN
+            # เช่น "1:default:" หรือ "10:Management:Fa0/1,Fa0/2"
+            
+            expected_vlans_sw1 = {}
+            for line in vlan_config_sw1_text.strip().split('\n'):
+                if line and ":" in line:
+                    parts = line.split(':')
+                    if len(parts) >= 2:
+                        vlan_id = parts[0].strip()
+                        vlan_name = parts[1].strip()
+                        ports = []
+                        if len(parts) > 2 and parts[2].strip():
+                            ports = [port.strip() for port in parts[2].split(',')]
+                        expected_vlans_sw1[vlan_id] = {
+                            "name": vlan_name,
+                            "ports": ports
+                        }
+            
+            expected_vlans_sw2 = {}
+            for line in vlan_config_sw2_text.strip().split('\n'):
+                if line and ":" in line:
+                    parts = line.split(':')
+                    if len(parts) >= 2:
+                        vlan_id = parts[0].strip()
+                        vlan_name = parts[1].strip()
+                        ports = []
+                        if len(parts) > 2 and parts[2].strip():
+                            ports = [port.strip() for port in parts[2].split(',')]
+                        expected_vlans_sw2[vlan_id] = {
+                            "name": vlan_name,
+                            "ports": ports
+                        }
+            
+            # บันทึกลงฐานข้อมูล
+            lab_keywords_collection.update_one(
+                {"lab_num": lab_num},
+                {"$set": {
+                    "switch1_keywords": switch1_keywords,
+                    "switch2_keywords": switch2_keywords,
+                    "expected_vlans_sw1": expected_vlans_sw1,
+                    "expected_vlans_sw2": expected_vlans_sw2,
+                    "pc1_config": {
+                        "ip": pc1_ip,
+                        "subnet": pc1_subnet,
+                        "gateway": pc1_gateway
+                    },
+                    "pc2_config": {
+                        "ip": pc2_ip,
+                        "subnet": pc2_subnet,
+                        "gateway": pc2_gateway
+                    },
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                }},
+                upsert=True
+            )
+        elif lab_num == 4:
+            # อัพเดทสำหรับ Lab 4
+            switch1_keywords_text = request.form.get('switch1_keywords', '')
+            switch2_keywords_text = request.form.get('switch2_keywords', '')
+            switch3_keywords_text = request.form.get('switch3_keywords', '')
+            spanning_tree_sw1_text = request.form.get('spanning_tree_sw1', '')
+            spanning_tree_sw2_text = request.form.get('spanning_tree_sw2', '')
+            spanning_tree_sw3_text = request.form.get('spanning_tree_sw3', '')
+            
+            # แปลงข้อความเป็นรายการคีย์เวิร์ด
+            switch1_keywords = parse_keywords_from_text(switch1_keywords_text)
+            switch2_keywords = parse_keywords_from_text(switch2_keywords_text)
+            switch3_keywords = parse_keywords_from_text(switch3_keywords_text)
+            
+            # แปลงข้อความการกำหนดค่า Spanning Tree เป็นพจนานุกรม
+            # หมายเหตุ: ในเว็บจะต้องใช้รูปแบบที่เฉพาะเจาะจงในการกรอกข้อมูล Spanning Tree
+            # เช่น "Fa0/2:Root FWD" หรือ "Fa0/4:Altn BLK"
+            
+            spanning_tree_sw1 = {}
+            for line in spanning_tree_sw1_text.strip().split('\n'):
+                if line and ":" in line:
+                    parts = line.split(':')
+                    if len(parts) >= 2:
+                        port = parts[0].strip()
+                        status = parts[1].strip()
+                        spanning_tree_sw1[port] = status
+            
+            spanning_tree_sw2 = {}
+            for line in spanning_tree_sw2_text.strip().split('\n'):
+                if line and ":" in line:
+                    parts = line.split(':')
+                    if len(parts) >= 2:
+                        port = parts[0].strip()
+                        status = parts[1].strip()
+                        spanning_tree_sw2[port] = status
+            
+            spanning_tree_sw3 = {}
+            for line in spanning_tree_sw3_text.strip().split('\n'):
+                if line and ":" in line:
+                    parts = line.split(':')
+                    if len(parts) >= 2:
+                        port = parts[0].strip()
+                        status = parts[1].strip()
+                        spanning_tree_sw3[port] = status
+            
+            # บันทึกลงฐานข้อมูล
+            lab_keywords_collection.update_one(
+                {"lab_num": lab_num},
+                {"$set": {
+                    "switch1_keywords": switch1_keywords,
+                    "switch2_keywords": switch2_keywords,
+                    "switch3_keywords": switch3_keywords,
+                    "spanning_tree_sw1": spanning_tree_sw1,
+                    "spanning_tree_sw2": spanning_tree_sw2,
+                    "spanning_tree_sw3": spanning_tree_sw3,
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                }},
+                upsert=True
+            )
+
+        elif lab_num == 5:
+            # อัพเดทสำหรับ Lab 5
+            switch1_keywords_text = request.form.get('switch1_keywords', '')
+            switch2_keywords_text = request.form.get('switch2_keywords', '')
+            switch3_keywords_text = request.form.get('switch3_keywords', '')
+            pca_ip = request.form.get('pca_ip', '')
+            pca_subnet = request.form.get('pca_subnet', '')
+            pcc_ip = request.form.get('pcc_ip', '')
+            pcc_subnet = request.form.get('pcc_subnet', '')
+            
+            # แปลงข้อความเป็นรายการคีย์เวิร์ด
+            switch1_keywords = parse_keywords_from_text(switch1_keywords_text)
+            switch2_keywords = parse_keywords_from_text(switch2_keywords_text)
+            switch3_keywords = parse_keywords_from_text(switch3_keywords_text)
+            
+            # บันทึกลงฐานข้อมูล
+            lab_keywords_collection.update_one(
+                {"lab_num": lab_num},
+                {"$set": {
+                    "switch1_keywords": switch1_keywords,
+                    "switch2_keywords": switch2_keywords,
+                    "switch3_keywords": switch3_keywords,
+                    "pca_config": {
+                        "ip": pca_ip,
+                        "subnet": pca_subnet
+                    },
+                    "pcc_config": {
+                        "ip": pcc_ip,
+                        "subnet": pcc_subnet
                     },
                     "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
                 }},

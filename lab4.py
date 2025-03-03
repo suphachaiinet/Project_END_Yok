@@ -56,20 +56,29 @@ EXPECTED_CONFIG_SW1 = [
     "hostname S1",
     "spanning-tree mode pvst",
     {"interface FastEthernet0/1": ["switchport mode trunk"]},
+    {"interface FastEthernet0/2": ["switchport mode trunk"]},
+    {"interface FastEthernet0/3": ["switchport mode trunk"]},
+    {"interface FastEthernet0/4": ["switchport mode trunk"]},
     {"interface Vlan1": ["ip address 192.168.1.1 255.255.255.0"]},
 ]
 
 EXPECTED_CONFIG_SW2 = [
     "hostname S2",
     "spanning-tree mode pvst",
+    {"interface FastEthernet0/1": ["switchport mode trunk"]},
     {"interface FastEthernet0/2": ["switchport mode trunk"]},
+    {"interface FastEthernet0/3": ["switchport mode trunk"]},
+    {"interface FastEthernet0/4": ["switchport mode trunk"]},
     {"interface Vlan1": ["ip address 192.168.1.2 255.255.255.0"]},
 ]
 
 EXPECTED_CONFIG_SW3 = [
     "hostname S3",
     "spanning-tree mode pvst",
+    {"interface FastEthernet0/1": ["switchport mode trunk"]},
+    {"interface FastEthernet0/2": ["switchport mode trunk"]},
     {"interface FastEthernet0/3": ["switchport mode trunk"]},
+    {"interface FastEthernet0/4": ["switchport mode trunk"]},
     {"interface Vlan1": ["ip address 192.168.1.3 255.255.255.0"]},
 ]
 
