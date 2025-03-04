@@ -189,7 +189,7 @@
 
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full">
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <form id="keywordsForm" action="{{ url_for('teacher.update_keywords', lab_num=lab_num) }}" method="POST">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
@@ -203,693 +203,120 @@
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch Keywords</label>
                                 <textarea name="switch_keywords" rows="8" 
-                                      class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                      placeholder="Enter one keyword per line">{{ switch_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด สำหรับ interface ให้ใช้รูปแบบ "interface xxx": ["cmd1", "cmd2"]</p>
+                                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                    placeholder="Enter one keyword per line">{{ switch_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
-
+                            
                             <div class="grid grid-cols-3 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                    <input type="text" name="pc_ip" value="{{ pc_config.ip if pc_config else '' }}"
-                                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="pc_ip" value="{{ pc_config.ip }}"
+                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                    <input type="text" name="pc_subnet" value="{{ pc_config.subnet if pc_config else '' }}"
-                                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="pc_subnet" ฆvalue="{{ pc_config.subnet }}"
+                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                    <input type="text" name="pc_gateway" value="{{ pc_config.gateway if pc_config else '' }}"
-                                       class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="pc_gateway" value="{{ pc_config.gateway }}"
+                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
 
-                            {% elif lab_num == 2 %}
-                            <!-- Lab 2 Keywords -->
+                            {% elif lab_num == 2 or lab_num == 3 %}
+                            <!-- Lab 2-3 Keywords -->
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                <textarea name="switch1_keywords" rows="6" 
-                                      class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                      placeholder="Enter keywords for Switch 1">{{ switch1_keywords_text }}</textarea>
+                                <textarea name="switch1_keywords" rows="8" 
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter one keyword per line">{{ switch1_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                <textarea name="switch2_keywords" rows="6" 
-                                      class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                      placeholder="Enter keywords for Switch 2">{{ switch2_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด สำหรับ interface ให้ใช้รูปแบบ "interface xxx": ["cmd1", "cmd2"]</p>
+                                <textarea name="switch2_keywords" rows="8" 
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter one keyword per line">{{ switch2_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
-                            <div class="mt-4">
-                                <h3 class="text-md font-medium text-gray-700 mb-2">PC 1 Configuration</h3>
-                                <div class="grid grid-cols-3 gap-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                        <input type="text" name="pc1_ip" value="{{ pc1_config.ip if pc1_config else '' }}"
-                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                        <input type="text" name="pc1_subnet" value="{{ pc1_config.subnet if pc1_config else '' }}"
-                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                        <input type="text" name="pc1_gateway" value="{{ pc1_config.gateway if pc1_config else '' }}"
-                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mt-4">
-                                <h3 class="text-md font-medium text-gray-700 mb-2">PC 2 Configuration</h3>
-                                <div class="grid grid-cols-3 gap-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                        <input type="text" name="pc2_ip" value="{{ pc2_config.ip if pc2_config else '' }}"
-                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                        <input type="text" name="pc2_subnet" value="{{ pc2_config.subnet if pc2_config else '' }}"
-                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                        <input type="text" name="pc2_gateway" value="{{ pc2_config.gateway if pc2_config else '' }}"
-                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- เพิ่มส่วนนี้ในไฟล์ lab_management.html ในส่วนของ Keywords Modal ต่อจาก Lab 2 และก่อน Lab 7 -->
-
-                            {% elif lab_num == 3 %}
-                            <!-- Lab 3 Keywords - Implement VLANs and Trunking -->
-                            <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                    <textarea name="sw1_keywords" rows="10" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Switch 1 keywords">{{ sw1_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                    <textarea name="sw2_keywords" rows="10" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Switch 2 keywords">{{ sw2_keywords_text }}</textarea>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-8">
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC 1 Configuration</h4>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pc1_ip" value="{{ pc1_config.ip if pc1_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pc1_subnet" value="{{ pc1_config.subnet if pc1_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                            <input type="text" name="pc1_gateway" value="{{ pc1_config.gateway if pc1_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC 2 Configuration</h4>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pc2_ip" value="{{ pc2_config.ip if pc2_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pc2_subnet" value="{{ pc2_config.subnet if pc2_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                            <input type="text" name="pc2_gateway" value="{{ pc2_config.gateway if pc2_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {% elif lab_num == 4 %}
-                            <!-- Lab 4 Keywords - Redundant Links -->
-                            <div class="grid grid-cols-3 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                    <textarea name="sw1_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Switch 1 keywords">{{ sw1_keywords_text }}</textarea>
-                                    <div class="mt-4">
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Spanning Tree Status</label>
-                                        <textarea name="spanning_tree_sw1" rows="4" 
-                                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Enter Spanning Tree status">{{ spanning_tree_sw1_text }}</textarea>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                    <textarea name="sw2_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Switch 2 keywords">{{ sw2_keywords_text }}</textarea>
-                                    <div class="mt-4">
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Spanning Tree Status</label>
-                                        <textarea name="spanning_tree_sw2" rows="4" 
-                                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Enter Spanning Tree status">{{ spanning_tree_sw2_text }}</textarea>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 3 Keywords</label>
-                                    <textarea name="sw3_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Switch 3 keywords">{{ sw3_keywords_text }}</textarea>
-                                    <div class="mt-4">
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Spanning Tree Status</label>
-                                        <textarea name="spanning_tree_sw3" rows="4" 
-                                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="Enter Spanning Tree status">{{ spanning_tree_sw3_text }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {% elif lab_num == 5 %}
-                            <!-- Lab 5 Keywords - Rapid PVST+ -->
-                            <div class="grid grid-cols-3 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                    <textarea name="sw1_keywords" rows="10" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Switch 1 keywords">{{ sw1_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                    <textarea name="sw2_keywords" rows="10" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Switch 2 keywords">{{ sw2_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 3 Keywords</label>
-                                    <textarea name="sw3_keywords" rows="10" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Switch 3 keywords">{{ sw3_keywords_text }}</textarea>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-8">
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC A Configuration</h4>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pca_ip" value="{{ pca_config.ip if pca_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pca_subnet" value="{{ pca_config.subnet if pca_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC C Configuration</h4>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pcc_ip" value="{{ pcc_config.ip if pcc_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pcc_subnet" value="{{ pcc_config.subnet if pcc_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {% elif lab_num == 6 %}
-                            <!-- Lab 6 Keywords - Router-on-a-Stick Inter-VLAN -->
-                            <div class="grid grid-cols-3 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
-                                    <textarea name="r1_keywords" rows="10" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Router 1 keywords">{{ r1_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                    <textarea name="sw1_keywords" rows="10" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Switch 1 keywords">{{ sw1_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                    <textarea name="sw2_keywords" rows="10" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter Switch 2 keywords">{{ sw2_keywords_text }}</textarea>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-8">
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC A Configuration</h4>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pca_ip" value="{{ pca_config.ip if pca_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pca_subnet" value="{{ pca_config.subnet if pca_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                            <input type="text" name="pca_gateway" value="{{ pca_config.gateway if pca_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC B Configuration</h4>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pcb_ip" value="{{ pcb_config.ip if pcb_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pcb_subnet" value="{{ pcb_config.subnet if pcb_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                            <input type="text" name="pcb_gateway" value="{{ pcb_config.gateway if pcb_config else '' }}"
-                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {% elif lab_num == 7 %}
-                            <!-- Lab 7 Keywords - Inter-VLAN Routing -->
-                            <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div class="space-y-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
-                                        <textarea name="r1_keywords" rows="8" 
-                                              class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                              placeholder="Enter Router 1 keywords">{{ r1_keywords_text }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="space-y-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">PC A Configuration</label>
-                                        <div class="grid grid-cols-1 gap-2">
-                                            <div>
-                                                <label class="block text-xs text-gray-600">IP Address</label>
-                                                <input type="text" name="pca_ip" value="{{ pca_config.ip if pca_config else '' }}"
-                                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
-                                            <div>
-                                                <label class="block text-xs text-gray-600">Subnet Mask</label>
-                                                <input type="text" name="pca_subnet" value="{{ pca_config.subnet if pca_config else '' }}"
-                                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
-                                            <div>
-                                                <label class="block text-xs text-gray-600">Default Gateway</label>
-                                                <input type="text" name="pca_gateway" value="{{ pca_config.gateway if pca_config else '' }}"
-                                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">PC B Configuration</label>
-                                        <div class="grid grid-cols-1 gap-2">
-                                            <div>
-                                                <label class="block text-xs text-gray-600">IP Address</label>
-                                                <input type="text" name="pcb_ip" value="{{ pcb_config.ip if pcb_config else '' }}"
-                                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
-                                            <div>
-                                                <label class="block text-xs text-gray-600">Subnet Mask</label>
-                                                <input type="text" name="pcb_subnet" value="{{ pcb_config.subnet if pcb_config else '' }}"
-                                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
-                                            <div>
-                                                <label class="block text-xs text-gray-600">Default Gateway</label>
-                                                <input type="text" name="pcb_gateway" value="{{ pcb_config.gateway if pcb_config else '' }}"
-                                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                    <textarea name="sw1_keywords" rows="6" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Switch 1 keywords">{{ sw1_keywords_text }}</textarea>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">PC 1 Configuration</label>
+                                    <input type="text" name="pc1_ip" value="{{ pc1_config.ip }}" placeholder="IP Address"
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="pc1_subnet" value="{{ pc1_config.subnet }}" placeholder="Subnet Mask"
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="pc1_gateway" value="{{ pc1_config.gateway }}" placeholder="Default Gateway"
+                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                    <textarea name="sw2_keywords" rows="6" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Switch 2 keywords">{{ sw2_keywords_text }}</textarea>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">PC 2 Configuration</label>
+                                    <input type="text" name="pc2_ip" value="{{ pc2_config.ip }}" placeholder="IP Address"
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="pc2_subnet" value="{{ pc2_config.subnet }}" placeholder="Subnet Mask"
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <input type="text" name="pc2_gateway" value="{{ pc2_config.gateway }}" placeholder="Default Gateway"
+                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
 
-                            {% elif lab_num == 8 %}
-                            <!-- Lab 8 Keywords - EtherChannel -->
-                            <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                    <textarea name="sw1_keywords" rows="10" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Switch 1 keywords">{{ sw1_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                    <textarea name="sw2_keywords" rows="10" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Switch 2 keywords">{{ sw2_keywords_text }}</textarea>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-8">
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC A Configuration</h4>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pca_ip" value="{{ pca_config.ip if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pca_subnet" value="{{ pca_config.subnet if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC B Configuration</h4>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pcb_ip" value="{{ pcb_config.ip if pcb_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pcb_subnet" value="{{ pcb_config.subnet if pcb_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {% elif lab_num == 9 %}
-                            <!-- Lab 9 Keywords - PPP Authentication -->
-                            <div class="grid grid-cols-3 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 (Branch1) Keywords</label>
-                                    <textarea name="r1_keywords" rows="12" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Router 1 keywords">{{ r1_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Router 2 (Central) Keywords</label>
-                                    <textarea name="r2_keywords" rows="12" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Router 2 keywords">{{ r2_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Router 3 (Branch3) Keywords</label>
-                                    <textarea name="r3_keywords" rows="12" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Router 3 keywords">{{ r3_keywords_text }}</textarea>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-8">
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC A Configuration</h4>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pca_ip" value="{{ pca_config.ip if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pca_subnet" value="{{ pca_config.subnet if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                            <input type="text" name="pca_gateway" value="{{ pca_config.gateway if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC C Configuration</h4>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pcc_ip" value="{{ pcc_config.ip if pcc_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pcc_subnet" value="{{ pcc_config.subnet if pcc_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                            <input type="text" name="pcc_gateway" value="{{ pcc_config.gateway if pcc_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {% elif lab_num == 10 %}
-                            <!-- Lab 10 Keywords - Standard IPv4 ACLs -->
-                            <div class="grid grid-cols-3 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
-                                    <textarea name="r1_keywords" rows="10" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Router 1 keywords">{{ r1_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Router 2 (ISP) Keywords</label>
-                                    <textarea name="r2_keywords" rows="10" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Router 2 keywords">{{ r2_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Router 3 Keywords</label>
-                                    <textarea name="r3_keywords" rows="10" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Router 3 keywords">{{ r3_keywords_text }}</textarea>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                    <textarea name="sw1_keywords" rows="6" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Switch 1 keywords">{{ sw1_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 3 Keywords</label>
-                                    <textarea name="sw3_keywords" rows="6" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Switch 3 keywords">{{ sw3_keywords_text }}</textarea>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-8">
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC A Configuration</h4>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pca_ip" value="{{ pca_config.ip if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pca_subnet" value="{{ pca_config.subnet if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                            <input type="text" name="pca_gateway" value="{{ pca_config.gateway if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC C Configuration</h4>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pcc_ip" value="{{ pcc_config.ip if pcc_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pcc_subnet" value="{{ pcc_config.subnet if pcc_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                            <input type="text" name="pcc_gateway" value="{{ pcc_config.gateway if pcc_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {% elif lab_num == 11 %}
-                            <!-- Lab 11 Keywords - Extended IPv4 ACLs -->
-                            <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
-                                    <textarea name="r1_keywords" rows="15" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Router 1 keywords">{{ r1_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Router 2 Keywords</label>
-                                    <textarea name="r2_keywords" rows="15" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Router 2 keywords">{{ r2_keywords_text }}</textarea>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-4 mb-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                    <textarea name="sw1_keywords" rows="6" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Switch 1 keywords">{{ sw1_keywords_text }}</textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                    <textarea name="sw2_keywords" rows="6" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter Switch 2 keywords">{{ sw2_keywords_text }}</textarea>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-8">
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC A Configuration</h4>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pca_ip" value="{{ pca_config.ip if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pca_subnet" value="{{ pca_config.subnet if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                            <input type="text" name="pca_gateway" value="{{ pca_config.gateway if pca_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-md font-medium text-gray-700 mb-2">PC B Configuration</h4>
-                                    <div class="grid grid-cols-3 gap-4">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                            <input type="text" name="pcb_ip" value="{{ pcb_config.ip if pcb_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                            <input type="text" name="pcb_subnet" value="{{ pcb_config.subnet if pcb_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                            <input type="text" name="pcb_gateway" value="{{ pcb_config.gateway if pcb_config else '' }}"
-                                               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- เพิ่มเงื่อนไขสำหรับ Lab 12-14 ต่อจาก Lab 2 -->
-                            {% elif lab_num == 12 or lab_num == 13 or lab_num == 14 %}
-                            <!-- Lab 12-14 Keywords -->
+                            {% elif lab_num >= 12 and lab_num <= 14 %}
+                            <!-- Lab 12-14 Keywords - Router & Switch -->
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
                                 <textarea name="r1_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Router 2 Keywords</label>
                                 <textarea name="r2_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Router 2">{{ r2_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Router 2">{{ r2_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
                                 <textarea name="sw1_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Switch 1">{{ sw1_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Switch 1">{{ switch1_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
                                 <textarea name="sw2_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Switch 2">{{ sw2_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Switch 2">{{ switch2_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">PC A Configuration</label>
                                     <input type="text" name="pc_a_ip" value="{{ pc_a_config.ip }}" placeholder="IP Address"
-                                        class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     <input type="text" name="pc_a_subnet" value="{{ pc_a_config.subnet }}" placeholder="Subnet Mask"
-                                        class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     <input type="text" name="pc_a_gateway" value="{{ pc_a_config.gateway }}" placeholder="Default Gateway"
-                                        class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">PC B Configuration</label>
                                     <input type="text" name="pc_b_ip" value="{{ pc_b_config.ip }}" placeholder="IP Address"
-                                        class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     <input type="text" name="pc_b_subnet" value="{{ pc_b_config.subnet }}" placeholder="Subnet Mask"
-                                        class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     <input type="text" name="pc_b_gateway" value="{{ pc_b_config.gateway }}" placeholder="Default Gateway"
-                                        class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
 
@@ -898,56 +325,61 @@
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
                                 <textarea name="r1_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Router 2 Keywords</label>
                                 <textarea name="r2_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Router 2">{{ r2_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Router 2">{{ r2_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Router 3 Keywords</label>
                                 <textarea name="r3_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Router 3">{{ r3_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Router 3">{{ r3_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
                                 <textarea name="sw1_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Switch 1">{{ sw1_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Switch 1">{{ switch1_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
                                 <textarea name="sw2_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Switch 2">{{ sw2_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Switch 2">{{ switch2_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">PC A Configuration</label>
                                     <input type="text" name="pc_a_ip" value="{{ pc_a_config.ip }}" placeholder="IP Address"
-                                        class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     <input type="text" name="pc_a_subnet" value="{{ pc_a_config.subnet }}" placeholder="Subnet Mask"
-                                        class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     <input type="text" name="pc_a_gateway" value="{{ pc_a_config.gateway }}" placeholder="Default Gateway"
-                                        class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">PC C Configuration</label>
                                     <input type="text" name="pc_c_ip" value="{{ pc_c_config.ip }}" placeholder="IP Address"
-                                        class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     <input type="text" name="pc_c_subnet" value="{{ pc_c_config.subnet }}" placeholder="Subnet Mask"
-                                        class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     <input type="text" name="pc_c_gateway" value="{{ pc_c_config.gateway }}" placeholder="Default Gateway"
-                                        class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>
 
@@ -956,49 +388,45 @@
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
                                 <textarea name="r1_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
                                 <textarea name="sw1_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Switch 1">{{ sw1_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Switch 1">{{ switch1_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
 
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
                                 <textarea name="sw2_keywords" rows="8" 
-                                        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                        placeholder="Enter keywords for Switch 2">{{ sw2_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords for Switch 2">{{ switch2_keywords_text }}</textarea>
+                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                             </div>
+
                             {% else %}
-                            <!-- General Keywords -->
+                            <!-- General Keywords for Other Labs -->
                             <div class="mb-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Keywords</label>
                                 <textarea name="general_keywords" rows="12" 
-                                      class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                      placeholder="Enter keywords or JSON configuration">{{ general_keywords_text }}</textarea>
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                                          placeholder="Enter keywords or JSON configuration">{{ general_keywords_text }}</textarea>
                                 <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หรือใช้ JSON format สำหรับคอนฟิกที่ซับซ้อน</p>
                             </div>
                             {% endif %}
-
-                            <div class="mt-4">
-                                <h4 class="text-sm font-medium text-gray-700 mb-2">คำแนะนำการแก้ไข Interface Commands</h4>
-                                <ul class="list-disc pl-5 text-xs text-gray-600 space-y-1">
-                                    <li>คำสั่งทั่วไป (เช่น hostname, service password-encryption) ให้เขียนแต่ละบรรทัด</li>
-                                    <li>สำหรับ Interface ให้ใช้รูปแบบ <code class="bg-gray-100 px-1">{"interface FastEthernet0/24": ["switchport access vlan 99", "switchport mode access"]}</code></li>
-                                    <li>ต้องมี { } ครอบรอบ และใช้เครื่องหมาย " " ครอบชื่อ interface และคำสั่งย่อย</li>
-                                    <li>คำสั่งย่อยของ interface ใส่ในวงเล็บเหลี่ยม [ ] คั่นด้วยเครื่องหมาย ,</li>
-                                    <li>สำหรับ Access Control Lists (ACL) กรุณาใส่คำสั่งแต่ละบรรทัด หากมีคำสั่งซับซ้อนให้ใช้รูปแบบเดียวกับ interface</li>
-                                </ul>
-                            </div>
+                        </div>
+                    </div>
+                </div>
                             <div class="mt-4 flex justify-end space-x-2">
-                                <button type="reset" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 focus:outline-none">
+                                <button type="reset" class="inline-flex items-center px-2 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 focus:outline-none">
                                     ยกเลิก
                                 </button>
-                                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none">
+                                <button type="submit" class="inline-flex items-center px-2 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none">
                                     บันทึกการเปลี่ยนแปลง
                                 </button>
                             </div>
