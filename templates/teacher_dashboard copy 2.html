@@ -244,7 +244,12 @@
                         </svg>
                         <span>Manage PDFs</span>
                     </a>
-                    
+                    <a href="#" id="managePasswordsBtn" class="lab-link rounded-md flex items-center text-sm">
+                        <svg class="h-5 w-5 mr-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                        </svg>
+                        <span>Manage Passwords</span>
+                    </a>
                 </nav>
             </div>
             
@@ -272,8 +277,7 @@
     <!-- Main Content -->
     <main id="mainContent" class="main-content">
         <div class="dashboard-content">
-            {% block content %}
-            <!-- Dashboard Overview content will be displayed here when on dashboard page -->
+            <!-- Stats Overview -->
             <h2 class="text-2xl font-semibold text-gray-900 mb-6 section-title">Dashboard Overview</h2>
             
             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
@@ -299,6 +303,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Average Score -->
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg card-hover">
                     <div class="p-5">
@@ -429,9 +434,9 @@
                     </div>
                 </button>
             </div>
-            {% endblock %}
         </div>
     </main>
+
     <!-- Change Password Modal -->
     <div id="changePasswordModal" class="modal-backdrop hidden">
         <div class="flex items-center justify-center min-h-screen p-4">
@@ -615,6 +620,7 @@
                                     <a href="#" aria-current="page" class="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
                                         1
                                     </a>
+                                    <!-- More pagination buttons would be added dynamically -->
                                     <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                         <span class="sr-only">Next</span>
                                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -649,6 +655,7 @@
                                    required>
                             <p class="mt-1 text-xs text-gray-500">Leave blank to generate a random password</p>
                         </div>
+                        
                         <div class="flex items-center">
                             <input id="sendPasswordEmail" name="send_email" type="checkbox" 
                                    class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
@@ -756,280 +763,190 @@
     </div>
 
     <script>
-// Sidebar Toggle
-const sidebarToggle = document.getElementById('sidebarToggle');
-const sidebar = document.getElementById('sidebar');
-const mainContent = document.getElementById('mainContent');
-
-sidebarToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('collapsed');
-    mainContent.classList.toggle('sidebar-collapsed');
-    saveSidebarState(sidebar.classList.contains('collapsed'));
-});
-
-// User Menu Toggle
-const userMenuButton = document.getElementById('userMenuButton');
-const userMenuDropdown = document.getElementById('userMenuDropdown');
-
-userMenuButton.addEventListener('click', () => {
-    userMenuDropdown.classList.toggle('hidden');
-});
-
-// Close dropdown when clicking outside
-document.addEventListener('click', (e) => {
-    if (!userMenuButton.contains(e.target) && !userMenuDropdown.contains(e.target)) {
-        userMenuDropdown.classList.add('hidden');
-    }
-});
-
-// Modal Handlers
-const changePasswordBtn = document.getElementById('changePasswordBtn');
-const changePasswordModal = document.getElementById('changePasswordModal');
-const managePdfsBtn = document.getElementById('managePdfsBtn');
-const managePdfsModal = document.getElementById('managePdfsModal');
-const managePasswordsBtn = document.getElementById('managePasswordsBtn');
-const managePasswordsModal = document.getElementById('managePasswordsModal');
-const resetPasswordModal = document.getElementById('resetPasswordModal');
-const helpGuideBtn = document.getElementById('helpGuideBtn');
-const helpGuideModal = document.getElementById('helpGuideModal');
-
-// Open modals
-if (changePasswordBtn) {
-    changePasswordBtn.addEventListener('click', () => {
-        changePasswordModal.classList.remove('hidden');
-        userMenuDropdown.classList.add('hidden');
-    });
-}
-
-if (managePdfsBtn) {
-    managePdfsBtn.addEventListener('click', () => {
-        managePdfsModal.classList.remove('hidden');
-    });
-}
-
-if (managePasswordsBtn) {
-    managePasswordsBtn.addEventListener('click', () => {
-        managePasswordsModal.classList.remove('hidden');
-    });
-}
-
-if (helpGuideBtn) {
-    helpGuideBtn.addEventListener('click', () => {
-        helpGuideModal.classList.remove('hidden');
-    });
-}
-
-// Close modals - แก้ไขส่วนนี้
-const closeModalButtons = document.querySelectorAll('.closeModal');
-closeModalButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-        // ป้องกันการเกิด event bubbling
-        e.preventDefault();
-        e.stopPropagation();
+        // Sidebar Toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
         
-        // ตรวจสอบว่าปุ่มนี้อยู่ใน modal ไหน
-        const modal = this.closest('.modal-backdrop');
-        if (modal) {
-            modal.classList.add('hidden');
-        } else {
-            // ถ้าหาไม่เจอ ให้ซ่อนทุก modal
-            if (changePasswordModal) changePasswordModal.classList.add('hidden');
-            if (managePdfsModal) managePdfsModal.classList.add('hidden');
-            if (managePasswordsModal) managePasswordsModal.classList.add('hidden');
-            if (resetPasswordModal) resetPasswordModal.classList.add('hidden');
-            if (helpGuideModal) helpGuideModal.classList.add('hidden');
-        }
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('sidebar-collapsed');
+            saveSidebarState(sidebar.classList.contains('collapsed'));
+        });
+
+        // User Menu Toggle
+        const userMenuButton = document.getElementById('userMenuButton');
+        const userMenuDropdown = document.getElementById('userMenuDropdown');
         
-        console.log('Modal closed by button click');
-    });
-});
+        userMenuButton.addEventListener('click', () => {
+            userMenuDropdown.classList.toggle('hidden');
+        });
 
-// เพิ่มการจัดการคลิกที่ปุ่ม "Close" ด้านล่าง
-document.querySelectorAll('.modal-backdrop .px-6.py-4.bg-gray-50.text-right button').forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const modal = this.closest('.modal-backdrop');
-        if (modal) {
-            modal.classList.add('hidden');
-        }
-        
-        console.log('Modal closed by "Close" button click');
-    });
-});
-
-// Close modals when clicking outside
-document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal-backdrop')) {
-        e.target.classList.add('hidden');
-        console.log('Modal closed by backdrop click');
-    }
-});
-
-// เพิ่ม event listener สำหรับกดปุ่ม ESC
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        console.log('ESC pressed, closing all modals');
-        if (changePasswordModal) changePasswordModal.classList.add('hidden');
-        if (managePdfsModal) managePdfsModal.classList.add('hidden');
-        if (managePasswordsModal) managePasswordsModal.classList.add('hidden');
-        if (resetPasswordModal) resetPasswordModal.classList.add('hidden');
-        if (helpGuideModal) helpGuideModal.classList.add('hidden');
-    }
-});
-
-// Password Reset Handler
-const resetPasswordButtons = document.querySelectorAll('.reset-password-btn');
-const resetPasswordForm = document.getElementById('resetPasswordForm');
-const resetStudentId = document.getElementById('resetStudentId');
-const resetStudentName = document.getElementById('resetStudentName');
-
-resetPasswordButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const studentId = button.getAttribute('data-student-id');
-        const studentNameElement = button.closest('tr').querySelector('td:nth-child(2)');
-        const studentName = studentNameElement ? studentNameElement.textContent.trim() : studentId;
-        
-        resetStudentId.value = studentId;
-        resetStudentName.textContent = studentName;
-        resetPasswordModal.classList.remove('hidden');
-    });
-});
-
-if (resetPasswordForm) {
-    resetPasswordForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Show confirmation before submit
-        if (confirm('Are you sure you want to reset this password? This action cannot be undone.')) {
-            // In a real implementation, this would submit via AJAX
-            alert('Password reset successfully!');
-            resetPasswordModal.classList.add('hidden');
-        }
-    });
-}
-
-// PDF Upload Handler
-const pdfUploads = document.querySelectorAll('.pdf-upload');
-
-pdfUploads.forEach(upload => {
-    upload.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        const labNum = e.target.getAttribute('data-lab');
-        const statusDiv = document.querySelector(`.upload-status-${labNum}`);
-        
-        if (file) {
-            statusDiv.textContent = `Uploading: ${file.name}...`;
-            statusDiv.classList.add('text-yellow-600');
-            
-            // Simulate upload - in a real implementation, this would use fetch/AJAX
-            setTimeout(() => {
-                statusDiv.textContent = `Success! ${file.name} uploaded.`;
-                statusDiv.classList.remove('text-yellow-600');
-                statusDiv.classList.add('text-green-600');
-            }, 1500);
-        }
-    });
-});
-
-// Change Password Form Handler
-const changePasswordForm = document.getElementById('changePasswordForm');
-
-if (changePasswordForm) {
-    changePasswordForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const newPassword = document.getElementById('newPassword').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        
-        if (newPassword !== confirmPassword) {
-            alert('New passwords do not match!');
-            return;
-        }
-        
-        // Show confirmation before submit
-        if (confirm('Are you sure you want to change your password?')) {
-            // In a real implementation, this would submit via AJAX
-            alert('Password changed successfully!');
-            changePasswordModal.classList.add('hidden');
-            changePasswordForm.reset();
-        }
-    });
-}
-
-// Student Search Handler
-const studentSearch = document.getElementById('studentSearch');
-const studentsList = document.getElementById('studentsList');
-
-if (studentSearch && studentsList) {
-    studentSearch.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const rows = studentsList.querySelectorAll('tr');
-        
-        rows.forEach(row => {
-            const id = row.querySelector('td:first-child')?.textContent.toLowerCase() || '';
-            const name = row.querySelector('td:nth-child(2)')?.textContent.toLowerCase() || '';
-            
-            if (id.includes(searchTerm) || name.includes(searchTerm)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!userMenuButton.contains(e.target) && !userMenuDropdown.contains(e.target)) {
+                userMenuDropdown.classList.add('hidden');
             }
         });
-    });
-}
 
-// Save/Load sidebar state
-function saveSidebarState(isCollapsed) {
-    localStorage.setItem('teacherSidebarCollapsed', isCollapsed);
-}
+        // Modal Handlers
+        const changePasswordBtn = document.getElementById('changePasswordBtn');
+        const changePasswordModal = document.getElementById('changePasswordModal');
+        const managePdfsBtn = document.getElementById('managePdfsBtn');
+        const managePdfsModal = document.getElementById('managePdfsModal');
+        const managePasswordsBtn = document.getElementById('managePasswordsBtn');
+        const managePasswordsModal = document.getElementById('managePasswordsModal');
+        const resetPasswordModal = document.getElementById('resetPasswordModal');
+        const helpGuideBtn = document.getElementById('helpGuideBtn');
+        const helpGuideModal = document.getElementById('helpGuideModal');
+        
+        // Open modals
+        changePasswordBtn.addEventListener('click', () => {
+            changePasswordModal.classList.remove('hidden');
+            userMenuDropdown.classList.add('hidden');
+        });
+        
+        managePdfsBtn.addEventListener('click', () => {
+            managePdfsModal.classList.remove('hidden');
+        });
+        
+        managePasswordsBtn.addEventListener('click', () => {
+            managePasswordsModal.classList.remove('hidden');
+        });
+        
+        helpGuideBtn.addEventListener('click', () => {
+            helpGuideModal.classList.remove('hidden');
+        });
+        
+        // Close modals
+        const closeModalButtons = document.querySelectorAll('.closeModal');
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                changePasswordModal.classList.add('hidden');
+                managePdfsModal.classList.add('hidden');
+                managePasswordsModal.classList.add('hidden');
+                resetPasswordModal.classList.add('hidden');
+                helpGuideModal.classList.add('hidden');
+            });
+        });
+        
+        // Close modals when clicking outside
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-backdrop')) {
+                e.target.classList.add('hidden');
+            }
+        });
 
-function loadSidebarState() {
-    const isCollapsed = localStorage.getItem('teacherSidebarCollapsed') === 'true';
-    if (isCollapsed) {
-        sidebar.classList.add('collapsed');
-        mainContent.classList.add('sidebar-collapsed');
-    }
-}
+        // Password Reset Handler
+        const resetPasswordButtons = document.querySelectorAll('.reset-password-btn');
+        const resetPasswordForm = document.getElementById('resetPasswordForm');
+        const resetStudentId = document.getElementById('resetStudentId');
+        const resetStudentName = document.getElementById('resetStudentName');
+        
+        resetPasswordButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const studentId = button.getAttribute('data-student-id');
+                const studentNameElement = button.closest('tr').querySelector('td:nth-child(2)');
+                const studentName = studentNameElement ? studentNameElement.textContent.trim() : studentId;
+                
+                resetStudentId.value = studentId;
+                resetStudentName.textContent = studentName;
+                resetPasswordModal.classList.remove('hidden');
+            });
+        });
+        
+        resetPasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show confirmation before submit
+            if (confirm('Are you sure you want to reset this password? This action cannot be undone.')) {
+                // In a real implementation, this would submit via AJAX
+                alert('Password reset successfully!');
+                resetPasswordModal.classList.add('hidden');
+            }
+        });
 
-// Load saved state on page load
-loadSidebarState();
-
-// เพิ่มฟังก์ชันปิดโมดัลแบบบังคับเข้าไปที่ window object
-window.closeAllModals = function() {
-    const modals = document.querySelectorAll('.modal-backdrop');
-    modals.forEach(modal => {
-        modal.classList.add('hidden');
-    });
-    console.log('All modals closed via window.closeAllModals()');
-};
-
-// เพิ่มให้ Execute เมื่อเพจโหลดเสร็จ
-document.addEventListener('DOMContentLoaded', function() {
-    // กำหนดปุ่มปิดฉุกเฉินเมื่อกด F12
-    console.log('DOMContentLoaded - Adding emergency function');
-    
-    // เพิ่มการบังคับให้ซ่อน modal ทุก 5 วินาทีถ้าพบว่ามีการแสดง
-    setInterval(function() {
-        const visibleModals = document.querySelectorAll('.modal-backdrop:not(.hidden)');
-        if (visibleModals.length > 0) {
-            console.log('Found visible modals, checking if they have working close buttons');
-            visibleModals.forEach(modal => {
-                const closeButton = modal.querySelector('.closeModal');
-                if (closeButton) {
-                    console.log('Visible modal has close button, making sure it works');
-                    closeButton.onclick = function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        modal.classList.add('hidden');
-                        console.log('Modal forcibly closed by injected onclick handler');
-                    };
+        // PDF Upload Handler
+        const pdfUploads = document.querySelectorAll('.pdf-upload');
+        
+        pdfUploads.forEach(upload => {
+            upload.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                const labNum = e.target.getAttribute('data-lab');
+                const statusDiv = document.querySelector(`.upload-status-${labNum}`);
+                
+                if (file) {
+                    statusDiv.textContent = `Uploading: ${file.name}...`;
+                    statusDiv.classList.add('text-yellow-600');
+                    
+                    // Simulate upload - in a real implementation, this would use fetch/AJAX
+                    setTimeout(() => {
+                        statusDiv.textContent = `Success! ${file.name} uploaded.`;
+                        statusDiv.classList.remove('text-yellow-600');
+                        statusDiv.classList.add('text-green-600');
+                    }, 1500);
                 }
             });
+        });
+
+        // Change Password Form Handler
+        const changePasswordForm = document.getElementById('changePasswordForm');
+        
+        changePasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (newPassword !== confirmPassword) {
+                alert('New passwords do not match!');
+                return;
+            }
+            
+            // Show confirmation before submit
+            if (confirm('Are you sure you want to change your password?')) {
+                // In a real implementation, this would submit via AJAX
+                alert('Password changed successfully!');
+                changePasswordModal.classList.add('hidden');
+                changePasswordForm.reset();
+            }
+        });
+
+        // Student Search Handler
+        const studentSearch = document.getElementById('studentSearch');
+        const studentsList = document.getElementById('studentsList');
+        
+        studentSearch.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = studentsList.querySelectorAll('tr');
+            
+            rows.forEach(row => {
+                const id = row.querySelector('td:first-child').textContent.toLowerCase();
+                const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                
+                if (id.includes(searchTerm) || name.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // Save/Load sidebar state
+        function saveSidebarState(isCollapsed) {
+            localStorage.setItem('teacherSidebarCollapsed', isCollapsed);
         }
-    }, 5000);
-});
+
+        function loadSidebarState() {
+            const isCollapsed = localStorage.getItem('teacherSidebarCollapsed') === 'true';
+            if (isCollapsed) {
+                sidebar.classList.add('collapsed');
+                mainContent.classList.add('sidebar-collapsed');
+            }
+        }
+
+        // Load saved state on page load
+        loadSidebarState();
     </script>
 </body>
 </html>

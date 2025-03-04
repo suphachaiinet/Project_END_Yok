@@ -132,6 +132,10 @@ def stats():
     
     overall_avg_score = sum(all_scores_values) / len(all_scores_values) if all_scores_values else 0
     
+    # คำนวณอัตราการทำเสร็จรวม
+    completed_students = len(set(score['username'] for score in all_scores))
+    completion_rate = (completed_students / total_students * 100) if total_students > 0 else 0
+    
     highest_completion = max(completion_rates, key=lambda x: x[1]) if completion_rates else (0, 0)
     lowest_completion = min(completion_rates, key=lambda x: x[1]) if completion_rates else (0, 0)
     
@@ -145,6 +149,8 @@ def stats():
                           last_name=last_name,
                           total_students=total_students,
                           overall_avg_score=overall_avg_score,
+                          avg_score=overall_avg_score,
+                          completion_rate=completion_rate,  # เพิ่มบรรทัดนี้
                           highest_completion_lab=highest_completion[0],
                           highest_completion_rate=highest_completion[1],
                           lowest_completion_lab=lowest_completion[0],
@@ -2432,3 +2438,4 @@ def parse_keywords_from_text(text):
         keywords.append({current_interface: interface_commands})
     
     return keywords
+
