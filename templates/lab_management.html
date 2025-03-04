@@ -180,303 +180,259 @@
     </div>
 </div>
 
-<!-- Keywords Modal -->
+<!-- Keywords Modal ออกแบบใหม่ -->
 <div id="keywordsModal" class="fixed inset-0 overflow-y-auto hidden z-50">
-    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 transition-opacity" aria-hidden="true">
             <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
 
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <form id="keywordsForm" action="{{ url_for('teacher.update_keywords', lab_num=lab_num) }}" method="POST">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <div class="sm:flex sm:items-start">
-                        <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
-                            <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
-                                แก้ไขคีย์เวิร์ดสำหรับ Lab {{ lab_num }}
-                            </h3>
-
-                            {% if lab_num == 1 %}
-                            <!-- Lab 1 Keywords -->
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Switch Keywords</label>
-                                <textarea name="switch_keywords" rows="8" 
-                                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                    placeholder="Enter one keyword per line">{{ switch_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-                            
-                            <div class="grid grid-cols-3 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700">IP Address</label>
-                                    <input type="text" name="pc_ip" value="{{ pc_config.ip }}"
-                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700">Subnet Mask</label>
-                                    <input type="text" name="pc_subnet" ฆvalue="{{ pc_config.subnet }}"
-                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700">Default Gateway</label>
-                                    <input type="text" name="pc_gateway" value="{{ pc_config.gateway }}"
-                                           class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
-                            </div>
-
-                            {% elif lab_num == 2 or lab_num == 3 %}
-                            <!-- Lab 2-3 Keywords -->
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                <textarea name="switch1_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter one keyword per line">{{ switch1_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                <textarea name="switch2_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter one keyword per line">{{ switch2_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">PC 1 Configuration</label>
-                                    <input type="text" name="pc1_ip" value="{{ pc1_config.ip }}" placeholder="IP Address"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc1_subnet" value="{{ pc1_config.subnet }}" placeholder="Subnet Mask"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc1_gateway" value="{{ pc1_config.gateway }}" placeholder="Default Gateway"
-                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">PC 2 Configuration</label>
-                                    <input type="text" name="pc2_ip" value="{{ pc2_config.ip }}" placeholder="IP Address"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc2_subnet" value="{{ pc2_config.subnet }}" placeholder="Subnet Mask"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc2_gateway" value="{{ pc2_config.gateway }}" placeholder="Default Gateway"
-                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
-                            </div>
-
-                            {% elif lab_num >= 12 and lab_num <= 14 %}
-                            <!-- Lab 12-14 Keywords - Router & Switch -->
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
-                                <textarea name="r1_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Router 2 Keywords</label>
-                                <textarea name="r2_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Router 2">{{ r2_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                <textarea name="sw1_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Switch 1">{{ switch1_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                <textarea name="sw2_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Switch 2">{{ switch2_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">PC A Configuration</label>
-                                    <input type="text" name="pc_a_ip" value="{{ pc_a_config.ip }}" placeholder="IP Address"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc_a_subnet" value="{{ pc_a_config.subnet }}" placeholder="Subnet Mask"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc_a_gateway" value="{{ pc_a_config.gateway }}" placeholder="Default Gateway"
-                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">PC B Configuration</label>
-                                    <input type="text" name="pc_b_ip" value="{{ pc_b_config.ip }}" placeholder="IP Address"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc_b_subnet" value="{{ pc_b_config.subnet }}" placeholder="Subnet Mask"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc_b_gateway" value="{{ pc_b_config.gateway }}" placeholder="Default Gateway"
-                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
-                            </div>
-
-                            {% elif lab_num == 15 %}
-                            <!-- Lab 15 Keywords - HSRP -->
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
-                                <textarea name="r1_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Router 2 Keywords</label>
-                                <textarea name="r2_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Router 2">{{ r2_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Router 3 Keywords</label>
-                                <textarea name="r3_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Router 3">{{ r3_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                <textarea name="sw1_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Switch 1">{{ switch1_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                <textarea name="sw2_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Switch 2">{{ switch2_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">PC A Configuration</label>
-                                    <input type="text" name="pc_a_ip" value="{{ pc_a_config.ip }}" placeholder="IP Address"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc_a_subnet" value="{{ pc_a_config.subnet }}" placeholder="Subnet Mask"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc_a_gateway" value="{{ pc_a_config.gateway }}" placeholder="Default Gateway"
-                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">PC C Configuration</label>
-                                    <input type="text" name="pc_c_ip" value="{{ pc_c_config.ip }}" placeholder="IP Address"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc_c_subnet" value="{{ pc_c_config.subnet }}" placeholder="Subnet Mask"
-                                           class="mb-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <input type="text" name="pc_c_gateway" value="{{ pc_c_config.gateway }}" placeholder="Default Gateway"
-                                           class="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
-                            </div>
-
-                            {% elif lab_num == 16 %}
-                            <!-- Lab 16 Keywords - Switch Security -->
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
-                                <textarea name="r1_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
-                                <textarea name="sw1_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Switch 1">{{ switch1_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
-                                <textarea name="sw2_keywords" rows="8" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords for Switch 2">{{ switch2_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
-                            </div>
-
-                            {% else %}
-                            <!-- General Keywords for Other Labs -->
-                            <div class="mb-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Keywords</label>
-                                <textarea name="general_keywords" rows="12" 
-                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                                          placeholder="Enter keywords or JSON configuration">{{ general_keywords_text }}</textarea>
-                                <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หรือใช้ JSON format สำหรับคอนฟิกที่ซับซ้อน</p>
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                            <div class="mt-4 flex justify-end space-x-2">
-                                <button type="reset" class="inline-flex items-center px-2 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-100 focus:outline-none">
-                                    ยกเลิก
-                                </button>
-                                <button type="submit" class="inline-flex items-center px-2 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none">
-                                    บันทึกการเปลี่ยนแปลง
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Delete Confirmation Modal -->
-<div id="deleteConfirmModal" class="fixed inset-0 overflow-y-auto hidden z-50">
-    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-        </div>
-
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div class="sm:flex sm:items-start">
-                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                        <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+        <div class="inline-block align-bottom bg-white rounded-md text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full">
+            <div class="bg-white p-6">
+                <div class="flex justify-between items-center mb-5">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        แก้ไขคีย์เวิร์ดสำหรับ Lab {{ lab_num }}
+                    </h3>
+                    <button type="button" id="closeKeywordsModal" class="text-gray-400 hover:text-gray-500">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
-                    </div>
-                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
-                            ยืนยันการลบ
-                        </h3>
-                        <div class="mt-2">
-                            <p class="text-sm text-gray-500">
-                                คุณแน่ใจหรือไม่ที่จะลบการส่งงานนี้? การกระทำนี้ไม่สามารถย้อนกลับได้
-                            </p>
-                        </div>
-                    </div>
+                    </button>
                 </div>
-            </div>
-            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <form id="deleteForm" action="{{ url_for('teacher.delete_submission') }}" method="POST">
-                    <input type="hidden" name="student_id" id="deleteStudentId">
-                    <input type="hidden" name="lab_num" value="{{ lab_num }}">
-                    <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
-                        ลบ
-                    </button>
-                    <button type="button" id="cancelDelete" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                        ยกเลิก
-                    </button>
+
+                <p class="text-sm text-gray-500 mb-6">
+                    คีย์เวิร์ดสำหรับแต่ละแล็บ จะถูกนำไปใช้ในฐานข้อมูลและแสดงให้นักศึกษาในหน้าแล็บ
+                </p>
+
+                <form id="keywordsForm" action="{{ url_for('teacher.update_keywords', lab_num=lab_num) }}" method="POST">
+                    <div class="max-h-[60vh] overflow-y-auto px-1 mb-4">
+                        {% if lab_num == 1 %}
+                        <!-- Lab 1 Keywords -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch Keywords</label>
+                            <textarea name="switch_keywords" rows="8" 
+                                class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="Enter one keyword per line">{{ switch_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">IP Address</label>
+                                <input type="text" name="pc_ip" value="{{ pc_config.ip }}"
+                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Subnet Mask</label>
+                                <input type="text" name="pc_subnet" value="{{ pc_config.subnet }}"
+                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Default Gateway</label>
+                                <input type="text" name="pc_gateway" value="{{ pc_config.gateway }}"
+                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                        </div>
+                        {% elif lab_num == 2 or lab_num == 3 %}
+                        <!-- Lab 2-3 Keywords -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
+                            <textarea name="switch1_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter one keyword per line">{{ switch1_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
+                            <textarea name="switch2_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter one keyword per line">{{ switch2_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">PC 1 Configuration</label>
+                                <input type="text" name="pc1_ip" value="{{ pc1_config.ip }}" placeholder="IP Address"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc1_subnet" value="{{ pc1_config.subnet }}" placeholder="Subnet Mask"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc1_gateway" value="{{ pc1_config.gateway }}" placeholder="Default Gateway"
+                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">PC 2 Configuration</label>
+                                <input type="text" name="pc2_ip" value="{{ pc2_config.ip }}" placeholder="IP Address"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc2_subnet" value="{{ pc2_config.subnet }}" placeholder="Subnet Mask"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc2_gateway" value="{{ pc2_config.gateway }}" placeholder="Default Gateway"
+                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                        </div>
+                        {% elif lab_num >= 12 and lab_num <= 14 %}
+                        <!-- Lab 12-14 Keywords - Router & Switch -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
+                            <textarea name="r1_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Router 2 Keywords</label>
+                            <textarea name="r2_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Router 2">{{ r2_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
+                            <textarea name="sw1_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Switch 1">{{ switch1_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
+                            <textarea name="sw2_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Switch 2">{{ switch2_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">PC A Configuration</label>
+                                <input type="text" name="pc_a_ip" value="{{ pc_a_config.ip }}" placeholder="IP Address"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc_a_subnet" value="{{ pc_a_config.subnet }}" placeholder="Subnet Mask"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc_a_gateway" value="{{ pc_a_config.gateway }}" placeholder="Default Gateway"
+                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">PC B Configuration</label>
+                                <input type="text" name="pc_b_ip" value="{{ pc_b_config.ip }}" placeholder="IP Address"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc_b_subnet" value="{{ pc_b_config.subnet }}" placeholder="Subnet Mask"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc_b_gateway" value="{{ pc_b_config.gateway }}" placeholder="Default Gateway"
+                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                        </div>
+                        {% elif lab_num == 15 %}
+                        <!-- Lab 15 Keywords - HSRP -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
+                            <textarea name="r1_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Router 2 Keywords</label>
+                            <textarea name="r2_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Router 2">{{ r2_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Router 3 Keywords</label>
+                            <textarea name="r3_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Router 3">{{ r3_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
+                            <textarea name="sw1_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Switch 1">{{ switch1_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
+                            <textarea name="sw2_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Switch 2">{{ switch2_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">PC A Configuration</label>
+                                <input type="text" name="pc_a_ip" value="{{ pc_a_config.ip }}" placeholder="IP Address"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc_a_subnet" value="{{ pc_a_config.subnet }}" placeholder="Subnet Mask"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc_a_gateway" value="{{ pc_a_config.gateway }}" placeholder="Default Gateway"
+                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">PC C Configuration</label>
+                                <input type="text" name="pc_c_ip" value="{{ pc_c_config.ip }}" placeholder="IP Address"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc_c_subnet" value="{{ pc_c_config.subnet }}" placeholder="Subnet Mask"
+                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc_c_gateway" value="{{ pc_c_config.gateway }}" placeholder="Default Gateway"
+                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                        </div>
+
+                        {% elif lab_num == 16 %}
+                        <!-- Lab 16 Keywords - Switch Security -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Router 1 Keywords</label>
+                            <textarea name="r1_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Router 1">{{ r1_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
+                            <textarea name="sw1_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Switch 1">{{ switch1_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
+                            <textarea name="sw2_keywords" rows="8" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords for Switch 2">{{ switch2_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        {% else %}
+                        <!-- General Keywords for Other Labs -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Keywords</label>
+                            <textarea name="general_keywords" rows="12" 
+                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      placeholder="Enter keywords or JSON configuration">{{ general_keywords_text }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หรือใช้ JSON format สำหรับคอนฟิกที่ซับซ้อน</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="border-t border-gray-200 pt-4 flex justify-end space-x-3">
+                        <button type="button" id="cancelKeywordsBtn" class="inline-flex items-center px-4 py-2 border-2 border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            ยกเลิก
+                        </button>
+                        <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            บันทึกการเปลี่ยนแปลง
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -488,6 +444,7 @@
     const keywordsModalButton = document.getElementById('keywordsModalButton');
     const keywordsModal = document.getElementById('keywordsModal');
     const keywordsForm = document.getElementById('keywordsForm');
+    const closeKeywordsModal = document.getElementById('closeKeywordsModal');
 
     // Delete Modal
     const deleteConfirmModal = document.getElementById('deleteConfirmModal');
@@ -497,15 +454,30 @@
     const deleteForm = document.getElementById('deleteForm');
 
     // Keywords Modal Handlers
-    keywordsModalButton.addEventListener('click', () => {
-        keywordsModal.classList.remove('hidden');
-    });
+    if (keywordsModalButton) {
+        keywordsModalButton.addEventListener('click', () => {
+            keywordsModal.classList.remove('hidden');
+        });
+    }
 
-    // Cancel button in Keywords Modal
-    const keywordsResetButton = keywordsForm.querySelector('button[type="reset"]');
-    keywordsResetButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        keywordsModal.classList.add('hidden');
+    // Close icon in Keywords Modal
+    if (closeKeywordsModal) {
+        closeKeywordsModal.addEventListener('click', () => {
+            keywordsModal.classList.add('hidden');
+        });
+    }
+
+    // Handle all cancel buttons in Keywords Modal
+    const allCancelButtons = document.querySelectorAll('button[type="button"]');
+    allCancelButtons.forEach(button => {
+        if (button.textContent.trim() === 'ยกเลิก') {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.fixed.inset-0.overflow-y-auto');
+                if (modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        }
     });
 
     // Delete Submission Handlers
@@ -517,9 +489,11 @@
         });
     });
 
-    cancelDelete.addEventListener('click', () => {
-        deleteConfirmModal.classList.add('hidden');
-    });
+    if (cancelDelete) {
+        cancelDelete.addEventListener('click', () => {
+            deleteConfirmModal.classList.add('hidden');
+        });
+    }
 
     // Close modals when clicking outside
     window.addEventListener('click', (e) => {
@@ -531,18 +505,39 @@
         }
     });
 
-    // Optional: Form submission handling if needed
-    keywordsForm.addEventListener('submit', (e) => {
-        // Form validation can be added here if needed
-        // If validation fails, prevent form submission
-        
-        // Hide modal after successful submission
-        keywordsModal.classList.add('hidden');
-    });
+    // Form submission handling
+    if (keywordsForm) {
+        keywordsForm.addEventListener('submit', (e) => {
+            // Form validation can be added here if needed
+            // If validation fails, prevent form submission
+            
+            // Hide modal after successful submission
+            keywordsModal.classList.add('hidden');
+        });
+    }
 
-    deleteForm.addEventListener('submit', (e) => {
-        // Hide modal after successful submission
-        deleteConfirmModal.classList.add('hidden');
-    });
+    if (deleteForm) {
+        deleteForm.addEventListener('submit', (e) => {
+            // Hide modal after successful submission
+            deleteConfirmModal.classList.add('hidden');
+        });
+    }
+
+    // Legacy cancel button (for backwards compatibility)
+    const cancelKeywordsBtn = document.getElementById('cancelKeywordsBtn');
+    if (cancelKeywordsBtn) {
+        cancelKeywordsBtn.addEventListener('click', () => {
+            keywordsModal.classList.add('hidden');
+        });
+    }
+
+    // Specific reset button handling
+    const keywordsResetButton = keywordsForm ? keywordsForm.querySelector('button[type="reset"]') : null;
+    if (keywordsResetButton) {
+        keywordsResetButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            keywordsModal.classList.add('hidden');
+        });
+    }
 </script>
 {% endblock %}

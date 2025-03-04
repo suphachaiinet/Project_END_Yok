@@ -2393,49 +2393,34 @@ def update_keywords(lab_num):
     return redirect(url_for('teacher.lab_management', lab_num=lab_num))
 
 def parse_keywords_from_text(text):
-    """
-    แปลงข้อความเป็นรายการคีย์เวิร์ดตามรูปแบบที่ใช้ในการตรวจสอบ
-    
-    Parameters:
-    text (str): ข้อความที่ประกอบด้วยคีย์เวิร์ดและคำสั่งใน interface
-    
-    Returns:
-    list: รายการคีย์เวิร์ดในรูปแบบที่ใช้ในการตรวจสอบ
-    """
     keywords = []
-    current_interface = None
-    interface_commands = []
+    lines = text.strip().split('\n')
+    i = 0
     
-    for line in text.strip().split('\n'):
-        line = line.strip()
+    while i < len(lines):
+        line = lines[i].strip()
         if not line:
+            i += 1
             continue
             
         if line.startswith('interface'):
-            # เก็บ interface ก่อนหน้า (ถ้ามี)
-            if current_interface and interface_commands:
-                keywords.append({current_interface: interface_commands})
-            
-            # เริ่มต้นบล็อก interface ใหม่
-            current_interface = line
+            interface_name = line
             interface_commands = []
-        elif line.startswith(' ') and current_interface:
-            # คำสั่งในบล็อก interface
-            interface_commands.append(line.strip())
-        else:
-            # ถ้าเป็นบรรทัดปกติที่ไม่ใช่คำสั่งใน interface
-            # และมี interface ที่กำลังทำงานอยู่ ให้จบ interface นั้นก่อน
-            if current_interface and interface_commands:
-                keywords.append({current_interface: interface_commands})
-                current_interface = None
-                interface_commands = []
+            i += 1
             
-            # คีย์เวิร์ดปกติ
+            # เก็บคำสั่งภายใน interface จนกว่าจะเจอ interface ถัดไปหรือจบไฟล์
+            while i < len(lines) and lines[i].strip() and not lines[i].strip().startswith('interface'):
+                cmd = lines[i].strip()
+                if cmd:  # ไม่เพิ่มบรรทัดว่าง
+                    interface_commands.append(cmd)
+                i += 1
+                
+            # เพิ่ม interface พร้อมคำสั่งย่อย
+            if interface_commands:
+                keywords.append({interface_name: interface_commands})
+        else:
+            # คำสั่งทั่วไป
             keywords.append(line)
-    
-    # เพิ่ม interface สุดท้าย (ถ้ามี)
-    if current_interface and interface_commands:
-        keywords.append({current_interface: interface_commands})
+            i += 1
     
     return keywords
-
