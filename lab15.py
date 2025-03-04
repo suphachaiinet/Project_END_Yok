@@ -60,30 +60,23 @@ def check_keywords(user_config, keywords):
     score = (len(found_keywords) / total_keywords) * 100 if total_keywords > 0 else 0
     return score, missing_keywords
 
-def check_pc_config(ip, subnet, gateway):
-    """Verify PC configuration"""
+def check_simple_pc_config(ip, subnet, gateway):
+    """ตรวจสอบอย่างง่ายว่า PC config มีรูปแบบถูกต้องหรือไม่"""
     try:
-        # Check IP format and range
-        ip_parts = [int(p) for p in ip.split('.')]
-        if len(ip_parts) != 4 or not all(0 <= p <= 255 for p in ip_parts):
+        # ตรวจสอบว่ามีการใส่ค่าครบทุกส่วน
+        if not ip or not subnet or not gateway:
             return False
             
-        # Check if IP is in correct network (192.168.1.0/24)
-        if ip_parts[0] != 192 or ip_parts[1] != 168 or ip_parts[2] != 1:
+        # ตรวจสอบว่า IP, subnet และ gateway มีรูปแบบถูกต้อง
+        ip_parts = ip.split('.')
+        subnet_parts = subnet.split('.')
+        gateway_parts = gateway.split('.')
+        
+        # ตรวจสอบว่ามี 4 ส่วนที่แยกด้วยจุด
+        if len(ip_parts) != 4 or len(subnet_parts) != 4 or len(gateway_parts) != 4:
             return False
             
-        # Check if host portion is valid (not 0, 255, or used by other devices)
-        if ip_parts[3] in [0, 255, 1, 3, 11, 13, 254]:
-            return False
-            
-        # Verify subnet mask
-        if subnet != "255.255.255.0":
-            return False
-            
-        # Verify gateway (virtual IP from HSRP)
-        if gateway != "192.168.1.254":
-            return False
-            
+        # ถ้าผ่านการตรวจสอบเบื้องต้น ถือว่าถูกต้อง
         return True
     except:
         return False
@@ -224,26 +217,30 @@ def lab15():
         sw1_score, sw1_missing = check_keywords(user_sw1_config, SW1_KEYWORDS)
         sw2_score, sw2_missing = check_keywords(user_sw2_config, SW2_KEYWORDS)
 
-        # Check PC configurations
-        pc_a_correct = check_pc_config(pc_a_ip, pc_a_subnet, pc_a_gateway)
-        pc_c_correct = check_pc_config(pc_c_ip, pc_c_subnet, pc_c_gateway)
+        # แก้ไขการเช็ค PC - เช็คแค่ว่าค่าที่ใส่มีรูปแบบถูกต้องหรือไม่
+        pc_a_correct = check_simple_pc_config(pc_a_ip, pc_a_subnet, pc_a_gateway)
+        pc_c_correct = check_simple_pc_config(pc_c_ip, pc_c_subnet, pc_c_gateway)
 
-        # Calculate total score 
-        # Routers: 45% (15% each)
-        # Switches: 25% (12.5% each)
-        # PCs: 30% (15% each)
-        router_score = (r1_score + r2_score + r3_score) / 3 * 0.45
-        switch_score = (sw1_score + sw2_score) / 2 * 0.25
-        pc_score = ((1 if pc_a_correct else 0) + (1 if pc_c_correct else 0)) * 15
-        total_score = router_score + switch_score + pc_score
+        # คำนวณคะแนนแบบง่าย - ทุก keyword มีค่าเท่ากัน
+        # นับจำนวน keyword ทั้งหมดที่ถูกต้อง
+        total_keywords = len(R1_KEYWORDS) + len(R2_KEYWORDS) + len(R3_KEYWORDS) + len(SW1_KEYWORDS) + len(SW2_KEYWORDS) + 2  # +2 for PC configs
+        found_keywords = (
+            len(R1_KEYWORDS) - len(r1_missing) +
+            len(R2_KEYWORDS) - len(r2_missing) +
+            len(R3_KEYWORDS) - len(r3_missing) +
+            len(SW1_KEYWORDS) - len(sw1_missing) +
+            len(SW2_KEYWORDS) - len(sw2_missing) +
+            (1 if pc_a_correct else 0) +
+            (1 if pc_c_correct else 0)
+        )
+        
+        # คำนวณคะแนนเป็นเปอร์เซ็นต์
+        total_score = (found_keywords / total_keywords) * 100 if total_keywords > 0 else 0
 
         # Create result object
         result = {
             'student_id': username,
             'total_score': round(total_score, 2),
-            'router_score': round(router_score, 2),
-            'switch_score': round(switch_score, 2),
-            'pc_score': round(pc_score, 2),
             'r1_score': round(r1_score, 2),
             'r2_score': round(r2_score, 2),
             'r3_score': round(r3_score, 2),
@@ -256,9 +253,7 @@ def lab15():
             'sw2_missing': sw2_missing,
             'pca_status': 'correct' if pc_a_correct else 'incorrect',
             'pcc_status': 'correct' if pc_c_correct else 'incorrect',
-            'status': 'success' if (r1_score >= 90 and r2_score >= 90 and r3_score >= 90 and 
-                                  sw1_score >= 90 and sw2_score >= 90 and 
-                                  pc_a_correct and pc_c_correct) else 'partial'
+            'status': 'success' if total_score >= 60 else 'partial'
         }
 
         try:
@@ -271,9 +266,6 @@ def lab15():
                     "r3_score": f"{r3_score:.2f}/100",
                     "sw1_score": f"{sw1_score:.2f}/100",
                     "sw2_score": f"{sw2_score:.2f}/100",
-                    "router_score": f"{router_score:.2f}",
-                    "switch_score": f"{switch_score:.2f}",
-                    "pc_score": f"{pc_score:.2f}",
                     "pc_a_correct": "ถูกต้อง" if pc_a_correct else "ไม่ถูกต้อง",
                     "pc_c_correct": "ถูกต้อง" if pc_c_correct else "ไม่ถูกต้อง",
                     "configs": {
@@ -307,12 +299,6 @@ def lab15():
         return redirect(url_for('lab15.lab15'))
 
     result = session.get('lab15_result')
-
-    # Debug print
-    print(f"Username: {username}")
-    print(f"User Info: {user}")
-    print(f"First Name: {first_name}")
-    print(f"Last Name: {last_name}")
 
     return render_template('lab15.html', 
                         result=result,

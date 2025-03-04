@@ -17,44 +17,80 @@ def check_keywords(user_config, keywords):
     missing_keywords = []
     found_keywords = []
 
+    # สร้าง dictionary เก็บบล็อกต่างๆ
+    config_blocks = {}
+    current_block = None
+    block_content = []
+
+    for line in user_lines:
+        line = line.strip()
+        if not line or line == '!':
+            if current_block:
+                config_blocks[current_block] = block_content
+                current_block = None
+                block_content = []
+            continue
+        
+        if line.startswith('interface ') or line.startswith('ipv6 dhcp pool '):
+            # เริ่มบล็อกใหม่
+            if current_block:
+                config_blocks[current_block] = block_content
+            current_block = line
+            block_content = []
+        elif current_block:
+            # เพิ่มเนื้อหาเข้าบล็อก
+            block_content.append(line)
+    
+    # เก็บบล็อกสุดท้าย (ถ้ามี)
+    if current_block:
+        config_blocks[current_block] = block_content
+
+    # ตรวจสอบคีย์เวิร์ด
     for keyword in keywords:
         if isinstance(keyword, dict):
-            interface_name = list(keyword.keys())[0]
-            expected_commands = keyword[interface_name]
+            block_name = list(keyword.keys())[0]
+            expected_commands = keyword[block_name]
+            
+            # ตรวจสอบว่ามีบล็อกนี้หรือไม่
             block_found = False
-
-            for i, line in enumerate(user_lines):
-                if re.match(rf"^\s*{re.escape(interface_name)}\s*$", line.strip()):
+            for config_block in config_blocks.keys():
+                if block_name in config_block:
                     block_found = True
-                    block_content = []
-                    for l in user_lines[i + 1:]:
-                        if re.match(r"^\s*(interface|!|ipv6)\s*", l):
-                            break
-                        block_content.append(l.strip())
-
-                    missing_in_block = [
-                        cmd for cmd in expected_commands if not any(cmd in line for line in block_content)
-                    ]
-                    if missing_in_block:
-                        missing_keywords.append(
-                            f"{interface_name}: ขาด {', '.join(missing_in_block)}"
-                        )
+                    block_content = config_blocks[config_block]
+                    
+                    # ตรวจสอบคำสั่งในบล็อก
+                    missing_commands = []
+                    for cmd in expected_commands:
+                        cmd_found = False
+                        for content in block_content:
+                            if cmd.lower() in content.lower():
+                                cmd_found = True
+                                break
+                        
+                        if not cmd_found:
+                            missing_commands.append(cmd)
+                    
+                    if missing_commands:
+                        missing_keywords.append(f"{block_name}: ขาด {', '.join(missing_commands)}")
                     else:
-                        found_keywords.append(interface_name)
+                        found_keywords.append(block_name)
                     break
-
+            
             if not block_found:
-                missing_keywords.append(f"{interface_name}: missing block")
-
-        elif isinstance(keyword, str):
-            keyword_found = any(
-                re.search(rf"^\s*{re.escape(keyword)}\s*", line) for line in user_lines
-            )
+                missing_keywords.append(f"{block_name}: missing block")
+        
+        else:  # คีย์เวิร์ดปกติ
+            keyword_found = False
+            for line in user_lines:
+                if keyword.lower() in line.lower():
+                    keyword_found = True
+                    break
+            
             if keyword_found:
                 found_keywords.append(keyword)
             else:
                 missing_keywords.append(f"{keyword}: missing")
-
+    
     total_keywords = len(keywords)
     score = (len(found_keywords) / total_keywords) * 100 if total_keywords > 0 else 0
     return score, missing_keywords

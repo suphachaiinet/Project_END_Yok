@@ -222,7 +222,7 @@ def lab11():
         vlan_sw2_missing = check_vlan_config(user_vlan_sw2, EXPECTED_VLANS)
 
         # Check PC configurations
-        pca_correct = check_pc_config(pca_ip, pca_subnet, pca_gateway, "10.20.0.10", "255.255.255.0", "10.20.0.1")
+        pca_correct = check_pc_config(pca_ip, pca_subnet, pca_gateway, "10.30.0.10", "255.255.255.0", "10.30.0.1")
         pcb_correct = check_pc_config(pcb_ip, pcb_subnet, pcb_gateway, "10.40.0.10", "255.255.255.0", "10.40.0.1")
 
         # Calculate total score
