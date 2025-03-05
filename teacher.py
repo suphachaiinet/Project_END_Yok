@@ -192,7 +192,14 @@ def lab_management(lab_num):
     
     # ดึงข้อมูล keyword ของแล็บนี้
     lab_keywords = lab_keywords_collection.find_one({"lab_num": lab_num})
-
+    pc_config = {}
+    pca_config = {}
+    pcb_config = {}
+    pcc_config = {}
+    pc1_config = {}
+    pc2_config = {}
+    pc_a_config = {}
+    pc_c_config = {}
     if not lab_keywords:
         # ถ้ายังไม่มีคีย์เวิร์ด ให้ใช้ค่าเริ่มต้นจากไฟล์ lab.py หรือ lab<n>.py
         if lab_num == 1:
@@ -1663,6 +1670,16 @@ def lab_management(lab_num):
     r2_keywords_text = ""
     r3_keywords_text = ""
 
+    # เพิ่มการตรวจสอบ
+    pca_config = lab_keywords.get('pca_config', {}) if lab_keywords and 'pca_config' in lab_keywords else {}
+    pcc_config = lab_keywords.get('pcc_config', {}) if lab_keywords and 'pcc_config' in lab_keywords else {}
+    pcb_config = lab_keywords.get('pcb_config', {}) if lab_keywords and 'pcb_config' in lab_keywords else {}
+    pc_config = lab_keywords.get('pc_config', {}) if lab_keywords and 'pc_config' in lab_keywords else {}
+    pc1_config = lab_keywords.get('pc1_config', {}) if lab_keywords and 'pc1_config' in lab_keywords else {}
+    pc2_config = lab_keywords.get('pc2_config', {}) if lab_keywords and 'pc2_config' in lab_keywords else {}
+    pc_a_config = lab_keywords.get('pc_a_config', {}) if lab_keywords and 'pc_a_config' in lab_keywords else {}
+    pc_c_config = lab_keywords.get('pc_c_config', {}) if lab_keywords and 'pc_c_config' in lab_keywords else {}
+    pc_b_config = pcb_config
     if lab_num == 1:
         switch_keywords = lab_keywords.get('switch_keywords', [])
         switch_keywords_text = format_keywords_for_display(switch_keywords)
@@ -1713,33 +1730,34 @@ def lab_management(lab_num):
     else:
         general_keywords = lab_keywords.get('general_keywords', [])
         general_keywords_text = format_keywords_for_display(general_keywords)
-    
+        
+        pc_b_config = pcb_config
     return render_template('lab_management.html',
-                        lab_num=lab_num,
-                        lab_title=lab_titles.get(lab_num, f"Lab {lab_num}"),
-                        students=students_data,
-                        completed_count=completed_count,
-                        total_students=total_students,
-                        completion_rate=round(completion_rate, 2),
-                        avg_score=round(avg_score, 2),
-                        max_score=round(max_score, 2),
-                        min_score=round(min_score, 2),
-                        switch_keywords_text=switch_keywords_text,
-                        switch1_keywords_text=switch1_keywords_text,
-                        switch2_keywords_text=switch2_keywords_text,
-                        general_keywords_text=general_keywords_text,
-                        r1_keywords_text=r1_keywords_text,
-                        r2_keywords_text=r2_keywords_text,
-                        r3_keywords_text=r3_keywords_text,
-                        pc_config=lab_keywords.get('pc_config', {}),
-                        pc1_config=lab_keywords.get('pc1_config', {}),
-                        pc2_config=lab_keywords.get('pc2_config', {}),
-                        pc_a_config=lab_keywords.get('pc_a_config', {}),
-                        pc_b_config=lab_keywords.get('pc_b_config', {}),
-                        pc_c_config=lab_keywords.get('pc_c_config', {}),
-                        active_lab=lab_num,
-                        first_name=first_name,
-                        last_name=last_name)
+                     lab_num=lab_num,
+                     lab_title=lab_titles.get(lab_num, f"Lab {lab_num}"),
+                     students=students_data,
+                     completed_count=completed_count,
+                     total_students=total_students,
+                     completion_rate=round(completion_rate, 2),
+                     avg_score=round(avg_score, 2),
+                     max_score=round(max_score, 2),
+                     min_score=round(min_score, 2),
+                     switch_keywords_text=switch_keywords_text,
+                     switch1_keywords_text=switch1_keywords_text,
+                     switch2_keywords_text=switch2_keywords_text,
+                     general_keywords_text=general_keywords_text,
+                     r1_keywords_text=r1_keywords_text,
+                     r2_keywords_text=r2_keywords_text,
+                     r3_keywords_text=r3_keywords_text,
+                     pc_config=pc_config,
+                     pc1_config=pc1_config,
+                     pc2_config=pc2_config,
+                     pc_a_config=pc_a_config,
+                     pc_b_config=pcb_config,
+                     pc_c_config=pc_c_config,
+                     active_lab=lab_num,
+                     first_name=first_name,
+                     last_name=last_name)
 
 # ดูรายละเอียดการส่งงานของนักศึกษา
 @teacher_bp.route('/submission/<int:lab_num>/<student_id>')
