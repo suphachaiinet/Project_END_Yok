@@ -10763,3 +10763,151 @@ INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:43:00] "GET /teacher/lab/4 HTTP/1.1"
 INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:43:01] "GET /teacher/lab/5 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:49:37] "GET /teacher/lab/5 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:49:43] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:51:40] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:51:44] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:02] "GET /teacher/lab/7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:06] "GET /teacher/lab/8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:08] "GET /teacher/lab/9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:11] "GET /teacher/lab/10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:15] "GET /teacher/lab/15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:19] "GET /teacher/lab/10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:22] "GET /teacher/lab/9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:28] "GET /teacher/lab/16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:29] "GET /teacher/lab/12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:31] "GET /teacher/lab/16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:39] "GET /teacher/lab/15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:45] "GET /teacher/lab/9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:46] "GET /teacher/lab/10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:54] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:53:58] "GET /teacher/lab/7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:54:02] "GET /teacher/lab/8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:54:04] "GET /teacher/lab/9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:54:07] "GET /teacher/lab/10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:54:12] "GET /teacher/lab/11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:54:16] "GET /teacher/lab/12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:54:19] "GET /teacher/lab/13 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:54:23] "GET /teacher/lab/14 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:54:27] "GET /teacher/lab/15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:54:31] "GET /teacher/lab/16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:59:16] "GET /teacher/lab/16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:59:17] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:07:47] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:11:09] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:18:00] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:18:04] "GET /teacher/lab/8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:18:06] "GET /teacher/lab/10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:18:10] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:18:14] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:26:52] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:27:08] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:34:37] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:34:40] "GET /teacher/lab/7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:35:01] "GET /teacher/lab/8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:35:04] "GET /teacher/lab/8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:35:06] "GET /teacher/lab/7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:35:07] "GET /teacher/lab/8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:35:08] "GET /teacher/lab/7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:35:11] "GET /teacher/lab/8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:38:37] "GET /teacher/lab/9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:38:40] "GET /teacher/lab/8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:38:44] "GET /teacher/lab/10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:38:47] "GET /teacher/lab/11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:38:50] "GET /teacher/lab/12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:38:54] "GET /teacher/lab/13 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:38:58] "GET /teacher/lab/14 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:39:01] "GET /teacher/lab/15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:39:04] "GET /teacher/lab/16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:39:09] "GET /teacher/stats HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:39:10] "GET /teacher/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:39:15] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:39:31] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:22] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:23] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:31] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:31] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:34] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:34] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:35] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:35] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:41] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:41] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:43] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:40:43] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:41:11] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:41:12] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:42:44] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:42:50] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:42:52] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:42:54] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:42:55] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:43:03] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:44:31] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:44:32] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:45:51] "GET /teacher/lab/3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:45:53] "GET /teacher/submission/3/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:45:55] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:46:29] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:46:31] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:46:32] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:48:39] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:48:40] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:52:56] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:02] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:03] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:13] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:15] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:17] "GET /teacher/lab/3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:18] "GET /teacher/submission/3/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:20] "GET /teacher/lab/4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:22] "GET /teacher/submission/4/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:24] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:26] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:30] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:53:31] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:56:12] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:56:13] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:57:38] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:57:40] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:57:42] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:57:44] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:57:55] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:57:58] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:58:00] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:58:03] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 09:58:05] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:01:19] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:01:20] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:06:12] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:06:14] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:06:15] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:06:22] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:06:24] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:06:25] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:06:25] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:06:27] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:06:56] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:06:58] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:09:21] "GET /teacher/submission/1/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:09:24] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:09:26] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:09:27] "GET /teacher/submission/2/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 10:09:29] "GET /teacher/lab/1 HTTP/1.1" 200 -

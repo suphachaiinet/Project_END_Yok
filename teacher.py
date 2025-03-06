@@ -1742,6 +1742,20 @@ def lab_management(lab_num):
         r1_keywords_text = format_keywords_for_display(r1_keywords)
         sw1_keywords_text = format_keywords_for_display(sw1_keywords)
         sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+        
+        # ตรวจสอบและแปลง pca_config และ pcb_config เพื่อใช้กับ template
+        pca_config = lab_keywords.get('pca_config', {})
+        pcb_config = lab_keywords.get('pcb_config', {})
+    
+    # ตรวจสอบว่ามีข้อมูลหรือไม่ และกำหนดค่า default ถ้าไม่มี
+        if not pca_config or not isinstance(pca_config, dict):
+            pca_config = {"ip": "", "subnet": "", "gateway": ""}
+        if not pcb_config or not isinstance(pcb_config, dict):
+            pcb_config = {"ip": "", "subnet": "", "gateway": ""}
+        
+    # กำหนดค่าให้ตัวแปรที่ template ต้องการ
+        pc_a_config = pca_config
+        pc_b_config = pcb_config
     elif lab_num == 7:  # Lab 7 - Inter-VLAN Routing
         r1_keywords = lab_keywords.get('r1_keywords', [])
         sw1_keywords = lab_keywords.get('sw1_keywords', [])
@@ -1750,12 +1764,42 @@ def lab_management(lab_num):
         r1_keywords_text = format_keywords_for_display(r1_keywords)
         sw1_keywords_text = format_keywords_for_display(sw1_keywords)
         sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+        
+        # ตรวจสอบและแปลง pca_config และ pcb_config
+        pca_config = lab_keywords.get('pca_config', {})
+        pcb_config = lab_keywords.get('pcb_config', {})
+        
+        # ตรวจสอบว่ามีข้อมูลหรือไม่ และกำหนดค่า default ถ้าไม่มี
+        if not pca_config or not isinstance(pca_config, dict):
+            pca_config = {"ip": "", "subnet": "", "gateway": ""}
+        if not pcb_config or not isinstance(pcb_config, dict):
+            pcb_config = {"ip": "", "subnet": "", "gateway": ""}
+        
+        # กำหนดค่าให้ตัวแปรที่ template ต้องการ
+        pc_a_config = pca_config
+        pc_b_config = pcb_config
+
     elif lab_num == 8:  # Lab 8 - EtherChannel
         sw1_keywords = lab_keywords.get('sw1_keywords', [])
         sw2_keywords = lab_keywords.get('sw2_keywords', [])
         
         sw1_keywords_text = format_keywords_for_display(sw1_keywords)
         sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+        
+        # ตรวจสอบและแปลง pca_config และ pcb_config
+        pca_config = lab_keywords.get('pca_config', {})
+        pcb_config = lab_keywords.get('pcb_config', {})
+        
+        # ตรวจสอบว่ามีข้อมูลหรือไม่ และกำหนดค่า default ถ้าไม่มี
+        if not pca_config or not isinstance(pca_config, dict):
+            pca_config = {"ip": "", "subnet": ""}
+        if not pcb_config or not isinstance(pcb_config, dict):
+            pcb_config = {"ip": "", "subnet": ""}
+        
+        # กำหนดค่าให้ตัวแปรที่ template ต้องการ
+        pc_a_config = pca_config
+        pc_b_config = pcb_config
+
     elif lab_num == 9:  # Lab 9 - PPP Authentication
         r1_keywords = lab_keywords.get('r1_keywords', [])
         r2_keywords = lab_keywords.get('r2_keywords', [])
@@ -1764,6 +1808,21 @@ def lab_management(lab_num):
         r1_keywords_text = format_keywords_for_display(r1_keywords)
         r2_keywords_text = format_keywords_for_display(r2_keywords)
         r3_keywords_text = format_keywords_for_display(r3_keywords)
+        
+        # ตรวจสอบและแปลง pca_config และ pcc_config
+        pca_config = lab_keywords.get('pca_config', {})
+        pcc_config = lab_keywords.get('pcc_config', {})
+        
+        # ตรวจสอบว่ามีข้อมูลหรือไม่ และกำหนดค่า default ถ้าไม่มี
+        if not pca_config or not isinstance(pca_config, dict):
+            pca_config = {"ip": "", "subnet": "", "gateway": ""}
+        if not pcc_config or not isinstance(pcc_config, dict):
+            pcc_config = {"ip": "", "subnet": "", "gateway": ""}
+        
+        # กำหนดค่าให้ตัวแปรที่ template ต้องการ
+        pc_a_config = pca_config
+        pc_c_config = pcc_config
+
     elif lab_num == 10:  # Lab 10 - Standard IPv4 ACLs
         r1_keywords = lab_keywords.get('r1_keywords', [])
         r2_keywords = lab_keywords.get('r2_keywords', [])
@@ -1776,6 +1835,21 @@ def lab_management(lab_num):
         r3_keywords_text = format_keywords_for_display(r3_keywords)
         sw1_keywords_text = format_keywords_for_display(sw1_keywords)
         sw3_keywords_text = format_keywords_for_display(sw3_keywords)
+        
+        # ตรวจสอบและแปลง pca_config และ pcc_config
+        pca_config = lab_keywords.get('pca_config', {})
+        pcc_config = lab_keywords.get('pcc_config', {})
+        
+        # ตรวจสอบว่ามีข้อมูลหรือไม่ และกำหนดค่า default ถ้าไม่มี
+        if not pca_config or not isinstance(pca_config, dict):
+            pca_config = {"ip": "", "subnet": "", "gateway": ""}
+        if not pcc_config or not isinstance(pcc_config, dict):
+            pcc_config = {"ip": "", "subnet": "", "gateway": ""}
+        
+        # กำหนดค่าให้ตัวแปรที่ template ต้องการ
+        pc_a_config = pca_config
+        pc_c_config = pcc_config
+
     elif lab_num == 11:  # Lab 11 - Extended IPv4 ACLs
         r1_keywords = lab_keywords.get('r1_keywords', [])
         r2_keywords = lab_keywords.get('r2_keywords', [])
@@ -1786,6 +1860,21 @@ def lab_management(lab_num):
         r2_keywords_text = format_keywords_for_display(r2_keywords)
         sw1_keywords_text = format_keywords_for_display(sw1_keywords)
         sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+        
+        # ตรวจสอบและแปลง pca_config และ pcb_config
+        pca_config = lab_keywords.get('pca_config', {})
+        pcb_config = lab_keywords.get('pcb_config', {})
+        
+        # ตรวจสอบว่ามีข้อมูลหรือไม่ และกำหนดค่า default ถ้าไม่มี
+        if not pca_config or not isinstance(pca_config, dict):
+            pca_config = {"ip": "", "subnet": "", "gateway": ""}
+        if not pcb_config or not isinstance(pcb_config, dict):
+            pcb_config = {"ip": "", "subnet": "", "gateway": ""}
+        
+        # กำหนดค่าให้ตัวแปรที่ template ต้องการ
+        pc_a_config = pca_config
+        pc_b_config = pcb_config
+
     elif lab_num >= 12 and lab_num <= 14:  # Lab 12-14
         r1_keywords = lab_keywords.get('r1_keywords', [])
         r2_keywords = lab_keywords.get('r2_keywords', [])
@@ -1796,6 +1885,17 @@ def lab_management(lab_num):
         r2_keywords_text = format_keywords_for_display(r2_keywords)
         sw1_keywords_text = format_keywords_for_display(sw1_keywords)
         sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+        
+        # ตรวจสอบและแปลง pc_a_config และ pc_b_config
+        pc_a_config = lab_keywords.get('pc_a_config', {})
+        pc_b_config = lab_keywords.get('pc_b_config', {})
+        
+        # ตรวจสอบว่ามีข้อมูลหรือไม่ และกำหนดค่า default ถ้าไม่มี
+        if not pc_a_config or not isinstance(pc_a_config, dict):
+            pc_a_config = {"ip": "", "subnet": "", "gateway": ""}
+        if not pc_b_config or not isinstance(pc_b_config, dict):
+            pc_b_config = {"ip": "", "subnet": "", "gateway": ""}
+
     elif lab_num == 15:  # Lab 15 - HSRP
         r1_keywords = lab_keywords.get('r1_keywords', [])
         r2_keywords = lab_keywords.get('r2_keywords', [])
@@ -1808,6 +1908,16 @@ def lab_management(lab_num):
         r3_keywords_text = format_keywords_for_display(r3_keywords)
         sw1_keywords_text = format_keywords_for_display(sw1_keywords)
         sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+        
+        # ตรวจสอบและแปลง pc_a_config และ pc_c_config
+        pc_a_config = lab_keywords.get('pc_a_config', {})
+        pc_c_config = lab_keywords.get('pc_c_config', {})
+        
+        # ตรวจสอบว่ามีข้อมูลหรือไม่ และกำหนดค่า default ถ้าไม่มี
+        if not pc_a_config or not isinstance(pc_a_config, dict):
+            pc_a_config = {"ip": "", "subnet": "", "gateway": ""}
+        if not pc_c_config or not isinstance(pc_c_config, dict):
+            pc_c_config = {"ip": "", "subnet": "", "gateway": ""}
     elif lab_num == 16:  # Lab 16 - Switch Security Configuration
         r1_keywords = lab_keywords.get('r1_keywords', [])
         sw1_keywords = lab_keywords.get('sw1_keywords', [])
@@ -1850,11 +1960,11 @@ def lab_management(lab_num):
                         pc1_config=pc1_config,
                         pc2_config=pc2_config,
                         pc_a_config=pc_a_config,
-                        pc_b_config=pcb_config,
+                        pc_b_config=pc_b_config,
                         pc_c_config=pc_c_config,
                         active_lab=lab_num,
                         first_name=first_name,
-                        last_name=last_name)# ดูรายละเอียดการส่งงานของนักศึกษา
+                        last_name=last_name)
 @teacher_bp.route('/submission/<int:lab_num>/<student_id>')
 def view_submission(lab_num, student_id):
     if 'user_id' not in session or session.get('role') != 'teacher':
@@ -1875,6 +1985,9 @@ def view_submission(lab_num, student_id):
         flash('ไม่พบข้อมูลการส่งงาน', 'danger')
         return redirect(url_for('teacher.lab_management', lab_num=lab_num))
     
+    # ดึงข้อมูล keyword ของแล็บนี้
+    lab_keywords = lab_keywords_collection.find_one({"lab_num": lab_num})
+    
     # คำนวณคะแนนและสถานะ
     try:
         score = float(submission['switch_score'].split('/')[0])
@@ -1889,10 +2002,78 @@ def view_submission(lab_num, student_id):
     submission['status'] = status
     submission['status_text'] = status_text
     
+    # กำหนดชื่อแล็บตามหมายเลข
+    lab_titles = {
+        1: "Basic Switch Configuration",
+        2: "Configure VLANs and Trunking",
+        3: "Implement VLANs and Trunking",
+        4: "Redundant Links",
+        5: "Rapid PVST+",
+        6: "Router-on-a-Stick Inter-VLAN",
+        7: "Inter-VLAN Routing",
+        8: "EtherChannel",
+        9: "PPP Authentication",
+        10: "Standard IPv4 ACLs",
+        11: "Extended IPv4 ACLs",
+        12: "DHCPv4",
+        13: "DHCPv6",
+        14: "Static Route Configuration",
+        15: "HSRP",
+        16: "Switch Security Configuration"
+    }
+    
+    # เพิ่มข้อมูลชื่อแล็บลงใน submission
+    submission['lab_title'] = lab_titles.get(lab_num, f"Lab {lab_num}")
+    
+    # ตรวจสอบและเตรียมข้อมูลตามประเภทของแล็บ
+    if lab_num >= 1 and lab_num <= 16:
+        # ตรวจสอบว่ามีข้อมูลการกำหนดค่าอุปกรณ์หรือไม่
+        if lab_keywords:
+            # กำหนดค่าตามประเภทของแล็บ
+            if lab_num == 1:
+                submission['device_type'] = 'Switch'
+                if 'switch_keywords' in lab_keywords:
+                    submission['expected_config'] = format_keywords_for_display(lab_keywords['switch_keywords'])
+            
+            elif lab_num == 2 or lab_num == 3:
+                submission['device_type'] = 'Switch'
+                if 'switch1_keywords' in lab_keywords:
+                    submission['switch1_expected_config'] = format_keywords_for_display(lab_keywords['switch1_keywords'])
+                if 'switch2_keywords' in lab_keywords:
+                    submission['switch2_expected_config'] = format_keywords_for_display(lab_keywords['switch2_keywords'])
+            
+            elif lab_num == 4 or lab_num == 5:
+                submission['device_type'] = 'Switch'
+                if 'sw1_keywords' in lab_keywords:
+                    submission['sw1_expected_config'] = format_keywords_for_display(lab_keywords['sw1_keywords'])
+                if 'sw2_keywords' in lab_keywords:
+                    submission['sw2_expected_config'] = format_keywords_for_display(lab_keywords['sw2_keywords'])
+                if 'sw3_keywords' in lab_keywords:
+                    submission['sw3_expected_config'] = format_keywords_for_display(lab_keywords['sw3_keywords'])
+            
+            elif lab_num >= 6 and lab_num <= 16:
+                # Router-based labs
+                submission['device_type'] = 'Router' if lab_num in [6, 7, 9, 10, 11, 12, 13, 14, 15, 16] else 'Switch'
+                
+                # ตรวจสอบและเตรียมข้อมูลตามแต่ละแล็บ
+                if 'r1_keywords' in lab_keywords:
+                    submission['r1_expected_config'] = format_keywords_for_display(lab_keywords['r1_keywords'])
+                if 'r2_keywords' in lab_keywords:
+                    submission['r2_expected_config'] = format_keywords_for_display(lab_keywords['r2_keywords'])
+                if 'r3_keywords' in lab_keywords:
+                    submission['r3_expected_config'] = format_keywords_for_display(lab_keywords['r3_keywords'])
+                if 'sw1_keywords' in lab_keywords:
+                    submission['sw1_expected_config'] = format_keywords_for_display(lab_keywords['sw1_keywords'])
+                if 'sw2_keywords' in lab_keywords:
+                    submission['sw2_expected_config'] = format_keywords_for_display(lab_keywords['sw2_keywords'])
+                if 'sw3_keywords' in lab_keywords:
+                    submission['sw3_expected_config'] = format_keywords_for_display(lab_keywords['sw3_keywords'])
+    
     user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
     first_name = user['first_name'] if user else session.get('first_name', 'Unknown')
     last_name = user['last_name'] if user else session.get('last_name', 'User')
     
+    # ส่งข้อมูลไปยัง template
     return render_template('view_submission.html',
                           lab_num=lab_num,
                           student=student,
