@@ -1965,35 +1965,27 @@ def lab_management(lab_num):
                         active_lab=lab_num,
                         first_name=first_name,
                         last_name=last_name)
-def format_keywords_for_display(keywords):
+def format_vlans_for_display(vlans):
     """
-    จัดรูปแบบ keywords เพื่อแสดงผลในหน้าเว็บ
-    
-    Parameters:
-    keywords (list): รายการ keywords ที่เก็บใน MongoDB
-    
-    Returns:
-    str: ข้อความ keywords ที่จัดรูปแบบสำหรับแสดงผลแล้ว
+    แปลง dict ของ VLANs เป็นข้อความที่อ่านง่าย
     """
-    if not keywords:
-        return "ไม่มีข้อมูล"
+    if not vlans:
+        return "ไม่มีข้อมูล VLAN"
+    
+    vlan_text = ""
+    for vlan_id, vlan_info in vlans.items():
+        vlan_text += f"VLAN {vlan_id}:\n"
+        vlan_text += f"  Name: {vlan_info.get('name', 'N/A')}\n"
         
-    formatted_text = ""
+        ports = vlan_info.get('ports', [])
+        if ports:
+            vlan_text += f"  Ports: {', '.join(ports)}\n"
+        
+        vlan_text += "\n"
     
-    for item in keywords:
-        if isinstance(item, dict):
-            for interface, commands in item.items():
-                # เขียนชื่อ interface
-                formatted_text += f"{interface}\n"
-                # เขียนคำสั่งย่อย
-                for cmd in commands:
-                    formatted_text += f"  {cmd}\n"
-            formatted_text += "\n"  # เพิ่มบรรทัดว่างระหว่าง interface
-        else:
-            # เขียนคำสั่งปกติ
-            formatted_text += f"{item}\n"
-    
-    return formatted_text.rstrip()
+    return vlan_text.strip()
+
+
 @teacher_bp.route('/submission/<int:lab_num>/<student_id>')
 def view_submission(lab_num, student_id):
     if 'user_id' not in session or session.get('role') != 'teacher':
@@ -2014,55 +2006,23 @@ def view_submission(lab_num, student_id):
         flash('ไม่พบข้อมูลการส่งงาน', 'danger')
         return redirect(url_for('teacher.lab_management', lab_num=lab_num))
     
-    # ตรวจสอบและเพิ่มข้อมูลที่จำเป็น
-    if 'switch_config' not in submission or not submission['switch_config']:
-        submission['switch_config'] = 'ไม่มีข้อมูล'
-    
-    # เพิ่มตัวแปรสำหรับเก็บค่า PC config
+    # เตรียมข้อมูล PC configs สำหรับทุก Lab
+    pc_config = {"ip_address": "", "subnet_mask": "", "default_gateway": ""}
     pc1_config = {"ip": "", "subnet": "", "gateway": ""}
     pc2_config = {"ip": "", "subnet": "", "gateway": ""}
+    pca_config = {"ip": "", "subnet": "", "gateway": ""}
+    pcb_config = {"ip": "", "subnet": "", "gateway": ""}
+    pcc_config = {"ip": "", "subnet": "", "gateway": ""}
+    pc_a_config = {"ip": "", "subnet": "", "gateway": ""}
+    pc_b_config = {"ip": "", "subnet": "", "gateway": ""}
+    pc_c_config = {"ip": "", "subnet": "", "gateway": ""}
     
-    # Lab 2 มีการจัดการพิเศษ
-    if lab_num == 2:
-        # ดึงข้อมูลจากฐานข้อมูลโดยตรง
-        doc = scores_collection.find_one({"username": student_id, "lab": f"Lab {lab_num}"})
-        if doc:
-            # ตรวจสอบว่ามีข้อมูล PC config หรือไม่
-            if 'pc1_config' in doc and isinstance(doc['pc1_config'], dict):
-                if 'ip' in doc['pc1_config']:
-                    pc1_config['ip'] = doc['pc1_config']['ip']
-                if 'subnet' in doc['pc1_config']:
-                    pc1_config['subnet'] = doc['pc1_config']['subnet']
-                if 'gateway' in doc['pc1_config']:
-                    pc1_config['gateway'] = doc['pc1_config']['gateway']
-            else:
-                # ถ้าไม่มี ใส่ค่าเริ่มต้น
-                pc1_config = {"ip": "192.168.10.3", "subnet": "255.255.255.0", "gateway": "192.168.10.1"}
-                
-            if 'pc2_config' in doc and isinstance(doc['pc2_config'], dict):
-                if 'ip' in doc['pc2_config']:
-                    pc2_config['ip'] = doc['pc2_config']['ip']
-                if 'subnet' in doc['pc2_config']:
-                    pc2_config['subnet'] = doc['pc2_config']['subnet']
-                if 'gateway' in doc['pc2_config']:
-                    pc2_config['gateway'] = doc['pc2_config']['gateway']
-            else:
-                # ถ้าไม่มี ใส่ค่าเริ่มต้น
-                pc2_config = {"ip": "192.168.10.4", "subnet": "255.255.255.0", "gateway": "192.168.10.1"}
-    
-    # คำนวณคะแนนและสถานะ
-    try:
-        score = float(submission['switch_score'].split('/')[0])
-        status = 'completed' if score >= 60 else 'in_progress'
-        status_text = 'เสร็จสมบูรณ์' if score >= 60 else 'กำลังทำ'
-    except Exception:
-        score = 0
-        status = 'in_progress'
-        status_text = 'กำลังทำ'
-    
-    submission['score'] = score
-    submission['status'] = status
-    submission['status_text'] = status_text
+    # เตรียมข้อมูลอุปกรณ์ต่างๆ สำหรับแต่ละ Lab
+    # เก็บชื่ออุปกรณ์ที่ใช้ในแต่ละ Lab เพื่อส่งไปยัง template
+    lab_devices = {
+        # สำหรับแต่ละ lab จะกำหนดว่ามีอุปกรณ์อะไรบ้าง
+        # ทั้ง "switches", "routers", "pcs" และอื่นๆ
+    }
     
     # กำหนดชื่อแล็บตามหมายเลข
     lab_titles = {
@@ -2084,20 +2044,582 @@ def view_submission(lab_num, student_id):
         16: "Switch Security Configuration"
     }
     
+    # จัดการข้อมูลตามแต่ละ Lab
+    if lab_num == 1:
+        # Lab 1 - Basic Switch Configuration
+        lab_devices = {
+            "switches": ["S1"],
+            "pcs": ["PC-A"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+            
+        if 'pc_config' in submission and isinstance(submission['pc_config'], dict):
+            pc_config = submission['pc_config']
+        else:
+            # ใช้ค่าแยกถ้าไม่มี pc_config
+            pc_config = {
+                "ip_address": submission.get('pc_ip_address', ''),
+                "subnet_mask": submission.get('pc_subnet_mask', ''),
+                "default_gateway": submission.get('pc_default_gateway', '')
+            }
+    
+    elif lab_num == 2:
+        # Lab 2 - Configure VLANs and Trunking
+        lab_devices = {
+            "switches": ["S1", "S2"],
+            "pcs": ["PC1", "PC2"]
+        }
+        
+        if 'configs' in submission and isinstance(submission['configs'], dict):
+            # ตรวจสอบว่ามีข้อมูล Switch config หรือไม่
+            if 'sw1_config' not in submission['configs'] or not submission['configs']['sw1_config']:
+                submission['configs']['sw1_config'] = 'ไม่มีข้อมูล'
+            if 'sw2_config' not in submission['configs'] or not submission['configs']['sw2_config']:
+                submission['configs']['sw2_config'] = 'ไม่มีข้อมูล'
+        else:
+            # สร้าง configs object ถ้าไม่มี
+            submission['configs'] = {
+                'sw1_config': 'ไม่มีข้อมูล',
+                'sw2_config': 'ไม่มีข้อมูล'
+            }
+        
+        # ตรวจสอบข้อมูล PC config
+        if 'pc1_config' in submission and isinstance(submission['pc1_config'], dict):
+            pc1_config = submission['pc1_config']
+        else:
+            pc1_config = {"ip": "192.168.10.3", "subnet": "255.255.255.0", "gateway": "192.168.10.1"}
+            
+        if 'pc2_config' in submission and isinstance(submission['pc2_config'], dict):
+            pc2_config = submission['pc2_config']
+        else:
+            pc2_config = {"ip": "192.168.10.4", "subnet": "255.255.255.0", "gateway": "192.168.10.1"}
+    
+    elif lab_num == 3:
+        # Lab 3 - Implement VLANs and Trunking
+        lab_devices = {
+            "switches": ["S1", "S2"],
+            "pcs": ["PC1", "PC2"],
+            "features": ["VLANs"]
+        }
+        
+        # การจัดการข้อมูล Switch config
+        if 'sw1_config' in submission:
+            submission['switch1_config'] = submission['sw1_config']
+        elif 'configs' in submission and isinstance(submission['configs'], dict) and 'sw1_config' in submission['configs']:
+            submission['switch1_config'] = submission['configs']['sw1_config']
+        else:
+            submission['switch1_config'] = 'ไม่มีข้อมูล'
+            
+        if 'sw2_config' in submission:
+            submission['switch2_config'] = submission['sw2_config']
+        elif 'configs' in submission and isinstance(submission['configs'], dict) and 'sw2_config' in submission['configs']:
+            submission['switch2_config'] = submission['configs']['sw2_config']
+        else:
+            submission['switch2_config'] = 'ไม่มีข้อมูล'
+        
+        # ดึงข้อมูล VLAN config
+        submission['vlan_sw1_config'] = submission.get('vlan_sw1_config', '')
+        submission['vlan_sw2_config'] = submission.get('vlan_sw2_config', '')
+        
+        # หากไม่มีข้อมูล VLAN ให้ใช้ข้อมูลจาก lab_keywords
+        if not submission['vlan_sw1_config']:
+            lab_keywords = lab_keywords_collection.find_one({"lab_num": lab_num})
+            if lab_keywords and 'expected_vlans_sw1' in lab_keywords:
+                expected_vlans_sw1 = lab_keywords['expected_vlans_sw1']
+                submission['vlan_sw1_config'] = format_vlans_for_display(expected_vlans_sw1)
+        
+        if not submission['vlan_sw2_config']:
+            lab_keywords = lab_keywords_collection.find_one({"lab_num": lab_num})
+            if lab_keywords and 'expected_vlans_sw2' in lab_keywords:
+                expected_vlans_sw2 = lab_keywords['expected_vlans_sw2']
+                submission['vlan_sw2_config'] = format_vlans_for_display(expected_vlans_sw2)
+        
+        # ดึงข้อมูล PC1 config
+        if 'pc1_config' in submission and isinstance(submission['pc1_config'], dict):
+            if 'ip' in submission['pc1_config']:
+                pc1_config = {
+                    "ip": submission['pc1_config'].get('ip', ''),
+                    "subnet": submission['pc1_config'].get('subnet', ''),
+                    "gateway": submission['pc1_config'].get('gateway', '')
+                }
+            else:
+                pc1_config = {"ip": "", "subnet": "", "gateway": ""}
+                for key, value in submission['pc1_config'].items():
+                    if 'ip' in key.lower():
+                        pc1_config['ip'] = value
+                    elif 'subnet' in key.lower() or 'mask' in key.lower():
+                        pc1_config['subnet'] = value
+                    elif 'gateway' in key.lower():
+                        pc1_config['gateway'] = value
+                        
+            submission['pc1_ip_address'] = pc1_config['ip']
+            submission['pc1_subnet_mask'] = pc1_config['subnet']
+            submission['pc1_default_gateway'] = pc1_config['gateway']
+        else:
+            pc1_config = {
+                "ip": submission.get('pc1_ip_address', '192.168.20.3'),
+                "subnet": submission.get('pc1_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pc1_default_gateway', '192.168.20.1')
+            }
+            submission['pc1_ip_address'] = pc1_config['ip']
+            submission['pc1_subnet_mask'] = pc1_config['subnet']
+            submission['pc1_default_gateway'] = pc1_config['gateway']
+        
+        # ดึงข้อมูล PC2 config
+        if 'pc2_config' in submission and isinstance(submission['pc2_config'], dict):
+            if 'ip' in submission['pc2_config']:
+                pc2_config = {
+                    "ip": submission['pc2_config'].get('ip', ''),
+                    "subnet": submission['pc2_config'].get('subnet', ''),
+                    "gateway": submission['pc2_config'].get('gateway', '')
+                }
+            else:
+                pc2_config = {"ip": "", "subnet": "", "gateway": ""}
+                for key, value in submission['pc2_config'].items():
+                    if 'ip' in key.lower():
+                        pc2_config['ip'] = value
+                    elif 'subnet' in key.lower() or 'mask' in key.lower():
+                        pc2_config['subnet'] = value
+                    elif 'gateway' in key.lower():
+                        pc2_config['gateway'] = value
+                        
+            submission['pc2_ip_address'] = pc2_config['ip']
+            submission['pc2_subnet_mask'] = pc2_config['subnet']
+            submission['pc2_default_gateway'] = pc2_config['gateway']
+        else:
+            pc2_config = {
+                "ip": submission.get('pc2_ip_address', '192.168.30.3'),
+                "subnet": submission.get('pc2_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pc2_default_gateway', '192.168.30.1')
+            }
+            submission['pc2_ip_address'] = pc2_config['ip']
+            submission['pc2_subnet_mask'] = pc2_config['subnet']
+            submission['pc2_default_gateway'] = pc2_config['gateway']
+            
+    elif lab_num == 4:
+        # Lab 4 - Redundant Links
+        lab_devices = {
+            "switches": ["S1", "S2", "S3"],
+            "features": ["Spanning Tree"]
+        }
+        
+        # การจัดการข้อมูล Switch config
+        if 'sw1_config' in submission:
+            submission['switch1_config'] = submission['sw1_config']
+        else:
+            submission['switch1_config'] = submission.get('switch_config', 'ไม่มีข้อมูล')
+            
+        if 'sw2_config' in submission:
+            submission['switch2_config'] = submission['sw2_config']
+        else:
+            submission['switch2_config'] = 'ไม่มีข้อมูล'
+            
+        if 'sw3_config' in submission:
+            submission['switch3_config'] = submission['sw3_config']
+        else:
+            submission['switch3_config'] = 'ไม่มีข้อมูล'
+            
+        # กำหนดค่า Spanning Tree Mode และข้อมูลอื่นๆ
+        if 'spanning_tree_mode' not in submission:
+            submission['spanning_tree_mode'] = 'PVST+'
+            
+    elif lab_num == 5:
+        # Lab 5 - Rapid PVST+
+        lab_devices = {
+            "switches": ["S1", "S2", "S3"],
+            "pcs": ["PC-A", "PC-C"],
+            "features": ["RPVST+"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # PC config สำหรับ Lab 5
+        pca_config = {
+            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.0.2')),
+            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0'))
+        }
+        
+        pcc_config = {
+            "ip": submission.get('pcc_ip_address', '192.168.0.3'),
+            "subnet": submission.get('pcc_subnet_mask', '255.255.255.0')
+        }
+
+    elif lab_num == 6 or lab_num == 7:
+        # Lab 6-7 - Router-on-a-Stick Inter-VLAN / Inter-VLAN Routing
+        feature_name = "Router-on-a-Stick" if lab_num == 6 else "Inter-VLAN Routing"
+        lab_devices = {
+            "routers": ["R1"],
+            "switches": ["S1", "S2"],
+            "pcs": ["PC-A", "PC-B"],
+            "features": [feature_name, "VLANs"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # PC config สำหรับ Lab 6-7
+        pca_config = {
+            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.20.3')),
+            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
+            "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '192.168.20.1'))
+        }
+        
+        pcb_config = {
+            "ip": submission.get('pcb_ip_address', '192.168.30.3'),
+            "subnet": submission.get('pcb_subnet_mask', '255.255.255.0'),
+            "gateway": submission.get('pcb_default_gateway', '192.168.30.1')
+        }
+
+    elif lab_num == 8:
+        # Lab 8 - EtherChannel
+        lab_devices = {
+            "switches": ["S1", "S2"],
+            "pcs": ["PC-A", "PC-B"],
+            "features": ["EtherChannel", "PAgP/LACP"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # PC config สำหรับ Lab 8
+        pca_config = {
+            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.20.3')),
+            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0'))
+        }
+        
+        pcb_config = {
+            "ip": submission.get('pcb_ip_address', '192.168.20.4'),
+            "subnet": submission.get('pcb_subnet_mask', '255.255.255.0')
+        }
+
+    elif lab_num == 9:
+        # Lab 9 - PPP Authentication
+        lab_devices = {
+            "routers": ["Branch1", "Central", "Branch3"],
+            "pcs": ["PC-A", "PC-C"],
+            "features": ["PPP Authentication", "CHAP"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # PC config
+        pca_config = {
+            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.1.3')),
+            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
+            "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '192.168.1.1'))
+        }
+        
+        pcc_config = {
+            "ip": submission.get('pcc_ip_address', '192.168.3.3'),
+            "subnet": submission.get('pcc_subnet_mask', '255.255.255.0'),
+            "gateway": submission.get('pcc_default_gateway', '192.168.3.1')
+        }
+
+    elif lab_num == 10:
+        # Lab 10 - Standard IPv4 ACLs
+        lab_devices = {
+            "routers": ["R1", "ISP", "R3"],
+            "switches": ["S1", "S3"],
+            "pcs": ["PC-A", "PC-C"],
+            "features": ["Standard ACLs"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # PC config
+        pca_config = {
+            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.1.3')),
+            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
+            "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '192.168.1.1'))
+        }
+        
+        pcc_config = {
+            "ip": submission.get('pcc_ip_address', '192.168.3.3'),
+            "subnet": submission.get('pcc_subnet_mask', '255.255.255.0'),
+            "gateway": submission.get('pcc_default_gateway', '192.168.3.1')
+        }
+
+    elif lab_num == 11:
+        # Lab 11 - Extended IPv4 ACLs
+        lab_devices = {
+            "routers": ["R1", "R2"],
+            "switches": ["S1", "S2"],
+            "pcs": ["PC-A", "PC-B"],
+            "features": ["Extended ACLs"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # PC config
+        pca_config = {
+            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '10.30.0.10')),
+            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
+            "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '10.30.0.1'))
+        }
+        
+        pcb_config = {
+            "ip": submission.get('pcb_ip_address', '10.40.0.10'),
+            "subnet": submission.get('pcb_subnet_mask', '255.255.255.0'),
+            "gateway": submission.get('pcb_default_gateway', '10.40.0.1')
+        }
+
+    elif lab_num == 12:
+        # Lab 12 - DHCPv4
+        lab_devices = {
+            "routers": ["R1", "R2"],
+            "switches": ["S1", "S2"],
+            "pcs": ["PC-A", "PC-B"],
+            "features": ["DHCPv4", "DHCP Relay"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # PC config
+        pc_a_config = {
+            "ip": submission.get('pc_a_ip_address', submission.get('pc_ip_address', '192.168.1.3')),
+            "subnet": submission.get('pc_a_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.192')),
+            "gateway": submission.get('pc_a_default_gateway', submission.get('pc_default_gateway', '192.168.1.1'))
+        }
+        
+        pc_b_config = {
+            "ip": submission.get('pc_b_ip_address', '192.168.1.100'),
+            "subnet": submission.get('pc_b_subnet_mask', '255.255.255.240'),
+            "gateway": submission.get('pc_b_default_gateway', '192.168.1.97')
+        }
+
+    elif lab_num == 13:
+        # Lab 13 - DHCPv6
+        lab_devices = {
+            "routers": ["R1", "R2"],
+            "switches": ["S1", "S2"],
+            "pcs": ["PC-A", "PC-B"],
+            "features": ["DHCPv6", "Stateless/Stateful"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # PC config
+        pc_a_config = {
+            "ip": submission.get('pc_a_ip_address', submission.get('pc_ip_address', '2001:db8:acad:1::')),
+            "subnet": submission.get('pc_a_subnet_mask', submission.get('pc_subnet_mask', '64'))
+        }
+        
+        pc_b_config = {
+            "ip": submission.get('pc_b_ip_address', '2001:db8:acad:3::'),
+            "subnet": submission.get('pc_b_subnet_mask', '64')
+        }
+
+    elif lab_num == 14:
+        # Lab 14 - Static Route Configuration
+        lab_devices = {
+            "routers": ["R1", "R2"],
+            "switches": ["S1", "S2"],
+            "pcs": ["PC-A", "PC-B"],
+            "features": ["Static Routes"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # PC config
+        pc_a_config = {
+            "ip": submission.get('pc_a_ip_address', submission.get('pc_ip_address', '192.168.1.3')),
+            "subnet": submission.get('pc_a_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
+            "gateway": submission.get('pc_a_default_gateway', submission.get('pc_default_gateway', '192.168.1.1'))
+        }
+        
+        pc_b_config = {
+            "ip": submission.get('pc_b_ip_address', '192.168.1.4'),
+            "subnet": submission.get('pc_b_subnet_mask', '255.255.255.0'),
+            "gateway": submission.get('pc_b_default_gateway', '192.168.1.1')
+        }
+
+    elif lab_num == 15:
+        # Lab 15 - HSRP
+        lab_devices = {
+            "routers": ["R1", "R2", "R3"],
+            "switches": ["S1", "S3"],
+            "pcs": ["PC-A", "PC-C"],
+            "features": ["HSRP", "Router Redundancy"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # PC config
+        pca_config = {
+            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.1.31')),
+            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
+            "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '192.168.1.254'))
+        }
+        
+        pcc_config = {
+            "ip": submission.get('pcc_ip_address', '192.168.1.33'),
+            "subnet": submission.get('pcc_subnet_mask', '255.255.255.0'),
+            "gateway": submission.get('pcc_default_gateway', '192.168.1.254')
+        }
+
+    elif lab_num == 16:
+        # Lab 16 - Switch Security Configuration
+        lab_devices = {
+            "routers": ["R1"],
+            "switches": ["S1", "S2"],
+            "features": ["Port Security", "BPDU Guard", "DHCP Snooping"]
+        }
+        
+        if 'switch_config' not in submission or not submission['switch_config']:
+            submission['switch_config'] = 'ไม่มีข้อมูล'
+        
+        # ตั้งค่าค่าเริ่มต้นถ้าไม่มีข้อมูล
+        if 'port_security' not in submission:
+            submission['port_security'] = 'Enabled'
+        if 'dhcp_snooping' not in submission:
+            submission['dhcp_snooping'] = 'Enabled'
+        if 'bpdu_guard' not in submission:
+            submission['bpdu_guard'] = 'Enabled'
+    
+    # คำนวณคะแนนและสถานะ
+    try:
+        score = float(submission['switch_score'].split('/')[0])
+        status = 'completed' if score >= 60 else 'in_progress'
+        status_text = 'เสร็จสมบูรณ์' if score >= 60 else 'กำลังทำ'
+    except Exception:
+        score = 0
+        status = 'in_progress'
+        status_text = 'กำลังทำ'
+    
+    submission['score'] = score
+    submission['status'] = status
+    submission['status_text'] = status_text
+    
     # เพิ่มข้อมูลชื่อแล็บลงใน submission
     submission['lab_title'] = lab_titles.get(lab_num, f"Lab {lab_num}")
     
+    # กำหนดรายละเอียดแล็บ
+    lab_details = {
+        1: {
+            "title": "Basic Switch Configuration",
+            "description": "การตั้งค่าพื้นฐานของ Switch และการเชื่อมต่อกับ PC",
+            "objectives": ["ตั้งค่า Switch ให้มีความปลอดภัย", "กำหนด IP Address ให้กับ PC", "ทดสอบการเชื่อมต่อ"]
+        },
+        2: {
+            "title": "Configure VLANs and Trunking",
+            "description": "การกำหนด VLANs และ Trunk Links",
+            "objectives": ["สร้าง VLANs", "กำหนด Trunk Links", "ตั้งค่า PC ในแต่ละ VLAN"]
+        },
+        3: {
+            "title": "Implement VLANs and Trunking",
+            "description": "การใช้งาน VLANs และการกำหนดค่า Trunking ระหว่าง Switches",
+            "objectives": ["กำหนด VLANs", "ตั้งค่า Trunk Ports", "ตั้งค่า Access Ports", "ตั้งค่า PCs ให้สื่อสารได้ภายใน VLAN"]
+        },
+        4: {
+            "title": "Redundant Links",
+            "description": "การใช้ Spanning Tree Protocol เพื่อจัดการ Redundant Links",
+            "objectives": ["ตั้งค่า Redundant Links", "ศึกษาการทำงานของ STP", "ทำความเข้าใจ Port States ของ STP"]
+        },
+        5: {
+            "title": "Rapid PVST+",
+            "description": "การใช้งาน Rapid PVST+ เพื่อจัดการ Redundant Links",
+            "objectives": ["ตั้งค่า Rapid PVST+", "ตั้งค่า PortFast และ BPDU Guard", "เปรียบเทียบกับ PVST+ ปกติ"]
+        },
+        6: {
+            "title": "Router-on-a-Stick Inter-VLAN",
+            "description": "การใช้ Router เพื่อเชื่อมต่อระหว่าง VLANs",
+            "objectives": ["ตั้งค่า Router-on-a-Stick", "กำหนด Subinterfaces", "ทดสอบการสื่อสารระหว่าง VLANs"]
+        },
+        7: {
+            "title": "Inter-VLAN Routing",
+            "description": "การเชื่อมต่อระหว่าง VLANs โดยใช้ Router",
+            "objectives": ["กำหนด VLANs", "ตั้งค่า Router-on-a-Stick", "ทดสอบการสื่อสารระหว่าง VLANs"]
+        },
+        8: {
+            "title": "EtherChannel",
+            "description": "การรวมหลาย Physical Links เข้าด้วยกันใช้ EtherChannel",
+            "objectives": ["กำหนด EtherChannel ระหว่าง Switches", "ใช้ PAgP หรือ LACP", "ทดสอบการทำงานของ EtherChannel"]
+        },
+        9: {
+            "title": "PPP Authentication",
+            "description": "การตั้งค่า PPP Authentication ระหว่าง Routers",
+            "objectives": ["กำหนด PPP Encapsulation", "ตั้งค่า CHAP Authentication", "ทดสอบการเชื่อมต่อ"]
+        },
+        10: {
+            "title": "Standard IPv4 ACLs",
+            "description": "การใช้ Standard Access Control Lists เพื่อควบคุมการเข้าถึงเครือข่าย",
+            "objectives": ["กำหนด Standard ACLs", "ประยุกต์ใช้งาน ACLs กับ Interfaces", "ทดสอบ ACL Functionality"]
+        },
+        11: {
+            "title": "Extended IPv4 ACLs",
+            "description": "การใช้ Extended Access Control Lists เพื่อควบคุมการเข้าถึงเครือข่ายอย่างละเอียด",
+            "objectives": ["กำหนด Extended ACLs", "ประยุกต์ใช้งาน ACLs กับ Interfaces", "ทดสอบ ACL Functionality"]
+        },
+        12: {
+            "title": "DHCPv4",
+            "description": "การตั้งค่า DHCP Server และ DHCP Relay",
+            "objectives": ["กำหนด DHCP Server", "ตั้งค่า DHCP Relay", "ทดสอบการจัดสรร IP Address"]
+        },
+        13: {
+            "title": "DHCPv6",
+            "description": "การตั้งค่า DHCPv6 Server และ Client",
+            "objectives": ["กำหนด DHCPv6 Stateless", "ตั้งค่า DHCPv6 Stateful", "ทดสอบการจัดสรร IPv6 Address"]
+        },
+        14: {
+            "title": "Static Route Configuration",
+            "description": "การกำหนด Static Routes บน Routers",
+            "objectives": ["กำหนด Static Routes", "กำหนด Default Routes", "ทดสอบการเชื่อมต่อระหว่างเครือข่าย"]
+        },
+        15: {
+            "title": "HSRP",
+            "description": "การใช้ Hot Standby Router Protocol เพื่อรองรับ Router Redundancy",
+            "objectives": ["กำหนด HSRP", "ตั้งค่า Priority และ Preemption", "ทดสอบ Router Failover"]
+        },
+        16: {
+            "title": "Switch Security Configuration",
+            "description": "การตั้งค่าความปลอดภัยบน Switch",
+            "objectives": ["กำหนด Port Security", "ตั้งค่า DHCP Snooping", "ตั้งค่า BPDU Guard", "ทดสอบความปลอดภัยของ Switch"]
+        }
+    }
+    
+    # เตรียมข้อมูลสรุปสำหรับประวัติการส่งงาน
+    submission_history = {
+        "timestamp": submission.get('timestamp', 'ไม่ระบุ'),
+        "submitted_by": f"{student.get('first_name', '')} {student.get('last_name', '')}",
+        "status": status_text,
+        "score": score
+    }
+    
+    # ดึงข้อมูลผู้ใช้ที่เข้าสู่ระบบ
     user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
     first_name = user['first_name'] if user else session.get('first_name', 'Unknown')
     last_name = user['last_name'] if user else session.get('last_name', 'User')
+    
+    # Debug: แสดงข้อมูลใน log
+    print(f"Lab {lab_num} Data:", submission)
     
     # ส่งข้อมูลไปยัง template
     return render_template('view_submission.html',
                           lab_num=lab_num,
                           student=student,
                           submission=submission,
-                          pc1_config=pc1_config,  # ส่งข้อมูล PC config ไปแยกต่างหาก
+                          pc_config=pc_config,
+                          pc1_config=pc1_config,
                           pc2_config=pc2_config,
+                          pca_config=pca_config,
+                          pcb_config=pcb_config,
+                          pcc_config=pcc_config,
+                          pc_a_config=pc_a_config,
+                          pc_b_config=pc_b_config,
+                          pc_c_config=pc_c_config,
+                          lab_devices=lab_devices,            # อุปกรณ์แต่ละ Lab
+                          lab_details=lab_details.get(lab_num, {}),  # รายละเอียดของ Lab
+                          submission_history=submission_history,     # ประวัติการส่งงาน
                           first_name=first_name,
                           last_name=last_name)
 
