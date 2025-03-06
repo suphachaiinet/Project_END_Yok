@@ -1965,6 +1965,35 @@ def lab_management(lab_num):
                         active_lab=lab_num,
                         first_name=first_name,
                         last_name=last_name)
+def format_keywords_for_display(keywords):
+    """
+    จัดรูปแบบ keywords เพื่อแสดงผลในหน้าเว็บ
+    
+    Parameters:
+    keywords (list): รายการ keywords ที่เก็บใน MongoDB
+    
+    Returns:
+    str: ข้อความ keywords ที่จัดรูปแบบสำหรับแสดงผลแล้ว
+    """
+    if not keywords:
+        return "ไม่มีข้อมูล"
+        
+    formatted_text = ""
+    
+    for item in keywords:
+        if isinstance(item, dict):
+            for interface, commands in item.items():
+                # เขียนชื่อ interface
+                formatted_text += f"{interface}\n"
+                # เขียนคำสั่งย่อย
+                for cmd in commands:
+                    formatted_text += f"  {cmd}\n"
+            formatted_text += "\n"  # เพิ่มบรรทัดว่างระหว่าง interface
+        else:
+            # เขียนคำสั่งปกติ
+            formatted_text += f"{item}\n"
+    
+    return formatted_text.rstrip()
 @teacher_bp.route('/submission/<int:lab_num>/<student_id>')
 def view_submission(lab_num, student_id):
     if 'user_id' not in session or session.get('role') != 'teacher':
@@ -1985,8 +2014,41 @@ def view_submission(lab_num, student_id):
         flash('ไม่พบข้อมูลการส่งงาน', 'danger')
         return redirect(url_for('teacher.lab_management', lab_num=lab_num))
     
-    # ดึงข้อมูล keyword ของแล็บนี้
-    lab_keywords = lab_keywords_collection.find_one({"lab_num": lab_num})
+    # ตรวจสอบและเพิ่มข้อมูลที่จำเป็น
+    if 'switch_config' not in submission or not submission['switch_config']:
+        submission['switch_config'] = 'ไม่มีข้อมูล'
+    
+    # เพิ่มตัวแปรสำหรับเก็บค่า PC config
+    pc1_config = {"ip": "", "subnet": "", "gateway": ""}
+    pc2_config = {"ip": "", "subnet": "", "gateway": ""}
+    
+    # Lab 2 มีการจัดการพิเศษ
+    if lab_num == 2:
+        # ดึงข้อมูลจากฐานข้อมูลโดยตรง
+        doc = scores_collection.find_one({"username": student_id, "lab": f"Lab {lab_num}"})
+        if doc:
+            # ตรวจสอบว่ามีข้อมูล PC config หรือไม่
+            if 'pc1_config' in doc and isinstance(doc['pc1_config'], dict):
+                if 'ip' in doc['pc1_config']:
+                    pc1_config['ip'] = doc['pc1_config']['ip']
+                if 'subnet' in doc['pc1_config']:
+                    pc1_config['subnet'] = doc['pc1_config']['subnet']
+                if 'gateway' in doc['pc1_config']:
+                    pc1_config['gateway'] = doc['pc1_config']['gateway']
+            else:
+                # ถ้าไม่มี ใส่ค่าเริ่มต้น
+                pc1_config = {"ip": "192.168.10.3", "subnet": "255.255.255.0", "gateway": "192.168.10.1"}
+                
+            if 'pc2_config' in doc and isinstance(doc['pc2_config'], dict):
+                if 'ip' in doc['pc2_config']:
+                    pc2_config['ip'] = doc['pc2_config']['ip']
+                if 'subnet' in doc['pc2_config']:
+                    pc2_config['subnet'] = doc['pc2_config']['subnet']
+                if 'gateway' in doc['pc2_config']:
+                    pc2_config['gateway'] = doc['pc2_config']['gateway']
+            else:
+                # ถ้าไม่มี ใส่ค่าเริ่มต้น
+                pc2_config = {"ip": "192.168.10.4", "subnet": "255.255.255.0", "gateway": "192.168.10.1"}
     
     # คำนวณคะแนนและสถานะ
     try:
@@ -2025,50 +2087,6 @@ def view_submission(lab_num, student_id):
     # เพิ่มข้อมูลชื่อแล็บลงใน submission
     submission['lab_title'] = lab_titles.get(lab_num, f"Lab {lab_num}")
     
-    # ตรวจสอบและเตรียมข้อมูลตามประเภทของแล็บ
-    if lab_num >= 1 and lab_num <= 16:
-        # ตรวจสอบว่ามีข้อมูลการกำหนดค่าอุปกรณ์หรือไม่
-        if lab_keywords:
-            # กำหนดค่าตามประเภทของแล็บ
-            if lab_num == 1:
-                submission['device_type'] = 'Switch'
-                if 'switch_keywords' in lab_keywords:
-                    submission['expected_config'] = format_keywords_for_display(lab_keywords['switch_keywords'])
-            
-            elif lab_num == 2 or lab_num == 3:
-                submission['device_type'] = 'Switch'
-                if 'switch1_keywords' in lab_keywords:
-                    submission['switch1_expected_config'] = format_keywords_for_display(lab_keywords['switch1_keywords'])
-                if 'switch2_keywords' in lab_keywords:
-                    submission['switch2_expected_config'] = format_keywords_for_display(lab_keywords['switch2_keywords'])
-            
-            elif lab_num == 4 or lab_num == 5:
-                submission['device_type'] = 'Switch'
-                if 'sw1_keywords' in lab_keywords:
-                    submission['sw1_expected_config'] = format_keywords_for_display(lab_keywords['sw1_keywords'])
-                if 'sw2_keywords' in lab_keywords:
-                    submission['sw2_expected_config'] = format_keywords_for_display(lab_keywords['sw2_keywords'])
-                if 'sw3_keywords' in lab_keywords:
-                    submission['sw3_expected_config'] = format_keywords_for_display(lab_keywords['sw3_keywords'])
-            
-            elif lab_num >= 6 and lab_num <= 16:
-                # Router-based labs
-                submission['device_type'] = 'Router' if lab_num in [6, 7, 9, 10, 11, 12, 13, 14, 15, 16] else 'Switch'
-                
-                # ตรวจสอบและเตรียมข้อมูลตามแต่ละแล็บ
-                if 'r1_keywords' in lab_keywords:
-                    submission['r1_expected_config'] = format_keywords_for_display(lab_keywords['r1_keywords'])
-                if 'r2_keywords' in lab_keywords:
-                    submission['r2_expected_config'] = format_keywords_for_display(lab_keywords['r2_keywords'])
-                if 'r3_keywords' in lab_keywords:
-                    submission['r3_expected_config'] = format_keywords_for_display(lab_keywords['r3_keywords'])
-                if 'sw1_keywords' in lab_keywords:
-                    submission['sw1_expected_config'] = format_keywords_for_display(lab_keywords['sw1_keywords'])
-                if 'sw2_keywords' in lab_keywords:
-                    submission['sw2_expected_config'] = format_keywords_for_display(lab_keywords['sw2_keywords'])
-                if 'sw3_keywords' in lab_keywords:
-                    submission['sw3_expected_config'] = format_keywords_for_display(lab_keywords['sw3_keywords'])
-    
     user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
     first_name = user['first_name'] if user else session.get('first_name', 'Unknown')
     last_name = user['last_name'] if user else session.get('last_name', 'User')
@@ -2078,6 +2096,8 @@ def view_submission(lab_num, student_id):
                           lab_num=lab_num,
                           student=student,
                           submission=submission,
+                          pc1_config=pc1_config,  # ส่งข้อมูล PC config ไปแยกต่างหาก
+                          pc2_config=pc2_config,
                           first_name=first_name,
                           last_name=last_name)
 
