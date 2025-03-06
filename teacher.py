@@ -1669,6 +1669,12 @@ def lab_management(lab_num):
     r1_keywords_text = ""
     r2_keywords_text = ""
     r3_keywords_text = ""
+    sw1_keywords_text = ""
+    sw2_keywords_text = ""
+    sw3_keywords_text = ""
+    spanning_tree_sw1_text = ""
+    spanning_tree_sw2_text = ""
+    spanning_tree_sw3_text = ""
 
     # เพิ่มการตรวจสอบ
     pca_config = lab_keywords.get('pca_config', {}) if lab_keywords and 'pca_config' in lab_keywords else {}
@@ -1680,6 +1686,7 @@ def lab_management(lab_num):
     pc_a_config = lab_keywords.get('pc_a_config', {}) if lab_keywords and 'pc_a_config' in lab_keywords else {}
     pc_c_config = lab_keywords.get('pc_c_config', {}) if lab_keywords and 'pc_c_config' in lab_keywords else {}
     pc_b_config = pcb_config
+
     if lab_num == 1:
         switch_keywords = lab_keywords.get('switch_keywords', [])
         switch_keywords_text = format_keywords_for_display(switch_keywords)
@@ -1688,16 +1695,88 @@ def lab_management(lab_num):
         switch2_keywords = lab_keywords.get('switch2_keywords', [])
         switch1_keywords_text = format_keywords_for_display(switch1_keywords)
         switch2_keywords_text = format_keywords_for_display(switch2_keywords)
-    elif lab_num >= 3 and lab_num <= 11:
-        if 'general_keywords' in lab_keywords:
-            general_keywords = lab_keywords.get('general_keywords', [])
-            general_keywords_text = format_keywords_for_display(general_keywords)
-        elif 'switch1_keywords' in lab_keywords:
-            switch1_keywords = lab_keywords.get('switch1_keywords', [])
-            switch2_keywords = lab_keywords.get('switch2_keywords', [])
-            switch1_keywords_text = format_keywords_for_display(switch1_keywords)
-            switch2_keywords_text = format_keywords_for_display(switch2_keywords)
-    elif lab_num >= 12 and lab_num <= 14:
+    elif lab_num == 3:
+        # Lab 3 - Implement VLANs and Trunking
+        sw1_keywords = lab_keywords.get('sw1_keywords', [])
+        sw2_keywords = lab_keywords.get('sw2_keywords', [])
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+    elif lab_num == 4:  # Lab 4 - Redundant Links
+        sw1_keywords = lab_keywords.get('sw1_keywords', [])
+        sw2_keywords = lab_keywords.get('sw2_keywords', [])
+        sw3_keywords = lab_keywords.get('sw3_keywords', [])
+        spanning_tree_sw1 = lab_keywords.get('spanning_tree_sw1', {})
+        spanning_tree_sw2 = lab_keywords.get('spanning_tree_sw2', {})
+        spanning_tree_sw3 = lab_keywords.get('spanning_tree_sw3', {})
+        
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+        sw3_keywords_text = format_keywords_for_display(sw3_keywords)
+        
+        # แปลง spanning tree เป็นรูปแบบข้อความ
+        spanning_tree_sw1_text = "\n".join([f"{port}: {status}" for port, status in spanning_tree_sw1.items()])
+        spanning_tree_sw2_text = "\n".join([f"{port}: {status}" for port, status in spanning_tree_sw2.items()])
+        spanning_tree_sw3_text = "\n".join([f"{port}: {status}" for port, status in spanning_tree_sw3.items()])
+    elif lab_num == 5:  # Lab 5 - Rapid PVST+
+        sw1_keywords = lab_keywords.get('sw1_keywords', [])
+        sw2_keywords = lab_keywords.get('sw2_keywords', [])
+        sw3_keywords = lab_keywords.get('sw3_keywords', [])
+        pca_config = lab_keywords.get('pca_config', {})
+        pcc_config = lab_keywords.get('pcc_config', {})
+        
+        # กำหนดค่าเริ่มต้นถ้าไม่มีข้อมูล
+        if not pca_config or 'ip' not in pca_config:
+            pca_config = {"ip": "192.168.0.2", "subnet": "255.255.255.0"}
+        
+        if not pcc_config or 'ip' not in pcc_config:
+            pcc_config = {"ip": "192.168.0.3", "subnet": "255.255.255.0"}
+        
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+        sw3_keywords_text = format_keywords_for_display(sw3_keywords)
+    elif lab_num == 6:  # Lab 6 - Router-on-a-Stick Inter-VLAN
+        r1_keywords = lab_keywords.get('r1_keywords', [])
+        sw1_keywords = lab_keywords.get('sw1_keywords', [])
+        sw2_keywords = lab_keywords.get('sw2_keywords', [])
+        
+        r1_keywords_text = format_keywords_for_display(r1_keywords)
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+    elif lab_num == 7:  # Lab 7 - Inter-VLAN Routing
+        r1_keywords = lab_keywords.get('r1_keywords', [])
+        sw1_keywords = lab_keywords.get('sw1_keywords', [])
+        sw2_keywords = lab_keywords.get('sw2_keywords', [])
+        
+        r1_keywords_text = format_keywords_for_display(r1_keywords)
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+    elif lab_num == 8:  # Lab 8 - EtherChannel
+        sw1_keywords = lab_keywords.get('sw1_keywords', [])
+        sw2_keywords = lab_keywords.get('sw2_keywords', [])
+        
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+    elif lab_num == 9:  # Lab 9 - PPP Authentication
+        r1_keywords = lab_keywords.get('r1_keywords', [])
+        r2_keywords = lab_keywords.get('r2_keywords', [])
+        r3_keywords = lab_keywords.get('r3_keywords', [])
+        
+        r1_keywords_text = format_keywords_for_display(r1_keywords)
+        r2_keywords_text = format_keywords_for_display(r2_keywords)
+        r3_keywords_text = format_keywords_for_display(r3_keywords)
+    elif lab_num == 10:  # Lab 10 - Standard IPv4 ACLs
+        r1_keywords = lab_keywords.get('r1_keywords', [])
+        r2_keywords = lab_keywords.get('r2_keywords', [])
+        r3_keywords = lab_keywords.get('r3_keywords', [])
+        sw1_keywords = lab_keywords.get('sw1_keywords', [])
+        sw3_keywords = lab_keywords.get('sw3_keywords', [])
+        
+        r1_keywords_text = format_keywords_for_display(r1_keywords)
+        r2_keywords_text = format_keywords_for_display(r2_keywords)
+        r3_keywords_text = format_keywords_for_display(r3_keywords)
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw3_keywords_text = format_keywords_for_display(sw3_keywords)
+    elif lab_num == 11:  # Lab 11 - Extended IPv4 ACLs
         r1_keywords = lab_keywords.get('r1_keywords', [])
         r2_keywords = lab_keywords.get('r2_keywords', [])
         sw1_keywords = lab_keywords.get('sw1_keywords', [])
@@ -1705,9 +1784,19 @@ def lab_management(lab_num):
         
         r1_keywords_text = format_keywords_for_display(r1_keywords)
         r2_keywords_text = format_keywords_for_display(r2_keywords)
-        switch1_keywords_text = format_keywords_for_display(sw1_keywords)
-        switch2_keywords_text = format_keywords_for_display(sw2_keywords)
-    elif lab_num == 15:
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+    elif lab_num >= 12 and lab_num <= 14:  # Lab 12-14
+        r1_keywords = lab_keywords.get('r1_keywords', [])
+        r2_keywords = lab_keywords.get('r2_keywords', [])
+        sw1_keywords = lab_keywords.get('sw1_keywords', [])
+        sw2_keywords = lab_keywords.get('sw2_keywords', [])
+        
+        r1_keywords_text = format_keywords_for_display(r1_keywords)
+        r2_keywords_text = format_keywords_for_display(r2_keywords)
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+    elif lab_num == 15:  # Lab 15 - HSRP
         r1_keywords = lab_keywords.get('r1_keywords', [])
         r2_keywords = lab_keywords.get('r2_keywords', [])
         r3_keywords = lab_keywords.get('r3_keywords', [])
@@ -1717,49 +1806,55 @@ def lab_management(lab_num):
         r1_keywords_text = format_keywords_for_display(r1_keywords)
         r2_keywords_text = format_keywords_for_display(r2_keywords)
         r3_keywords_text = format_keywords_for_display(r3_keywords)
-        switch1_keywords_text = format_keywords_for_display(sw1_keywords)
-        switch2_keywords_text = format_keywords_for_display(sw2_keywords)
-    elif lab_num == 16:
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+    elif lab_num == 16:  # Lab 16 - Switch Security Configuration
         r1_keywords = lab_keywords.get('r1_keywords', [])
         sw1_keywords = lab_keywords.get('sw1_keywords', [])
         sw2_keywords = lab_keywords.get('sw2_keywords', [])
         
         r1_keywords_text = format_keywords_for_display(r1_keywords)
-        switch1_keywords_text = format_keywords_for_display(sw1_keywords)
-        switch2_keywords_text = format_keywords_for_display(sw2_keywords)
+        sw1_keywords_text = format_keywords_for_display(sw1_keywords)
+        sw2_keywords_text = format_keywords_for_display(sw2_keywords)
     else:
+        # สำหรับแล็บอื่นๆ ที่ไม่ได้ระบุเฉพาะ
         general_keywords = lab_keywords.get('general_keywords', [])
         general_keywords_text = format_keywords_for_display(general_keywords)
         
         pc_b_config = pcb_config
-    return render_template('lab_management.html',
-                     lab_num=lab_num,
-                     lab_title=lab_titles.get(lab_num, f"Lab {lab_num}"),
-                     students=students_data,
-                     completed_count=completed_count,
-                     total_students=total_students,
-                     completion_rate=round(completion_rate, 2),
-                     avg_score=round(avg_score, 2),
-                     max_score=round(max_score, 2),
-                     min_score=round(min_score, 2),
-                     switch_keywords_text=switch_keywords_text,
-                     switch1_keywords_text=switch1_keywords_text,
-                     switch2_keywords_text=switch2_keywords_text,
-                     general_keywords_text=general_keywords_text,
-                     r1_keywords_text=r1_keywords_text,
-                     r2_keywords_text=r2_keywords_text,
-                     r3_keywords_text=r3_keywords_text,
-                     pc_config=pc_config,
-                     pc1_config=pc1_config,
-                     pc2_config=pc2_config,
-                     pc_a_config=pc_a_config,
-                     pc_b_config=pcb_config,
-                     pc_c_config=pc_c_config,
-                     active_lab=lab_num,
-                     first_name=first_name,
-                     last_name=last_name)
 
-# ดูรายละเอียดการส่งงานของนักศึกษา
+    return render_template('lab_management.html',
+                        lab_num=lab_num,
+                        lab_title=lab_titles.get(lab_num, f"Lab {lab_num}"),
+                        students=students_data,
+                        completed_count=completed_count,
+                        total_students=total_students,
+                        completion_rate=round(completion_rate, 2),
+                        avg_score=round(avg_score, 2),
+                        max_score=round(max_score, 2),
+                        min_score=round(min_score, 2),
+                        switch_keywords_text=switch_keywords_text,
+                        switch1_keywords_text=switch1_keywords_text,
+                        switch2_keywords_text=switch2_keywords_text,
+                        general_keywords_text=general_keywords_text,
+                        r1_keywords_text=r1_keywords_text,
+                        r2_keywords_text=r2_keywords_text,
+                        r3_keywords_text=r3_keywords_text,
+                        sw1_keywords_text=sw1_keywords_text,
+                        sw2_keywords_text=sw2_keywords_text,
+                        sw3_keywords_text=sw3_keywords_text,
+                        spanning_tree_sw1_text=spanning_tree_sw1_text,
+                        spanning_tree_sw2_text=spanning_tree_sw2_text,
+                        spanning_tree_sw3_text=spanning_tree_sw3_text,
+                        pc_config=pc_config,
+                        pc1_config=pc1_config,
+                        pc2_config=pc2_config,
+                        pc_a_config=pc_a_config,
+                        pc_b_config=pcb_config,
+                        pc_c_config=pc_c_config,
+                        active_lab=lab_num,
+                        first_name=first_name,
+                        last_name=last_name)# ดูรายละเอียดการส่งงานของนักศึกษา
 @teacher_bp.route('/submission/<int:lab_num>/<student_id>')
 def view_submission(lab_num, student_id):
     if 'user_id' not in session or session.get('role') != 'teacher':
@@ -2008,7 +2103,7 @@ def update_keywords(lab_num):
             )
             
         elif lab_num == 5:
-            # อัพเดทสำหรับ Lab 5
+            # ดึงข้อมูลจากฟอร์ม
             sw1_keywords_text = request.form.get('sw1_keywords', '')
             sw2_keywords_text = request.form.get('sw2_keywords', '')
             sw3_keywords_text = request.form.get('sw3_keywords', '')
@@ -2022,6 +2117,17 @@ def update_keywords(lab_num):
             sw2_keywords = parse_keywords_from_text(sw2_keywords_text)
             sw3_keywords = parse_keywords_from_text(sw3_keywords_text)
             
+            # สร้าง config ในรูปแบบที่เข้าถึงด้วย .ip และ .subnet ได้
+            pca_config = {
+                "ip": pca_ip,
+                "subnet": pca_subnet
+            }
+            
+            pcc_config = {
+                "ip": pcc_ip,
+                "subnet": pcc_subnet
+            }
+            
             # บันทึกลงฐานข้อมูล
             lab_keywords_collection.update_one(
                 {"lab_num": lab_num},
@@ -2029,14 +2135,8 @@ def update_keywords(lab_num):
                     "sw1_keywords": sw1_keywords,
                     "sw2_keywords": sw2_keywords,
                     "sw3_keywords": sw3_keywords,
-                    "pca_config": {
-                        "ip": pca_ip,
-                        "subnet": pca_subnet
-                    },
-                    "pcc_config": {
-                        "ip": pcc_ip,
-                        "subnet": pcc_subnet
-                    },
+                    "pca_config": pca_config,
+                    "pcc_config": pcc_config,
                     "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
                 }},
                 upsert=True

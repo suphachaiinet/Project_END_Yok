@@ -10681,3 +10681,85 @@ INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:42:10] "GET /teacher/lab/1 HTTP/1.1"
 INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:42:15] "GET /teacher/lab/2 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:42:18] "GET /teacher/lab/3 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:42:21] "GET /teacher/lab/4 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:26] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:27] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:30] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:30] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:32] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:32] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:58] "[32mPOST /lab4/lab4 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:58] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:58] "GET /lab4/lab4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:58] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:59] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:46:59] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:47:05] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:47:05] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:47:06] "GET /teacher/lab/4 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:02] "GET /teacher/lab/4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:21] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:29] "GET /teacher/lab/4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:33] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:33] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:36] "GET /teacher/lab/7 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:39] "GET /teacher/lab/8 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:43] "GET /teacher/lab/9 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:46] "GET /teacher/lab/10 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:49] "GET /teacher/lab/11 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:53] "GET /teacher/lab/12 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:51:56] "GET /teacher/lab/13 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:52:00] "GET /teacher/lab/14 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:52:04] "GET /teacher/lab/15 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 03:52:10] "GET /teacher/lab/16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:00:42] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:00:47] "GET /teacher/lab/4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:00:58] "GET /teacher/lab/4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:01:39] "GET /teacher/lab/4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:01:56] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:04:59] "[35m[1mGET /teacher/lab/5 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:04:59] "[36mGET /teacher/lab/5?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:04:59] "[36mGET /teacher/lab/5?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:04:59] "GET /teacher/lab/5?__debugger__=yes&cmd=resource&f=console.png&s=MFJAsdFvgafIKzDqvjTf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:04:59] "[36mGET /teacher/lab/5?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:05:02] "[35m[1mGET /teacher/lab/5 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:05:02] "[36mGET /teacher/lab/5?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:05:02] "[36mGET /teacher/lab/5?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:05:02] "[36mGET /teacher/lab/5?__debugger__=yes&cmd=resource&f=console.png&s=MFJAsdFvgafIKzDqvjTf HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:06:57] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:07:06] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:07:09] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:07:13] "GET /teacher/lab/6 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 04:07:16] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:38:00] "GET /teacher/lab/3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:38:01] "GET /teacher/lab/2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:40:13] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:42:49] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:42:55] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:42:59] "GET /teacher/lab/4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:42:59] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:43:00] "GET /teacher/lab/4 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:43:01] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:49:37] "GET /teacher/lab/5 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Mar/2025 08:49:43] "GET /teacher/lab/6 HTTP/1.1" 200 -
