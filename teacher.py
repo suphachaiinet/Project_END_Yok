@@ -2206,25 +2206,125 @@ def view_submission(lab_num, student_id):
         }
         
         # การจัดการข้อมูล Switch config
-        if 'sw1_config' in submission:
+        print("Debug - Original submission:", submission)  # เพิ่มบรรทัดนี้เพื่อดู submission ต้นฉบับ
+        
+        # สำหรับ Switch 1
+        if 'configs' in submission and isinstance(submission['configs'], dict) and 'sw1_config' in submission['configs']:
+            submission['switch1_config'] = submission['configs']['sw1_config']
+        elif 'sw1_config' in submission:
             submission['switch1_config'] = submission['sw1_config']
         else:
             submission['switch1_config'] = submission.get('switch_config', 'ไม่มีข้อมูล')
-            
-        if 'sw2_config' in submission:
+        
+        # สำหรับ Switch 2
+        if 'configs' in submission and isinstance(submission['configs'], dict) and 'sw2_config' in submission['configs']:
+            submission['switch2_config'] = submission['configs']['sw2_config']
+        elif 'sw2_config' in submission:
             submission['switch2_config'] = submission['sw2_config']
         else:
             submission['switch2_config'] = 'ไม่มีข้อมูล'
-            
-        if 'sw3_config' in submission:
+        
+        # สำหรับ Switch 3
+        if 'configs' in submission and isinstance(submission['configs'], dict) and 'sw3_config' in submission['configs']:
+            submission['switch3_config'] = submission['configs']['sw3_config']
+        elif 'sw3_config' in submission:
             submission['switch3_config'] = submission['sw3_config']
         else:
             submission['switch3_config'] = 'ไม่มีข้อมูล'
+        
+        print("Debug - After setting configs:", {
+            'switch1_config': submission.get('switch1_config', 'not set'),
+            'switch2_config': submission.get('switch2_config', 'not set'),
+            'switch3_config': submission.get('switch3_config', 'not set')
+        })  # เพิ่มบรรทัดนี้เพื่อตรวจสอบ
+        
+        # ดึงข้อมูล Spanning Tree
+        if 'configs' in submission and isinstance(submission['configs'], dict):
+            # ตรวจสอบ key ที่อาจเป็นไปได้ทั้งหมด
+            possible_keys = [
+                'spanning_sw1', 'spanning_tree_sw1', 'spanning-sw1', 'spanning_tree_s1',
+                'spanning_sw1_config', 'spanning_tree_switch1'
+            ]
+            
+            # ค้นหา key ที่มีอยู่ใน configs
+            for key in possible_keys:
+                if key in submission['configs']:
+                    submission['spanning_sw1'] = submission['configs'][key]
+                    break
+            else:
+                submission['spanning_sw1'] = 'ไม่มีข้อมูล'
+            
+            # ทำเช่นเดียวกันสำหรับ Switch 2
+            possible_keys = [
+                'spanning_sw2', 'spanning_tree_sw2', 'spanning-sw2', 'spanning_tree_s2',
+                'spanning_sw2_config', 'spanning_tree_switch2'
+            ]
+            
+            for key in possible_keys:
+                if key in submission['configs']:
+                    submission['spanning_sw2'] = submission['configs'][key]
+                    break
+            else:
+                submission['spanning_sw2'] = 'ไม่มีข้อมูล'
+                
+            # ทำเช่นเดียวกันสำหรับ Switch 3
+            possible_keys = [
+                'spanning_sw3', 'spanning_tree_sw3', 'spanning-sw3', 'spanning_tree_s3',
+                'spanning_sw3_config', 'spanning_tree_switch3'
+            ]
+            
+            for key in possible_keys:
+                if key in submission['configs']:
+                    submission['spanning_sw3'] = submission['configs'][key]
+                    break
+            else:
+                submission['spanning_sw3'] = 'ไม่มีข้อมูล'
+                
+        # ตรวจสอบสำหรับชื่อฟิลด์อื่นๆ ที่อาจเป็นไปได้
+        if 'spanning_sw1' not in submission:
+            submission['spanning_sw1'] = (
+                submission.get('spanning_tree_sw1') or 
+                submission.get('spanning-sw1') or 
+                submission.get('spanning_tree_s1') or 
+                'ไม่มีข้อมูล'
+            )
+        
+        if 'spanning_sw2' not in submission:
+            submission['spanning_sw2'] = (
+                submission.get('spanning_tree_sw2') or 
+                submission.get('spanning-sw2') or 
+                submission.get('spanning_tree_s2') or 
+                'ไม่มีข้อมูล'
+            )
+            
+        if 'spanning_sw3' not in submission:
+            submission['spanning_sw3'] = (
+                submission.get('spanning_tree_sw3') or 
+                submission.get('spanning-sw3') or 
+                submission.get('spanning_tree_s3') or 
+                'ไม่มีข้อมูล'
+            )
             
         # กำหนดค่า Spanning Tree Mode และข้อมูลอื่นๆ
         if 'spanning_tree_mode' not in submission:
-            submission['spanning_tree_mode'] = 'PVST+'
-            
+            if 'configs' in submission and isinstance(submission['configs'], dict) and 'spanning_tree_mode' in submission['configs']:
+                submission['spanning_tree_mode'] = submission['configs']['spanning_tree_mode']
+            else:
+                submission['spanning_tree_mode'] = 'PVST+'
+        
+        # ตรวจสอบ root_bridge
+        if 'root_bridge' not in submission:
+            if 'configs' in submission and isinstance(submission['configs'], dict) and 'root_bridge' in submission['configs']:
+                submission['root_bridge'] = submission['configs']['root_bridge']
+            else:
+                submission['root_bridge'] = 'ไม่มีข้อมูล'
+        
+        # ตรวจสอบ port_states
+        if 'port_states' not in submission:
+            if 'configs' in submission and isinstance(submission['configs'], dict) and 'port_states' in submission['configs']:
+                submission['port_states'] = submission['configs']['port_states']
+            else:
+                submission['port_states'] = 'ไม่มีข้อมูล'
     elif lab_num == 5:
         # Lab 5 - Rapid PVST+
         lab_devices = {
@@ -2233,45 +2333,122 @@ def view_submission(lab_num, student_id):
             "features": ["RPVST+"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # การจัดการข้อมูล Switch config
+        if 'configs' in submission and isinstance(submission['configs'], dict):
+            # ข้อมูลอยู่ใน configs object
+            if 'sw1_config' in submission['configs']:
+                submission['switch1_config'] = submission['configs']['sw1_config']
+            else:
+                submission['switch1_config'] = 'ไม่มีข้อมูล'
+                
+            if 'sw2_config' in submission['configs']:
+                submission['switch2_config'] = submission['configs']['sw2_config']
+            else:
+                submission['switch2_config'] = 'ไม่มีข้อมูล'
+                
+            if 'sw3_config' in submission['configs']:
+                submission['switch3_config'] = submission['configs']['sw3_config']
+            else:
+                submission['switch3_config'] = 'ไม่มีข้อมูล'
+        else:
+            # ถ้าไม่มี configs object ลองดูว่ามี switch config ตรงๆ ไหม
+            submission['switch1_config'] = submission.get('sw1_config', submission.get('switch_config', 'ไม่มีข้อมูล'))
+            submission['switch2_config'] = submission.get('sw2_config', 'ไม่มีข้อมูล')
+            submission['switch3_config'] = submission.get('sw3_config', 'ไม่มีข้อมูล')
         
-        # PC config สำหรับ Lab 5
-        pca_config = {
-            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.0.2')),
-            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0'))
-        }
+        # PC Config สำหรับ PC-A
+        if 'configs' in submission and isinstance(submission['configs'], dict) and 'pca_config' in submission['configs']:
+            pca_config = submission['configs']['pca_config']
+            if isinstance(pca_config, dict):
+                submission['pca_ip_address'] = pca_config.get('ip', '')
+                submission['pca_subnet_mask'] = pca_config.get('subnet', '')
+        elif 'pca_config' in submission and isinstance(submission['pca_config'], dict):
+            submission['pca_ip_address'] = submission['pca_config'].get('ip', '')
+            submission['pca_subnet_mask'] = submission['pca_config'].get('subnet', '')
+        else:
+            # ถ้าไม่มีข้อมูลเฉพาะเจาะจงของ PC-A ลองดึงจากข้อมูลทั่วไป
+            submission['pca_ip_address'] = submission.get('pc_ip_address', '')
+            submission['pca_subnet_mask'] = submission.get('pc_subnet_mask', '')
         
-        pcc_config = {
-            "ip": submission.get('pcc_ip_address', '192.168.0.3'),
-            "subnet": submission.get('pcc_subnet_mask', '255.255.255.0')
-        }
-
-    elif lab_num == 6 or lab_num == 7:
-        # Lab 6-7 - Router-on-a-Stick Inter-VLAN / Inter-VLAN Routing
-        feature_name = "Router-on-a-Stick" if lab_num == 6 else "Inter-VLAN Routing"
+        # PC Config สำหรับ PC-C
+        if 'configs' in submission and isinstance(submission['configs'], dict) and 'pcc_config' in submission['configs']:
+            pcc_config = submission['configs']['pcc_config']
+            if isinstance(pcc_config, dict):
+                submission['pcc_ip_address'] = pcc_config.get('ip', '')
+                submission['pcc_subnet_mask'] = pcc_config.get('subnet', '')
+        elif 'pcc_config' in submission and isinstance(submission['pcc_config'], dict):
+            submission['pcc_ip_address'] = submission['pcc_config'].get('ip', '')
+            submission['pcc_subnet_mask'] = submission['pcc_config'].get('subnet', '')
+        else:
+            # ถ้าไม่พบข้อมูล PC-C ใส่ค่าว่าง
+            submission['pcc_ip_address'] = ''
+            submission['pcc_subnet_mask'] = ''
+    elif lab_num == 6:
+        # Lab 6 - Router-on-a-Stick Inter-VLAN
         lab_devices = {
             "routers": ["R1"],
             "switches": ["S1", "S2"],
             "pcs": ["PC-A", "PC-B"],
-            "features": [feature_name, "VLANs"]
+            "features": ["Router-on-a-Stick", "VLANs"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # ดึงข้อมูล Router Configuration
+        if 'configs' in submission and isinstance(submission['configs'], dict):
+            if 'r1_config' in submission['configs']:
+                submission['r1_config'] = submission['configs']['r1_config']
+            else:
+                submission['r1_config'] = submission.get('switch_config', 'ไม่มีข้อมูล')
+        else:
+            submission['r1_config'] = submission.get('switch_config', 'ไม่มีข้อมูล')
         
-        # PC config สำหรับ Lab 6-7
-        pca_config = {
-            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.20.3')),
-            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
-            "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '192.168.20.1'))
-        }
+        # ดึงข้อมูล Switch Configurations
+        if 'configs' in submission and isinstance(submission['configs'], dict):
+            if 'sw1_config' in submission['configs']:
+                submission['sw1_config'] = submission['configs']['sw1_config']
+            else:
+                submission['sw1_config'] = 'ไม่มีข้อมูล'
+            
+            if 'sw2_config' in submission['configs']:
+                submission['sw2_config'] = submission['configs']['sw2_config']
+            else:
+                submission['sw2_config'] = 'ไม่มีข้อมูล'
+        else:
+            submission['sw1_config'] = 'ไม่มีข้อมูล'
+            submission['sw2_config'] = 'ไม่มีข้อมูล'
         
-        pcb_config = {
-            "ip": submission.get('pcb_ip_address', '192.168.30.3'),
-            "subnet": submission.get('pcb_subnet_mask', '255.255.255.0'),
-            "gateway": submission.get('pcb_default_gateway', '192.168.30.1')
-        }
+        # PC Config สำหรับ PC-A
+        if 'configs' in submission and isinstance(submission['configs'], dict) and 'pca_config' in submission['configs']:
+            pca_config = submission['configs']['pca_config']
+            if isinstance(pca_config, dict):
+                submission['pca_ip_address'] = pca_config.get('ip', '')
+                submission['pca_subnet_mask'] = pca_config.get('subnet', '')
+                submission['pca_default_gateway'] = pca_config.get('gateway', '')
+        elif 'pca_config' in submission and isinstance(submission['pca_config'], dict):
+            submission['pca_ip_address'] = submission['pca_config'].get('ip', '')
+            submission['pca_subnet_mask'] = submission['pca_config'].get('subnet', '')
+            submission['pca_default_gateway'] = submission['pca_config'].get('gateway', '')
+        else:
+            # ถ้าไม่มีข้อมูลเฉพาะเจาะจงของ PC-A ลองดึงจากข้อมูลทั่วไป
+            submission['pca_ip_address'] = submission.get('pc_ip_address', '')
+            submission['pca_subnet_mask'] = submission.get('pc_subnet_mask', '')
+            submission['pca_default_gateway'] = submission.get('pc_default_gateway', '')
+        
+        # PC Config สำหรับ PC-B
+        if 'configs' in submission and isinstance(submission['configs'], dict) and 'pcb_config' in submission['configs']:
+            pcb_config = submission['configs']['pcb_config']
+            if isinstance(pcb_config, dict):
+                submission['pcb_ip_address'] = pcb_config.get('ip', '')
+                submission['pcb_subnet_mask'] = pcb_config.get('subnet', '')
+                submission['pcb_default_gateway'] = pcb_config.get('gateway', '')
+        elif 'pcb_config' in submission and isinstance(submission['pcb_config'], dict):
+            submission['pcb_ip_address'] = submission['pcb_config'].get('ip', '')
+            submission['pcb_subnet_mask'] = submission['pcb_config'].get('subnet', '')
+            submission['pcb_default_gateway'] = submission['pcb_config'].get('gateway', '')
+        else:
+            # ถ้าไม่พบข้อมูล PC-B ใส่ค่าว่าง
+            submission['pcb_ip_address'] = ''
+            submission['pcb_subnet_mask'] = ''
+            submission['pcb_default_gateway'] = ''
 
     elif lab_num == 8:
         # Lab 8 - EtherChannel
