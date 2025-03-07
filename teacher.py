@@ -2449,7 +2449,60 @@ def view_submission(lab_num, student_id):
             submission['pcb_ip_address'] = ''
             submission['pcb_subnet_mask'] = ''
             submission['pcb_default_gateway'] = ''
-
+    elif lab_num == 7:
+        # Lab 7 - Inter-VLAN Routing
+        lab_devices = {
+            "routers": ["R1"],
+            "switches": ["S1", "S2"],
+            "pcs": ["PC-A", "PC-B"],
+            "features": ["Inter-VLAN Routing"]
+        }
+        
+        # ดึงข้อมูล Router Configuration
+        submission['r1_config'] = (
+            submission.get('configs', {}).get('r1_config', '') or 
+            submission.get('switch_config', 'ไม่มีข้อมูล')
+        )
+        
+        # ดึงข้อมูล Switch Configurations
+        submission['sw1_config'] = (
+            submission.get('configs', {}).get('sw1_config', '') or 
+            'ไม่มีข้อมูล'
+        )
+        submission['sw2_config'] = (
+            submission.get('configs', {}).get('sw2_config', '') or 
+            'ไม่มีข้อมูล'
+        )
+        
+        # PC Config สำหรับ PC-A
+        pca_config = submission.get('pca_config', submission.get('pc_a_config', {}))
+        if isinstance(pca_config, dict):
+            pc_a_config = {
+                "ip": pca_config.get('ip', '192.168.20.3'),
+                "subnet": pca_config.get('subnet', '255.255.255.0'),
+                "gateway": pca_config.get('gateway', '192.168.20.1')
+            }
+        else:
+            pc_a_config = {
+                "ip": submission.get('pca_ip_address', '192.168.20.3'),
+                "subnet": submission.get('pca_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pca_default_gateway', '192.168.20.1')
+            }
+        
+        # PC Config สำหรับ PC-B
+        pcb_config = submission.get('pcb_config', submission.get('pc_b_config', {}))
+        if isinstance(pcb_config, dict):
+            pc_b_config = {
+                "ip": pcb_config.get('ip', '192.168.30.3'),
+                "subnet": pcb_config.get('subnet', '255.255.255.0'),
+                "gateway": pcb_config.get('gateway', '192.168.30.1')
+            }
+        else:
+            pc_b_config = {
+                "ip": submission.get('pcb_ip_address', '192.168.30.3'),
+                "subnet": submission.get('pcb_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pcb_default_gateway', '192.168.30.1')
+            }
     elif lab_num == 8:
         # Lab 8 - EtherChannel
         lab_devices = {
@@ -2458,8 +2511,15 @@ def view_submission(lab_num, student_id):
             "features": ["EtherChannel", "PAgP/LACP"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # Switch Configurations
+        submission['sw1_config'] = (
+            submission.get('configs', {}).get('sw1_config', '') or 
+            submission.get('switch_config', 'ไม่มีข้อมูล')
+        )
+        submission['sw2_config'] = (
+            submission.get('configs', {}).get('sw2_config', '') or 
+            'ไม่มีข้อมูล'
+        )
         
         # PC config สำหรับ Lab 8
         pca_config = {
@@ -2471,6 +2531,19 @@ def view_submission(lab_num, student_id):
             "ip": submission.get('pcb_ip_address', '192.168.20.4'),
             "subnet": submission.get('pcb_subnet_mask', '255.255.255.0')
         }
+    
+        # PC Configuration สำหรับ PC-B
+        pcb_config_data = submission.get('pcb_config', submission.get('pc_b_config', {}))
+        if isinstance(pcb_config_data, dict):
+            pc_b_config = {
+                "ip": pcb_config_data.get('ip', '192.168.20.4'),
+                "subnet": pcb_config_data.get('subnet', '255.255.255.0')
+            }
+        else:
+            pc_b_config = {
+                "ip": submission.get('pcb_ip_address', '192.168.20.4'),
+                "subnet": submission.get('pcb_subnet_mask', '255.255.255.0')
+            }
 
     elif lab_num == 9:
         # Lab 9 - PPP Authentication

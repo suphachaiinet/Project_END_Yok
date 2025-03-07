@@ -767,311 +767,1626 @@
     </div>
 </div>
 
-    {% elif lab_num == 8 %}
-    <!-- Lab 8: EtherChannel -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Switch Configuration</h3>
+{% elif lab_num == 7 %}
+<!-- Lab 7: Inter-VLAN Routing -->
+<div class="container mx-auto px-4 max-w-full">
+    <!-- Router และ Switch Configurations Grid (3 columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <!-- Router Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router Configuration</h3>
+                <button type="button" onclick="showConfigModal('router-config', 'Router Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
+            </div>
         </div>
-        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm h-96">{{ submission.switch_config if submission.switch_config is defined else 'ไม่มีข้อมูล' }}</pre>
+
+        <!-- Switch 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch1-config', 'Switch 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw1_config if submission.sw1_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- Switch 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch2-config', 'Switch 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw2_config if submission.sw2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
         </div>
     </div>
 
-    <!-- PC Configuration for Lab 8 -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">PC Configuration</h3>
-        </div>
-        <div class="border-t border-gray-200">
-            <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - IP Address</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pca_ip_address if submission.pca_ip_address is defined else submission.pc_ip_address }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - Subnet Mask</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pca_subnet_mask if submission.pca_subnet_mask is defined else submission.pc_subnet_mask }}</dd>
-                </div>
-                
-                <div class="border-t border-gray-200 pt-3">
-                    <div class="text-sm font-medium text-gray-900 mb-2 px-4">PC B Configuration</div>
-                    <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">IP Address</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pcb_ip_address if submission.pcb_ip_address is defined else '' }}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pcb_subnet_mask if submission.pcb_subnet_mask is defined else '' }}</dd>
+    <!-- PC Configuration Grid (2 columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- PC A Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC A Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.ip }}</span>
                     </div>
                 </div>
-            </dl>
-        </div>
-    </div>
-    {% elif lab_num == 9 or lab_num == 10 or lab_num == 15 %}
-    <!-- Lab 9: PPP Authentication, Lab 10: Standard IPv4 ACLs, Lab 15: HSRP -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Router Configuration</h3>
-        </div>
-        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm h-96">{{ submission.switch_config if submission.switch_config is defined else 'ไม่มีข้อมูล' }}</pre>
-        </div>
-    </div>
-    <!-- PC Configuration for Labs 9, 10, 15 -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">PC Configuration</h3>
-        </div>
-        <div class="border-t border-gray-200">
-            <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - IP Address</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pca_ip_address if submission.pca_ip_address is defined else submission.pc_ip_address }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - Subnet Mask</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pca_subnet_mask if submission.pca_subnet_mask is defined else submission.pc_subnet_mask }}</dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - Default Gateway</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pca_default_gateway if submission.pca_default_gateway is defined else submission.pc_default_gateway }}</dd>
-                </div>
-                
-                <div class="border-t border-gray-200 pt-3">
-                    <div class="text-sm font-medium text-gray-900 mb-2 px-4">PC C Configuration</div>
-                    <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">IP Address</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pcc_ip_address if submission.pcc_ip_address is defined else '' }}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pcc_subnet_mask if submission.pcc_subnet_mask is defined else '' }}</dd>
-                    </div>
-                    <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pcc_default_gateway if submission.pcc_default_gateway is defined else '' }}</dd>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.subnet }}</span>
                     </div>
                 </div>
-            </dl>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC B Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC B Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pc_b_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pc_b_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pc_b_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    {% elif lab_num == 11 %}
-    <!-- Lab 11: Extended IPv4 ACLs -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Router Configuration</h3>
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
         </div>
-        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm h-96">{{ submission.switch_config if submission.switch_config is defined else 'ไม่มีข้อมูล' }}</pre>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <input type="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
+    </div>
+</div>
+
+{% elif lab_num == 8 %}
+<!-- Lab 8: EtherChannel -->
+<div class="container mx-auto px-4 max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <!-- Switch 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch1-config', 'Switch 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 200px;">{{ submission.sw1_config if submission.sw1_config is defined else submission.switch_config }}</pre>
+            </div>
+        </div>
+
+        <!-- Switch 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch2-config', 'Switch 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 200px;">{{ submission.sw2_config if submission.sw2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
         </div>
     </div>
 
-    <!-- PC Configuration for Lab 11 -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">PC Configuration</h3>
-        </div>
-        <div class="border-t border-gray-200">
-            <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - IP Address</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pca_ip_address if submission.pca_ip_address is defined else submission.pc_ip_address }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - Subnet Mask</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pca_subnet_mask if submission.pca_subnet_mask is defined else submission.pc_subnet_mask }}</dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - Default Gateway</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pca_default_gateway if submission.pca_default_gateway is defined else submission.pc_default_gateway }}</dd>
-                </div>
-                <div class="border-t border-gray-200 pt-3">
-                    <div class="text-sm font-medium text-gray-900 mb-2 px-4">PC B Configuration</div>
-                    <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">IP Address</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pcb_ip_address if submission.pcb_ip_address is defined else '' }}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pcb_subnet_mask if submission.pcb_subnet_mask is defined else '' }}</dd>
-                    </div>
-                    <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pcb_default_gateway if submission.pcb_default_gateway is defined else '' }}</dd>
+    <!-- PC Configuration Grid (2 columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- PC A Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC A Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pca_config.ip }}</span>
                     </div>
                 </div>
-            </dl>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pca_config.subnet }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    {% elif lab_num == 12 or lab_num == 14 %}
-    <!-- Lab 12: DHCPv4 or Lab 14: Static Route Configuration -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Router Configuration</h3>
-        </div>
-        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm h-96">{{ submission.switch_config if submission.switch_config is defined else 'ไม่มีข้อมูล' }}</pre>
+
+        <!-- PC B Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC B Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pcb_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pcb_config.subnet }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- PC Configuration for Lab 12, 14 -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">PC Configuration</h3>
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
         </div>
-        <div class="border-t border-gray-200">
-            <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - IP Address</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_a_ip_address if submission.pc_a_ip_address is defined else submission.pc_ip_address }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - Subnet Mask</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_a_subnet_mask if submission.pc_a_subnet_mask is defined else submission.pc_subnet_mask }}</dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - Default Gateway</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_a_default_gateway if submission.pc_a_default_gateway is defined else submission.pc_default_gateway }}</dd>
-                </div>
-                
-                <div class="border-t border-gray-200 pt-3">
-                    <div class="text-sm font-medium text-gray-900 mb-2 px-4">PC B Configuration</div>
-                    <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">IP Address</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_b_ip_address if submission.pc_b_ip_address is defined else '' }}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_b_subnet_mask if submission.pc_b_subnet_mask is defined else '' }}</dd>
-                    </div>
-                    <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_b_default_gateway if submission.pc_b_default_gateway is defined else '' }}</dd>
-                    </div>
-                </div>
-            </dl>
-        </div>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <input type="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
     </div>
-    {% elif lab_num == 13 %}
-    <!-- Lab 13: DHCPv6 -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Router Configuration</h3>
+</div>
+
+{% elif lab_num == 9 %}
+<!-- Lab 9: PPP Authentication -->
+<div class="container mx-auto px-4 max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <!-- Router 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 1 (Branch1) Configuration</h3>
+                <button type="button" onclick="showConfigModal('router1-config', 'Router 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
+            </div>
         </div>
-        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm h-96">{{ submission.switch_config if submission.switch_config is defined else 'ไม่มีข้อมูล' }}</pre>
+
+        <!-- Router 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 2 (Central) Configuration</h3>
+                <button type="button" onclick="showConfigModal('router2-config', 'Router 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r2_config if submission.r2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- Router 3 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 3 (Branch3) Configuration</h3>
+                <button type="button" onclick="showConfigModal('router3-config', 'Router 3 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router3-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r3_config if submission.r3_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
         </div>
     </div>
 
-    <!-- PC Configuration for Lab 13 - DHCPv6 -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">PC Configuration (IPv6)</h3>
-        </div>
-        <div class="border-t border-gray-200">
-            <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - IPv6 Address</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_a_ip_address if submission.pc_a_ip_address is defined else submission.pc_ip_address }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">PC A - Prefix Length</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_a_subnet_mask if submission.pc_a_subnet_mask is defined else submission.pc_subnet_mask }}</dd>
-                </div>
-                
-                <div class="border-t border-gray-200 pt-3">
-                    <div class="text-sm font-medium text-gray-900 mb-2 px-4">PC B Configuration</div>
-                    <div class="bg-white px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">IPv6 Address</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_b_ip_address if submission.pc_b_ip_address is defined else '' }}</dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">Prefix Length</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_b_subnet_mask if submission.pc_b_subnet_mask is defined else '' }}</dd>
+    <!-- PC Configuration Grid (2 columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- PC A Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC A Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pca_config.ip }}</span>
                     </div>
                 </div>
-            </dl>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pca_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pca_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    {% elif lab_num == 16 %}
-    <!-- Lab 16: Switch Security Configuration -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Switch Configuration</h3>
-        </div>
-        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm h-96">{{ submission.switch_config if submission.switch_config is defined else 'ไม่มีข้อมูล' }}</pre>
+
+        <!-- PC C Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC C Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pcc_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pcc_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pcc_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Security Configuration for Lab 16 -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Security Configuration</h3>
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
         </div>
-        <div class="border-t border-gray-200">
-            <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Port Security</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.port_security if submission.port_security is defined else 'Enabled' }}</dd>
-                </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">DHCP Snooping</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.dhcp_snooping if submission.dhcp_snooping is defined else 'Enabled' }}</dd>
-                </div>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">BPDU Guard</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.bpdu_guard if submission.bpdu_guard is defined else 'Enabled' }}</dd>
-                </div>
-            </dl>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <input type="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
+    </div>
+</div>
+
+{% elif lab_num == 10 %}
+<!-- Lab 10: Standard IPv4 ACLs -->
+<div class="container mx-auto px-4 max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <!-- Router 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router1-config', 'Router 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
+            </div>
+        </div>
+
+        <!-- Router 2 (ISP) Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 2 (ISP) Configuration</h3>
+                <button type="button" onclick="showConfigModal('router2-config', 'Router 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r2_config if submission.r2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- Router 3 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 3 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router3-config', 'Router 3 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router3-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r3_config if submission.r3_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
         </div>
     </div>
-    {% else %}
-    <!-- Default Case - Generic Device Configuration -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-                {% if lab_num >= 6 and lab_num <= 14 %}
-                Router Configuration
-                {% else %}
-                Switch Configuration
-                {% endif %}
-            </h3>
+
+    <!-- Switch and PC Configuration -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <!-- Switch 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch1-config', 'Switch 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 120px;">{{ submission.sw1_config if submission.sw1_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
         </div>
-        <div class="border-t border-gray-200 px-4 py-5 sm:p-6">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm h-96">{{ submission.switch_config if submission.switch_config is defined else 'ไม่มีข้อมูล' }}</pre>
+
+        <!-- Switch 3 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 3 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch3-config', 'Switch 3 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch3-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 120px;">{{ submission.sw3_config if submission.sw3_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- PC A Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC A Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pca_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pca_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pca_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC C Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC C Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pcc_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pcc_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pcc_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
+        </div>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <input type="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
+    </div>
+</div>
+
+{% elif lab_num == 11 %}
+<!-- Lab 11: Extended IPv4 ACLs -->
+<div class="container mx-auto px-4 max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <!-- Router 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router1-config', 'Router 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
+            </div>
+        </div>
+
+        <!-- Router 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router2-config', 'Router 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r2_config if submission.r2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- PC A Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC A Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pca_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pca_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pca_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC B Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC B Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pcb_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pcb_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pcb_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Switch Configuration -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <!-- Switch 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch1-config', 'Switch 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw1_config if submission.sw1_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- Switch 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch2-config', 'Switch 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw2_config if submission.sw2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
+        </div>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <input type="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
+    </div>
+</div>
+
+{% elif lab_num == 12 %}
+<!-- Lab 12: DHCPv4 -->
+<div class="container mx-auto px-4 max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <!-- Router 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router1-config', 'Router 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
+            </div>
+        </div>
+
+        <!-- Router 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router2-config', 'Router 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r2_config if submission.r2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- PC A Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC A Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC B Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC B Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pc_b_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pc_b_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pc_b_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Switch Configuration -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <!-- Switch 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch1-config', 'Switch 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw1_config if submission.sw1_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- Switch 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch2-config', 'Switch 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw2_config if submission.sw2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- DHCP Configuration -->
+    <div class="bg-white shadow rounded-lg overflow-hidden mb-4">
+        <div class="px-4 py-2 border-b flex justify-between items-center">
+            <h3 class="text-sm font-medium text-gray-900">DHCP Configuration</h3>
+            <button type="button" onclick="showConfigModal('dhcp-config', 'DHCP Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+        </div>
+        <div class="p-2">
+            <pre id="dhcp-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 120px;">{{ submission.dhcp_config if submission.dhcp_config is defined else 'DHCP Server: R1\nDHCP Relay: R2 (Helper address: 10.0.0.1)' }}</pre>
+        </div>
+    </div>
+
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
+        </div>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <input type="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
+    </div>
+</div>
+
+{% elif lab_num == 13 %}
+<!-- Lab 13: DHCPv6 -->
+<div class="container mx-auto px-4 max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <!-- Router 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router1-config', 'Router 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
+            </div>
+        </div>
+
+        <!-- Router 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router2-config', 'Router 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r2_config if submission.r2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- PC A Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC A Configuration (IPv6)</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IPv6 Address</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Prefix Length</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Configuration Type</span>
+                        <span class="text-xs font-medium">Stateless</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC B Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC B Configuration (IPv6)</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IPv6 Address</span>
+                        <span class="text-xs font-medium">{{ pc_b_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Prefix Length</span>
+                        <span class="text-xs font-medium">{{ pc_b_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Configuration Type</span>
+                        <span class="text-xs font-medium">Stateful</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Switch Configuration -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <!-- Switch 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch1-config', 'Switch 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 120px;">{{ submission.sw1_config if submission.sw1_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- Switch 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch2-config', 'Switch 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 120px;">{{ submission.sw2_config if submission.sw2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- DHCPv6 Information -->
+    <div class="bg-white shadow rounded-lg overflow-hidden mb-4">
+        <div class="px-4 py-2 border-b">
+            <h3 class="text-sm font-medium text-gray-900">DHCPv6 Settings</h3>
+        </div>
+        <div class="p-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-3 rounded">
+                    <h4 class="text-xs font-semibold text-blue-800 mb-2">R1 - Stateless DHCPv6</h4>
+                    <ul class="text-xs space-y-1 text-gray-700">
+                        <li>• <span class="font-medium">DNS Server:</span> 2001:DB8:ACAD::254</li>
+                        <li>• <span class="font-medium">Domain Name:</span> STATELESS.com</li>
+                        <li>• <span class="font-medium">Interface:</span> GigabitEthernet0/0/1</li>
+                        <li>• <span class="font-medium">Flag:</span> Other Config Flag</li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-50 p-3 rounded">
+                    <h4 class="text-xs font-semibold text-indigo-800 mb-2">R1 - Stateful DHCPv6</h4>
+                    <ul class="text-xs space-y-1 text-gray-700">
+                        <li>• <span class="font-medium">Address Prefix:</span> 2001:DB8:ACAD:3:AAAA::/80</li>
+                        <li>• <span class="font-medium">DNS Server:</span> 2001:DB8:ACAD::254</li>
+                        <li>• <span class="font-medium">Domain Name:</span> STATEFUL.com</li>
+                        <li>• <span class="font-medium">Relay Agent:</span> R2</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
+        </div>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <input type="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
+    </div>
+</div>
+
+{% elif lab_num == 14 %}
+<!-- Lab 14: Static Route Configuration -->
+<div class="container mx-auto px-4 max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <!-- Router 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router1-config', 'Router 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 200px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
+            </div>
+        </div>
+
+        <!-- Router 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router2-config', 'Router 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 200px;">{{ submission.r2_config if submission.r2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Switch Configuration -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <!-- Switch 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch1-config', 'Switch 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw1_config if submission.sw1_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- Switch 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch2-config', 'Switch 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw2_config if submission.sw2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
         </div>
     </div>
 
     <!-- PC Configuration -->
-    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">PC Configuration</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <!-- PC A Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC A Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="border-t border-gray-200">
-            <dl>
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">IP Address</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.ip_address if submission.pc_config is defined and submission.pc_config.ip_address is defined else submission.pc_ip_address }}</dd>
+
+        <!-- PC B Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC B Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pc_b_config.ip }}</span>
+                    </div>
                 </div>
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.subnet_mask if submission.pc_config is defined and submission.pc_config.subnet_mask is defined else submission.pc_subnet_mask }}</dd>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xsfont-medium">{{ pc_b_config.subnet }}</span>
+                    </div>
                 </div>
-                {% if lab_num != 8 and lab_num != 13 %}
-                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ submission.pc_config.default_gateway if submission.pc_config is defined and submission.pc_config.default_gateway is defined else submission.pc_default_gateway }}</dd>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pc_b_config.gateway }}</span>
+                    </div>
                 </div>
-                {% endif %}
-            </dl>
+            </div>
         </div>
     </div>
-    {% endif %}
+
+    <!-- Static Routes Information -->
+    <div class="bg-white shadow rounded-lg overflow-hidden mb-4">
+        <div class="px-4 py-2 border-b">
+            <h3 class="text-sm font-medium text-gray-900">Static Routes Configuration</h3>
+        </div>
+        <div class="p-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-3 rounded">
+                    <h4 class="text-xs font-semibold text-blue-800 mb-2">Router 1 Static Routes</h4>
+                    <pre class="text-xs text-gray-700 whitespace-pre-wrap">ip route 0.0.0.0 0.0.0.0 209.165.200.225</pre>
+                </div>
+                <div class="bg-indigo-50 p-3 rounded">
+                    <h4 class="text-xs font-semibold text-indigo-800 mb-2">Router 2 Static Routes</h4>
+                    <pre class="text-xs text-gray-700 whitespace-pre-wrap">ip route 0.0.0.0 0.0.0.0 Loopback1</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
+        </div>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <input type="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
+    </div>
 </div>
-<!-- Config Modal - ใส่ไว้ในไฟล์ base template เพื่อใช้ร่วมกันทุก Lab -->
+
+{% elif lab_num == 15 %}
+<!-- Lab 15: HSRP -->
+<div class="container mx-auto px-4 max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <!-- Router 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router1-config', 'Router 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
+            </div>
+        </div>
+
+        <!-- Router 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router2-config', 'Router 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r2_config if submission.r2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- Router 3 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 3 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router3-config', 'Router 3 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router3-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r3_config if submission.r3_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Switch and PC Configuration -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <!-- Switch 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch1-config', 'Switch 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 120px;">{{ submission.sw1_config if submission.sw1_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- Switch 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch2-config', 'Switch 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 120px;">{{ submission.sw2_config if submission.sw2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- PC A Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC A Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pc_a_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC C Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">PC C Configuration</h3>
+            </div>
+            <div class="divide-y">
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">IP Address</span>
+                        <span class="text-xs font-medium">{{ pc_c_config.ip }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Subnet Mask</span>
+                        <span class="text-xs font-medium">{{ pc_c_config.subnet }}</span>
+                    </div>
+                </div>
+                <div class="px-4 py-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-medium text-gray-600">Default Gateway</span>
+                        <span class="text-xs font-medium">{{ pc_c_config.gateway }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HSRP Information -->
+    <div class="bg-white shadow rounded-lg overflow-hidden mb-4">
+        <div class="px-4 py-2 border-b">
+            <h3 class="text-sm font-medium text-gray-900">HSRP Configuration Details</h3>
+        </div>
+        <div class="p-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-3 rounded">
+                    <h4 class="text-xs font-semibold text-blue-800 mb-2">Router 1 HSRP</h4>
+                    <ul class="text-xs space-y-1 text-gray-700">
+                        <li>• <span class="font-medium">Virtual IP:</span> 192.168.1.254</li>
+                        <li>• <span class="font-medium">Priority:</span> 150</li>
+                        <li>• <span class="font-medium">Preempt:</span> Enabled</li>
+                        <li>• <span class="font-medium">Version:</span> 2</li>
+                        <li>• <span class="font-medium">Group:</span> 1</li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-50 p-3 rounded">
+                    <h4 class="text-xs font-semibold text-indigo-800 mb-2">Router 3 HSRP</h4>
+                    <ul class="text-xs space-y-1 text-gray-700">
+                        <li>• <span class="font-medium">Virtual IP:</span> 192.168.1.254</li>
+                        <li>• <span class="font-medium">Priority:</span> 200</li>
+                        <li>• <span class="font-medium">Preempt:</span> Enabled</li>
+                        <li>• <span class="font-medium">Version:</span> 2</li>
+                        <li>• <span class="font-medium">Group:</span> 1</li>
+                        <li>• <span class="font-medium">Active Router:</span> R3 (Higher Priority)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
+        </div>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <input type="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
+    </div>
+</div>
+
+{% elif lab_num == 16 %}
+<!-- Lab 16: Switch Security Configuration -->
+<div class="container mx-auto px-4 max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <!-- Router 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Router 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('router1-config', 'Router 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="router1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
+            </div>
+        </div>
+
+        <!-- Switch 1 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 1 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch1-config', 'Switch 1 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw1_config if submission.sw1_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- Switch 2 Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-sm font-medium text-gray-900">Switch 2 Configuration</h3>
+                <button type="button" onclick="showConfigModal('switch2-config', 'Switch 2 Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <pre id="switch2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw2_config if submission.sw2_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Features -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <!-- Port Security Details -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">Port Security Configuration</h3>
+            </div>
+            <div class="p-3">
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-blue-50 p-3 rounded">
+                        <h4 class="text-xs font-semibold text-blue-800 mb-2">Switch 1 Port Security (Fa0/6)</h4>
+                        <ul class="text-xs space-y-1 text-gray-700">
+                            <li>• <span class="font-medium">Maximum MACs:</span> 3</li>
+                            <li>• <span class="font-medium">Violation Mode:</span> Restrict</li>
+                            <li>• <span class="font-medium">Aging Time:</span> 60 Minutes</li>
+                            <li>• <span class="font-medium">Aging Type:</span> Inactivity</li>
+                            <li>• <span class="font-medium">PortFast:</span> Enabled</li>
+                            <li>• <span class="font-medium">BPDU Guard:</span> Enabled</li>
+                        </ul>
+                    </div>
+                    <div class="bg-indigo-50 p-3 rounded">
+                        <h4 class="text-xs font-semibold text-indigo-800 mb-2">Switch 2 Port Security (Fa0/18)</h4>
+                        <ul class="text-xs space-y-1 text-gray-700">
+                            <li>• <span class="font-medium">Maximum MACs:</span> 2</li>
+                            <li>• <span class="font-medium">Violation Mode:</span> Protect</li>
+                            <li>• <span class="font-medium">Sticky:</span> Enabled</li>
+                            <li>• <span class="font-medium">Aging Time:</span> 60 Minutes</li>
+                            <li>• <span class="font-medium">PortFast:</span> Enabled</li>
+                            <li>• <span class="font-medium">BPDU Guard:</span> Enabled</li>
+                            <li>• <span class="font-medium">DHCP Snooping Rate Limit:</span> 5 pkts/sec</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DHCP and VLAN Details -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b">
+                <h3 class="text-sm font-medium text-gray-900">DHCP & VLAN Configuration</h3>
+            </div>
+            <div class="p-3">
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-green-50 p-3 rounded">
+                        <h4 class="text-xs font-semibold text-green-800 mb-2">DHCP Configuration</h4>
+                        <ul class="text-xs space-y-1 text-gray-700">
+                            <li>• <span class="font-medium">DHCP Server:</span> R1</li>
+                            <li>• <span class="font-medium">DHCP Excluded:</span> 192.168.10.1-9, 201-202</li>
+                            <li>• <span class="font-medium">DHCP Pool:</span> Students</li>
+                            <li>• <span class="font-medium">Network:</span> 192.168.10.0/24</li>
+                            <li>• <span class="font-medium">DHCP Snooping:</span> Enabled on VLAN 10</li>
+                            <li>• <span class="font-medium">Trusted Port:</span> Fa0/1 (S2)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded">
+                        <h4 class="text-xs font-semibold text-amber-800 mb-2">VLAN Configuration</h4>
+                        <ul class="text-xs space-y-1 text-gray-700">
+                            <li>• <span class="font-medium">Management VLAN:</span> 10</li>
+                            <li>• <span class="font-medium">Students VLAN:</span> 10</li>
+                            <li>• <span class="font-medium">Native VLAN:</span> 333</li>
+                            <li>• <span class="font-medium">ParkingLot VLAN:</span> 999</li>
+                            <li>• <span class="font-medium">Trunk Protocol:</span> dot1q</li>
+                            <li>• <span class="font-medium">DTP:</span> Disabled (nonegotiate)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
+        </div>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <inputtype="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
+    </div>
+</div>
+
+{% else %}
+<!-- Default Case - Generic Device Configuration for any other lab -->
+<div class="container mx-auto px-4 max-w-full">
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
+        <!-- Main Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-2 border-b flex justify-between items-center">
+                <h3 class="text-base font-medium text-gray-900">
+                    {% if lab_num >= 6 and lab_num <= 14 %}
+                    Router Configuration
+                    {% else %}
+                    Switch Configuration
+                    {% endif %}
+                </h3>
+                <button type="button" onclick="showConfigModal('device-config', 'Device Configuration')" class="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-3">
+                <pre id="device-config" class="bg-gray-900 text-gray-100 p-3 rounded overflow-auto text-sm" style="height: 300px;">{{ submission.switch_config if submission.switch_config is defined else 'ไม่มีข้อมูล' }}</pre>
+            </div>
+        </div>
+
+        <!-- PC Configuration -->
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="px-4 py-5 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">PC Configuration</h3>
+            </div>
+            <div class="border-t border-gray-200">
+                <dl>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">IP Address</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ submission.pc_config.ip_address if submission.pc_config is defined and submission.pc_config.ip_address is defined else submission.pc_ip_address if submission.pc_ip_address is defined else pc_config.ip if pc_config is defined and pc_config.ip is defined else 'ไม่มีข้อมูล' }}
+                        </dd>
+                    </div>
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Subnet Mask</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ submission.pc_config.subnet_mask if submission.pc_config is defined and submission.pc_config.subnet_mask is defined else submission.pc_subnet_mask if submission.pc_subnet_mask is defined else pc_config.subnet if pc_config is defined and pc_config.subnet is defined else 'ไม่มีข้อมูล' }}
+                        </dd>
+                    </div>
+                    {% if lab_num != 8 and lab_num != 13 %}
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Default Gateway</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ submission.pc_config.default_gateway if submission.pc_config is defined and submission.pc_config.default_gateway is defined else submission.pc_default_gateway if submission.pc_default_gateway is defined else pc_config.gateway if pc_config is defined and pc_config.gateway is defined else 'ไม่มีข้อมูล' }}
+                        </dd>
+                    </div>
+                    {% endif %}
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submission Details -->
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <div class="bg-blue-500 rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-medium text-gray-900">ประวัติการส่งงาน</h3>
+                <p class="text-xs text-gray-600">ส่งงานเมื่อ: {{ submission.timestamp }}</p>
+            </div>
+        </div>
+        <form action="{{ url_for('teacher.delete_submission') }}" method="POST" class="ml-auto">
+            <input type="hidden" name="student_id" value="{{ student.username }}">
+            <input type="hidden" name="lab_num" value="{{ lab_num }}">
+            <button type="submit" class="inline-flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none">
+                <svg class="mr-1 -ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                ลบการส่งงาน
+            </button>
+        </form>
+    </div>
+</div>
+{% endif %}
+
+<!-- Config Modal -->
 <div id="configModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div class="fixed inset-0 transition-opacity" aria-hidden="true">

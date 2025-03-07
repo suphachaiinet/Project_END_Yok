@@ -232,19 +232,24 @@ def lab16():
         }
 
         try:
+            # แก้ไขเพื่อให้โครงสร้างเหมือนกับแล็บอื่นๆ
             scores_collection.update_one(
-            {"username": username, "lab": "Lab 16"},
-            {"$set": {
-                "switch_score": "100.00/100",  # เปลี่ยนเป็น 100%
-                "r1_score": "100.00/100",
-                "sw1_score": "100.00/100",
-                "sw2_score": "100.00/100",
-                "router_score": "30.00",
-                "switch_score_weight": "70.00",  # เปลี่ยนชื่อตัวแปรนี้เป็น switch_score_weight
-                "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
-            }},
-            upsert=True
-        )
+                {"username": username, "lab": "Lab 16"},
+                {"$set": {
+                    "switch_score": "100.00/100",  # เปลี่ยนเป็น 100%
+                    "configs": {  # เพิ่มฟิลด์ configs เพื่อให้เป็นรูปแบบเดียวกับแล็บอื่น
+                        "r1_config": user_r1_config,
+                        "sw1_config": user_sw1_config,
+                        "sw2_config": user_sw2_config
+                    },
+                    "r1_score": "100.00/100",
+                    "sw1_score": "100.00/100",
+                    "sw2_score": "100.00/100",
+                    "router_score": "30.00",
+                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
+                }},
+                upsert=True
+            )
             
             session['lab16_result'] = result
             session.modified = True
