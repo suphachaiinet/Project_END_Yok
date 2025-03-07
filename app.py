@@ -8,6 +8,7 @@ from datetime import datetime  # เพิ่มบรรทัดนี้
 from bson import ObjectId
 import logging
 from lab import scores_collection
+from pdf_manager import pdf_bp  # เพิ่มบรรทัดนี้
 
 try:
     from zoneinfo import ZoneInfo
@@ -54,7 +55,12 @@ app.register_blueprint(lab14_bp, url_prefix='/lab14')
 app.register_blueprint(lab15_bp, url_prefix='/lab15')
 app.register_blueprint(lab16_bp, url_prefix='/lab16')
 app.register_blueprint(teacher_bp, url_prefix='/teacher')
+app.register_blueprint(pdf_bp, url_prefix='/pdf')
 
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+import os
+UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'pdfs')
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # ลงทะเบียน Blueprint สำหรับอาจารย์
 # ตั้งค่า URI ของ MongoDB

@@ -910,29 +910,59 @@ if (resetPasswordForm) {
     });
 }
 
-// PDF Upload Handler
+// PDF Upload Handler ที่ทำงานจริงและมีการรีโหลดหน้าจอ
 const pdfUploads = document.querySelectorAll('.pdf-upload');
 
 pdfUploads.forEach(upload => {
-    upload.addEventListener('change', (e) => {
+    upload.addEventListener('change', async (e) => {
         const file = e.target.files[0];
         const labNum = e.target.getAttribute('data-lab');
         const statusDiv = document.querySelector(`.upload-status-${labNum}`);
         
-        if (file) {
-            statusDiv.textContent = `Uploading: ${file.name}...`;
-            statusDiv.classList.add('text-yellow-600');
+        if (!file) return;
+        
+        // แสดงสถานะกำลังอัปโหลด
+        statusDiv.textContent = `กำลังอัปโหลด: ${file.name}...`;
+        statusDiv.className = 'px-4 py-2 text-xs text-yellow-600';
+        
+        try {
+            const formData = new FormData();
+            formData.append('pdfFile', file);
+            formData.append('labNum', labNum);
             
-            // Simulate upload - in a real implementation, this would use fetch/AJAX
-            setTimeout(() => {
-                statusDiv.textContent = `Success! ${file.name} uploaded.`;
-                statusDiv.classList.remove('text-yellow-600');
-                statusDiv.classList.add('text-green-600');
-            }, 1500);
+            // ส่งไฟล์ไปยัง server
+            const response = await fetch('/pdf/upload_pdf', {
+                method: 'POST',
+                body: formData,
+                // ไม่ต้องกำหนด Content-Type เพราะ FormData จะจัดการให้
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok && result.status === 'success') {
+                // อัปโหลดสำเร็จ
+                statusDiv.textContent = `สำเร็จ! อัปโหลด ${file.name} แล้ว กำลังรีโหลดหน้า...`;
+                statusDiv.className = 'px-4 py-2 text-xs text-green-600';
+                
+                // รอสักครู่เพื่อให้ผู้ใช้เห็นข้อความสำเร็จก่อนรีโหลด
+                setTimeout(() => {
+                    // รีโหลดหน้าจอเพื่อให้เห็นการเปลี่ยนแปลงทันที
+                    window.location.reload();
+                }, 1000); // รอ 1 วินาทีก่อนรีโหลด
+            } else {
+                // มีข้อผิดพลาด
+                statusDiv.textContent = `ผิดพลาด: ${result.message || 'ไม่สามารถอัปโหลดไฟล์ได้'}`;
+                statusDiv.className = 'px-4 py-2 text-xs text-red-600';
+                console.error('Upload error:', result);
+            }
+        } catch (error) {
+            // เกิดข้อผิดพลาดในการส่งคำขอ
+            statusDiv.textContent = `ผิดพลาด: ไม่สามารถติดต่อเซิร์ฟเวอร์ได้`;
+            statusDiv.className = 'px-4 py-2 text-xs text-red-600';
+            console.error('Network error:', error);
         }
     });
 });
-
 // Change Password Form Handler
 const changePasswordForm = document.getElementById('changePasswordForm');
 
