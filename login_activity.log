@@ -12422,3 +12422,33 @@ INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 634-005-923
 INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 17:01:51] "GET /teacher/submission/15/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 17:04:37] "GET /teacher/lab/16 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 17:04:38] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 17:53:52] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:13:23] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:13:44] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:14:00] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:14:05] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:14:35] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:14:39] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:14:53] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:15:40] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:15:50] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:16:04] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:16:13] "GET /static/pdfs/lab16.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:16:33] "GET /static/pdfs/lab1.pdf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:16:41] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:16:48] "GET /teacher/submission/16/s6506022410031 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [07/Mar/2025 18:16:51] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -

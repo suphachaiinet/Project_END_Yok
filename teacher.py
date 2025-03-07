@@ -2963,23 +2963,32 @@ def view_submission(lab_num, student_id):
             }
 
     elif lab_num == 16:
-        # Lab 16 - Switch Security Configuration
+    # Lab 16 - Switch Security Configuration
         lab_devices = {
             "routers": ["R1"],
             "switches": ["S1", "S2"],
             "features": ["Port Security", "BPDU Guard", "DHCP Snooping"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # ตรวจสอบว่า submission เป็น dictionary หรือไม่
+        if not isinstance(submission, dict):
+            submission = {}
         
-        # ตั้งค่าค่าเริ่มต้นถ้าไม่มีข้อมูล
-        if 'port_security' not in submission:
-            submission['port_security'] = 'Enabled'
-        if 'dhcp_snooping' not in submission:
-            submission['dhcp_snooping'] = 'Enabled'
-        if 'bpdu_guard' not in submission:
-            submission['bpdu_guard'] = 'Enabled'
+        # ดึงข้อมูลจาก configs โดยตรง
+        if 'configs' in submission and isinstance(submission['configs'], dict):
+            submission['r1_config'] = submission['configs'].get('r1_config', 'ไม่มีข้อมูล')
+            submission['sw1_config'] = submission['configs'].get('sw1_config', 'ไม่มีข้อมูล')
+            submission['sw2_config'] = submission['configs'].get('sw2_config', 'ไม่มีข้อมูล')
+        else:
+            # กรณีไม่มี configs ให้ใช้ค่าเริ่มต้น
+            submission['r1_config'] = submission.get('r1_config', 'ไม่มีข้อมูล')
+            submission['sw1_config'] = submission.get('sw1_config', 'ไม่มีข้อมูล')
+            submission['sw2_config'] = submission.get('sw2_config', 'ไม่มีข้อมูล')
+        
+        # ตั้งค่าความปลอดภัยต่างๆ (มีค่าเริ่มต้นเป็น Enabled)
+        submission['port_security'] = 'Enabled'
+        submission['dhcp_snooping'] = 'Enabled'
+        submission['bpdu_guard'] = 'Enabled'
     
     # คำนวณคะแนนและสถานะ
     try:

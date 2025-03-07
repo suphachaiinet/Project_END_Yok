@@ -2072,7 +2072,7 @@
                 </button>
             </div>
             <div class="p-2">
-                <pre id="router1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
+                <pre id="router1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 360px;">{{ submission.r1_config if submission.r1_config is defined else submission.switch_config }}</pre>
             </div>
         </div>
 
@@ -2087,7 +2087,7 @@
                 </button>
             </div>
             <div class="p-2">
-                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw1_config if submission.sw1_config is defined else 'ไม่มีข้อมูล' }}</pre>
+                <pre id="switch1-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 360px;">{{ submission.sw1_config if submission.sw1_config is defined else 'ไม่มีข้อมูล' }}</pre>
             </div>
         </div>
 
@@ -2102,77 +2102,7 @@
                 </button>
             </div>
             <div class="p-2">
-                <pre id="switch2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 160px;">{{ submission.sw2_config if submission.sw2_config is defined else 'ไม่มีข้อมูล' }}</pre>
-            </div>
-        </div>
-    </div>
-
-    <!-- Security Features -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <!-- Port Security Details -->
-        <div class="bg-white shadow rounded-lg overflow-hidden">
-            <div class="px-4 py-2 border-b">
-                <h3 class="text-sm font-medium text-gray-900">Port Security Configuration</h3>
-            </div>
-            <div class="p-3">
-                <div class="grid grid-cols-1 gap-3">
-                    <div class="bg-blue-50 p-3 rounded">
-                        <h4 class="text-xs font-semibold text-blue-800 mb-2">Switch 1 Port Security (Fa0/6)</h4>
-                        <ul class="text-xs space-y-1 text-gray-700">
-                            <li>• <span class="font-medium">Maximum MACs:</span> 3</li>
-                            <li>• <span class="font-medium">Violation Mode:</span> Restrict</li>
-                            <li>• <span class="font-medium">Aging Time:</span> 60 Minutes</li>
-                            <li>• <span class="font-medium">Aging Type:</span> Inactivity</li>
-                            <li>• <span class="font-medium">PortFast:</span> Enabled</li>
-                            <li>• <span class="font-medium">BPDU Guard:</span> Enabled</li>
-                        </ul>
-                    </div>
-                    <div class="bg-indigo-50 p-3 rounded">
-                        <h4 class="text-xs font-semibold text-indigo-800 mb-2">Switch 2 Port Security (Fa0/18)</h4>
-                        <ul class="text-xs space-y-1 text-gray-700">
-                            <li>• <span class="font-medium">Maximum MACs:</span> 2</li>
-                            <li>• <span class="font-medium">Violation Mode:</span> Protect</li>
-                            <li>• <span class="font-medium">Sticky:</span> Enabled</li>
-                            <li>• <span class="font-medium">Aging Time:</span> 60 Minutes</li>
-                            <li>• <span class="font-medium">PortFast:</span> Enabled</li>
-                            <li>• <span class="font-medium">BPDU Guard:</span> Enabled</li>
-                            <li>• <span class="font-medium">DHCP Snooping Rate Limit:</span> 5 pkts/sec</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- DHCP and VLAN Details -->
-        <div class="bg-white shadow rounded-lg overflow-hidden">
-            <div class="px-4 py-2 border-b">
-                <h3 class="text-sm font-medium text-gray-900">DHCP & VLAN Configuration</h3>
-            </div>
-            <div class="p-3">
-                <div class="grid grid-cols-1 gap-3">
-                    <div class="bg-green-50 p-3 rounded">
-                        <h4 class="text-xs font-semibold text-green-800 mb-2">DHCP Configuration</h4>
-                        <ul class="text-xs space-y-1 text-gray-700">
-                            <li>• <span class="font-medium">DHCP Server:</span> R1</li>
-                            <li>• <span class="font-medium">DHCP Excluded:</span> 192.168.10.1-9, 201-202</li>
-                            <li>• <span class="font-medium">DHCP Pool:</span> Students</li>
-                            <li>• <span class="font-medium">Network:</span> 192.168.10.0/24</li>
-                            <li>• <span class="font-medium">DHCP Snooping:</span> Enabled on VLAN 10</li>
-                            <li>• <span class="font-medium">Trusted Port:</span> Fa0/1 (S2)</li>
-                        </ul>
-                    </div>
-                    <div class="bg-amber-50 p-3 rounded">
-                        <h4 class="text-xs font-semibold text-amber-800 mb-2">VLAN Configuration</h4>
-                        <ul class="text-xs space-y-1 text-gray-700">
-                            <li>• <span class="font-medium">Management VLAN:</span> 10</li>
-                            <li>• <span class="font-medium">Students VLAN:</span> 10</li>
-                            <li>• <span class="font-medium">Native VLAN:</span> 333</li>
-                            <li>• <span class="font-medium">ParkingLot VLAN:</span> 999</li>
-                            <li>• <span class="font-medium">Trunk Protocol:</span> dot1q</li>
-                            <li>• <span class="font-medium">DTP:</span> Disabled (nonegotiate)</li>
-                        </ul>
-                    </div>
-                </div>
+                <pre id="switch2-config" class="bg-gray-900 text-gray-100 p-2 rounded overflow-auto text-xs" style="height: 360px;">{{ submission.sw2_config if submission.sw2_config is defined else 'ไม่มีข้อมูล' }}</pre>
             </div>
         </div>
     </div>
