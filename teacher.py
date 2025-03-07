@@ -2553,97 +2553,240 @@ def view_submission(lab_num, student_id):
             "features": ["PPP Authentication", "CHAP"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # Router Configurations
+        submission['r1_config'] = (
+            submission.get('configs', {}).get('r1_config', '') or 
+            submission.get('r1_config', 'ไม่มีข้อมูล')
+        )
+        submission['r2_config'] = (
+            submission.get('configs', {}).get('r2_config', '') or 
+            submission.get('r2_config', 'ไม่มีข้อมูล')
+        )
+        submission['r3_config'] = (
+            submission.get('configs', {}).get('r3_config', '') or 
+            submission.get('r3_config', 'ไม่มีข้อมูล')
+        )
         
-        # PC config
-        pca_config = {
-            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.1.3')),
-            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
-            "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '192.168.1.1'))
-        }
+        # PC Configuration สำหรับ PC-A
+        pca_config_data = submission.get('pca_config', submission.get('pc_a_config', {}))
+        if isinstance(pca_config_data, dict):
+            pca_config = {
+                "ip": pca_config_data.get('ip', '192.168.1.3'),
+                "subnet": pca_config_data.get('subnet', '255.255.255.0'),
+                "gateway": pca_config_data.get('gateway', '192.168.1.1'),
+                "status": pca_config_data.get('status', 'ทดสอบ')
+            }
+        else:
+            pca_config = {
+                "ip": submission.get('pca_ip_address', '192.168.1.3'),
+                "subnet": submission.get('pca_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pca_default_gateway', '192.168.1.1'),
+                "status": submission.get('pca_status', 'ทดสอบ')
+            }
         
-        pcc_config = {
-            "ip": submission.get('pcc_ip_address', '192.168.3.3'),
-            "subnet": submission.get('pcc_subnet_mask', '255.255.255.0'),
-            "gateway": submission.get('pcc_default_gateway', '192.168.3.1')
-        }
-
+        # PC Configuration สำหรับ PC-C
+        pcc_config_data = submission.get('pcc_config', submission.get('pc_c_config', {}))
+        if isinstance(pcc_config_data, dict):
+            pcc_config = {
+                "ip": pcc_config_data.get('ip', '192.168.3.3'),
+                "subnet": pcc_config_data.get('subnet', '255.255.255.0'),
+                "gateway": pcc_config_data.get('gateway', '192.168.3.1'),
+                "status": pcc_config_data.get('status', 'ทดสอบ')
+            }
+        else:
+            pcc_config = {
+                "ip": submission.get('pcc_ip_address', '192.168.3.3'),
+                "subnet": submission.get('pcc_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pcc_default_gateway', '192.168.3.1'),
+                "status": submission.get('pcc_status', 'ทดสอบ')
+            }
     elif lab_num == 10:
-        # Lab 10 - Standard IPv4 ACLs
+        # Lab 10 - NAT/PAT
         lab_devices = {
-            "routers": ["R1", "ISP", "R3"],
-            "switches": ["S1", "S3"],
+            "routers": ["Router 1", "Router 2 (ISP)", "Router 3"],
+            "switches": ["Switch 1", "Switch 3"],
             "pcs": ["PC-A", "PC-C"],
-            "features": ["Standard ACLs"]
+            "features": ["NAT", "PAT"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # Router Configurations
+        submission['r1_config'] = (
+            submission.get('configs', {}).get('r1_config', '') or 
+            submission.get('r1_config', 'ไม่มีข้อมูล')
+        )
+        submission['r2_config'] = (
+            submission.get('configs', {}).get('r2_config', '') or 
+            submission.get('r2_config', 'ไม่มีข้อมูล')
+        )
+        submission['r3_config'] = (
+            submission.get('configs', {}).get('r3_config', '') or 
+            submission.get('r3_config', 'ไม่มีข้อมูล')
+        )
         
-        # PC config
-        pca_config = {
-            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.1.3')),
-            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
-            "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '192.168.1.1'))
-        }
+        # Switch Configurations
+        submission['sw1_config'] = (
+            submission.get('configs', {}).get('sw1_config', '') or 
+            submission.get('sw1_config', 'ไม่มีข้อมูล')
+        )
+        submission['sw3_config'] = (
+            submission.get('configs', {}).get('sw3_config', '') or 
+            submission.get('sw3_config', 'ไม่มีข้อมูล')
+        )
         
-        pcc_config = {
-            "ip": submission.get('pcc_ip_address', '192.168.3.3'),
-            "subnet": submission.get('pcc_subnet_mask', '255.255.255.0'),
-            "gateway": submission.get('pcc_default_gateway', '192.168.3.1')
-        }
+        # PC Configuration สำหรับ PC-A
+        pca_config_data = submission.get('pca_config', submission.get('pc_a_config', {}))
+        if isinstance(pca_config_data, dict):
+            pca_config = {
+                "ip": pca_config_data.get('ip', '192.168.10.3'),
+                "subnet": pca_config_data.get('subnet', '255.255.255.0'),
+                "gateway": pca_config_data.get('gateway', '192.168.10.1')
+            }
+        else:
+            pca_config = {
+                "ip": submission.get('pca_ip_address', '192.168.10.3'),
+                "subnet": submission.get('pca_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pca_default_gateway', '192.168.10.1')
+            }
+        
+        # PC Configuration สำหรับ PC-C
+        pcc_config_data = submission.get('pcc_config', submission.get('pc_c_config', {}))
+        if isinstance(pcc_config_data, dict):
+            pcc_config = {
+                "ip": pcc_config_data.get('ip', '192.168.30.3'),
+                "subnet": pcc_config_data.get('subnet', '255.255.255.0'),
+                "gateway": pcc_config_data.get('gateway', '192.168.30.1')
+            }
+        else:
+            pcc_config = {
+                "ip": submission.get('pcc_ip_address', '192.168.30.3'),
+                "subnet": submission.get('pcc_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pcc_default_gateway', '192.168.30.1')
+            }
 
     elif lab_num == 11:
-        # Lab 11 - Extended IPv4 ACLs
+        # Lab 11 - VLAN
         lab_devices = {
-            "routers": ["R1", "R2"],
-            "switches": ["S1", "S2"],
+            "routers": ["Router 1", "Router 2"],
+            "switches": ["Switch 1", "Switch 2"],
             "pcs": ["PC-A", "PC-B"],
-            "features": ["Extended ACLs"]
+            "features": ["VLAN", "Inter-VLAN Routing"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # Router Configurations
+        submission['r1_config'] = (
+            submission.get('configs', {}).get('r1_config', '') or 
+            submission.get('r1_config', 'ไม่มีข้อมูล')
+        )
+        submission['r2_config'] = (
+            submission.get('configs', {}).get('r2_config', '') or 
+            submission.get('r2_config', 'ไม่มีข้อมูล')
+        )
         
-        # PC config
-        pca_config = {
-            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '10.30.0.10')),
-            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
-            "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '10.30.0.1'))
-        }
+        # Switch Configurations
+        submission['sw1_config'] = (
+            submission.get('configs', {}).get('sw1_config', '') or 
+            submission.get('sw1_config', 'ไม่มีข้อมูล')
+        )
+        submission['sw2_config'] = (
+            submission.get('configs', {}).get('sw2_config', '') or 
+            submission.get('sw2_config', 'ไม่มีข้อมูล')
+        )
         
-        pcb_config = {
-            "ip": submission.get('pcb_ip_address', '10.40.0.10'),
-            "subnet": submission.get('pcb_subnet_mask', '255.255.255.0'),
-            "gateway": submission.get('pcb_default_gateway', '10.40.0.1')
-        }
+        # PC Configuration สำหรับ PC-A
+        pca_config_data = submission.get('pca_config', submission.get('pc_a_config', {}))
+        if isinstance(pca_config_data, dict):
+            pca_config = {
+                "ip": pca_config_data.get('ip', '10.30.0.10'),
+                "subnet": pca_config_data.get('subnet', '255.255.255.0'),
+                "gateway": pca_config_data.get('gateway', '10.30.0.1')
+            }
+        else:
+            pca_config = {
+                "ip": submission.get('pca_ip_address', '10.30.0.10'),
+                "subnet": submission.get('pca_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pca_default_gateway', '10.30.0.1')
+            }
+        
+        # PC Configuration สำหรับ PC-B
+        pcb_config_data = submission.get('pcb_config', submission.get('pc_b_config', {}))
+        if isinstance(pcb_config_data, dict):
+            pcb_config = {
+                "ip": pcb_config_data.get('ip', '10.40.0.10'),
+                "subnet": pcb_config_data.get('subnet', '255.255.255.0'),
+                "gateway": pcb_config_data.get('gateway', '10.40.0.1')
+            }
+        else:
+            pcb_config = {
+                "ip": submission.get('pcb_ip_address', '10.40.0.10'),
+                "subnet": submission.get('pcb_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pcb_default_gateway', '10.40.0.1')
+            }
 
     elif lab_num == 12:
         # Lab 12 - DHCPv4
         lab_devices = {
-            "routers": ["R1", "R2"],
-            "switches": ["S1", "S2"],
+            "routers": ["Router 1", "Router 2"],
+            "switches": ["Switch 1", "Switch 2"],
             "pcs": ["PC-A", "PC-B"],
-            "features": ["DHCPv4", "DHCP Relay"]
+            "features": ["DHCPv4", "DHCP Server", "DHCP Relay"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # Router Configurations
+        submission['r1_config'] = (
+            submission.get('configs', {}).get('r1_config', '') or 
+            submission.get('r1_config', 'ไม่มีข้อมูล')
+        )
+        submission['r2_config'] = (
+            submission.get('configs', {}).get('r2_config', '') or 
+            submission.get('r2_config', 'ไม่มีข้อมูล')
+        )
         
-        # PC config
-        pc_a_config = {
-            "ip": submission.get('pc_a_ip_address', submission.get('pc_ip_address', '192.168.1.3')),
-            "subnet": submission.get('pc_a_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.192')),
-            "gateway": submission.get('pc_a_default_gateway', submission.get('pc_default_gateway', '192.168.1.1'))
-        }
+        # Switch Configurations
+        submission['sw1_config'] = (
+            submission.get('configs', {}).get('sw1_config', '') or 
+            submission.get('sw1_config', 'ไม่มีข้อมูล')
+        )
+        submission['sw2_config'] = (
+            submission.get('configs', {}).get('sw2_config', '') or 
+            submission.get('sw2_config', 'ไม่มีข้อมูล')
+        )
         
-        pc_b_config = {
-            "ip": submission.get('pc_b_ip_address', '192.168.1.100'),
-            "subnet": submission.get('pc_b_subnet_mask', '255.255.255.240'),
-            "gateway": submission.get('pc_b_default_gateway', '192.168.1.97')
-        }
-
+        # VLAN Configurations
+        submission['vlan_sw1'] = submission.get('configs', {}).get('vlan_sw1', 'ไม่มีข้อมูล VLAN')
+        submission['vlan_sw2'] = submission.get('configs', {}).get('vlan_sw2', 'ไม่มีข้อมูล VLAN')
+        
+        # PC Configuration สำหรับ PC-A
+        pca_config_data = submission.get('pca_config', submission.get('pc_a_config', {}))
+        if isinstance(pca_config_data, dict):
+            pca_config = {
+                "ip": pca_config_data.get('ip', '192.168.1.3'),
+                "subnet": pca_config_data.get('subnet', '255.255.255.192'),
+                "gateway": pca_config_data.get('gateway', '192.168.1.1')
+            }
+        else:
+            pca_config = {
+                "ip": submission.get('pca_ip_address', '192.168.1.3'),
+                "subnet": submission.get('pca_subnet_mask', '255.255.255.192'),
+                "gateway": submission.get('pca_default_gateway', '192.168.1.1')
+            }
+        
+        # PC Configuration สำหรับ PC-B
+        pcb_config_data = submission.get('pcb_config', submission.get('pc_b_config', {}))
+        if isinstance(pcb_config_data, dict):
+            pcb_config = {
+                "ip": pcb_config_data.get('ip', '192.168.1.100'),
+                "subnet": pcb_config_data.get('subnet', '255.255.255.240'),
+                "gateway": pcb_config_data.get('gateway', '192.168.1.97')
+            }
+        else:
+            pcb_config = {
+                "ip": submission.get('pcb_ip_address', '192.168.1.100'),
+                "subnet": submission.get('pcb_subnet_mask', '255.255.255.240'),
+                "gateway": submission.get('pcb_default_gateway', '192.168.1.97')
+            }
+        
+        # DHCP Configuration
+        submission['dhcp_config'] = submission.get('configs', {}).get('dhcp_config', 'DHCP Server: R1\nDHCP Relay: R2 (Helper address: 10.0.0.1)')
     elif lab_num == 13:
         # Lab 13 - DHCPv6
         lab_devices = {
