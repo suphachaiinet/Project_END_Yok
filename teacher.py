@@ -2790,51 +2790,85 @@ def view_submission(lab_num, student_id):
     elif lab_num == 13:
         # Lab 13 - DHCPv6
         lab_devices = {
-            "routers": ["R1", "R2"],
-            "switches": ["S1", "S2"],
+            "routers": ["Router 1", "Router 2"],
+            "switches": ["Switch 1", "Switch 2"],
             "pcs": ["PC-A", "PC-B"],
-            "features": ["DHCPv6", "Stateless/Stateful"]
+            "features": ["IPv6", "DHCPv6"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # Router Configurations
+        submission['r1_config'] = (
+            submission.get('configs', {}).get('r1_config', '') or 
+            submission.get('r1_config', 'ไม่มีข้อมูล')
+        )
+        submission['r2_config'] = (
+            submission.get('configs', {}).get('r2_config', '') or 
+            submission.get('r2_config', 'ไม่มีข้อมูล')
+        )
         
-        # PC config
+        # Switch Configurations
+        submission['sw1_config'] = (
+            submission.get('configs', {}).get('sw1_config', '') or 
+            submission.get('sw1_config', 'ไม่มีข้อมูล')
+        )
+        submission['sw2_config'] = (
+            submission.get('configs', {}).get('sw2_config', '') or 
+            submission.get('sw2_config', 'ไม่มีข้อมูล')
+        )
+        
+        # PC Configuration สำหรับ PC-A
         pc_a_config = {
-            "ip": submission.get('pc_a_ip_address', submission.get('pc_ip_address', '2001:db8:acad:1::')),
-            "subnet": submission.get('pc_a_subnet_mask', submission.get('pc_subnet_mask', '64'))
+            "ip": submission.get('configs', {}).get('pca_config', {}).get('ip', '2001:db8:acad:1::'),
+            "subnet": "64"
         }
         
+        # PC Configuration สำหรับ PC-B
         pc_b_config = {
-            "ip": submission.get('pc_b_ip_address', '2001:db8:acad:3::'),
-            "subnet": submission.get('pc_b_subnet_mask', '64')
+            "ip": submission.get('configs', {}).get('pcb_config', {}).get('ip', '2001:db8:acad:3::'),
+            "subnet": "64"
         }
-
     elif lab_num == 14:
-        # Lab 14 - Static Route Configuration
+        # Lab 14 - Static Routing
         lab_devices = {
-            "routers": ["R1", "R2"],
-            "switches": ["S1", "S2"],
+            "routers": ["Router 1", "Router 2"],
+            "switches": ["Switch 1", "Switch 2"],
             "pcs": ["PC-A", "PC-B"],
-            "features": ["Static Routes"]
+            "features": ["Static Routing", "Network Configuration"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # Router Configurations
+        submission['r1_config'] = (
+            submission.get('configs', {}).get('r1_config', '') or 
+            submission.get('r1_config', 'ไม่มีข้อมูล')
+        )
+        submission['r2_config'] = (
+            submission.get('configs', {}).get('r2_config', '') or 
+            submission.get('r2_config', 'ไม่มีข้อมูล')
+        )
         
-        # PC config
+        # Switch Configurations
+        submission['sw1_config'] = (
+            submission.get('configs', {}).get('sw1_config', '') or 
+            submission.get('sw1_config', 'ไม่มีข้อมูล')
+        )
+        submission['sw2_config'] = (
+            submission.get('configs', {}).get('sw2_config', '') or 
+            submission.get('sw2_config', 'ไม่มีข้อมูล')
+        )
+        
+        # PC Configuration สำหรับ PC-A
         pc_a_config = {
-            "ip": submission.get('pc_a_ip_address', submission.get('pc_ip_address', '192.168.1.3')),
-            "subnet": submission.get('pc_a_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
-            "gateway": submission.get('pc_a_default_gateway', submission.get('pc_default_gateway', '192.168.1.1'))
+            "ip": submission.get('configs', {}).get('pca_config', {}).get('ip', '192.168.1.2'),
+            "subnet": submission.get('configs', {}).get('pca_config', {}).get('subnet', '255.255.255.0'),
+            "gateway": submission.get('configs', {}).get('pca_config', {}).get('gateway', '192.168.1.1')
         }
         
+        # PC Configuration สำหรับ PC-B
         pc_b_config = {
-            "ip": submission.get('pc_b_ip_address', '192.168.1.4'),
-            "subnet": submission.get('pc_b_subnet_mask', '255.255.255.0'),
-            "gateway": submission.get('pc_b_default_gateway', '192.168.1.1')
+            "ip": submission.get('configs', {}).get('pcb_config', {}).get('ip', '192.168.1.3'),
+            "subnet": submission.get('configs', {}).get('pcb_config', {}).get('subnet', '255.255.255.0'),
+            "gateway": submission.get('configs', {}).get('pcb_config', {}).get('gateway', '192.168.1.1')
         }
-
     elif lab_num == 15:
         # Lab 15 - HSRP
         lab_devices = {
@@ -2844,21 +2878,89 @@ def view_submission(lab_num, student_id):
             "features": ["HSRP", "Router Redundancy"]
         }
         
-        if 'switch_config' not in submission or not submission['switch_config']:
-            submission['switch_config'] = 'ไม่มีข้อมูล'
+        # ตรวจสอบว่า submission เป็น dictionary หรือไม่
+        if not isinstance(submission, dict):
+            submission = {}
         
-        # PC config
-        pca_config = {
-            "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.1.31')),
-            "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
-            "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '192.168.1.254'))
-        }
+        # ตรวจสอบว่ามี configs อยู่หรือไม่
+        if 'configs' in submission and isinstance(submission['configs'], dict):
+            # ถ้ามี configs ให้ดึงข้อมูลจาก configs มาใส่ใน submission
+            submission['r1_config'] = submission['configs'].get('r1_config', 'ไม่มีข้อมูล')
+            submission['r2_config'] = submission['configs'].get('r2_config', 'ไม่มีข้อมูล')
+            submission['r3_config'] = submission['configs'].get('r3_config', 'ไม่มีข้อมูล')
+            submission['sw1_config'] = submission['configs'].get('sw1_config', 'ไม่มีข้อมูล')
+            submission['sw2_config'] = submission['configs'].get('sw2_config', 'ไม่มีข้อมูล')
+        else:
+            # ถ้าไม่มี configs ให้กำหนดค่าเริ่มต้น
+            if 'r1_config' not in submission:
+                submission['r1_config'] = 'ไม่มีข้อมูล'
+            if 'r2_config' not in submission:
+                submission['r2_config'] = 'ไม่มีข้อมูล'
+            if 'r3_config' not in submission:
+                submission['r3_config'] = 'ไม่มีข้อมูล'
+            if 'sw1_config' not in submission:
+                submission['sw1_config'] = 'ไม่มีข้อมูล'
+            if 'sw2_config' not in submission:
+                submission['sw2_config'] = 'ไม่มีข้อมูล'
         
-        pcc_config = {
-            "ip": submission.get('pcc_ip_address', '192.168.1.33'),
-            "subnet": submission.get('pcc_subnet_mask', '255.255.255.0'),
-            "gateway": submission.get('pcc_default_gateway', '192.168.1.254')
-        }
+        # PC-A config
+        if 'configs' in submission and isinstance(submission['configs'], dict) and 'pca_config' in submission['configs']:
+            pca_config_data = submission['configs']['pca_config']
+            if isinstance(pca_config_data, dict):
+                pc_a_config = {
+                    "ip": pca_config_data.get('ip', '192.168.1.31'),
+                    "subnet": pca_config_data.get('subnet', '255.255.255.0'),
+                    "gateway": pca_config_data.get('gateway', '192.168.1.1')
+                }
+            else:
+                pc_a_config = {
+                    "ip": "192.168.1.31",
+                    "subnet": "255.255.255.0",
+                    "gateway": "192.168.1.254"
+                }
+        else:
+            pc_a_config = {
+                "ip": submission.get('pca_ip_address', submission.get('pc_ip_address', '192.168.1.31')),
+                "subnet": submission.get('pca_subnet_mask', submission.get('pc_subnet_mask', '255.255.255.0')),
+                "gateway": submission.get('pca_default_gateway', submission.get('pc_default_gateway', '192.168.1.254'))
+            }
+        
+        # PC-C config
+        if 'configs' in submission and isinstance(submission['configs'], dict) and 'pcc_config' in submission['configs']:
+            pcc_config_data = submission['configs']['pcc_config']
+            if isinstance(pcc_config_data, dict):
+                pc_c_config = {
+                    "ip": pcc_config_data.get('ip', '192.168.1.33'),
+                    "subnet": pcc_config_data.get('subnet', '255.255.255.0'),
+                    "gateway": pcc_config_data.get('gateway', '192.168.1.1')
+                }
+            else:
+                pc_c_config = {
+                    "ip": "192.168.1.33",
+                    "subnet": "255.255.255.0",
+                    "gateway": "192.168.1.254"
+                }
+        else:
+            pc_c_config = {
+                "ip": submission.get('pcc_ip_address', '192.168.1.33'),
+                "subnet": submission.get('pcc_subnet_mask', '255.255.255.0'),
+                "gateway": submission.get('pcc_default_gateway', '192.168.1.254')
+            }
+        
+        # แก้ไขปัญหาตัวแปรที่สับสน - ตรวจสอบว่ามีการใช้ชื่อตัวแปรที่แตกต่างกัน
+        if 'pc_a_config' not in locals():
+            pc_a_config = pca_config if 'pca_config' in locals() else {
+                "ip": "192.168.1.31",
+                "subnet": "255.255.255.0",
+                "gateway": "192.168.1.254"
+            }
+            
+        if 'pc_c_config' not in locals():
+            pc_c_config = pcc_config if 'pcc_config' in locals() else {
+                "ip": "192.168.1.33",
+                "subnet": "255.255.255.0", 
+                "gateway": "192.168.1.254"
+            }
 
     elif lab_num == 16:
         # Lab 16 - Switch Security Configuration
