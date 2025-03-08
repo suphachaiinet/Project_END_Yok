@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - จัดการอาจารย์{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb-4">จัดการอาจารย์</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">จัดการระบบ</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-tachometer-alt"></i> หน้าหลักแอดมิน
+                        </a>
+                        <a href="{{ url_for('admin.manage_teachers') }}" class="list-group-item list-group-item-action active">
+                            <i class="fas fa-chalkboard-teacher"></i> จัดการอาจารย์
+                        </a>
+                        <a href="{{ url_for('admin.manage_students') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-user-graduate"></i> จัดการนักศึกษา
+                        </a>
+                        <a href="{{ url_for('admin.manage_users') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-users"></i> จัดการผู้ใช้ทั้งหมด
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">สลับบทบาท</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="{{ url_for('admin.switch_to_admin') }}" class="list-group-item list-group-item-action active">
+                            <i class="fas fa-user-shield"></i> ใช้งานเป็นแอดมิน
+                        </a>
+                        <a href="{{ url_for('admin.switch_to_teacher') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-chalkboard-teacher"></i> ใช้งานเป็นอาจารย์
+                        </a>
+                        <a href="{{ url_for('admin.switch_to_student') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-user-graduate"></i> ใช้งานเป็นนักศึกษา
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <!-- คำขอเป็นอาจารย์ที่รอการอนุมัติ -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning">
+                    <h5 class="card-title mb-0">อาจารย์ที่รอการอนุมัติ</h5>
+                </div>
+                <div class="card-body">
+                    {% if pending_teachers|length > 0 %}
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ชื่อผู้ใช้</th>
+                                    <th>ชื่อ-นามสกุล</th>
+                                    <th>อีเมล</th>
+                                    <th>สมัครเมื่อ</th>
+                                    <th>จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for teacher in pending_teachers %}
+                                <tr>
+                                    <td>{{ teacher.username }}</td>
+                                    <td>{{ teacher.first_name }} {{ teacher.last_name }}</td>
+                                    <td>{{ teacher.email }}</td>
+                                    <td>{{ teacher.created_at.strftime('%d/%m/%Y') if teacher.created_at else 'N/A' }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <form action="{{ url_for('admin.approve_teacher', teacher_id=teacher._id) }}" method="post" class="d-inline">
+                                                <button type="submit" class="btn btn-success btn-sm">อนุมัติ</button>
+                                            </form>
+                                            <form action="{{ url_for('admin.reject_teacher', teacher_id=teacher._id) }}" method="post" class="d-inline ml-2">
+                                                <button type="submit" class="btn btn-danger btn-sm">ปฏิเสธ</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info">ไม่มีอาจารย์ที่รอการอนุมัติ</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- อาจารย์ที่ได้รับการอนุมัติแล้ว -->
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">อาจารย์ที่ได้รับการอนุมัติแล้ว</h5>
+                </div>
+                <div class="card-body">
+                    {% if active_teachers|length > 0 %}
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ชื่อผู้ใช้</th>
+                                    <th>ชื่อ-นามสกุล</th>
+                                    <th>อีเมล</th>
+                                    <th>อนุมัติเมื่อ</th>
+                                    <th>จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for teacher in active_teachers %}
+                                <tr>
+                                    <td>{{ teacher.username }}</td>
+                                    <td>{{ teacher.first_name }} {{ teacher.last_name }}</td>
+                                    <td>{{ teacher.email }}</td>
+                                    <td>{{ teacher.approved_at.strftime('%d/%m/%Y') if teacher.approved_at else 'N/A' }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ url_for('admin.edit_user', user_id=teacher._id) }}" class="btn btn-primary btn-sm">แก้ไข</a>
+                                            <form action="{{ url_for('admin.delete_teacher', teacher_id=teacher._id) }}" method="post" class="d-inline ml-2">
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('คุณแน่ใจหรือไม่ที่จะลบอาจารย์ท่านนี้?');">ลบ</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info">ไม่มีอาจารย์ที่ได้รับการอนุมัติ</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

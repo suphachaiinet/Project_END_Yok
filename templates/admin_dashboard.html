@@ -1,0 +1,292 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* สไตล์หลัก */
+    body {
+        background-color: #f5f7fa;
+    }
+    
+    /* สไตล์สำหรับเมนูด้านซ้าย */
+    .sidebar-menu {
+        background-color: #fff;
+        margin-bottom: 15px;
+    }
+    
+    .sidebar-title {
+        padding: 15px;
+        margin: 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .sidebar-menu .list-group-item {
+        border: none;
+        border-radius: 0;
+        padding: 12px 15px;
+    }
+    
+    .sidebar-menu .list-group-item i {
+        margin-right: 8px;
+    }
+    
+    .sidebar-menu .list-group-item.active {
+        background-color: #007bff;
+        color: white;
+    }
+    
+    /* สไตล์สำหรับการ์ดสถิติ */
+    .stat-card {
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin-bottom: 15px;
+    }
+    
+    .stat-card .number {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .stat-card .label {
+        font-size: 1rem;
+    }
+    
+    /* สไตล์สำหรับส่วนหัวของแต่ละส่วน */
+    .section-header {
+        border-left: 4px solid #007bff;
+        padding-left: 10px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+    
+    /* สไตล์สำหรับการแจ้งเตือน */
+    .info-alert {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-radius: 4px;
+        background-color: #e3f2fd;
+    }
+    
+    .info-alert i {
+        color: #0288d1;
+        margin-right: 10px;
+    }
+    
+    /* สไตล์สำหรับการ์ด Quick Actions */
+    .action-card {
+        text-align: center;
+        padding: 25px 15px;
+        background-color: white;
+        height: 100%;
+        border-radius: 4px;
+    }
+    
+    .action-card i {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .action-card .title {
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+    
+    .action-card .desc {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    /* สไตล์สำหรับปุ่มสีน้ำเงิน */
+    .blue-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .blue-btn:hover {
+        background-color: #0069d9;
+        color: white;
+    }
+    
+    /* สไตล์สำหรับปุ่มสีเขียว */
+    .green-btn {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .green-btn:hover {
+        background-color: #218838;
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-3">
+    <div class="row">
+        <!-- เมนูด้านซ้าย -->
+        <div class="col-md-3">
+            <!-- ส่วนการจัดการระบบ -->
+            <div class="card sidebar-menu">
+                <h5 class="sidebar-title">การจัดการระบบ</h5>
+                <div class="list-group list-group-flush">
+                    <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-tachometer-alt"></i> หน้าหลักแอดมิน
+                    </a>
+                    <a href="{{ url_for('admin.manage_teachers') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-chalkboard-teacher"></i> จัดการอาจารย์
+                    </a>
+                    <a href="{{ url_for('admin.manage_students') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user-graduate"></i> จัดการนักศึกษา
+                    </a>
+                    <a href="{{ url_for('admin.manage_users') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-users"></i> จัดการผู้ใช้ทั้งหมด
+                    </a>
+                </div>
+            </div>
+
+            <!-- ส่วนสลับบทบาท -->
+            <div class="card sidebar-menu">
+                <h5 class="sidebar-title">สลับบทบาท</h5>
+                <div class="list-group list-group-flush">
+                    <a href="{{ url_for('admin.switch_to_admin') }}" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-user-shield"></i> ใช้งานเป็นแอดมิน
+                    </a>
+                    <a href="{{ url_for('admin.switch_to_teacher') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-chalkboard-teacher"></i> ใช้งานเป็นอาจารย์
+                    </a>
+                    <a href="{{ url_for('admin.switch_to_student') }}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user-graduate"></i> ใช้งานเป็นนักศึกษา
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- เนื้อหาหลัก -->
+        <div class="col-md-9">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3>Dashboard Overview</h3>
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-user"></i> admin admin
+                </a>
+            </div>
+
+            <!-- แถวสำหรับสถิติ -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="stat-card bg-primary">
+                        <div class="number">{{ total_users }}</div>
+                        <div class="label">ผู้ใช้ทั้งหมด</div>
+                        <a href="{{ url_for('admin.manage_users') }}" class="btn btn-light btn-sm mt-2">จัดการผู้ใช้</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card bg-info">
+                        <div class="number">{{ total_teachers }}</div>
+                        <div class="label">อาจารย์</div>
+                        <a href="{{ url_for('admin.manage_teachers') }}" class="btn btn-light btn-sm mt-2">จัดการอาจารย์</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card bg-success">
+                        <div class="number">{{ total_students }}</div>
+                        <div class="label">นักศึกษา</div>
+                        <a href="{{ url_for('admin.manage_students') }}" class="btn btn-light btn-sm mt-2">จัดการนักศึกษา</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ส่วนอาจารย์ที่รอการอนุมัติ -->
+            <div class="section-header">
+                <h4>อาจารย์ที่รอการอนุมัติ</h4>
+            </div>
+
+            {% if pending_teachers|length > 0 %}
+            <div class="card mb-4">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>ชื่อผู้ใช้</th>
+                                    <th>ชื่อ-นามสกุล</th>
+                                    <th>อีเมล</th>
+                                    <th>จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for teacher in pending_teachers %}
+                                <tr>
+                                    <td>{{ teacher.username }}</td>
+                                    <td>{{ teacher.first_name }} {{ teacher.last_name }}</td>
+                                    <td>{{ teacher.email }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <form action="{{ url_for('admin.approve_teacher', teacher_id=teacher._id) }}" method="post" class="d-inline">
+                                                <button type="submit" class="btn btn-success btn-sm mr-1">อนุมัติ</button>
+                                            </form>
+                                            <form action="{{ url_for('admin.reject_teacher', teacher_id=teacher._id) }}" method="post" class="d-inline">
+                                                <button type="submit" class="btn btn-danger btn-sm">ปฏิเสธ</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="info-alert mb-4">
+                <i class="fas fa-info-circle"></i>
+                <span>ไม่มีอาจารย์ที่รอการอนุมัติ</span>
+            </div>
+            {% endif %}
+
+            <!-- Quick Actions -->
+            <div class="section-header">
+                <h4>Quick Actions</h4>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="action-card">
+                            <i class="fas fa-user-plus text-primary"></i>
+                            <h5 class="title">เพิ่มผู้ใช้ใหม่</h5>
+                            <p class="desc">เพิ่มผู้ใช้งานใหม่เข้าสู่ระบบ</p>
+                            <a href="{{ url_for('admin.add_user') }}" class="blue-btn">เพิ่มผู้ใช้</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="action-card">
+                            <i class="fas fa-cog text-success"></i>
+                            <h5 class="title">ตรวจสอบระบบ</h5>
+                            <p class="desc">ตรวจสอบการทำงานของระบบ</p>
+                            <a href="{{ url_for('admin.manage_users') }}" class="green-btn">ตรวจสอบ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

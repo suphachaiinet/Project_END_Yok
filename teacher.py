@@ -25,7 +25,7 @@ lab_keywords_collection = db['lab_keywords']
 # ดึงข้อมูลจำนวนนักศึกษาและคะแนนทั้งหมด
 @teacher_bp.route('/students')
 def students():
-    if 'user_id' not in session or session.get('role') != 'teacher':
+    if 'user_id' not in session or (session.get('role') != 'teacher' and session.get('temp_role') != 'teacher'):
         flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
         return redirect(url_for('login'))
     
@@ -87,7 +87,7 @@ def students():
 # แสดงสถิติภาพรวม
 @teacher_bp.route('/stats')
 def stats():
-    if 'user_id' not in session or session.get('role') != 'teacher':
+    if 'user_id' not in session or (session.get('role') != 'teacher' and session.get('temp_role') != 'teacher'):
         flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
         return redirect(url_for('login'))
     
@@ -186,7 +186,7 @@ def format_keywords_for_display(keywords):
 # แสดงหน้าจัดการแล็บ
 @teacher_bp.route('/lab/<int:lab_num>')
 def lab_management(lab_num):
-    if 'user_id' not in session or session.get('role') != 'teacher':
+    if 'user_id' not in session or (session.get('role') != 'teacher' and session.get('temp_role') != 'teacher'):
         flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
         return redirect(url_for('login'))
     
@@ -1988,7 +1988,7 @@ def format_vlans_for_display(vlans):
 
 @teacher_bp.route('/submission/<int:lab_num>/<student_id>')
 def view_submission(lab_num, student_id):
-    if 'user_id' not in session or session.get('role') != 'teacher':
+    if 'user_id' not in session or (session.get('role') != 'teacher' and session.get('temp_role') != 'teacher'):
         flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
         return redirect(url_for('login'))
     
@@ -3130,7 +3130,7 @@ def view_submission(lab_num, student_id):
 # อัพเดทคะแนนด้วยตนเอง
 @teacher_bp.route('/update_grade', methods=['POST'])
 def update_grade():
-    if 'user_id' not in session or session.get('role') != 'teacher':
+    if 'user_id' not in session or (session.get('role') != 'teacher' and session.get('temp_role') != 'teacher'):
         flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
         return redirect(url_for('login'))
     
@@ -3162,7 +3162,7 @@ def update_grade():
 # ลบการส่งงาน
 @teacher_bp.route('/delete_submission', methods=['POST'])
 def delete_submission():
-    if 'user_id' not in session or session.get('role') != 'teacher':
+    if 'user_id' not in session or (session.get('role') != 'teacher' and session.get('temp_role') != 'teacher'):
         flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
         return redirect(url_for('login'))
     
@@ -3179,7 +3179,7 @@ def delete_submission():
 # อัพเดทคีย์เวิร์ด
 @teacher_bp.route('/lab/<int:lab_num>/update', methods=['POST'])
 def update_keywords(lab_num):
-    if 'user_id' not in session or session.get('role') != 'teacher':
+    if 'user_id' not in session or (session.get('role') != 'teacher' and session.get('temp_role') != 'teacher'):
         flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
         return redirect(url_for('login'))
     

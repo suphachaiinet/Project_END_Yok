@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - จัดการผู้ใช้{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb-4">จัดการผู้ใช้ทั้งหมด</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">จัดการระบบ</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-tachometer-alt"></i> หน้าหลักแอดมิน
+                        </a>
+                        <a href="{{ url_for('admin.manage_teachers') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-chalkboard-teacher"></i> จัดการอาจารย์
+                        </a>
+                        <a href="{{ url_for('admin.manage_students') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-user-graduate"></i> จัดการนักศึกษา
+                        </a>
+                        <a href="{{ url_for('admin.manage_users') }}" class="list-group-item list-group-item-action active">
+                            <i class="fas fa-users"></i> จัดการผู้ใช้ทั้งหมด
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">สลับบทบาท</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="{{ url_for('admin.switch_to_admin') }}" class="list-group-item list-group-item-action active">
+                            <i class="fas fa-user-shield"></i> ใช้งานเป็นแอดมิน
+                        </a>
+                        <a href="{{ url_for('admin.switch_to_teacher') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-chalkboard-teacher"></i> ใช้งานเป็นอาจารย์
+                        </a>
+                        <a href="{{ url_for('admin.switch_to_student') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-user-graduate"></i> ใช้งานเป็นนักศึกษา
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <!-- รายการผู้ใช้ทั้งหมด -->
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">ผู้ใช้ทั้งหมด</h5>
+                        <a href="{{ url_for('admin.add_user') }}" class="btn btn-light btn-sm">
+                            <i class="fas fa-plus"></i> เพิ่มผู้ใช้
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if users|length > 0 %}
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th>ชื่อผู้ใช้</th>
+                                    <th>ชื่อ-นามสกุล</th>
+                                    <th>อีเมล</th>
+                                    <th>บทบาท</th>
+                                    <th>สถานะ</th>
+                                    <th>สมัครเมื่อ</th>
+                                    <th>จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                <tr>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>
+                                        {% if user.role == 'admin' %}
+                                        <span class="badge badge-danger">แอดมิน</span>
+                                        {% elif user.role == 'teacher' %}
+                                        <span class="badge badge-info">อาจารย์</span>
+                                        {% else %}
+                                        <span class="badge badge-success">นักศึกษา</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if user.is_verified %}
+                                        <span class="badge badge-success">ยืนยันแล้ว</span>
+                                        {% else %}
+                                        <span class="badge badge-warning">รอยืนยัน</span>
+                                        {% endif %}
+                                        
+                                        {% if user.role == 'teacher' %}
+                                            {% if user.is_approved %}
+                                            <span class="badge badge-primary">อนุมัติแล้ว</span>
+                                            {% else %}
+                                            <span class="badge badge-secondary">รออนุมัติ</span>
+                                            {% endif %}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ user.created_at.strftime('%d/%m/%Y') if user.created_at else 'N/A' }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ url_for('admin.edit_user', user_id=user._id) }}" class="btn btn-primary btn-sm">แก้ไข</a>
+                                            <form action="{{ url_for('admin.delete_user', user_id=user._id) }}" method="post" class="d-inline ml-2">
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('คุณแน่ใจหรือไม่ที่จะลบผู้ใช้นี้?');">ลบ</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info">ไม่มีผู้ใช้</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        $('#usersTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Thai.json"
+            }
+        });
+    });
+</script>
+{% endblock %}
+{% endblock %}

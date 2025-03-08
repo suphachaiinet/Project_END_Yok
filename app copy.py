@@ -34,7 +34,6 @@ from lab14 import lab14_bp
 from lab15 import lab15_bp
 from lab16 import lab16_bp
 from teacher import teacher_bp
-from admin import admin_bp  # เพิ่มบรรทัดนี้
 
 
 app = Flask(__name__)
@@ -57,7 +56,6 @@ app.register_blueprint(lab15_bp, url_prefix='/lab15')
 app.register_blueprint(lab16_bp, url_prefix='/lab16')
 app.register_blueprint(teacher_bp, url_prefix='/teacher')
 app.register_blueprint(pdf_bp, url_prefix='/pdf')
-app.register_blueprint(admin_bp, url_prefix='/admin')  # เพิ่มบรรทัดนี้
 
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 import os
@@ -177,23 +175,8 @@ def login():
 
         role = user.get('role', 'user')
 
-        # เพิ่มเงื่อนไขสำหรับแอดมิน
-        if role == 'admin':
-            # บันทึก session
-            session['user_id'] = str(user['_id'])
-            session['username'] = user['username']
-            session['role'] = role
-
-            flash('เข้าสู่ระบบสำเร็จ!', 'success')
-            return redirect(url_for('dashboard'))
-
         # ตรวจสอบว่ามีข้อมูลใน teachers/students หรือไม่
         if role == 'teacher':
-            # ถ้าเป็นอาจารย์ต้องตรวจสอบการอนุมัติด้วย
-            if not user.get('is_approved', False):
-                flash('บัญชีของคุณยังรอการอนุมัติจากแอดมิน', 'warning')
-                return redirect(url_for('login'))
-                
             teacher_data = mongo.db.teachers.find_one({"username": user['username']})
             if not teacher_data:
                 flash('ข้อมูลของคุณยังไม่ได้ถูกย้ายเข้าสู่ระบบสำหรับครู', 'danger')
@@ -221,13 +204,9 @@ def dashboard():
         return redirect(url_for('login'))
     
     user = mongo.db.users_all.find_one({"_id": ObjectId(session['user_id'])})
-    # ใช้ temp_role ถ้ามี (สำหรับแอดมินที่สลับบทบาท) หรือใช้ role ปกติ
-    role = session.get('temp_role', session.get('role', 'user'))
+    role = session.get('role', 'user')
 
-    # เปลี่ยนเส้นทางสำหรับแอดมิน
-    if role == 'admin':
-        return redirect(url_for('admin.dashboard'))
-    elif role == 'teacher':
+    if role == 'teacher':
         # คำนวณข้อมูลสถิติสำหรับอาจารย์
         all_scores = list(scores_collection.find())
         
@@ -297,36 +276,6 @@ def logout():
     flash('You have been logged out.', 'success')
     return redirect(url_for('login'))
 
-# สร้างฟังก์ชันสำหรับสร้างผู้ใช้แอดมินเริ่มต้น (ไม่มี decorator)
-def create_admin_user():
-    # ตรวจสอบว่ามีผู้ใช้แอดมินอยู่แล้วหรือไม่
-    admin_user = mongo.db.users_all.find_one({"username": "admin"})
-    
-    if not admin_user:
-        # สร้างรหัสผ่านแบบแฮช
-        hashed_password = bcrypt.generate_password_hash("P@ssw0rd").decode('utf-8')
-        
-        # สร้างผู้ใช้แอดมินใหม่
-        admin = {
-            "username": "admin",
-            "password": hashed_password,
-            "first_name": "admin",
-            "last_name": "admin",
-            "email": "s6506022410031@email.kmutnb.ac.th",
-            "role": "admin",
-            "is_verified": True,
-            "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
-        }
-        
-        # เพิ่มลงในฐานข้อมูล
-        mongo.db.users_all.insert_one(admin)
-        
-        print("* สร้างผู้ใช้แอดมินเรียบร้อยแล้ว *")
-    else:
-        print("* ผู้ใช้แอดมินมีอยู่แล้ว *")
 
 if __name__ == '__main__':
-    with app.app_context():
-        create_admin_user()
     app.run(debug=True)
-

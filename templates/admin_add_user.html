@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - เพิ่มผู้ใช้{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb-4">เพิ่มผู้ใช้ใหม่</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">จัดการระบบ</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-tachometer-alt"></i> หน้าหลักแอดมิน
+                        </a>
+                        <a href="{{ url_for('admin.manage_teachers') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-chalkboard-teacher"></i> จัดการอาจารย์
+                        </a>
+                        <a href="{{ url_for('admin.manage_students') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-user-graduate"></i> จัดการนักศึกษา
+                        </a>
+                        <a href="{{ url_for('admin.manage_users') }}" class="list-group-item list-group-item-action active">
+                            <i class="fas fa-users"></i> จัดการผู้ใช้ทั้งหมด
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">สลับบทบาท</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="{{ url_for('admin.switch_to_admin') }}" class="list-group-item list-group-item-action active">
+                            <i class="fas fa-user-shield"></i> ใช้งานเป็นแอดมิน
+                        </a>
+                        <a href="{{ url_for('admin.switch_to_teacher') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-chalkboard-teacher"></i> ใช้งานเป็นอาจารย์
+                        </a>
+                        <a href="{{ url_for('admin.switch_to_student') }}" class="list-group-item list-group-item-action">
+                            <i class="fas fa-user-graduate"></i> ใช้งานเป็นนักศึกษา
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">เพิ่มผู้ใช้ใหม่</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{{ url_for('admin.add_user') }}">
+                        <div class="form-group">
+                            <label for="username">ชื่อผู้ใช้ <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">รหัสผ่าน <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="first_name">ชื่อ <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">นามสกุล <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">อีเมล <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">บทบาท <span class="text-danger">*</span></label>
+                            <select class="form-control" id="role" name="role" required>
+                                <option value="student">นักศึกษา</option>
+                                <option value="teacher">อาจารย์</option>
+                                <option value="admin">แอดมิน</option>
+                            </select>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="is_verified" name="is_verified" checked>
+                            <label class="form-check-label" for="is_verified">
+                                ยืนยันอีเมลแล้ว
+                            </label>
+                        </div>
+                        <div class="form-check mb-3" id="is_approved_container" style="display: none;">
+                            <input class="form-check-input" type="checkbox" id="is_approved" name="is_approved">
+                            <label class="form-check-label" for="is_approved">
+                                อนุมัติเป็นอาจารย์
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">เพิ่มผู้ใช้</button>
+                            <a href="{{ url_for('admin.manage_users') }}" class="btn btn-secondary">ยกเลิก</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const roleSelect = document.getElementById('role');
+        const isApprovedContainer = document.getElementById('is_approved_container');
+        
+        roleSelect.addEventListener('change', function() {
+            if (this.value === 'teacher') {
+                isApprovedContainer.style.display = 'block';
+            } else {
+                isApprovedContainer.style.display = 'none';
+            }
+        });
+    });
+</script>
+{% endblock %}
