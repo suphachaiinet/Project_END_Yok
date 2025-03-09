@@ -13466,3 +13466,60 @@ INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:28] "[32mGET /logout HTTP/1.1[0
 INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:28] "GET /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:35] "[32mPOST /login HTTP/1.1[0m" 302 -
 INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:35] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:20:52] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:20:52] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:20:54] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:21:45] "[32mPOST /change_password HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:21:45] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:00] "[32mPOST /change_password HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:00] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:03] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:03] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:08] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:08] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:11] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:11] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:14] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:14] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:18] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:22:20] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:24:45] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:02] "[32mPOST /change_password HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:02] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:04] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:19] "[32mPOST /change_password HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:19] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:32] "[32mPOST /change_password HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:32] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:44] "[32mPOST /change_password HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:45] "[32mPOST /change_password HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:45] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:47] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:47] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:51] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:51] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:53] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:25:59] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:00] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:13] "[32mPOST /change_password HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:13] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:15] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:15] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:19] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:20] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:23] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:24] "GET /change_password HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:25] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:38] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:38] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:45] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:26:47] "GET /teacher/students HTTP/1.1" 200 -

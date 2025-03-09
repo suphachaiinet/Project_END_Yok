@@ -447,6 +447,53 @@ def cleanup_unverified_users():
             logging.error(f"เกิดข้อผิดพลาดในการลบผู้ใช้ที่ไม่ยืนยัน: {str(e)}")
             time.sleep(60)  # หากมีข้อผิดพลาด ให้รอก่อนลองใหม่
 
+@app.route('/change_password', methods=['GET', 'POST'])
+def change_password():
+    if 'user_id' not in session:
+        flash('กรุณาเข้าสู่ระบบก่อน', 'danger')
+        return redirect(url_for('login'))
+    
+    if request.method == 'POST':
+        current_password = request.form['current_password']
+        new_password = request.form['new_password']
+        confirm_password = request.form['confirm_password']
+        
+        # ตรวจสอบรหัสผ่านใหม่ตรงกัน
+        if new_password != confirm_password:
+            flash('รหัสผ่านใหม่ไม่ตรงกัน', 'danger')
+            return redirect(url_for('change_password'))
+        
+        # ตรวจสอบความยาวของรหัสผ่าน
+        if len(new_password) < 6:
+            flash('รหัสผ่านใหม่ต้องมีความยาวอย่างน้อย 6 ตัวอักษร', 'danger')
+            return redirect(url_for('change_password'))
+        
+        # ดึงข้อมูลผู้ใช้
+        user = mongo.db.users_all.find_one({"_id": ObjectId(session['user_id'])})
+        
+        if not user:
+            flash('ไม่พบข้อมูลผู้ใช้', 'danger')
+            return redirect(url_for('logout'))
+        
+        # ตรวจสอบรหัสผ่านปัจจุบัน
+        if not bcrypt.check_password_hash(user['password'], current_password):
+            flash('รหัสผ่านปัจจุบันไม่ถูกต้อง', 'danger')
+            return redirect(url_for('change_password'))
+        
+        # เข้ารหัสพาสเวิร์ดใหม่
+        hashed_password = bcrypt.generate_password_hash(new_password).decode('utf-8')
+        
+        # อัปเดตรหัสผ่านในฐานข้อมูล
+        mongo.db.users_all.update_one(
+            {"_id": ObjectId(session['user_id'])},
+            {"$set": {"password": hashed_password, "password_updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))}}
+        )
+        
+        flash('เปลี่ยนรหัสผ่านสำเร็จ', 'success')
+        return redirect(url_for('dashboard'))
+    
+    return render_template('change_password.html')
+
 if __name__ == '__main__':
     with app.app_context():
         create_admin_user()

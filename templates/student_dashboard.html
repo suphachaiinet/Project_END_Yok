@@ -204,6 +204,9 @@
                     <button id="scoreToggle" class="px-3 py-2 text-gray-600 hover:text-gray-900">
                         View Scores
                     </button>
+                    <a href="{{ url_for('change_password') }}" class="px-3 py-2 text-gray-600 hover:text-gray-900">
+                        เปลี่ยนรหัสผ่าน
+                    </a>
                     <span class="text-gray-600">{{ first_name }} {{ last_name }}</span>
                     <a href="{{ url_for('logout') }}" class="text-gray-600 hover:text-gray-900">Logout</a>
                 </div>
