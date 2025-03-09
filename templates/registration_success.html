@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลงทะเบียนสำเร็จ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <!-- เพิ่ม Font Awesome (ถ้าต้องการใช้ไอคอน) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-lg shadow-md">
+            <div class="text-center">
+                <!-- ไอคอนซองจดหมาย (ถ้ามี Font Awesome) -->
+                <i class="fas fa-envelope-open-text text-green-500 text-5xl mb-4"></i>
+                
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">ลงทะเบียนสำเร็จ!</h2>
+                
+                <p class="text-lg mb-2">เราได้ส่งอีเมลยืนยันไปที่ <strong>{{ email }}</strong></p>
+                
+                <p class="mb-2">กรุณาตรวจสอบอีเมลของคุณและคลิกลิงก์ยืนยันเพื่อเปิดใช้งานบัญชี</p>
+                
+                <p class="text-gray-500 text-sm mb-6">หากไม่พบในกล่องจดหมาย โปรดตรวจสอบในโฟลเดอร์สแปม</p>
+                
+                <!-- แสดงข้อความแจ้งเตือนทั้งหมด (ถ้ามี) -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="p-4 mb-4 {{ 'bg-green-100 text-green-700' if category == 'success' else 'bg-yellow-100 text-yellow-700' if category == 'warning' else 'bg-red-100 text-red-700' }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                
+                <div class="mt-6">
+                    <a href="{{ url_for('login') }}" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                        ไปยังหน้าเข้าสู่ระบบ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // เปลี่ยนเส้นทางไปยังหน้า login หลังจาก 10 วินาที
+        setTimeout(function() {
+            window.location.href = "{{ url_for('login') }}";
+        }, 10000);
+    </script>
+</body>
+</html>

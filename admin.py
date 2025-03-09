@@ -501,3 +501,19 @@ def add_user():
     return render_template('admin_add_user.html',
                           first_name=first_name,
                           last_name=last_name)
+
+@admin_bp.route('/update_created_at')
+def update_created_at():
+    if 'user_id' not in session or session.get('role') != 'admin':
+        flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
+        return redirect(url_for('login'))
+    
+    # ตรวจสอบว่าฟังก์ชันนี้อัพเดตข้อมูลในฐานข้อมูลจริงๆ
+    result = users_collection.update_many(
+        {"created_at": {"$exists": False}},
+        {"$set": {"created_at": datetime.now(ZoneInfo("Asia/Bangkok"))}}
+    )
+    
+    flash(f'อัพเดตฟิลด์ created_at สำหรับผู้ใช้ {result.modified_count} ราย', 'success')
+    return redirect(url_for('admin.manage_users'))
+

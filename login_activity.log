@@ -13187,3 +13187,282 @@ INFO:werkzeug:127.0.0.1 - - [08/Mar/2025 20:23:30] "GET /dashboard HTTP/1.1" 200
 INFO:werkzeug:127.0.0.1 - - [08/Mar/2025 20:23:34] "GET /teacher/lab/1 HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [08/Mar/2025 20:23:37] "[32mGET /logout HTTP/1.1[0m" 302 -
 INFO:werkzeug:127.0.0.1 - - [08/Mar/2025 20:23:37] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 06:10:59] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 06:11:07] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 06:11:07] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:36:51] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:36:55] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:36:56] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:37:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:37:05] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:37:06] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:37:06] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:49:26] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:49:26] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:49:35] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:49:35] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:49:35] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:49:38] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:50:56] "[32mGET /admin/role/admin HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:50:56] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:50:59] "[32mGET /admin/role/teacher HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:50:59] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:51:40] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:51:40] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:51:43] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:51:43] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:51:53] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:51:53] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:51:53] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:06] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:17] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:22] "GET /admin/users/edit/67b2b7158244077f28c302dd HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:25] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:26] "GET /admin/teachers HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:26] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:29] "GET /admin/teachers HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:30] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:31] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:40] "GET /admin/teachers HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:52:43] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:32] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:35] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:35] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:38] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:38] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:42] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:44] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:44] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:48] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:48] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:50] "GET /lab/lab1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:50] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:51] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:54:51] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:55:01] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:55:01] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:55:01] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:55:09] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:55:21] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:55:22] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:55:23] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:57:07] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:57:15] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:57:17] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:57:18] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:57:19] "GET /admin/teachers HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:57:19] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:57:22] "GET /admin/teachers HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:57:27] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 09:57:28] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:02:46] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:02:47] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:03:26] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:03:53] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:03:54] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:03:55] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:03:55] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:03:55] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:03:55] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:03:55] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:03] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:04] "GET /admin/teachers HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:07] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:08] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:10] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:11] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:22] "[32mGET /admin/role/admin HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:22] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:25] "[32mGET /admin/role/teacher HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:25] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:37] "[32mGET /admin/role/student HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:06:37] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:07:16] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:07:17] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:07:19] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:07] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:08] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:08] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:08] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:08] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:08] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:09] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:09] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:09] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:09] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:09] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:09] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:10] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:10] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:10] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:10] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:10] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:11] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:11] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:11] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:12] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:12] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:13] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:13] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:17] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:18] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:21] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:23] "GET /admin/teachers HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:24] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:28] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:30] "GET /admin/users/add HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:11:49] "POST /admin/users/add HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:12:09] "POST /admin/users/add HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:12:38] "POST /admin/users/add HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:13:17] "[32mPOST /admin/users/add HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:13:17] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:13:27] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:13:56] "[32mPOST /admin/users/delete/67cd074dea97c346ab405435 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:13:56] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:14:00] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:14:00] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:14:06] "GET /register HTTP/1.1" 200 -
+ERROR:root:Error sending email: Could not build url for endpoint 'confirm_email' with values ['token']. Did you mean 'home' instead?
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:14:23] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:14:23] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+ERROR:root:Error sending email: Could not build url for endpoint 'confirm_email' with values ['token']. Did you mean 'home' instead?
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:49:54] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:49:54] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:19] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:19] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:29] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:31] "GET /admin/teachers HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:32] "GET /admin/students HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:33] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:33] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:35] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:35] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:38] "GET /register HTTP/1.1" 200 -
+ERROR:root:Error sending email: Could not build url for endpoint 'confirm_email' with values ['token']. Did you mean 'home' instead?
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:56] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:50:56] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+ERROR:root:Error sending email: Could not build url for endpoint 'confirm_email' with values ['token']. Did you mean 'home' instead?
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:53:13] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:53:23] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:53:33] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:53:33] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:53:34] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:53:39] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:53:39] "GET /register HTTP/1.1" 200 -
+ERROR:root:Error sending email: Could not build url for endpoint 'confirm_email' with values ['token']. Did you mean 'home' instead?
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:54:13] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:54:23] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:54:38] "GET /register HTTP/1.1" 200 -
+ERROR:root:Error sending email: Could not build url for endpoint 'confirm_email' with values ['token']. Did you mean 'home' instead?
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:54:42] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:54:52] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:56:07] "GET /register HTTP/1.1" 200 -
+ERROR:root:Error sending email: Could not build url for endpoint 'confirm_email' with values ['token']. Did you mean 'home' instead?
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:56:19] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 10:56:23] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 634-005-923
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:05:30] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:05:49] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:05:49] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:06:12] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:06:18] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:06:18] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:06:46] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:06:54] "[32mGET /confirm_email/InN1cGhhY2hhaTEwOTc4QGdtYWlsLmNvbSI.Z80T0g.FS2koJKc6383pvZ7qsozNbm4aaI HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:06:54] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:06:57] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:06:59] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:06:59] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:18] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:18] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:19] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:25] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:34] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:34] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:34] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:36] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:42] "[32mPOST /admin/users/delete/67cd13d2c87a81e7bc811b05 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:42] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:43] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:54] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:58] "[32mGET /admin/update_created_at HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:07:58] "GET /admin/users HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:08:07] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:08:07] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:08:08] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:08:20] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:08:23] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:08:30] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:08:53] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:09:03] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:09:42] "[32mGET /confirm_email/InN1cGhhY2hhaTEwOTc4QGdtYWlsLmNvbSI.Z80T0g.FS2koJKc6383pvZ7qsozNbm4aaI HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:09:42] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:10:25] "[32mGET /confirm_email/InN1cGhhY2hhaTE2MTE0M0BnbWFpbC5jb20i.Z80UUQ.NWHOKuUFrhCPbgqVSBrjqvniCy4 HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:10:25] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:10:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:11:05] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:11:05] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:11:21] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:11:21] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:11:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:11:37] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:11:38] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:12:28] "POST /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:12:38] "[32mGET /confirm_email/InN1cGhhY2hhaTE2MTE0M0BnbWFpbC5jb20i.Z80VJw.rQ9xFyDYBmZ1pUmDsc9sPW48Wrg HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:12:38] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:12:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:12:39] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:04] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:04] "GET /admin/dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:07] "GET /admin/teachers HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:09] "[32mPOST /admin/teachers/approve/67cd1527c87a81e7bc811b0f HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:09] "GET /admin/teachers HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:12] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:12] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:17] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:18] "GET /teacher/lab/1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:25] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:28] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:28] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:35] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [09/Mar/2025 11:13:35] "GET /dashboard HTTP/1.1" 200 -

@@ -2,8 +2,39 @@
 
 {% block title %}Admin - จัดการผู้ใช้{% endblock %}
 
+{% block extra_css %}
+<style>
+    /* ปรับแต่งขนาดของตาราง */
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    /* ลดขนาดตัวอักษรในตาราง */
+    #usersTable {
+        font-size: 0.9rem;
+    }
+    
+    /* ปรับขนาดของคอลัมน์ให้เหมาะสม */
+    #usersTable th, #usersTable td {
+        white-space: nowrap;
+        padding: 0.5rem;
+    }
+    
+    /* ทำให้คอลัมน์จัดการมีขนาดเล็กลง */
+    #usersTable th:last-child, #usersTable td:last-child {
+        width: 120px;
+    }
+    
+    /* ปรับขนาดปุ่มให้เล็กลง */
+    .btn-sm {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.8rem;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container mt-4">
+<div class="container-fluid mt-4">
     <div class="row">
         <div class="col-md-12">
             <h2 class="mb-4">จัดการผู้ใช้ทั้งหมด</h2>
@@ -11,7 +42,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white">
                     <h5 class="card-title mb-0">จัดการระบบ</h5>
@@ -54,15 +85,20 @@
             </div>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-10">
             <!-- รายการผู้ใช้ทั้งหมด -->
             <div class="card">
                 <div class="card-header bg-primary text-white">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="card-title mb-0">ผู้ใช้ทั้งหมด</h5>
-                        <a href="{{ url_for('admin.add_user') }}" class="btn btn-light btn-sm">
-                            <i class="fas fa-plus"></i> เพิ่มผู้ใช้
-                        </a>
+                        <div>
+                            <a href="{{ url_for('admin.update_created_at') }}" class="btn btn-light btn-sm mr-2">
+                                <i class="fas fa-sync"></i> อัพเดต created_at
+                            </a>
+                            <a href="{{ url_for('admin.add_user') }}" class="btn btn-light btn-sm">
+                                <i class="fas fa-plus"></i> เพิ่มผู้ใช้
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -77,6 +113,7 @@
                                     <th>บทบาท</th>
                                     <th>สถานะ</th>
                                     <th>สมัครเมื่อ</th>
+                                    <th>เข้าสู่ระบบล่าสุด</th>
                                     <th>จัดการ</th>
                                 </tr>
                             </thead>
@@ -110,7 +147,8 @@
                                             {% endif %}
                                         {% endif %}
                                     </td>
-                                    <td>{{ user.created_at.strftime('%d/%m/%Y') if user.created_at else 'N/A' }}</td>
+                                    <td>{{ user.created_at.strftime('%d/%m/%Y %H:%M:%S') if user.created_at else 'N/A' }}</td>
+                                    <td>{{ user.last_login.strftime('%d/%m/%Y %H:%M:%S') if user.last_login else 'ยังไม่เคยเข้าสู่ระบบ' }}</td>
                                     <td>
                                         <div class="btn-group" role="group">
                                             <a href="{{ url_for('admin.edit_user', user_id=user._id) }}" class="btn btn-primary btn-sm">แก้ไข</a>
@@ -139,7 +177,20 @@
         $('#usersTable').DataTable({
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Thai.json"
-            }
+            },
+            "pageLength": 25,
+            "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "ทั้งหมด"] ],
+            "columnDefs": [
+                { "width": "10%", "targets": 0 }, // ชื่อผู้ใช้
+                { "width": "15%", "targets": 1 }, // ชื่อ-นามสกุล
+                { "width": "18%", "targets": 2 }, // อีเมล
+                { "width": "7%", "targets": 3 }, // บทบาท
+                { "width": "10%", "targets": 4 }, // สถานะ
+                { "width": "12%", "targets": 5 }, // สมัครเมื่อ
+                { "width": "15%", "targets": 6 }, // เข้าสู่ระบบล่าสุด
+                { "width": "10%", "targets": 7 }  // จัดการ
+            ],
+            "order": [[ 5, "desc" ]] // เรียงตามวันที่สมัครจากมากไปน้อย
         });
     });
 </script>
