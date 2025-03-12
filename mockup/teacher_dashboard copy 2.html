@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="#" class="text-lg font-semibold">Network Lab II - Teacher Portal</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-gray-700 mr-4">Welcome, Dr. Somchai Jaidee</span>
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Content Header -->
+        <div class="px-4 py-4 sm:px-0">
+            <h2 class="text-2xl font-bold leading-7 text-gray-900 mb-4">Dashboard Overview</h2>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Total Students -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">
+                                    Total Students
+                                </dt>
+                                <dd class="mt-1 text-3xl font-semibold text-gray-900">
+                                    35
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Average Score -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">
+                                    Average Score
+                                </dt>
+                                <dd class="mt-1 text-3xl font-semibold text-gray-900">
+                                    78.5%
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Labs Progress -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
+                            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">
+                                    Overall Completion Rate
+                                </dt>
+                                <dd class="mt-1 text-3xl font-semibold text-gray-900">
+                                    85.2%
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lab Management Links -->
+        <div class="mt-8">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Lab Management</h3>
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+                <!-- Lab 1 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                1
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 1</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 2 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                2
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 2</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 3 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                3
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 3</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 4 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                4
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 4</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 5 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                5
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 5</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 6 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                6
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 6</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 7 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                7
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 7</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 8 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                8
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 8</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 9 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                9
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 9</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 10 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                10
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 10</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 11 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                11
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 11</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 12 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                12
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 12</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 13 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                13
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 13</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 14 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                14
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 14</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 15 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                15
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 15</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Lab 16 -->
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-4 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <span class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-semibold">
+                                16
+                            </span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-medium text-gray-900">Lab 16</div>
+                            <div class="text-sm text-gray-500">View Details</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="mt-8">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <svg class="h-6 w-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <div class="ml-4">
+                            <div class="text-lg font-medium text-gray-900">Manage Students</div>
+                            <div class="text-sm text-gray-500">View and manage student information</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="bg-white overflow-hidden shadow rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
+                    <div class="flex items-center">
+                        <svg class="h-6 w-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                        <div class="ml-4">
+                            <div class="text-lg font-medium text-gray-900">View Statistics</div>
+                            <div class="text-sm text-gray-500">Check overall performance metrics</div>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="bg-white overflow-hidden shadow rounded-lg p-6">
+                    <div class="flex items-center">
+                        <svg class="h-6 w-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <div class="ml-4">
+                            <div class="text-lg font-medium text-gray-900">Recent Activity</div>
+                            <div class="text-sm text-gray-500">Last submission: March 13, 2025, 10:45 AM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Student Performance Table -->
+        <div class="mt-8">
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+                    <h3 class="text-lg font-medium text-gray-900">Recent Submissions</h3>
+                    <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800">View All</a>
+                </div>
+                <div class="border-t border-gray-200">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student ID</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lab</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Submission Date</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Score</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <!-- Student 1 -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">6310123456</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Somchai Jaidee</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Lab 6</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mar 12, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                            Submitted
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">-</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-3">View</a>
+                                        <a href="#" class="text-green-600 hover:text-green-900">Grade</a>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Student 2 -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">6310123457</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Somying Rakrian</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Lab 5</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mar 11, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            Graded
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">9/10</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">View</a>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Student 3 -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">6310123458</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Somsak Kengkaj</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Lab 4</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mar 10, 2025</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                            Late
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">7/10</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">View</a>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Student 4 -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">6310123459</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Somsri Kayanrien</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Lab 6</td>
+                                    <td class="px-6 py-4 whitespace-

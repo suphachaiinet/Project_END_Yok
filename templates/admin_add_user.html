@@ -3,114 +3,134 @@
 {% block title %}Admin - เพิ่มผู้ใช้{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="mb-4">เพิ่มผู้ใช้ใหม่</h2>
-        </div>
+<div class="bg-white rounded-lg shadow-sm border border-gray-200">
+    <div class="p-4 border-b border-gray-200">
+        <h2 class="text-lg font-semibold text-gray-900">เพิ่มผู้ใช้ใหม่</h2>
     </div>
-
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="card-title mb-0">จัดการระบบ</h5>
-                </div>
-                <div class="card-body">
-                    <div class="list-group">
-                        <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">
-                            <i class="fas fa-tachometer-alt"></i> หน้าหลักแอดมิน
-                        </a>
-                        <a href="{{ url_for('admin.manage_teachers') }}" class="list-group-item list-group-item-action">
-                            <i class="fas fa-chalkboard-teacher"></i> จัดการอาจารย์
-                        </a>
-                        <a href="{{ url_for('admin.manage_students') }}" class="list-group-item list-group-item-action">
-                            <i class="fas fa-user-graduate"></i> จัดการนักศึกษา
-                        </a>
-                        <a href="{{ url_for('admin.manage_users') }}" class="list-group-item list-group-item-action active">
-                            <i class="fas fa-users"></i> จัดการผู้ใช้ทั้งหมด
-                        </a>
-                    </div>
-                </div>
+    
+    <form method="post" action="{{ url_for('admin.add_user') }}" class="p-6 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+                    ชื่อผู้ใช้ <span class="text-red-500">*</span>
+                </label>
+                <input type="text" 
+                       id="username" 
+                       name="username" 
+                       required 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                >
             </div>
-
-            <div class="card mb-4">
-                <div class="card-header bg-success text-white">
-                    <h5 class="card-title mb-0">สลับบทบาท</h5>
-                </div>
-                <div class="card-body">
-                    <div class="list-group">
-                        <a href="{{ url_for('admin.switch_to_admin') }}" class="list-group-item list-group-item-action active">
-                            <i class="fas fa-user-shield"></i> ใช้งานเป็นแอดมิน
-                        </a>
-                        <a href="{{ url_for('admin.switch_to_teacher') }}" class="list-group-item list-group-item-action">
-                            <i class="fas fa-chalkboard-teacher"></i> ใช้งานเป็นอาจารย์
-                        </a>
-                        <a href="{{ url_for('admin.switch_to_student') }}" class="list-group-item list-group-item-action">
-                            <i class="fas fa-user-graduate"></i> ใช้งานเป็นนักศึกษา
-                        </a>
-                    </div>
-                </div>
+            
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                    รหัสผ่าน <span class="text-red-500">*</span>
+                </label>
+                <input type="password" 
+                       id="password" 
+                       name="password" 
+                       required 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                >
             </div>
         </div>
 
-        <div class="col-md-9">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="card-title mb-0">เพิ่มผู้ใช้ใหม่</h5>
-                </div>
-                <div class="card-body">
-                    <form method="post" action="{{ url_for('admin.add_user') }}">
-                        <div class="form-group">
-                            <label for="username">ชื่อผู้ใช้ <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="username" name="username" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">รหัสผ่าน <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="first_name">ชื่อ <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="last_name">นามสกุล <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">อีเมล <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="role">บทบาท <span class="text-danger">*</span></label>
-                            <select class="form-control" id="role" name="role" required>
-                                <option value="student">นักศึกษา</option>
-                                <option value="teacher">อาจารย์</option>
-                                <option value="admin">แอดมิน</option>
-                            </select>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="is_verified" name="is_verified" checked>
-                            <label class="form-check-label" for="is_verified">
-                                ยืนยันอีเมลแล้ว
-                            </label>
-                        </div>
-                        <div class="form-check mb-3" id="is_approved_container" style="display: none;">
-                            <input class="form-check-input" type="checkbox" id="is_approved" name="is_approved">
-                            <label class="form-check-label" for="is_approved">
-                                อนุมัติเป็นอาจารย์
-                            </label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">เพิ่มผู้ใช้</button>
-                            <a href="{{ url_for('admin.manage_users') }}" class="btn btn-secondary">ยกเลิก</a>
-                        </div>
-                    </form>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">
+                    ชื่อ <span class="text-red-500">*</span>
+                </label>
+                <input type="text" 
+                       id="first_name" 
+                       name="first_name" 
+                       required 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                >
+            </div>
+            
+            <div>
+                <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">
+                    นามสกุล <span class="text-red-500">*</span>
+                </label>
+                <input type="text" 
+                       id="last_name" 
+                       name="last_name" 
+                       required 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                >
             </div>
         </div>
-    </div>
+
+        <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                อีเมล <span class="text-red-500">*</span>
+            </label>
+            <input type="email" 
+                   id="email" 
+                   name="email" 
+                   required 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+            >
+        </div>
+
+        <div>
+            <label for="role" class="block text-sm font-medium text-gray-700 mb-2">
+                บทบาท <span class="text-red-500">*</span>
+            </label>
+            <select 
+                id="role" 
+                name="role" 
+                required 
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+            >
+                <option value="student">นักศึกษา</option>
+                <option value="teacher">อาจารย์</option>
+                <option value="admin">แอดมิน</option>
+            </select>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center">
+                <input 
+                    type="checkbox" 
+                    id="is_verified" 
+                    name="is_verified" 
+                    checked
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                >
+                <label for="is_verified" class="ml-2 block text-sm text-gray-900">
+                    ยืนยันอีเมลแล้ว
+                </label>
+            </div>
+            
+            <div class="flex items-center" id="is_approved_container" style="display: none;">
+                <input 
+                    type="checkbox" 
+                    id="is_approved" 
+                    name="is_approved"
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                >
+                <label for="is_approved" class="ml-2 block text-sm text-gray-900">
+                    อนุมัติเป็นอาจารย์
+                </label>
+            </div>
+        </div>
+
+        <div class="flex space-x-3 pt-4 border-t border-gray-200">
+            <button 
+                type="submit" 
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+            >
+                เพิ่มผู้ใช้
+            </button>
+            <a 
+                href="{{ url_for('admin.manage_users') }}" 
+                class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
+            >
+                ยกเลิก
+            </a>
+        </div>
+    </form>
 </div>
 
 <script>
@@ -120,7 +140,7 @@
         
         roleSelect.addEventListener('change', function() {
             if (this.value === 'teacher') {
-                isApprovedContainer.style.display = 'block';
+                isApprovedContainer.style.display = 'flex';
             } else {
                 isApprovedContainer.style.display = 'none';
             }

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+    <style>
+      .table { 
+        fill: #F0F8FF; 
+        stroke: #4A90E2; 
+        stroke-width: 1;
+      }
+      .title { 
+        font-size: 14px; 
+        font-weight: bold; 
+        fill: #2C3E50; 
+      }
+      .attribute { 
+        font-size: 12px; 
+        fill: #2C3E50; 
+      }
+      .pk { 
+        fill: #F39C12; 
+      }
+    </style>
+  
+    <!-- Users All Table -->
+    <rect x="50" y="50" width="250" height="300" class="table" rx="5"/>
+    <text x="175" y="75" text-anchor="middle" class="title">users_all</text>
+    <text x="60" y="100" class="attribute pk">• id: ObjectId (PK)</text>
+    <text x="60" y="120" class="attribute">username: VARCHAR(45)</text>
+    <text x="60" y="140" class="attribute">password: VARCHAR(45)</text>
+    <text x="60" y="160" class="attribute">email: VARCHAR(100)</text>
+    <text x="60" y="180" class="attribute">first_name: VARCHAR(100)</text>
+    <text x="60" y="200" class="attribute">last_name: VARCHAR(100)</text>
+    <text x="60" y="220" class="attribute">role: ENUM('admin','teacher','student')</text>
+    <text x="60" y="240" class="attribute">is_verified: BOOLEAN</text>
+    <text x="60" y="260" class="attribute">is_approved: BOOLEAN</text>
+    <text x="60" y="280" class="attribute">created_at: DATETIME</text>
+    <text x="60" y="300" class="attribute">last_login: DATETIME</text>
+  
+    <!-- Students Table -->
+    <rect x="450" y="50" width="250" height="200" class="table" rx="5"/>
+    <text x="575" y="75" text-anchor="middle" class="title">students</text>
+    <text x="460" y="100" class="attribute pk">• username: VARCHAR(45) (PK)</text>
+    <text x="460" y="120" class="attribute">first_name: VARCHAR(100)</text>
+    <text x="460" y="140" class="attribute">last_name: VARCHAR(100)</text>
+    <text x="460" y="160" class="attribute">email: VARCHAR(100)</text>
+    <text x="460" y="180" class="attribute">created_at: DATETIME</text>
+  
+    <!-- Teachers Table -->
+    <rect x="450" y="350" width="250" height="220" class="table" rx="5"/>
+    <text x="575" y="375" text-anchor="middle" class="title">teachers</text>
+    <text x="460" y="400" class="attribute pk">• username: VARCHAR(45) (PK)</text>
+    <text x="460" y="420" class="attribute">first_name: VARCHAR(100)</text>
+    <text x="460" y="440" class="attribute">last_name: VARCHAR(100)</text>
+    <text x="460" y="460" class="attribute">email: VARCHAR(100)</text>
+    <text x="460" y="480" class="attribute">created_at: DATETIME</text>
+    <text x="460" y="500" class="attribute">approved_at: DATETIME</text>
+    <text x="460" y="520" class="attribute">approved_by: VARCHAR(45)</text>
+  
+    <!-- Lab Scores Table -->
+    <rect x="850" y="50" width="250" height="220" class="table" rx="5"/>
+    <text x="975" y="75" text-anchor="middle" class="title">lab_scores</text>
+    <text x="860" y="100" class="attribute pk">• id: ObjectId (PK)</text>
+    <text x="860" y="120" class="attribute">username: VARCHAR(45)</text>
+    <text x="860" y="140" class="attribute">lab: VARCHAR(50)</text>
+    <text x="860" y="160" class="attribute">switch_score: VARCHAR(10)</text>
+    <text x="860" y="180" class="attribute">missing_keywords: ARRAY</text>
+    <text x="860" y="200" class="attribute">timestamp: DATETIME</text>
+  
+    <!-- Lab Keywords Table -->
+    <rect x="850" y="350" width="250" height="200" class="table" rx="5"/>
+    <text x="975" y="375" text-anchor="middle" class="title">lab_keywords</text>
+    <text x="860" y="400" class="attribute pk">• id: ObjectId (PK)</text>
+    <text x="860" y="420" class="attribute">lab_num: INTEGER</text>
+    <text x="860" y="440" class="attribute">switch_keywords: ARRAY</text>
+    <text x="860" y="460" class="attribute">pc_config: OBJECT</text>
+    <text x="860" y="480" class="attribute">created_at: DATETIME</text>
+  
+    <!-- Lab PDFs Table -->
+    <rect x="450" y="650" width="250" height="200" class="table" rx="5"/>
+    <text x="575" y="675" text-anchor="middle" class="title">lab_pdfs</text>
+    <text x="460" y="700" class="attribute pk">• id: ObjectId (PK)</text>
+    <text x="460" y="720" class="attribute">lab_num: INTEGER</text>
+    <text x="460" y="740" class="attribute">filename: VARCHAR(255)</text>
+    <text x="460" y="760" class="attribute">path: VARCHAR(255)</text>
+    <text x="460" y="780" class="attribute">updated_at: DATETIME</text>
+    <text x="460" y="800" class="attribute">updated_by: VARCHAR(45)</text>
+  
+    <!-- Relationships -->
+    <line x1="300" y1="200" x2="450" y2="150" stroke="#4A90E2" stroke-dasharray="5,5"/>
+    <line x1="300" y1="200" x2="450" y2="450" stroke="#4A90E2" stroke-dasharray="5,5"/>
+    <line x1="700" y1="150" x2="850" y2="150" stroke="#4A90E2" stroke-dasharray="5,5"/>
+    <line x1="975" y1="350" x2="975" y2="270" stroke="#4A90E2" stroke-dasharray="5,5"/>
+    <line x1="575" y1="650" x2="975" y2="270" stroke="#4A90E2" stroke-dasharray="5,5"/>
+  </svg>

@@ -4,133 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Network Lab System{% endblock %}</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
-    <!-- Custom CSS -->
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f5f7fa;
-        }
-        
-        .top-navbar {
-            background-color: #007bff;
-            padding: 10px 0;
-        }
-        
-        .badge-teacher {
-            background-color: #ffc107;
-            color: #212529;
-        }
-        
-        .dropdown-menu {
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border: none;
-        }
-        
-        .dropdown-item {
-            padding: 8px 20px;
-        }
-        
-        .alert {
-            margin-bottom: 1rem;
-            border: none;
-        }
-        
-        .card {
-            border: none;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border-radius: 4px;
-            margin-bottom: 1rem;
-        }
-        
-        .btn {
-            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f5f7;
         }
     </style>
-    {% block extra_css %}{% endblock %}
 </head>
-<body>
-    <!-- Navbar -->
-    <nav class="top-navbar">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center">
-                <a class="navbar-brand text-white" href="{{ url_for('dashboard') }}">
-                    Network Lab System
-                </a>
-                
-                <div class="d-flex align-items-center">
-                    {% if session.get('user_id') %}
-                    <span class="text-white mr-2">
-                        {% if session.get('temp_role') %}
-                        <span class="badge badge-teacher">{{ session.get('temp_role') }}</span>
-                        {% endif %}
-                    </span>
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            admin
+<body class="min-h-screen">
+    <!-- Sidebar -->
+    <div class="flex">
+        <!-- Left Sidebar -->
+        <div class="w-64 bg-white border-r border-gray-200 h-screen fixed left-0 top-0 overflow-y-auto">
+            <div class="p-4 border-b border-gray-200">
+                <h1 class="text-xl font-bold text-gray-800">Network Lab System</h1>
+            </div>
+            
+            <div class="p-4">
+                <h3 class="text-xs font-semibold text-gray-500 uppercase mb-2">การจัดการระบบ</h3>
+                <nav class="space-y-1">
+                    <a href="{{ url_for('admin.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fas fa-home mr-3 text-gray-400"></i> หน้าหลักแอดมิน
+                    </a>
+                    <a href="{{ url_for('admin.manage_users') }}" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fas fa-users mr-3 text-gray-400"></i> จัดการผู้ใช้
+                    </a>
+                    <a href="{{ url_for('admin.manage_teachers') }}" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fas fa-chalkboard-teacher mr-3 text-gray-400"></i> จัดการอาจารย์
+                    </a>
+                    <a href="{{ url_for('admin.manage_students') }}" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fas fa-user-graduate mr-3 text-gray-400"></i> จัดการนักศึกษา
+                    </a>
+                </nav>
+            </div>
+
+            <div class="p-4 border-t border-gray-200">
+                <h3 class="text-xs font-semibold text-gray-500 uppercase mb-2">การสลับบทบาท</h3>
+                <nav class="space-y-1">
+                    <a href="{{ url_for('admin.switch_to_admin') }}" class="flex items-center px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md">
+                        <i class="fas fa-user-shield mr-3 text-blue-500"></i> ใช้งานเป็นแอดมิน
+                    </a>
+                    <a href="{{ url_for('admin.switch_to_teacher') }}" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fas fa-chalkboard-teacher mr-3 text-gray-400"></i> ใช้งานเป็นอาจารย์
+                    </a>
+                    <a href="{{ url_for('admin.switch_to_student') }}" class="flex items-center px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                        <i class="fas fa-user-graduate mr-3 text-gray-400"></i> ใช้งานเป็นนักศึกษา
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Top Navbar and Main Content -->
+        <div class="w-full pl-64">
+            <!-- Top Navigation -->
+            <div class="bg-white border-b border-gray-200 p-4 flex justify-end items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="userMenuButton" class="flex items-center space-x-2 focus:outline-none">
+                            <span class="text-gray-700">admin admin</span>
+                            <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
                         </button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                            {% if session.get('role') == 'admin' %}
-                            <a class="dropdown-item" href="{{ url_for('admin.dashboard') }}">
-                                <i class="fas fa-tachometer-alt mr-2"></i> แอดมิน
+                        <div id="userMenuDropdown" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-1 hidden">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <i class="fas fa-user mr-2"></i> โปรไฟล์
                             </a>
-                            {% endif %}
-                            
-                            <a class="dropdown-item" href="{{ url_for('dashboard') }}">
-                                <i class="fas fa-home mr-2"></i> หน้าหลัก
-                            </a>
-                            
-                            {% if session.get('role') == 'admin' and session.get('temp_role') %}
-                            <a class="dropdown-item" href="{{ url_for('admin.switch_to_admin') }}">
-                                <i class="fas fa-undo mr-2"></i> กลับไปยังแอดมิน
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            {% endif %}
-                            
-                            <a class="dropdown-item" href="{{ url_for('logout') }}">
+                            <a href="{{ url_for('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 <i class="fas fa-sign-out-alt mr-2"></i> ออกจากระบบ
                             </a>
                         </div>
                     </div>
-                    {% else %}
-                    <a class="btn btn-outline-light mr-2" href="{{ url_for('login') }}">เข้าสู่ระบบ</a>.
-                    <a class="btn btn-light" href="{{ url_for('register') }}">สมัครสมาชิก</a>
-                    {% endif %}
                 </div>
             </div>
-        </div>
-    </nav>
 
-    <!-- Flash Messages -->
-    <div class="container-fluid mt-3">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+            <!-- Main Content Area -->
+            <div class="p-6 bg-gray-50 min-h-screen">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
     </div>
 
-    <!-- Main Content -->
-    {% block content %}{% endblock %}
-
-    <!-- jQuery and Bootstrap JS -->
+    <!-- jQuery and DataTables JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        // User Menu Dropdown Toggle
+        const userMenuButton = document.getElementById('userMenuButton');
+        const userMenuDropdown = document.getElementById('userMenuDropdown');
+
+        userMenuButton.addEventListener('click', () => {
+            userMenuDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!userMenuButton.contains(event.target) && !userMenuDropdown.contains(event.target)) {
+                userMenuDropdown.classList.add('hidden');
+            }
+        });
+
+        // Initialize DataTables with Thai language
+        $(document).ready(function() {
+            $('#userTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Thai.json"
+                }
+            });
+        });
+    </script>
     
     {% block scripts %}{% endblock %}
 </body>

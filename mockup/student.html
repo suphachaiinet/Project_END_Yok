@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบส่งงานแล็บเครือข่าย</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            background-color: #3a4a5f;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-info img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .user-info .name {
+            margin-right: 15px;
+        }
+        
+        .logout-btn {
+            background-color: #2c3848;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .logout-btn:hover {
+            background-color: #232d3b;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        .lab-selection {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .lab-selection h2 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .lab-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .lab-button {
+            background-color: #f0f2f5;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .lab-button:hover {
+            background-color: #e4e7eb;
+            border-color: #ccc;
+        }
+        
+        .lab-button.active {
+            background-color: #4388cc;
+            color: white;
+            border-color: #3470a9;
+        }
+        
+        .lab-button.completed {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #43a047;
+        }
+        
+        .pdf-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .pdf-container h2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pdf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .pdf-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .pdf-icon {
+            color: #e74c3c;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .pdf-actions a {
+            color: #4388cc;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 14px;
+        }
+        
+        .pdf-actions a:hover {
+            text-decoration: underline;
+        }
+        
+        .pdf-viewer {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .submission-form {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .submission-form h2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .submission-form .status {
+            font-size: 14px;
+            font-weight: normal;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background-color: #f0f2f5;
+        }
+        
+        .submission-form .status.pending {
+            background-color: #FFC107;
+            color: #333;
+        }
+        
+        .submission-form .status.completed {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .lab-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #333;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #4388cc;
+        }
+        
+        .device-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .device-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            background-color: #f5f5f5;
+        }
+        
+        .device-tab:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .device-tab.active {
+            background-color: white;
+            border-color: #ddd;
+            border-bottom: 2px solid white;
+            margin-bottom: -1px;
+            font-weight: bold;
+            color: #4388cc;
+        }
+        
+        .device-content {
+            display: none;
+        }
+        
+        .device-content.active {
+            display: block;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: vertical;
+            background-color: #f8f8f8;
+        }
+        
+        .submission-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+            border: none;
+        }
+        
+        .btn-save {
+            background-color: #e9e9e9;
+            color: #333;
+        }
+        
+        .btn-save:hover {
+            background-color: #ddd;
+        }
+        
+        .btn-submit {
+            background-color: #4388cc;
+            color: white;
+        }
+        
+        .btn-submit:hover {
+            background-color: #3470a9;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-button {
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        
+        .tab-button.active {
+            background-color: white;
+            border-bottom: 1px solid white;
+            margin-bottom: -1px;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .lab-buttons {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+            
+            .device-tab {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+            
+            .pdf-viewer {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">ระบบตรวจสอบการตั้งค่าเครือข่ายของวิชาปฏิบัติการวิศวกรรมเครือข่าย 2</div>
+        <div class="user-info">
+            <img src="https://via.placeholder.com/32" alt="User">
+            <span class="name">นักศึกษา: สมชาย ใจดี</span>
+            <button class="logout-btn">ออกจากระบบ</button>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="lab-selection">
+            <h2>เลือกแล็บที่ต้องการทำ</h2>
+            <div class="lab-buttons">
+                <div class="lab-button completed" data-lab="1">Lab 1</div>
+                <div class="lab-button active" data-lab="2">Lab 2</div>
+                <div class="lab-button" data-lab="3">Lab 3</div>
+                <div class="lab-button" data-lab="4">Lab 4</div>
+                <div class="lab-button" data-lab="5">Lab 5</div>
+                <div class="lab-button" data-lab="6">Lab 6</div>
+                <div class="lab-button" data-lab="7">Lab 7</div>
+                <div class="lab-button" data-lab="8">Lab 8</div>
+                <div class="lab-button" data-lab="9">Lab 9</div>
+                <div class="lab-button" data-lab="10">Lab 10</div>
+                <div class="lab-button" data-lab="11">Lab 11</div>
+                <div class="lab-button" data-lab="12">Lab 12</div>
+                <div class="lab-button" data-lab="13">Lab 13</div>
+                <div class="lab-button" data-lab="14">Lab 14</div>
+                <div class="lab-button" data-lab="15">Lab 15</div>
+                <div class="lab-button" data-lab="16">Lab 16</div>
+            </div>
+        </div>
+        
+        <div class="tab-buttons">
+            <div class="tab-button active" data-tab="lab-file">ไฟล์เอกสารแล็บ</div>
+            <div class="tab-button" data-tab="submission">ส่งงาน</div>
+        </div>
+        
+        <div class="tab-content active" id="lab-file-content">
+            <div class="pdf-container">
+                <h2>Lab 2: การกำหนดค่า Basic Router Configuration</h2>
+                
+                <div class="pdf-header">
+                    <div class="pdf-info">
+                        <div class="pdf-icon">📄</div>
+                        <div>lab1.pdf</div>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="/static/pdfs/lab1.pdf" download>ดาวน์โหลด</a>
+                        <a href="/static/pdfs/lab1.pdf" target="_blank">เปิดในแท็บใหม่</a>
+                    </div>
+                </div>
+                
+                <embed src="/static/pdfs/lab1.pdf" type="application/pdf" class="pdf-viewer">
+                
+                <div class="lab-description" style="margin-top: 20px;">
+                    <p>ในแล็บนี้ นักศึกษาจะได้เรียนรู้การกำหนดค่าพื้นฐานของ Router ซึ่งประกอบด้วยการตั้งค่า Hostname, IP Address, Interfaces, และการกำหนด Password ต่างๆ นักศึกษาจะต้องทำการเชื่อมต่ออุปกรณ์ตามโทโปโลยีที่กำหนดให้และทำการกำหนดค่าตามที่ได้รับมอบหมาย</p>
+                    <p>เมื่อกำหนดค่าเสร็จแล้ว ให้ทำการรัน command "show running-config" และคัดลอกผลลัพธ์มาวางในช่องสำหรับอุปกรณ์แต่ละตัว</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="submission-content">
+            <div class="submission-form">
+                <h2>
+                    Lab 2: การกำหนดค่า Basic Router Configuration
+                    <span class="status pending">กำลังทำ</span>
+                </h2>
+                
+                <div class="lab-description">
+                    <p>ในแล็บนี้ นักศึกษาจะได้เรียนรู้การกำหนดค่าพื้นฐานของ Router ซึ่งประกอบด้วยการตั้งค่า Hostname, IP Address, Interfaces, และการกำหนด Password ต่างๆ นักศึกษาจะต้องทำการเชื่อมต่ออุปกรณ์ตามโทโปโลยีที่กำหนดให้และทำการกำหนดค่าตามที่ได้รับมอบหมาย</p>
+                    <p>เมื่อกำหนดค่าเสร็จแล้ว ให้ทำการรัน command "show running-config" และคัดลอกผลลัพธ์มาวางในช่องสำหรับอุปกรณ์แต่ละตัว</p>
+                </div>
+                
+                <div class="device-tabs">
+                    <div class="device-tab active" data-device="router">Router</div>
+                    <div class="device-tab" data-device="switch">Switch</div>
+                    <div class="device-tab" data-device="pc">PC</div>
+                </div>
+                
+                <div class="device-content active" id="router-content">
+                    <textarea placeholder="วางผลลัพธ์ของคำสั่ง show running-config จาก Router ที่นี่..."></textarea>
+                </div>
+                
+                <div class="device-content" id="switch-content">
+                    <textarea placeholder="วางผลลัพธ์ของคำสั่ง show running-config จาก Switch ที่นี่..."></textarea>
+                </div>
+                
+                <div class="device-content" id="pc-content">
+                    <textarea placeholder="วางผลลัพธ์ของคำสั่ง ipconfig /all หรือ ifconfig จาก PC ที่นี่..."></textarea>
+                </div>
+                
+                <div class="submission-actions">
+                    <button class="btn btn-save">บันทึกแบบร่าง</button>
+                    <button class="btn btn-submit">ส่งงาน</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // สลับแท็บอุปกรณ์
+        document.querySelectorAll('.device-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // ลบ active class จากทุก tab
+                document.querySelectorAll('.device-tab').forEach(t => t.classList.remove('active'));
+                // เพิ่ม active class ให้ tab ที่คลิก
+                tab.classList.add('active');
+                
+                // ซ่อนทุก content
+                document.querySelectorAll('.device-content').forEach(content => content.classList.remove('active'));
+                // แสดง content ที่เกี่ยวข้อง
+                const deviceType = tab.getAttribute('data-device');
+                document.getElementById(`${deviceType}-content`).classList.add('active');
+            });
+        });
+        
+        // สลับแล็บ
+        document.querySelectorAll('.lab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // ลบ active class จากทุกปุ่ม
+                document.querySelectorAll('.lab-button').forEach(b => {
+                    if (!b.classList.contains('completed')) {
+                        b.classList.remove('active');
+                    }
+                });
+                
+                // เพิ่ม active class ให้ปุ่มที่คลิก (ถ้ายังไม่ completed)
+                if (!button.classList.contains('completed')) {
+                    button.classList.add('active');
+                }
+                
+                // ในระบบจริง ตรงนี้จะมีการดึงข้อมูลแล็บตามที่เลือกจาก API
+                const labNumber = button.getAttribute('data-lab');
+                // สมมติว่ามีการเปลี่ยนชื่อแล็บและคำอธิบาย
+                document.querySelectorAll('h2').forEach(header => {
+                    if (header.innerHTML.includes('Lab')) {
+                        if (header.innerHTML.includes('<span')) {
+                            header.innerHTML = 
+                                `Lab ${labNumber}: ${getLabTitle(labNumber)}
+                                <span class="status pending">กำลังทำ</span>`;
+                        } else {
+                            header.innerHTML = `Lab ${labNumber}: ${getLabTitle(labNumber)}`;
+                        }
+                    }
+                });
+                
+                document.querySelectorAll('.lab-description').forEach(desc => {
+                    desc.innerHTML = `<p>${getLabDescription(labNumber)}</p>`;
+                });
+                
+                // สมมติเปลี่ยนไฟล์ PDF
+                document.querySelectorAll('embed').forEach(embed => {
+                    embed.src = `/static/pdfs/lab${labNumber}.pdf`;
+                });
+                
+                document.querySelectorAll('.pdf-info div:last-child').forEach(pdfName => {
+                    pdfName.textContent = `lab${labNumber}.pdf`;
+                });
+                
+                document.querySelectorAll('.pdf-actions a').forEach(link => {
+                    link.href = `/static/pdfs/lab${labNumber}.pdf`;
+                });
+            });
+        });
+        
+        // สลับแท็บหลัก (ไฟล์เอกสารแล็บ/ส่งงาน)
+        document.querySelectorAll('.tab-button').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // ลบ active class จากทุกแท็บ
+                document.querySelectorAll('.tab-button').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // เพิ่ม active class ให้แท็บที่คลิก
+                tab.classList.add('active');
+                
+                // ซ่อนทุก content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // แสดง content ที่เกี่ยวข้อง
+                const tabType = tab.getAttribute('data-tab');
+                document.getElementById(`${tabType}-content`).classList.add('active');
+            });
+        });
+        
+        // ปุ่มบันทึกแบบร่าง
+        document.querySelector('.btn-save').addEventListener('click', () => {
+            alert('บันทึกแบบร่างเรียบร้อยแล้ว');
+        });
+        
+        // ปุ่มส่งงาน
+        document.querySelector('.btn-submit').addEventListener('click', () => {
+            const activeLabButton = document.querySelector('.lab-button.active');
+            if (activeLabButton) {
+                activeLabButton.classList.remove('active');
+                activeLabButton.classList.add('completed');
+                
+                document.querySelector('.status').classList.remove('pending');
+                document.querySelector('.status').classList.add('completed');
+                document.querySelector('.status').textContent = 'ส่งแล้ว';
+                
+                alert('ส่งงานเรียบร้อยแล้ว');
+            }
+        });
+        
+        // ฟังก์ชันจำลองสำหรับการแสดงชื่อแล็บ
+        function getLabTitle(labNumber) {
+            const titles = {
+                '1': 'พื้นฐานการเชื่อมต่อเครือข่าย',
+                '2': 'การกำหนดค่า Basic Router Configuration',
+                '3': 'การกำหนดค่า VLAN และ Inter-VLAN Routing',
+                '4': 'การกำหนดค่า Static Routing',
+                '5': 'การกำหนดค่า RIP Routing Protocol',
+                '6': 'การกำหนดค่า OSPF Routing Protocol',
+                '7': 'การกำหนดค่า EIGRP Routing Protocol',
+                '8': 'การกำหนดค่า Access Control Lists (ACLs)',
+                '9': 'การกำหนดค่า NAT และ PAT',
+                '10': 'การกำหนดค่า DHCP Server',
+                '11': 'การกำหนดค่า IPv6 Addressing',
+                '12': 'การกำหนดค่า IPv6 Routing',
+                '13': 'การกำหนดค่า VPN และ GRE Tunnels',
+                '14': 'การกำหนดค่า Network Security',
+                '15': 'การกำหนดค่า QoS (Quality of Service)',
+                '16': 'การกำหนดค่า Network Monitoring และ Troubleshooting'
+            };
+            return titles[labNumber] || `แล็บที่ ${labNumber}`;
+        }
+        
+        // ฟังก์ชันจำลองสำหรับการแสดงคำอธิบายแล็บ
+        function getLabDescription(labNumber) {
+            return `ในแล็บที่ ${labNumber} นี้ นักศึกษาจะได้เรียนรู้เกี่ยวกับ ${getLabTitle(labNumber)} ซึ่งเป็นหนึ่งในทักษะพื้นฐานสำคัญสำหรับวิศวกรเครือข่าย นักศึกษาจะต้องทำการเชื่อมต่ออุปกรณ์ตามโทโปโลยีที่กำหนดและทำการกำหนดค่าตามที่ได้รับมอบหมาย\n\nเมื่อกำหนดค่าเสร็จแล้ว ให้ทำการรัน command "show running-config" สำหรับอุปกรณ์ Router และ Switch หรือใช้คำสั่ง "ipconfig /all" สำหรับ Windows หรือ "ifconfig" สำหรับ Linux/Mac จากนั้นคัดลอกผลลัพธ์มาวางในช่องสำหรับอุปกรณ์แต่ละตัว`;
+        }
+    </script>
+</body>
+</html>

@@ -3,148 +3,132 @@
 {% block title %}Admin - จัดการอาจารย์{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="mb-4">จัดการอาจารย์</h2>
+<div class="space-y-6">
+    <!-- อาจารย์ที่รอการอนุมัติ -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div class="p-4 border-b border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-900">อาจารย์ที่รอการอนุมัติ</h2>
+        </div>
+        
+        <div class="p-4">
+            {% if pending_teachers|length > 0 %}
+            <div class="overflow-x-auto">
+                <table id="pendingTeachersTable" class="w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อผู้ใช้</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อ-นามสกุล</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">อีเมล</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">สมัครเมื่อ</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">จัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        {% for teacher in pending_teachers %}
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ teacher.username }}</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ teacher.first_name }} {{ teacher.last_name }}</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ teacher.email }}</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                                {{ teacher.created_at.strftime('%d/%m/%Y') if teacher.created_at else 'N/A' }}
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium">
+                                <div class="flex space-x-2">
+                                    <form action="{{ url_for('admin.approve_teacher', teacher_id=teacher._id) }}" method="post" class="inline">
+                                        <button type="submit" class="text-green-500 hover:text-green-700 transition-colors">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </form>
+                                    <form action="{{ url_for('admin.reject_teacher', teacher_id=teacher._id) }}" method="post" class="inline">
+                                        <button type="submit" class="text-red-500 hover:text-red-700 transition-colors">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-md text-center">
+                ไม่มีอาจารย์ที่รอการอนุมัติ
+            </div>
+            {% endif %}
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="card-title mb-0">จัดการระบบ</h5>
-                </div>
-                <div class="card-body">
-                    <div class="list-group">
-                        <a href="{{ url_for('admin.dashboard') }}" class="list-group-item list-group-item-action">
-                            <i class="fas fa-tachometer-alt"></i> หน้าหลักแอดมิน
-                        </a>
-                        <a href="{{ url_for('admin.manage_teachers') }}" class="list-group-item list-group-item-action active">
-                            <i class="fas fa-chalkboard-teacher"></i> จัดการอาจารย์
-                        </a>
-                        <a href="{{ url_for('admin.manage_students') }}" class="list-group-item list-group-item-action">
-                            <i class="fas fa-user-graduate"></i> จัดการนักศึกษา
-                        </a>
-                        <a href="{{ url_for('admin.manage_users') }}" class="list-group-item list-group-item-action">
-                            <i class="fas fa-users"></i> จัดการผู้ใช้ทั้งหมด
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-header bg-success text-white">
-                    <h5 class="card-title mb-0">สลับบทบาท</h5>
-                </div>
-                <div class="card-body">
-                    <div class="list-group">
-                        <a href="{{ url_for('admin.switch_to_admin') }}" class="list-group-item list-group-item-action active">
-                            <i class="fas fa-user-shield"></i> ใช้งานเป็นแอดมิน
-                        </a>
-                        <a href="{{ url_for('admin.switch_to_teacher') }}" class="list-group-item list-group-item-action">
-                            <i class="fas fa-chalkboard-teacher"></i> ใช้งานเป็นอาจารย์
-                        </a>
-                        <a href="{{ url_for('admin.switch_to_student') }}" class="list-group-item list-group-item-action">
-                            <i class="fas fa-user-graduate"></i> ใช้งานเป็นนักศึกษา
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <!-- อาจารย์ที่ได้รับการอนุมัติแล้ว -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+            <h2 class="text-lg font-semibold text-gray-900">อาจารย์ที่ได้รับการอนุมัติแล้ว</h2>
+            <a href="{{ url_for('admin.add_user') }}" class="bg-blue-500 text-white px-3 py-2 rounded-md text-sm hover:bg-blue-600 transition-colors">
+                <i class="fas fa-plus mr-2"></i>เพิ่มอาจารย์
+            </a>
         </div>
-
-        <div class="col-md-9">
-            <!-- คำขอเป็นอาจารย์ที่รอการอนุมัติ -->
-            <div class="card mb-4">
-                <div class="card-header bg-warning">
-                    <h5 class="card-title mb-0">อาจารย์ที่รอการอนุมัติ</h5>
-                </div>
-                <div class="card-body">
-                    {% if pending_teachers|length > 0 %}
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ชื่อผู้ใช้</th>
-                                    <th>ชื่อ-นามสกุล</th>
-                                    <th>อีเมล</th>
-                                    <th>สมัครเมื่อ</th>
-                                    <th>จัดการ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for teacher in pending_teachers %}
-                                <tr>
-                                    <td>{{ teacher.username }}</td>
-                                    <td>{{ teacher.first_name }} {{ teacher.last_name }}</td>
-                                    <td>{{ teacher.email }}</td>
-                                    <td>{{ teacher.created_at.strftime('%d/%m/%Y') if teacher.created_at else 'N/A' }}</td>
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            <form action="{{ url_for('admin.approve_teacher', teacher_id=teacher._id) }}" method="post" class="d-inline">
-                                                <button type="submit" class="btn btn-success btn-sm">อนุมัติ</button>
-                                            </form>
-                                            <form action="{{ url_for('admin.reject_teacher', teacher_id=teacher._id) }}" method="post" class="d-inline ml-2">
-                                                <button type="submit" class="btn btn-danger btn-sm">ปฏิเสธ</button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    {% else %}
-                    <div class="alert alert-info">ไม่มีอาจารย์ที่รอการอนุมัติ</div>
-                    {% endif %}
-                </div>
+        
+        <div class="p-4">
+            {% if active_teachers|length > 0 %}
+            <div class="overflow-x-auto">
+                <table id="activeTeachersTable" class="w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อผู้ใช้</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อ-นามสกุล</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">อีเมล</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">อนุมัติเมื่อ</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">จัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        {% for teacher in active_teachers %}
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ teacher.username }}</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ teacher.first_name }} {{ teacher.last_name }}</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ teacher.email }}</td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                                {{ teacher.approved_at.strftime('%d/%m/%Y') if teacher.approved_at else 'N/A' }}
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium">
+                                <div class="flex space-x-2">
+                                    <a href="{{ url_for('admin.edit_user', user_id=teacher._id) }}" class="text-blue-500 hover:text-blue-700 transition-colors">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form action="{{ url_for('admin.delete_teacher', teacher_id=teacher._id) }}" method="post" class="inline" onsubmit="return confirm('คุณแน่ใจหรือไม่ที่จะลบอาจารย์ท่านนี้?');">
+                                        <button type="submit" class="text-red-500 hover:text-red-700 transition-colors">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
-
-            <!-- อาจารย์ที่ได้รับการอนุมัติแล้ว -->
-            <div class="card">
-                <div class="card-header bg-success text-white">
-                    <h5 class="card-title mb-0">อาจารย์ที่ได้รับการอนุมัติแล้ว</h5>
-                </div>
-                <div class="card-body">
-                    {% if active_teachers|length > 0 %}
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ชื่อผู้ใช้</th>
-                                    <th>ชื่อ-นามสกุล</th>
-                                    <th>อีเมล</th>
-                                    <th>อนุมัติเมื่อ</th>
-                                    <th>จัดการ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for teacher in active_teachers %}
-                                <tr>
-                                    <td>{{ teacher.username }}</td>
-                                    <td>{{ teacher.first_name }} {{ teacher.last_name }}</td>
-                                    <td>{{ teacher.email }}</td>
-                                    <td>{{ teacher.approved_at.strftime('%d/%m/%Y') if teacher.approved_at else 'N/A' }}</td>
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            <a href="{{ url_for('admin.edit_user', user_id=teacher._id) }}" class="btn btn-primary btn-sm">แก้ไข</a>
-                                            <form action="{{ url_for('admin.delete_teacher', teacher_id=teacher._id) }}" method="post" class="d-inline ml-2">
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('คุณแน่ใจหรือไม่ที่จะลบอาจารย์ท่านนี้?');">ลบ</button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    {% else %}
-                    <div class="alert alert-info">ไม่มีอาจารย์ที่ได้รับการอนุมัติ</div>
-                    {% endif %}
-                </div>
+            {% else %}
+            <div class="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-md text-center">
+                ไม่มีอาจารย์ที่ได้รับการอนุมัติ
             </div>
+            {% endif %}
         </div>
     </div>
 </div>
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        $('#pendingTeachersTable, #activeTeachersTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Thai.json"
+            },
+            "columnDefs": [
+                {"orderable": false, 
+                "targets": 4 
+            }]
+        });
+    });
+</script>
+{% endblock %}
 {% endblock %}
