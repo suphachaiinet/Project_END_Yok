@@ -1599,33 +1599,43 @@ def lab_management(lab_num):
         # ดึงข้อมูลการส่งแล็บของนักศึกษาทั้งหมด
     submissions = list(scores_collection.find({"lab": f"Lab {lab_num}"}))
     
-    # ดึงข้อมูลนักศึกษาแต่ละคน
+    # แก้ไขส่วนที่สร้าง students_data
     students_data = []
+    processed_usernames = set()  # เก็บ usernames ที่ประมวลผลแล้วเพื่อป้องกันการซ้ำ
+
     for submission in submissions:
         username = submission['username']
-        student = students_collection.find_one({"username": username})
         
-        if student:
-            try:
-                score = float(submission['switch_score'].split('/')[0])
-                status = 'completed' if score >= 60 else 'in_progress'
-                status_text = 'เสร็จสมบูรณ์' if score >= 60 else 'กำลังทำ'
-            except Exception:
-                score = 0
-                status = 'in_progress'
-                status_text = 'กำลังทำ'
+        # ตรวจสอบว่าเคยประมวลผลนักศึกษาคนนี้แล้วหรือไม่
+        if username not in processed_usernames:
+            processed_usernames.add(username)
+            student = students_collection.find_one({"username": username})
             
-            students_data.append({
-                'student_id': username,
-                'name': f"{student.get('first_name', '')} {student.get('last_name', '')}",
-                'score': score,
-                'status': status,
-                'status_text': status_text,
-                'timestamp': submission.get('timestamp', 'Unknown')
-            })
-    
+            if student:
+                try:
+                    score = float(submission['switch_score'].split('/')[0])
+                    status = 'completed' if score >= 60 else 'in_progress'
+                    status_text = 'เสร็จสมบูรณ์' if score >= 60 else 'กำลังทำ'
+                except Exception:
+                    score = 0
+                    status = 'in_progress'
+                    status_text = 'กำลังทำ'
+                
+                students_data.append({
+                    'student_id': username,
+                    'name': f"{student.get('first_name', '')} {student.get('last_name', '')}",
+                    'score': score,
+                    'status': status,
+                    'status_text': status_text,
+                    'timestamp': submission.get('timestamp', 'Unknown')
+                })
+
+    # นับจำนวนนักศึกษาที่ไม่ซ้ำกัน
+    unique_students_count = len(processed_usernames)
+    # เรียงลำดับตามคะแนน (มากไปน้อย) - ตรงนี้ที่เกิด error
+    if students_data:  # ตรวจสอบว่ามีข้อมูลก่อนเรียง
+        students_data.sort(key=lambda x: x['score'], reverse=True)
     # เรียงลำดับตามคะแนน (มากไปน้อย)
-    students_data.sort(key=lambda x: x['score'], reverse=True)
     
     # คำนวณข้อมูลสถิติ
     completed_count = sum(1 for student in students_data if student['status'] == 'completed')
@@ -2001,11 +2011,26 @@ def view_submission(lab_num, student_id):
     
     # ดึงข้อมูลการส่งงาน
     submission = scores_collection.find_one({"username": student_id, "lab": f"Lab {lab_num}"})
-    
+
     if not submission:
         flash('ไม่พบข้อมูลการส่งงาน', 'danger')
         return redirect(url_for('teacher.lab_management', lab_num=lab_num))
-    
+
+    # ดึงข้อมูลการส่งงานทั้งหมดของนักศึกษา
+    submission_history = list(scores_collection.find({
+        "username": student_id, 
+        "lab": f"Lab {lab_num}"
+    }).sort("timestamp", -1))
+
+    # นับจำนวนครั้งที่ส่งงาน
+    submission_count = len(submission_history)
+
+    # เพิ่มข้อมูลจำนวนครั้งที่ส่งเข้าไปใน submission
+    submission['submission_count'] = submission_count
+
+    # เพิ่มเก็บข้อมูลประวัติย่อนหลังเข้าไปด้วย
+    submission['history'] = submission_history
+
     # เตรียมข้อมูล PC configs สำหรับทุก Lab
     pc_config = {"ip_address": "", "subnet_mask": "", "default_gateway": ""}
     pc1_config = {"ip": "", "subnet": "", "gateway": ""}
@@ -3152,7 +3177,7 @@ def update_grade():
         {"$set": {
             "switch_score": f"{manual_score:.2f}/100",
             "manual_graded": True,
-            "manual_graded_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+            "manual_graded_at": datetime.now(ZoneInfo("Asia/Bangkok")) # เพิ่ม timezone
         }}
     )
     
