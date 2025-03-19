@@ -161,8 +161,7 @@
                             <a href="{{ url_for('teacher.view_submission', lab_num=lab_num, student_id=student.student_id) }}" 
                             class="text-indigo-600 hover:text-indigo-900 mr-3">ดูรายละเอียด</a>
                             {% if student.status != 'not_submitted' %}
-                            <button class="text-red-600 hover:text-red-900 delete-submission" 
-                                    data-student-id="{{ student.student_id }}">ลบ</button>
+                            
                             {% endif %}
                         </td>
                     </tr>
@@ -1038,5 +1037,6 @@
             keywordsModal.classList.add('hidden');
         });
     }
+    
 </script>
 {% endblock %}

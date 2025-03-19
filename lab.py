@@ -330,21 +330,27 @@ def lab1():
 
         # บันทึกลงฐานข้อมูลและ session
         try:
-            scores_collection.insert_one({
-            "username": username,
-            "lab": "Lab 1",
-            "switch_score": f"{switch_score:.2f}/100",
-            "pc_status": "ถูกต้อง" if pc_correct else "ไม่ถูกต้อง",
-            "missing_keywords": missing_keywords,
-            "switch_config": user_switch_config,
-            "pc_config": {
-                "ip_address": user_pc_ip,
-                "subnet_mask": user_pc_subnet,
-                "default_gateway": user_pc_gateway
-            },
-            "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))+ timedelta(hours=7)
-        })
-
+            scores_collection.update_one(
+                {
+                    "username": username, 
+                    "lab": "Lab 1"
+                },
+                {
+                    "$set": {
+                        "switch_score": f"{switch_score:.2f}/100",
+                        "pc_status": "ถูกต้อง" if pc_correct else "ไม่ถูกต้อง",
+                        "missing_keywords": missing_keywords,
+                        "switch_config": user_switch_config,
+                        "pc_config": {
+                            "ip_address": user_pc_ip,
+                            "subnet_mask": user_pc_subnet,
+                            "default_gateway": user_pc_gateway
+                        },
+                        "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))+ timedelta(hours=7)
+                    }
+                },
+                upsert=True  # สำคัญมาก! สร้างเอกสารใหม่ถ้าไม่มี
+            )
             # เก็บคะแนนใน session
             session['lab1_score'] = round(switch_score, 2)
             session['lab1_result'] = result

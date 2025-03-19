@@ -41,7 +41,7 @@ try:
     users_collection = db['users_all']
     teachers_collection = db['teachers']
     students_collection = db['students']
-    
+    scores_collection = db['scores']
     logging.info("MongoDB connection established successfully")
 
 except (errors.ConnectionFailure, errors.ServerSelectionTimeoutError) as e:
@@ -51,7 +51,8 @@ except (errors.ConnectionFailure, errors.ServerSelectionTimeoutError) as e:
     users_collection = None
     teachers_collection = None
     students_collection = None
-
+    scores_collection = None
+    
 def check_mongodb_connection():
     """ตรวจสอบการเชื่อมต่อ MongoDB"""
     try:
@@ -349,12 +350,17 @@ def delete_student(student_id):
             flash('ไม่พบข้อมูลนักศึกษา', 'danger')
             return redirect(url_for('admin.manage_students'))
         
+        # ลบข้อมูลคะแนนของนักศึกษา
+        scores_collection = db['scores']  # เพิ่มบรรทัดนี้เพื่อเชื่อมต่อคอลเลกชันคะแนน
+        scores_collection.delete_many({"student_id": student_id})
+        scores_collection.delete_many({"username": student.get('username')})
+        
         # ลบข้อมูลจากทั้งสองคอลเลกชัน
         students_collection.delete_one({"username": student.get('username')})
         users_collection.delete_one({"_id": ObjectId(student_id)})
         
-        logging.info(f"Student {student.get('username')} deleted by {session.get('username')}")
-        flash(f'ลบนักศึกษา {student.get("first_name")} {student.get("last_name")} เรียบร้อยแล้ว', 'success')
+        logging.info(f"Student {student.get('username')} and all related scores deleted by {session.get('username')}")
+        flash(f'ลบนักศึกษา {student.get("first_name")} {student.get("last_name")} และข้อมูลคะแนนทั้งหมดเรียบร้อยแล้ว', 'success')
     except Exception as e:
         logging.error(f"Error in delete student: {e}")
         flash(f'เกิดข้อผิดพลาด: {str(e)}', 'danger')
@@ -529,6 +535,10 @@ def delete_user(user_id):
         
         # ลบข้อมูลจากคอลเลกชันที่เกี่ยวข้อง
         if user.get('role') == 'student':
+            # ลบข้อมูลคะแนนของนักศึกษา
+            scores_collection = db['scores']  # เพิ่มบรรทัดนี้เพื่อเชื่อมต่อคอลเลกชันคะแนน
+            scores_collection.delete_many({"student_id": user_id})
+            scores_collection.delete_many({"username": user.get('username')})
             students_collection.delete_one({"username": user.get('username')})
         elif user.get('role') == 'teacher':
             teachers_collection.delete_one({"username": user.get('username')})
@@ -536,8 +546,8 @@ def delete_user(user_id):
         # ลบข้อมูลจาก users_all
         users_collection.delete_one({"_id": ObjectId(user_id)})
         
-        logging.info(f"User {user.get('username')} deleted by {session.get('username')}")
-        flash(f'ลบผู้ใช้ {user.get("first_name")} {user.get("last_name")} เรียบร้อยแล้ว', 'success')
+        logging.info(f"User {user.get('username')} and all related data deleted by {session.get('username')}")
+        flash(f'ลบผู้ใช้ {user.get("first_name")} {user.get("last_name")} และข้อมูลที่เกี่ยวข้องทั้งหมดเรียบร้อยแล้ว', 'success')
     except Exception as e:
         logging.error(f"Error in delete user: {e}")
         flash(f'เกิดข้อผิดพลาด: {str(e)}', 'danger')

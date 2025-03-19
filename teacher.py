@@ -2017,11 +2017,19 @@ def view_submission(lab_num, student_id):
         return redirect(url_for('teacher.lab_management', lab_num=lab_num))
 
     # ดึงข้อมูลการส่งงานทั้งหมดของนักศึกษา
-    submission_history = list(scores_collection.find({
-        "username": student_id, 
-        "lab": f"Lab {lab_num}"
-    }).sort("timestamp", -1)).replace(microsecond=0)
+    submission_history_raw = list(scores_collection.find({
+    "username": student_id, 
+    "lab": f"Lab {lab_num}"
+    }).sort("timestamp", -1))
 
+    submission_history = []
+    for record in submission_history_raw:
+        # ตรวจสอบว่า timestamp เป็นออบเจ็กต์ datetime หรือไม่
+        if isinstance(record.get('timestamp'), datetime):
+            # ถ้าเป็น datetime ให้จัดรูปแบบ
+            record['timestamp'] = record['timestamp'].replace(microsecond=0)
+        submission_history.append(record)
+        
     # นับจำนวนครั้งที่ส่งงาน
     submission_count = len(submission_history)
 

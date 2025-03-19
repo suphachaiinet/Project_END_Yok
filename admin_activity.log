@@ -4252,3 +4252,566 @@ ValueError: Invalid salt
 2025-03-19 08:11:27,729 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:11:27] "[32mPOST /login HTTP/1.1[0m" 302 -
 2025-03-19 08:11:27,741 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:11:27] "GET /login HTTP/1.1" 200 -
 2025-03-19 08:11:27,756 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:11:27] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:12:06,055 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:06] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:12:06,079 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:06] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:12:24,068 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:24] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-03-19 08:12:24,081 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:24] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:12:24,094 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:24] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:12:37,733 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:37] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:12:37,761 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:37] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:12:42,275 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:12:42,288 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:42] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:12:42,302 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:42] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:12:47,642 - root - INFO - Admin login: admin
+2025-03-19 08:12:47,645 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:12:47,654 - root - INFO - Admin dashboard accessed: admin
+2025-03-19 08:12:47,658 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:47] "GET /admin/dashboard HTTP/1.1" 200 -
+2025-03-19 08:12:49,067 - root - INFO - Starting manage_users function - แก้ไขใหม่แล้ว
+2025-03-19 08:12:49,071 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:49] "GET /admin/users HTTP/1.1" 200 -
+2025-03-19 08:12:56,856 - root - INFO - User 6506022410032 deleted by admin
+2025-03-19 08:12:56,858 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:56] "[32mPOST /admin/users/delete/67d999cd2035ae815646bcb5 HTTP/1.1[0m" 302 -
+2025-03-19 08:12:56,868 - root - INFO - Starting manage_users function - แก้ไขใหม่แล้ว
+2025-03-19 08:12:56,871 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:56] "GET /admin/users HTTP/1.1" 200 -
+2025-03-19 08:12:58,737 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:58] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:12:58,751 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:58] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:12:58,769 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:12:58] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:13:00,773 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:13:00] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:13:00,798 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:13:00] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:13:12,137 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:13:12] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-03-19 08:13:12,148 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:13:12] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:13:12,164 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:13:12] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:14:06,240 - root - INFO - ส่งอีเมลยืนยันไปที่ suphachai16112543@gmail.com สำเร็จ
+2025-03-19 08:14:06,274 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:14:06] "POST /register HTTP/1.1" 200 -
+2025-03-19 08:14:16,249 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:14:16] "[32mPOST /register HTTP/1.1[0m" 302 -
+2025-03-19 08:14:16,261 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:14:16] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:14:16,278 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:14:16] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:14:25,275 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:14:25] "[32mGET /confirm_email/InN1cGhhY2hhaTE2MTEyNTQzQGdtYWlsLmNvbSI.Z9oaWg.eEQ6pzmElk0s2BuxtzGL-JQveyU HTTP/1.1[0m" 302 -
+2025-03-19 08:14:25,325 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:14:25] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:14:25,426 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:14:25] "GET /static/images/kmutb-logo.png HTTP/1.1" 200 -
+2025-03-19 08:14:25,743 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:14:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-19 08:14:39,438 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:14:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:14:39,463 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:14:39] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 08:14:54,469 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:14:54] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 08:15:02,999 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:15:02] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 08:15:05,512 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:15:05] "GET /dashboard-student2 HTTP/1.1" 200 -
+2025-03-19 08:16:35,166 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:16:35] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:16:35,199 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:16:35] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:16:42,306 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:16:42] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:16:42,335 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:16:42] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:19:35,694 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\admin.py', reloading
+2025-03-19 08:19:35,942 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:19:36,620 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:19:36,861 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:19:36,866 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:19:49,505 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\admin.py', reloading
+2025-03-19 08:19:49,763 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:19:50,275 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:19:50,528 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:19:50,530 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:19:52,960 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:19:52] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:19:53,051 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:19:53] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:19:58,098 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:19:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:19:58,108 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:19:58] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:19:58,127 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:19:58] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:20:03,825 - root - INFO - Admin login: admin
+2025-03-19 08:20:03,827 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:20:03] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:20:03,835 - root - INFO - Admin dashboard accessed: admin
+2025-03-19 08:20:03,848 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:20:03] "GET /admin/dashboard HTTP/1.1" 200 -
+2025-03-19 08:20:08,445 - root - INFO - Starting manage_users function - แก้ไขใหม่แล้ว
+2025-03-19 08:20:08,458 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:20:08] "GET /admin/users HTTP/1.1" 200 -
+2025-03-19 08:20:12,512 - root - INFO - User 6506022410032 and all related data deleted by admin
+2025-03-19 08:20:12,514 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:20:12] "[32mPOST /admin/users/delete/67da1a5ad77dbe52e8ad7788 HTTP/1.1[0m" 302 -
+2025-03-19 08:20:12,525 - root - INFO - Starting manage_users function - แก้ไขใหม่แล้ว
+2025-03-19 08:20:12,528 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:20:12] "GET /admin/users HTTP/1.1" 200 -
+2025-03-19 08:20:57,473 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\admin.py', reloading
+2025-03-19 08:20:57,976 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:20:58,427 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:20:58,664 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:20:58,666 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:21:09,168 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\admin.py', reloading
+2025-03-19 08:21:09,526 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:21:10,007 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:21:10,243 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:21:10,245 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:21:21,378 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:21:21] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:21:21,394 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:21:21] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:21:21,467 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:21:21] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:21:22,281 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:21:22] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:21:22,314 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:21:22] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:21:35,924 - root - INFO - ส่งอีเมลยืนยันไปที่ suphachai16112543@gmail.com สำเร็จ
+2025-03-19 08:21:35,929 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:21:35] "POST /register HTTP/1.1" 200 -
+2025-03-19 08:21:39,357 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:21:39] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:21:39,371 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:21:39] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:21:55,668 - root - INFO - ลบผู้ใช้ที่ไม่ยืนยันอีเมล: 6506022410032 (suphachai16112543@gmail.com)
+2025-03-19 08:21:55,669 - root - INFO - ลบผู้ใช้ที่ไม่ยืนยันอีเมลทั้งหมด 1 คน
+2025-03-19 08:22:34,497 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:22:34] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:22:34,515 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:22:34] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:22:45,683 - root - INFO - ส่งอีเมลยืนยันไปที่ suphachai16112543@gmail.com สำเร็จ
+2025-03-19 08:22:45,684 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:22:45] "POST /register HTTP/1.1" 200 -
+2025-03-19 08:22:55,672 - root - INFO - ลบผู้ใช้ที่ไม่ยืนยันอีเมล: 6506022410032 (suphachai16112543@gmail.com)
+2025-03-19 08:22:55,672 - root - INFO - ลบผู้ใช้ที่ไม่ยืนยันอีเมลทั้งหมด 1 คน
+2025-03-19 08:22:55,681 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:22:55] "[32mGET /confirm_email/InN1cGhhY2hhaTE2MTEyNTQzQGdtYWlsLmNvbSI.Z9ocYg.ELaA-udGG6NXIusoDHP74HDCDWk HTTP/1.1[0m" 302 -
+2025-03-19 08:22:55,710 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:22:55] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:22:55,719 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:22:55] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:22:55,733 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:22:55] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:22:55,823 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:22:55] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:23:03,780 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:23:03] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:23:03,792 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:23:03] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:23:03,809 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:23:03] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:23:11,614 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:23:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:23:11,632 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:23:11] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:23:11,674 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:23:11] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:23:32,172 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\admin.py', reloading
+2025-03-19 08:23:32,703 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:23:33,236 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:23:33,492 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:23:33,494 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:23:39,675 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:23:39,921 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.105:5000
+2025-03-19 08:23:39,922 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 08:23:39,924 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:23:40,391 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:23:40,631 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:23:40,633 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:23:53,240 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:23:53] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:23:53,340 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:23:53] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:24:07,629 - root - INFO - ส่งอีเมลยืนยันไปที่ suphachai16112543@gmail.com สำเร็จ
+2025-03-19 08:24:07,634 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:07] "POST /register HTTP/1.1" 200 -
+2025-03-19 08:24:09,683 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:09] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:24:09,697 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:09] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:24:25,773 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:24:25] "[32mGET /confirm_email/InN1cGhhY2hhaTE2MTEyNTQzQGdtYWlsLmNvbSI.Z9octA.IvD47TY-rdHrS25v8N65Z0EdZkM HTTP/1.1[0m" 302 -
+2025-03-19 08:24:25,813 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:24:25] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:24:25,909 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:24:25] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:24:35,629 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:24:35] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:24:35,656 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:24:35] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:24:35,705 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:24:35] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:24:50,160 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:50] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:24:50,199 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:50] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 08:24:52,849 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:52] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:24:52,859 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:52] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:24:52,878 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:52] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:24:55,739 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:55] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:24:55,769 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:55] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:24:59,569 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:59] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:24:59,597 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:24:59] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:25:06,244 - root - INFO - Admin login: admin
+2025-03-19 08:25:06,247 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:06] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:25:06,256 - root - INFO - Admin dashboard accessed: admin
+2025-03-19 08:25:06,269 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:06] "GET /admin/dashboard HTTP/1.1" 200 -
+2025-03-19 08:25:08,737 - root - INFO - Admin dashboard accessed: admin
+2025-03-19 08:25:08,742 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:08] "GET /admin/dashboard HTTP/1.1" 200 -
+2025-03-19 08:25:09,537 - root - INFO - Starting manage_users function - แก้ไขใหม่แล้ว
+2025-03-19 08:25:09,548 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:09] "GET /admin/users HTTP/1.1" 200 -
+2025-03-19 08:25:12,616 - root - INFO - User 6506022410032 and all related data deleted by admin
+2025-03-19 08:25:12,618 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:12] "[32mPOST /admin/users/delete/67da1cb446deec7cc0261e52 HTTP/1.1[0m" 302 -
+2025-03-19 08:25:12,628 - root - INFO - Starting manage_users function - แก้ไขใหม่แล้ว
+2025-03-19 08:25:12,631 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:12] "GET /admin/users HTTP/1.1" 200 -
+2025-03-19 08:25:14,835 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:14] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:25:14,846 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:14] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:25:14,864 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:14] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:25:16,361 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:16] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:25:16,387 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:16] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:25:17,972 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:17] "GET /register HTTP/1.1" 200 -
+2025-03-19 08:25:17,991 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:17] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:25:28,878 - root - INFO - ส่งอีเมลยืนยันไปที่ suphachai16112543@gmail.com สำเร็จ
+2025-03-19 08:25:28,880 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:28] "POST /register HTTP/1.1" 200 -
+2025-03-19 08:25:38,602 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:25:38] "[32mGET /confirm_email/InN1cGhhY2hhaTE2MTEyNTQzQGdtYWlsLmNvbSI.Z9odBQ.nTGxDzEeus568_fB15JBfaxg208 HTTP/1.1[0m" 302 -
+2025-03-19 08:25:38,632 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:25:38] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:25:38,696 - werkzeug - INFO - 192.168.1.180 - - [19/Mar/2025 08:25:38] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:25:38,904 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:38] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:25:38,920 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:38] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:25:53,157 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:53] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:25:53,177 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:53] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 08:25:56,200 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:56] "GET /dashboard-student2 HTTP/1.1" 200 -
+2025-03-19 08:25:58,439 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:58] "GET /lab2/lab2 HTTP/1.1" 200 -
+2025-03-19 08:25:58,480 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:58] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:25:59,022 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:59] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 08:25:59,059 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:25:59] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:26:03,177 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:26:03] "GET /student/change_password HTTP/1.1" 200 -
+2025-03-19 08:26:04,225 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:26:04] "GET /dashboard-student2 HTTP/1.1" 200 -
+2025-03-19 08:26:04,665 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:26:04] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 08:26:04,691 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:26:04] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:26:12,640 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:26:12] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:26:12,653 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:26:12] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:26:12,673 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:26:12] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:26:15,567 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:26:15] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:26:15,592 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:26:15] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 08:26:23,912 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:26:23] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:29:33,639 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:33] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:29:38,236 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:38] "[35m[1mGET /teacher/submission/1/6506022410032 HTTP/1.1[0m" 500 -
+2025-03-19 08:29:38,254 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:38] "GET /teacher/submission/1/6506022410032?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-03-19 08:29:38,255 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:38] "GET /teacher/submission/1/6506022410032?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-03-19 08:29:38,266 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:38] "GET /teacher/submission/1/6506022410032?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-03-19 08:29:43,227 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:43] "[35m[1mGET /teacher/submission/1/6506022410032 HTTP/1.1[0m" 500 -
+2025-03-19 08:29:43,247 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:43] "[36mGET /teacher/submission/1/6506022410032?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-19 08:29:43,248 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:43] "[36mGET /teacher/submission/1/6506022410032?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-19 08:29:46,677 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:46] "[35m[1mGET /teacher/submission/1/6506022410031 HTTP/1.1[0m" 500 -
+2025-03-19 08:29:46,693 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:46] "GET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-03-19 08:29:46,698 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:46] "GET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-03-19 08:29:46,708 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:29:46] "GET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-03-19 08:30:01,534 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:30:01] "[35m[1mGET /teacher/submission/1/6506022410031 HTTP/1.1[0m" 500 -
+2025-03-19 08:30:01,554 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:30:01] "[36mGET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-19 08:30:01,555 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:30:01] "[36mGET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-19 08:30:20,284 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:30:20] "[35m[1mGET /teacher/submission/1/6506022410031 HTTP/1.1[0m" 500 -
+2025-03-19 08:30:20,302 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:30:20] "[36mGET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-19 08:30:20,303 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:30:20] "[36mGET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-19 08:31:34,517 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\teacher.py', reloading
+2025-03-19 08:31:35,072 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:31:35,646 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:31:35,896 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:31:35,899 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:31:38,220 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:31:38] "[35m[1mGET /teacher/submission/1/6506022410031 HTTP/1.1[0m" 500 -
+2025-03-19 08:31:38,318 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:31:38] "[36mGET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-19 08:31:38,324 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:31:38] "[36mGET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-19 08:31:38,345 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:31:38] "[36mGET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-03-19 08:31:40,521 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:31:40] "[35m[1mGET /teacher/submission/1/6506022410031 HTTP/1.1[0m" 500 -
+2025-03-19 08:31:40,539 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:31:40] "[36mGET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-19 08:31:40,543 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:31:40] "[36mGET /teacher/submission/1/6506022410031?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-19 08:31:56,877 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\teacher.py', reloading
+2025-03-19 08:31:57,294 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:31:57,852 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:31:58,089 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:31:58,091 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:32:13,859 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\teacher.py', reloading
+2025-03-19 08:32:14,399 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:32:14,912 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:32:15,144 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:32:15,146 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:33:25,311 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\teacher.py', reloading
+2025-03-19 08:33:25,875 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:33:26,504 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:33:26,779 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:33:26,781 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:34:01,371 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\teacher.py', reloading
+2025-03-19 08:34:01,745 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:34:02,293 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:34:02,533 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:34:02,536 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:34:03,468 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:34:03] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:34:09,175 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:34:09] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:34:10,240 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:34:10] "GET /teacher/submission/1/6506022410032 HTTP/1.1" 200 -
+2025-03-19 08:34:11,696 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:34:11] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:34:12,524 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:34:12] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:34:13,660 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:34:13] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:37:32,563 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\teacher.py', reloading
+2025-03-19 08:37:33,031 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:37:33,556 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:37:39,232 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:37:39,482 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.105:5000
+2025-03-19 08:37:39,482 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 08:37:39,484 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:37:40,042 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:37:40,282 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:37:40,284 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:38:49,963 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:38:49] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:38:51,890 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:38:51] "GET /teacher/submission/1/6506022410032 HTTP/1.1" 200 -
+2025-03-19 08:38:54,552 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:38:54] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:38:55,570 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:38:55] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:38:59,342 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:38:59] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:38:59,935 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:38:59] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:39:00,482 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:00] "GET /teacher/lab/3 HTTP/1.1" 200 -
+2025-03-19 08:39:01,077 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:01] "GET /teacher/lab/3 HTTP/1.1" 200 -
+2025-03-19 08:39:01,381 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:01] "GET /teacher/lab/4 HTTP/1.1" 200 -
+2025-03-19 08:39:01,974 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:01] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:39:02,397 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:02] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:39:02,796 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:02] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:39:03,515 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:03] "GET /teacher/lab/3 HTTP/1.1" 200 -
+2025-03-19 08:39:03,893 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:03] "GET /teacher/lab/5 HTTP/1.1" 200 -
+2025-03-19 08:39:04,273 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:04] "GET /teacher/lab/5 HTTP/1.1" 200 -
+2025-03-19 08:39:04,597 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:04] "GET /teacher/lab/7 HTTP/1.1" 200 -
+2025-03-19 08:39:04,964 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:04] "GET /teacher/lab/3 HTTP/1.1" 200 -
+2025-03-19 08:39:05,293 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:05] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:39:07,668 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:07] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:39:07,679 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:07] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:39:07,752 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:07] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:39:10,955 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:10] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:39:10,965 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:10] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:39:10,981 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:10] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:39:14,617 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:14] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:39:14,655 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:14] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 08:39:17,145 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:17] "GET /lab2/lab2 HTTP/1.1" 200 -
+2025-03-19 08:39:17,182 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:17] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:39:50,076 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:50] "[32mPOST /lab2/lab2 HTTP/1.1[0m" 302 -
+2025-03-19 08:39:50,092 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:50] "GET /lab2/lab2 HTTP/1.1" 200 -
+2025-03-19 08:39:50,124 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:39:50] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:40:06,927 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:06] "[32mPOST /lab2/lab2 HTTP/1.1[0m" 302 -
+2025-03-19 08:40:06,940 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:06] "GET /lab2/lab2 HTTP/1.1" 200 -
+2025-03-19 08:40:06,968 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:06] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:40:08,928 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:08] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:40:08,939 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:08] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:40:08,961 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:08] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:40:13,393 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:13] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:40:13,406 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:13] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 08:40:15,100 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:15] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:40:20,062 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:20] "GET /teacher/submission/2/6506022410032 HTTP/1.1" 200 -
+2025-03-19 08:40:26,902 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:26] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:40:26,912 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:26] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:40:26,931 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:40:26] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:40:54,992 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:40:54] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:40:55,002 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:40:55] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:40:55,034 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:40:55] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:41:00,662 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:41:00] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:41:00,676 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:41:00] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 08:41:03,462 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:41:03] "GET /lab2/lab2 HTTP/1.1" 200 -
+2025-03-19 08:41:03,496 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:41:03] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:41:04,997 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:41:04] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 08:41:05,028 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:41:05] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:41:12,694 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:41:12] "[32mPOST /lab/lab1 HTTP/1.1[0m" 302 -
+2025-03-19 08:41:12,711 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:41:12] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 08:41:12,737 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:41:12] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:41:19,161 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:41:19,174 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:19] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 08:41:19,866 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:19] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:41:22,549 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:22] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:41:26,695 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:26] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:41:28,364 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:28] "GET /teacher/submission/2/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:41:33,841 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:33] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:41:34,768 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:34] "GET /teacher/submission/2/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:41:36,868 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:36] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:41:38,641 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:38] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:41:39,601 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:39] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:41:45,442 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:45] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:41:46,549 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:41:46] "GET /teacher/submission/2/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:42:13,930 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:42:13] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:42:15,311 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:42:15] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 08:43:18,190 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:43:18] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 08:44:53,501 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:44:53] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:44:53,516 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:44:53] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:44:53,544 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:44:53] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:44:59,165 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:44:59] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:44:59,178 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:44:59] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 08:45:02,243 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:45:02] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 08:45:03,147 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:45:03] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 08:46:15,077 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 08:46:15] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 08:46:59,080 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:46:59] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 08:46:59,114 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:46:59] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:47:01,025 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:01] "GET /lab2/lab2 HTTP/1.1" 200 -
+2025-03-19 08:47:01,056 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:01] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:47:01,992 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:01] "GET /lab3/lab3 HTTP/1.1" 200 -
+2025-03-19 08:47:02,024 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:02] "[36mGET /static/pdfs/lab3.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:47:03,254 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:03] "GET /lab4/lab4 HTTP/1.1" 200 -
+2025-03-19 08:47:03,286 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:03] "[36mGET /static/pdfs/lab4.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:47:03,789 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:03] "GET /lab2/lab2 HTTP/1.1" 200 -
+2025-03-19 08:47:03,815 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:03] "[36mGET /static/pdfs/lab2.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:47:04,139 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:04] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 08:47:04,170 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:04] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 08:47:08,521 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:08] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 08:47:08,533 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:08] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:47:08,554 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:08] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:47:11,816 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:47:11,827 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:11] "GET /login HTTP/1.1" 200 -
+2025-03-19 08:47:11,840 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:11] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 08:47:15,154 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:15] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 08:47:15,167 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:47:15] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 08:48:07,803 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\teacher.py', reloading
+2025-03-19 08:48:08,299 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:48:08,860 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:48:13,972 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:48:14,213 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.105:5000
+2025-03-19 08:48:14,214 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-19 08:48:14,215 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:48:14,705 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:48:14,947 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:48:14,949 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:49:37,493 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\teacher.py', reloading
+2025-03-19 08:49:37,880 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:49:38,483 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:49:38,724 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:49:38,727 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:49:39,329 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:49:39] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 08:49:41,024 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:49:41] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 08:49:42,013 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:49:42] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 08:50:32,125 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\teacher.py', reloading
+2025-03-19 08:50:32,652 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 08:50:33,172 - root - INFO - MongoDB connection established successfully
+2025-03-19 08:50:33,425 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 08:50:33,427 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 08:50:33,508 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:33] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 08:50:40,176 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:40] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:50:40,470 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:40] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:50:41,911 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:41] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:50:47,338 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:47] "GET /teacher/lab/3 HTTP/1.1" 200 -
+2025-03-19 08:50:47,939 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:47] "GET /teacher/lab/5 HTTP/1.1" 200 -
+2025-03-19 08:50:48,373 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:48] "GET /teacher/lab/6 HTTP/1.1" 200 -
+2025-03-19 08:50:48,833 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:48] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:50:50,884 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:50] "GET /teacher/submission/2/6506022410032 HTTP/1.1" 200 -
+2025-03-19 08:50:57,284 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:57] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:50:59,563 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:50:59] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 08:51:01,877 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:51:01] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:51:07,451 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:51:07] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:51:14,368 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:51:14] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:51:16,331 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:51:16] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:59:15,491 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:59:15] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:59:15,881 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:59:15] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:59:16,059 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:59:16] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 08:59:19,202 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:59:19] "[32mPOST /teacher/delete_submission HTTP/1.1[0m" 302 -
+2025-03-19 08:59:19,215 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:59:19] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 08:59:22,745 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:59:22] "GET /teacher/submission/1/6506022410032 HTTP/1.1" 200 -
+2025-03-19 08:59:28,889 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:59:28] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 08:59:30,579 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:59:30] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 08:59:38,593 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 08:59:38] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 09:01:48,774 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:01:48] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:01:51,538 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:01:51] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 09:01:51,549 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:01:51] "GET /login HTTP/1.1" 200 -
+2025-03-19 09:01:51,625 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:01:51] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 09:01:57,596 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:01:57] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 09:01:57,643 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:01:57] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:01:59,829 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:01:59] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 09:01:59,861 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:01:59] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 09:02:12,231 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:02:12] "[32mPOST /lab/lab1 HTTP/1.1[0m" 302 -
+2025-03-19 09:02:12,244 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:02:12] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 09:02:12,269 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:02:12] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 09:02:16,983 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:02:16] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:02:21,884 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:02:21] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:02:22,495 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:02:22] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:02:22,973 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:02:22] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:02:23,697 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:02:23] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:02:24,422 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:02:24] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:02:27,614 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:02:27] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:02:28,422 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:02:28] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 09:02:31,081 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:02:31] "GET /teacher/submission/1/6506022410032 HTTP/1.1" 200 -
+2025-03-19 09:03:49,173 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:03:49] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:03:50,484 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:03:50] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:05:46,678 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\lab.py', reloading
+2025-03-19 09:05:47,236 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 09:05:47,792 - root - INFO - MongoDB connection established successfully
+2025-03-19 09:05:48,038 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 09:05:48,040 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 09:05:52,963 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:05:52] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 09:05:53,046 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:05:53] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 09:05:56,619 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:05:56] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 09:05:56,632 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:05:56] "GET /login HTTP/1.1" 200 -
+2025-03-19 09:05:56,653 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:05:56] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 09:06:01,121 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:06:01] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 09:06:01,132 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:06:01] "GET /login HTTP/1.1" 200 -
+2025-03-19 09:06:01,148 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:06:01] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 09:06:04,507 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:06:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 09:06:04,527 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:06:04] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:06:06,002 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:06:06] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 09:06:06,032 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:06:06] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 09:06:13,187 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:06:13] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 09:06:15,976 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:06:15] "GET /teacher/submission/1/6506022410032 HTTP/1.1" 200 -
+2025-03-19 09:06:18,065 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:06:18] "[32mPOST /teacher/delete_submission HTTP/1.1[0m" 302 -
+2025-03-19 09:06:18,080 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:06:18] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 09:06:21,166 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:06:21] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 09:06:22,618 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:06:22] "[32mPOST /teacher/delete_submission HTTP/1.1[0m" 302 -
+2025-03-19 09:06:22,631 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:06:22] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 09:06:24,288 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:06:24] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 09:06:26,822 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:06:26] "[32mPOST /teacher/delete_submission HTTP/1.1[0m" 302 -
+2025-03-19 09:06:26,835 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 09:06:26] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 09:06:37,775 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:06:37] "[32mPOST /lab/lab1 HTTP/1.1[0m" 302 -
+2025-03-19 09:06:37,788 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:06:37] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 09:06:37,816 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:06:37] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 09:07:38,834 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\lab.py', reloading
+2025-03-19 09:07:39,379 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 09:07:39,905 - root - INFO - MongoDB connection established successfully
+2025-03-19 09:07:40,141 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 09:07:40,143 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 09:07:52,545 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:07:52] "[32mPOST /lab/lab1 HTTP/1.1[0m" 302 -
+2025-03-19 09:07:52,578 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:07:52] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 09:07:52,647 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:07:52] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 09:09:32,901 - werkzeug - INFO -  * Detected change in 'C:\\Users\\supha\\OneDrive\\เดสก์ท็อป\\project\\Project_END_Yok\\Project_END_Yok\\lab.py', reloading
+2025-03-19 09:09:33,058 - werkzeug - INFO -  * Restarting with stat
+2025-03-19 09:09:33,577 - root - INFO - MongoDB connection established successfully
+2025-03-19 09:09:33,829 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 09:09:33,832 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 09:09:47,428 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:09:47] "[32mPOST /lab/lab1 HTTP/1.1[0m" 302 -
+2025-03-19 09:09:47,463 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:09:47] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 09:09:47,539 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:09:47] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 09:09:56,225 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:09:56] "[32mPOST /lab/lab1 HTTP/1.1[0m" 302 -
+2025-03-19 09:09:56,238 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:09:56] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 09:09:56,264 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:09:56] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 09:10:00,405 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:00] "[32mPOST /lab/lab1 HTTP/1.1[0m" 302 -
+2025-03-19 09:10:00,418 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:00] "GET /lab/lab1 HTTP/1.1" 200 -
+2025-03-19 09:10:00,447 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:00] "[36mGET /static/pdfs/lab1.pdf HTTP/1.1[0m" 304 -
+2025-03-19 09:10:03,024 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:03] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-03-19 09:10:03,036 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:03] "GET /login HTTP/1.1" 200 -
+2025-03-19 09:10:03,058 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:03] "[36mGET /static/images/kmutb-logo.png HTTP/1.1[0m" 304 -
+2025-03-19 09:10:06,700 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:06] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-03-19 09:10:06,724 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:06] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:10:09,282 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:09] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:10:13,751 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:13] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:10:14,177 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:14] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:10:14,466 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:14] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:10:49,518 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:49] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 09:10:51,436 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:10:51] "GET /teacher/submission/1/6506022410031 HTTP/1.1" 200 -
+2025-03-19 09:11:01,506 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:11:01] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:11:16,493 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:11:16] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:11:19,594 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:11:19] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 09:11:22,514 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:11:22] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:11:23,847 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:11:23] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:11:24,125 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:11:24] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:14:21,474 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:14:21] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:14:22,101 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:14:22] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:14:22,633 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:14:22] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:14:56,889 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:14:56] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:14:57,356 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:14:57] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:15:25,146 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:15:25] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:15:30,039 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:15:30] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:17:06,044 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:17:06] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:17:40,750 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:17:40] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:17:41,310 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:17:41] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:17:42,375 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:17:42] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:17:42,973 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:17:42] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:17:43,490 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:17:43] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:17:43,819 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:17:43] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:17:48,199 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:17:48] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:17:49,020 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:17:49] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:17:49,642 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:17:49] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:24,378 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:24] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:24,926 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:24] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:25,156 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:25] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:25,382 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:25] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:25,590 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:25] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:25,812 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:25] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:26,058 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:26] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:26,284 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:26] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:28,736 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:28] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:29,297 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:29] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:18:29,568 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:18:29] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:19:03,011 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:19:03] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:19:03,909 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:19:03] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:19:04,426 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:19:04] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:19:04,672 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:19:04] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:19:04,862 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:19:04] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:19:05,061 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:19:05] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:20:02,373 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:20:02] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:20:04,701 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:20:04] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:20:08,401 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:20:08] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:20:10,009 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:20:10] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:20:14,649 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:20:14] "GET /static/pdfs/lab1.pdf HTTP/1.1" 200 -
+2025-03-19 09:20:19,964 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:20:19] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:20:21,211 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:20:21] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:20:22,925 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:20:22] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:20:25,865 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:20:25] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:20:26,271 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:20:26] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:22:57,610 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:22:57] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:23:11,003 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:23:11] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:23:12,546 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:23:12] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:23:57,475 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:23:57] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:23:58,887 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:23:58] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:23:59,487 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:23:59] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:24:08,738 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:24:08] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 09:24:10,966 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:24:10] "GET /teacher/lab/3 HTTP/1.1" 200 -
+2025-03-19 09:24:11,279 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:24:11] "GET /teacher/lab/2 HTTP/1.1" 200 -
+2025-03-19 09:24:11,571 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:24:11] "GET /teacher/lab/1 HTTP/1.1" 200 -
+2025-03-19 09:24:11,988 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:24:11] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:24:12,309 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:24:12] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:24:16,698 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:24:16] "GET /teacher/stats HTTP/1.1" 200 -
+2025-03-19 09:24:18,793 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:24:18] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:24:20,135 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:24:20] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:24:22,234 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:24:22] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:25:22,880 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:25:22] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:25:25,597 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:25:25] "GET /teacher/students HTTP/1.1" 200 -
+2025-03-19 09:25:35,668 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:25:35] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:25:55,039 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:25:55] "GET /dashboard HTTP/1.1" 200 -
+2025-03-19 09:26:01,519 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 09:26:01] "GET /teacher/students HTTP/1.1" 200 -
