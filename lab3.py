@@ -1,7 +1,7 @@
 import os
 import re
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
-from datetime import datetime
+from datetime import datetime, timedelta
 from pymongo import MongoClient
 
 try:
@@ -285,7 +285,7 @@ def lab3():
             "expected_vlans_sw2": expected_vlans_sw2,
             "pc1_config": pc1_config,
             "pc2_config": pc2_config,
-            "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+            "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))+ timedelta(hours=7)
         })
     else:
         # ใช้คีย์เวิร์ดจากฐานข้อมูล
@@ -389,7 +389,7 @@ def lab3():
                             "gateway": user_pc2_gateway
                         }
                     },
-                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))+ timedelta(hours=7)
                 }},
                 upsert=True
             )

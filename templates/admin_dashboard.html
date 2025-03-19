@@ -189,7 +189,7 @@
                         </svg>
                     </button>
                     <h1 class="ml-4 text-lg font-semibold text-gray-900">
-                        <a href="{{ url_for('dashboard') }}">Network Lab System - ADMIN</a>
+                        <a href="{{ url_for('admin.dashboard') }}">Network Lab System - ADMIN</a>
                     </h1>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -201,9 +201,6 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden" id="userMenuDropdown">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" id="changePasswordBtn">
-                                เปลี่ยนรหัสผ่าน
-                            </a>
                             <a href="{{ url_for('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 ออกจากระบบ
                             </a>
@@ -477,15 +474,30 @@
     </main>
     <script>
         // Sidebar Toggle
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('mainContent');
-        
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('collapsed');
-            mainContent.classList.toggle('sidebar-collapsed');
-            saveSidebarState(sidebar.classList.contains('collapsed'));
-        });
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('mainContent');
+    
+    sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        mainContent.classList.toggle('sidebar-collapsed');
+        saveSidebarState(sidebar.classList.contains('collapsed'));
+    });
+    
+    // เพิ่มโค้ดสำหรับเมนูดรอปดาวน์ของผู้ใช้
+    const userMenuButton = document.getElementById('userMenuButton');
+    const userMenuDropdown = document.getElementById('userMenuDropdown');
+    
+    userMenuButton.addEventListener('click', () => {
+        userMenuDropdown.classList.toggle('hidden');
+    });
+    
+    // ปิดเมนูเมื่อคลิกที่อื่น
+    document.addEventListener('click', (event) => {
+        if (!userMenuButton.contains(event.target) && !userMenuDropdown.contains(event.target)) {
+            userMenuDropdown.classList.add('hidden');
+        }
+    });
     </script>
 </body>
 </html>

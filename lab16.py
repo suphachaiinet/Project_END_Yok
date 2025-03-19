@@ -1,7 +1,7 @@
 import os
 import re
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
-from datetime import datetime
+from datetime import datetime , timedelta
 from pymongo import MongoClient
 from zoneinfo import ZoneInfo
 
@@ -246,7 +246,7 @@ def lab16():
                     "sw1_score": "100.00/100",
                     "sw2_score": "100.00/100",
                     "router_score": "30.00",
-                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))+ timedelta(hours=7)
                 }},
                 upsert=True
             )

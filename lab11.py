@@ -1,7 +1,7 @@
 import os
 import re
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
-from datetime import datetime
+from datetime import datetime , timedelta
 from pymongo import MongoClient
 from zoneinfo import ZoneInfo
 
@@ -277,7 +277,7 @@ def lab11():
                             "gateway": pcb_gateway
                         }
                     },
-                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))+ timedelta(hours=7)
                 }},
                 upsert=True
             )

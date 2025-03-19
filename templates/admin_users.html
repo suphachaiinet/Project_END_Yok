@@ -8,7 +8,7 @@
         <h2 class="text-lg font-semibold text-gray-900">จัดการผู้ใช้ทั้งหมด</h2>
         <div class="flex space-x-2">
             <a href="{{ url_for('admin.update_created_at') }}" class="bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors">
-                <i class="fas fa-sync mr-2"></i>อัพเดต created_at
+                <i class="fas fa-sync mr-2"></i>อัพเดตเวลาสมัคร
             </a>
             <a href="{{ url_for('admin.add_user') }}" class="bg-blue-500 text-white px-3 py-2 rounded-md text-sm hover:bg-blue-600 transition-colors">
                 <i class="fas fa-plus mr-2"></i>เพิ่มผู้ใช้
@@ -77,10 +77,14 @@
                                 {% endif %}
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
-                            {{ user.created_at.strftime('%d/%m/%Y %H:%M:%S') if user.created_at else 'N/A' }}
+                            {% if user.created_at is string and '.' in user.created_at %}
+                                {{ user.created_at.split('.')[0] }}
+                            {% else %}
+                                {{ user.created_at }}
+                            {% endif %}
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
-                            {{ user.last_login.strftime('%d/%m/%Y %H:%M:%S') if user.last_login else 'ยังไม่เคยเข้าสู่ระบบ' }}
+                            {{ user.last_login or 'ยังไม่เคยเข้าสู่ระบบ' }}
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap text-sm font-medium">
                             <div class="flex space-x-2">

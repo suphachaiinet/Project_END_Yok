@@ -1,0 +1,248 @@
+{% extends "student_dashboard.html" %}
+
+{% block content %}
+{% set lab_endpoints = {
+    1: 'lab.lab1',
+    2: 'lab2.lab2',
+    3: 'lab3.lab3',
+    4: 'lab4.lab4',
+    5: 'lab5.lab5',
+    6: 'lab6.lab6',
+    7: 'lab7.lab7',
+    8: 'lab8.lab8',
+    9: 'lab9.lab9',
+    10: 'lab10.lab10',
+    11: 'lab11.lab11',
+    12: 'lab12.lab12',
+    13: 'lab13.lab13',
+    14: 'lab14.lab14',
+    15: 'lab15.lab15',
+    16: 'lab16.lab16'
+  } %}
+
+<div class="p-4">
+    <h1 class="text-xl font-bold text-gray-900 mb-4">Student Dashboard</h1>
+    
+    <!-- Top Stats Row -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <!-- Overall Progress -->
+        <div class="bg-white rounded-lg shadow p-4">
+            <div class="flex items-center">
+                <div class="bg-blue-100 rounded-full p-2 mr-3">
+                    <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-500">Overall Progress</p>
+                    <p class="text-lg font-bold text-gray-900">{{ overall_score if overall_score else '0' }}%</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Last Activity -->
+        <div class="bg-white rounded-lg shadow p-4">
+            <div class="flex items-center">
+                <div class="bg-purple-100 rounded-full p-2 mr-3">
+                    <svg class="h-5 w-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-500">Last Activity</p>
+                    <p class="text-sm font-medium text-gray-900">{{ last_lab_time }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Grid - 2 columns -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Left Column - Labs To Complete -->
+        <div>
+            <div class="bg-white rounded-lg shadow">
+                <div class="border-b border-gray-200 px-4 py-2">
+                    <h2 class="text-sm font-medium text-gray-900">Labs To Complete</h2>
+                </div>
+                <div class="overflow-y-auto max-h-[480px]">
+                    {% set incomplete_count = 0 %}
+                    {% for i in range(0, 16) if scores[i] < 70 %}
+                        {% set incomplete_count = incomplete_count + 1 %}
+                        <div class="border-b border-gray-100">
+                            <div class="flex items-center justify-between px-4 py-3">
+                                <div class="flex items-center">
+                                    <div class="w-6 text-center mr-3 text-gray-600">
+                                        {{ i + 1 }}
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Lab {{ i + 1 }}</p>
+                                        <p class="text-xs text-gray-500">{{ lab_titles[i] }}</p>
+                                    </div>
+                                </div>
+                                <a href="{{ url_for(lab_endpoints[i+1]) }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded text-xs hover:bg-gray-300">
+                                    Start
+                                </a>
+                            </div>
+                        </div>
+                    {% else %}
+                    <div class="p-4 text-center">
+                        <p class="text-gray-500 py-2 text-sm">All labs completed!</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column -->
+        <div class="space-y-4">
+            <!-- Quick Actions -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="border-b border-gray-200 px-4 py-2">
+                    <h2 class="text-sm font-medium text-gray-900">Quick Actions</h2>
+                </div>
+                <div class="p-4">
+                    <div class="grid grid-cols-3 gap-3">
+                        <a href="{{ url_for('student_change_password') }}" class="flex flex-col items-center p-3 border border-gray-200 rounded hover:bg-gray-50">
+                            <div class="bg-gray-100 rounded-full p-2 mb-2">
+                                <svg class="h-5 w-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-xs font-medium text-gray-900 text-center">Change Password</p>
+                        </a>
+                        
+                        <a href="#" id="scoreToggleQuick" class="flex flex-col items-center p-3 border border-gray-200 rounded hover:bg-gray-50">
+                            <div class="bg-blue-100 rounded-full p-2 mb-2">
+                                <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-xs font-medium text-gray-900 text-center">View Scores</p>
+                        </a>
+                        
+                        <a href="#" class="flex flex-col items-center p-3 border border-gray-200 rounded hover:bg-gray-50" id="userGuideToggle">
+                            <div class="bg-green-100 rounded-full p-2 mb-2">
+                                <svg class="h-5 w-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-xs font-medium text-gray-900 text-center">User Guide</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lab Progress Overview -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="border-b border-gray-200 px-4 py-2">
+                    <h2 class="text-sm font-medium text-gray-900">Lab Progress</h2>
+                </div>
+                <div class="p-4">
+                    <div class="grid grid-cols-4 gap-3">
+                        {% for i in range(1, 17) %}
+                        <div class="text-center">
+                            <div class="mx-auto rounded-full w-8 h-8 mb-1 flex items-center justify-center
+                                {% if scores[i-1] >= 90 %}bg-green-100 text-green-600
+                                {% elif scores[i-1] >= 80 %}bg-yellow-100 text-yellow-600
+                                {% elif scores[i-1] >= 50 %}bg-orange-100 text-orange-600
+                                {% elif scores[i-1] > 0 %}bg-red-100 text-red-600
+                                {% else %}bg-red-100 text-red-600{% endif %} 
+                                text-xs font-medium">
+                                {{ i }}
+                            </div>
+                            <div class="text-xs 
+                                {% if scores[i-1] >= 90 %}text-green-600
+                                {% elif scores[i-1] >= 80 %}text-yellow-600
+                                {% elif scores[i-1] >= 50 %}text-orange-600
+                                {% else %}text-red-600{% endif %}">
+                                {{ scores[i-1] }}%
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User Guide Modal -->
+<div id="userGuideModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg p-6 max-w-2xl mx-auto max-h-[80vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-4 border-b pb-2">
+            <h3 class="text-lg font-medium text-gray-900">Network Lab II - User Guide</h3>
+            <button id="closeUserGuide" class="text-gray-400 hover:text-gray-500">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        <div class="prose prose-sm">
+            <h4 class="font-medium text-gray-900">Getting Started</h4>
+            <p>Welcome to Network Lab II. This platform helps you complete networking exercises and track your progress.</p>
+            
+            <h4 class="font-medium text-gray-900 mt-4">Dashboard Overview</h4>
+            <ul class="space-y-1 list-disc pl-5">
+                <li><strong>Overall Progress</strong>: Shows your total completion percentage across all labs</li>
+                <li><strong>Last Activity</strong>: When you last worked on a lab</li>
+            </ul>
+            
+            <h4 class="font-medium text-gray-900 mt-4">Working with Labs</h4>
+            <ul class="space-y-1 list-disc pl-5">
+                <li>Labs are listed in the sidebar on the left</li>
+                <li>Click "Start" on any lab to begin working on it</li>
+                <li>Follow the lab instructions and submit your work</li>
+                <li>Your scores are updated automatically</li>
+            </ul>
+            
+            <h4 class="font-medium text-gray-900 mt-4">Navigation Tips</h4>
+            <ul class="space-y-1 list-disc pl-5">
+                <li>Use the hamburger menu (≡) to collapse/expand the sidebar</li>
+                <li>Click on "Network Lab II" to return to this dashboard</li>
+                <li>Click "View Scores" to see detailed progress on all labs</li>
+            </ul>
+            
+            <h4 class="font-medium text-gray-900 mt-4">Need Help?</h4>
+            <p>If you encounter any issues or need assistance with the labs, please contact your instructor.</p>
+        </div>
+    </div>
+</div>
+{% if session.role == 'admin' or session.get('temp_role') == 'student' %}
+<div class="fixed bottom-4 right-4 z-50">
+  <a href="{{ url_for('admin.dashboard') }}" 
+     class="flex items-center bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md shadow-lg transition-colors">
+    <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+    </svg>
+    กลับหน้าแอดมิน
+  </a>
+</div>
+{% endif %}
+<script>
+    // Link Score Toggle button
+    document.getElementById('scoreToggleQuick').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('scoreToggle').click();
+    });
+    
+    // User Guide Toggle
+    const userGuideToggle = document.getElementById('userGuideToggle');
+    const userGuideModal = document.getElementById('userGuideModal');
+    const closeUserGuide = document.getElementById('closeUserGuide');
+    
+    userGuideToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        userGuideModal.classList.remove('hidden');
+    });
+    
+    closeUserGuide.addEventListener('click', function() {
+        userGuideModal.classList.add('hidden');
+    });
+    
+    userGuideModal.addEventListener('click', function(e) {
+        if (e.target === userGuideModal) {
+            userGuideModal.classList.add('hidden');
+        }
+    });
+</script>
+{% endblock %}

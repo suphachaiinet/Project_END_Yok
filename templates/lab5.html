@@ -52,7 +52,7 @@
 
     .right-panel {
         display: grid;
-        grid-template-rows: auto 250px;
+        grid-template-rows: 430px;
         height: 100%;
         background: white;
         border: 1px solid #e5e7eb;
@@ -132,15 +132,18 @@
                     <div class="grid grid-cols-3 gap-4 mb-6">
                         <div class="space-y-2">
                             <h3 class="text-lg font-medium text-gray-900">SW1 Configuration</h3>
-                            <textarea name="config_sw1" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required></textarea>
+                            <textarea name="config_sw1" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required 
+                            placeholder="Enter show running-config"></textarea>
                         </div>
                         <div class="space-y-2">
                             <h3 class="text-lg font-medium text-gray-900">SW2 Configuration</h3>
-                            <textarea name="config_sw2" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required></textarea>
+                            <textarea name="config_sw2" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required 
+                            placeholder="Enter show running-config"></textarea>
                         </div>
                         <div class="space-y-2">
                             <h3 class="text-lg font-medium text-gray-900">SW3 Configuration</h3>
-                            <textarea name="config_sw3" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required></textarea>
+                            <textarea name="config_sw3" class="config-textarea w-full p-3 bg-gray-900 text-gray-100 rounded-lg" required 
+                            placeholder="Enter show running-config"></textarea>
                         </div>
                     </div>
 
@@ -150,8 +153,8 @@
                         <div class="space-y-2">
                             <h3 class="text-lg font-medium text-gray-900">PC A Configuration</h3>
                             <div class="space-y-2">
-                                <input type="text" name="pca_ip" class="w-full p-2 border rounded" placeholder="IP Address" required>
-                                <input type="text" name="pca_subnet" class="w-full p-2 border rounded" placeholder="Subnet Mask" required>
+                                <input type="text" name="pca_ip" class="input-field w-full p-2 border rounded " placeholder="IP Address" required>
+                                <input type="text" name="pca_subnet" class="input-field w-full p-2 border rounded" placeholder="Subnet Mask" required>
                             </div>
                         </div>
                         <!-- PC C Config -->

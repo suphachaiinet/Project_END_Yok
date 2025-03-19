@@ -1,0 +1,17 @@
+2025-03-19 06:55:11,068 - werkzeug - WARNING -  * Debugger is active!
+2025-03-19 06:55:11,071 - werkzeug - INFO -  * Debugger PIN: 634-005-923
+2025-03-19 06:55:31,927 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:55:31] "[35m[1mGET /admin/users HTTP/1.1[0m" 500 -
+2025-03-19 06:55:32,028 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:55:32] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-19 06:55:32,029 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:55:32] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-19 06:55:32,045 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:55:32] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-03-19 06:56:36,849 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:36] "[35m[1mGET /admin/users HTTP/1.1[0m" 500 -
+2025-03-19 06:56:36,858 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:36] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-19 06:56:36,863 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:36] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-19 06:56:36,880 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:36] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-03-19 06:56:37,410 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:37] "[35m[1mGET /admin/users HTTP/1.1[0m" 500 -
+2025-03-19 06:56:37,422 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:37] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-19 06:56:37,424 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:37] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-03-19 06:56:37,440 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:37] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-03-19 06:56:39,499 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:39] "[35m[1mGET /admin/users HTTP/1.1[0m" 500 -
+2025-03-19 06:56:39,513 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:39] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-03-19 06:56:39,515 - werkzeug - INFO - 192.168.1.105 - - [19/Mar/2025 06:56:39] "[36mGET /admin/users?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -

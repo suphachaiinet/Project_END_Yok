@@ -1,98 +1,143 @@
 {% extends 'base.html' %}
 
-{% block title %}รายละเอียดผู้ใช้{% endblock %}
+{% block title %}Admin - แก้ไขข้อมูลผู้ใช้{% endblock %}
 
 {% block content %}
-<div class="p-4">
-    <div class="bg-white shadow-sm rounded-lg border border-gray-200">
-        <div class="p-4 border-b border-gray-200 flex items-center justify-between">
-            <h2 class="text-lg font-semibold text-gray-900">รายละเอียดผู้ใช้</h2>
-        </div>
-        
-        <div class="p-6 space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">รหัสผู้ใช้</label>
-                    <div class="bg-gray-50 p-2 rounded-md border border-gray-200">
-                        {{ user.username }}
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อ</label>
-                    <div class="bg-gray-50 p-2 rounded-md border border-gray-200">
-                        {{ user.first_name }}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">นามสกุล</label>
-                    <div class="bg-gray-50 p-2 rounded-md border border-gray-200">
-                        {{ user.last_name }}
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">อีเมล</label>
-                    <div class="bg-gray-50 p-2 rounded-md border border-gray-200">
-                        {{ user.email }}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">สถานะ</label>
-                    <div class="flex items-center space-x-2">
-                        {% if user.is_verified %}
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                            ยืนยันอีเมลแล้ว
-                        </span>
-                        {% else %}
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                            ยังไม่ยืนยันอีเมล
-                        </span>
-                        {% endif %}
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">ประเภท</label>
-                    <div>
-                        {% if user.role == 'admin' %}
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                            แอดมิน
-                        </span>
-                        {% elif user.role == 'teacher' %}
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                            อาจารย์
-                        </span>
-                        {% else %}
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                            นักศึกษา
-                        </span>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flex space-x-3 pt-4 border-t border-gray-200">
-                <a 
-                    href="{{ url_for('admin.edit_user', user_id=user._id) }}" 
-                    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
-                >
-                    แก้ไขข้อมูล
-                </a>
-                <a 
-                    href="{{ url_for('admin.manage_users') }}" 
-                    class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
-                >
-                    กลับ
-                </a>
-            </div>
-        </div>
+<div class="bg-white rounded-lg shadow-sm border border-gray-200">
+    <div class="p-4 border-b border-gray-200">
+        <h2 class="text-lg font-semibold text-gray-900">แก้ไขข้อมูลผู้ใช้</h2>
     </div>
+    
+    <form method="post" action="{{ url_for('admin.edit_user', user_id=user._id) }}" class="p-6 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+                    ชื่อผู้ใช้ <span class="text-red-500">*</span>
+                </label>
+                <input type="text" 
+                       id="username" 
+                       name="username" 
+                       value="{{ user.username }}"
+                       required 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                >
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">
+                    ชื่อ <span class="text-red-500">*</span>
+                </label>
+                <input type="text" 
+                       id="first_name" 
+                       name="first_name" 
+                       value="{{ user.first_name }}"
+                       required 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                >
+            </div>
+            
+            <div>
+                <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">
+                    นามสกุล <span class="text-red-500">*</span>
+                </label>
+                <input type="text" 
+                       id="last_name" 
+                       name="last_name" 
+                       value="{{ user.last_name }}"
+                       required 
+                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                >
+            </div>
+        </div>
+
+        <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                อีเมล <span class="text-red-500">*</span>
+            </label>
+            <input type="email" 
+                   id="email" 
+                   name="email" 
+                   value="{{ user.email }}"
+                   required 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+            >
+        </div>
+
+        <div>
+            <label for="role" class="block text-sm font-medium text-gray-700 mb-2">
+                บทบาท <span class="text-red-500">*</span>
+            </label>
+            <select 
+                id="role" 
+                name="role" 
+                required 
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+            >
+                <option value="student" {% if user.role == 'student' %}selected{% endif %}>นักศึกษา</option>
+                <option value="teacher" {% if user.role == 'teacher' %}selected{% endif %}>อาจารย์</option>
+                <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>แอดมิน</option>
+            </select>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center">
+                <input 
+                    type="checkbox" 
+                    id="is_verified" 
+                    name="is_verified" 
+                    {% if user.is_verified %}checked{% endif %}
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                >
+                <label for="is_verified" class="ml-2 block text-sm text-gray-900">
+                    ยืนยันอีเมลแล้ว
+                </label>
+            </div>
+            
+            <div class="flex items-center" id="is_approved_container" {% if user.role != 'teacher' %}style="display: none;"{% endif %}>
+                <input 
+                    type="checkbox" 
+                    id="is_approved" 
+                    name="is_approved"
+                    {% if user.is_approved %}checked{% endif %}
+                    class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                >
+                <label for="is_approved" class="ml-2 block text-sm text-gray-900">
+                    อนุมัติเป็นอาจารย์
+                </label>
+            </div>
+        </div>
+
+        <div class="flex space-x-3 pt-4 border-t border-gray-200">
+            <button 
+                type="submit" 
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+            >
+                บันทึกการเปลี่ยนแปลง
+            </button>
+            <a 
+                href="{{ url_for('admin.manage_users') }}" 
+                class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
+            >
+                ยกเลิก
+            </a>
+        </div>
+    </form>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const roleSelect = document.getElementById('role');
+        const isApprovedContainer = document.getElementById('is_approved_container');
+        
+        roleSelect.addEventListener('change', function() {
+            if (this.value === 'teacher') {
+                isApprovedContainer.style.display = 'flex';
+            } else {
+                isApprovedContainer.style.display = 'none';
+            }
+        });
+    });
+</script>
 {% endblock %}

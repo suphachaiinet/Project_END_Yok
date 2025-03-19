@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-from datetime import datetime
+from datetime import datetime , timedelta
 from bson import ObjectId
 import json
 
@@ -73,7 +73,7 @@ def students():
     last_name = user['last_name'] if user else session.get('last_name', 'User')
     
     # คำนวณเวลาส่งงานล่าสุด
-    latest_submission = max([score.get('timestamp', datetime.min) for score in all_scores], default=None)
+    latest_submission = max([score.get('timestamp', datetime.min).replace(microsecond=0) for score in all_scores], default=None)
     
     return render_template('teacher_students.html', 
                           students=students,
@@ -224,7 +224,7 @@ def lab_management(lab_num):
                 "lab_num": lab_num,
                 "switch_keywords": default_keywords,
                 "pc_config": pc_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -269,7 +269,7 @@ def lab_management(lab_num):
                 "switch2_keywords": sw2_keywords,
                 "pc1_config": pc1_config,
                 "pc2_config": pc2_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -343,7 +343,7 @@ def lab_management(lab_num):
                 "expected_vlans_sw2": expected_vlans_sw2,
                 "pc1_config": pc1_config,
                 "pc2_config": pc2_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -402,7 +402,7 @@ def lab_management(lab_num):
                 "spanning_tree_sw1": spanning_tree_sw1,
                 "spanning_tree_sw2": spanning_tree_sw2,
                 "spanning_tree_sw3": spanning_tree_sw3,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -463,7 +463,7 @@ def lab_management(lab_num):
                 "sw3_keywords": sw3_keywords,
                 "pca_config": pca_config,
                 "pcc_config": pcc_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -532,7 +532,7 @@ def lab_management(lab_num):
                 "expected_vlans": expected_vlans,
                 "pca_config": pca_config,
                 "pcb_config": pcb_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -603,7 +603,7 @@ def lab_management(lab_num):
                 "expected_vlans": expected_vlans,
                 "pca_config": pca_config,
                 "pcb_config": pcb_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -667,7 +667,7 @@ def lab_management(lab_num):
                 "expected_vlans_sw2": expected_vlans_sw2,
                 "pca_config": pca_config,
                 "pcb_config": pcb_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -764,7 +764,7 @@ def lab_management(lab_num):
                 "r3_keywords": r3_keywords,
                 "pca_config": pca_config,
                 "pcc_config": pcc_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -890,7 +890,7 @@ def lab_management(lab_num):
                 "sw3_keywords": sw3_keywords,
                 "pca_config": pca_config,
                 "pcc_config": pcc_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
 
             lab_keywords = {
@@ -1017,7 +1017,7 @@ def lab_management(lab_num):
                 "expected_vlans": expected_vlans,
                 "pca_config": pca_config,
                 "pcb_config": pcb_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -1124,7 +1124,7 @@ def lab_management(lab_num):
                 "sw2_keywords": sw2_keywords,
                 "pc_a_config": pc_a_config,
                 "pc_b_config": pc_b_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -1214,7 +1214,7 @@ def lab_management(lab_num):
                 "sw2_keywords": sw2_keywords,
                 "pc_a_config": pc_a_config,
                 "pc_b_config": pc_b_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -1343,7 +1343,7 @@ def lab_management(lab_num):
                 "sw2_keywords": sw2_keywords,
                 "pc_a_config": pc_a_config,
                 "pc_b_config": pc_b_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -1458,7 +1458,7 @@ def lab_management(lab_num):
                 "sw2_keywords": sw2_keywords,
                 "pc_a_config": pc_a_config,
                 "pc_c_config": pc_c_config,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -1573,7 +1573,7 @@ def lab_management(lab_num):
                 "r1_keywords": r1_keywords,
                 "sw1_keywords": sw1_keywords,
                 "sw2_keywords": sw2_keywords,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -1589,7 +1589,7 @@ def lab_management(lab_num):
             lab_keywords_collection.insert_one({
                 "lab_num": lab_num,
                 "general_keywords": default_keywords,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
             })
             
             lab_keywords = {
@@ -1627,7 +1627,7 @@ def lab_management(lab_num):
                     'score': score,
                     'status': status,
                     'status_text': status_text,
-                    'timestamp': submission.get('timestamp', 'Unknown')
+                    'timestamp': submission.get('timestamp', 'Unknown').replace(microsecond=0)
                 })
 
     # นับจำนวนนักศึกษาที่ไม่ซ้ำกัน
@@ -2020,7 +2020,7 @@ def view_submission(lab_num, student_id):
     submission_history = list(scores_collection.find({
         "username": student_id, 
         "lab": f"Lab {lab_num}"
-    }).sort("timestamp", -1))
+    }).sort("timestamp", -1)).replace(microsecond=0)
 
     # นับจำนวนครั้งที่ส่งงาน
     submission_count = len(submission_history)
@@ -3118,7 +3118,7 @@ def view_submission(lab_num, student_id):
     
     # เตรียมข้อมูลสรุปสำหรับประวัติการส่งงาน
     submission_history = {
-        "timestamp": submission.get('timestamp', 'ไม่ระบุ'),
+        "timestamp": submission.get('timestamp', 'ไม่ระบุ').replace(microsecond=0),
         "submitted_by": f"{student.get('first_name', '')} {student.get('last_name', '')}",
         "status": status_text,
         "score": score
@@ -3177,7 +3177,7 @@ def update_grade():
         {"$set": {
             "switch_score": f"{manual_score:.2f}/100",
             "manual_graded": True,
-            "manual_graded_at": datetime.now(ZoneInfo("Asia/Bangkok")) # เพิ่ม timezone
+            "manual_graded_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
         }}
     )
     
@@ -3229,7 +3229,7 @@ def update_keywords(lab_num):
                         "subnet": pc_subnet,
                         "gateway": pc_gateway
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3265,7 +3265,7 @@ def update_keywords(lab_num):
                         "subnet": pc2_subnet,
                         "gateway": pc2_gateway
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok").replace(microsecond=0)).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3300,7 +3300,7 @@ def update_keywords(lab_num):
                         "subnet": pc2_subnet,
                         "gateway": pc2_gateway
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3349,7 +3349,7 @@ def update_keywords(lab_num):
                     "spanning_tree_sw1": spanning_tree_sw1,
                     "spanning_tree_sw2": spanning_tree_sw2,
                     "spanning_tree_sw3": spanning_tree_sw3,
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3389,7 +3389,7 @@ def update_keywords(lab_num):
                     "sw3_keywords": sw3_keywords,
                     "pca_config": pca_config,
                     "pcc_config": pcc_config,
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3428,7 +3428,7 @@ def update_keywords(lab_num):
                         "subnet": pcb_subnet,
                         "gateway": pcb_gateway
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3466,7 +3466,7 @@ def update_keywords(lab_num):
                         "subnet": pcb_subnet,
                         "gateway": pcb_gateway
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok").replace(microsecond=0)).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3497,7 +3497,7 @@ def update_keywords(lab_num):
                         "ip": pcb_ip,
                         "subnet": pcb_subnet
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3535,7 +3535,7 @@ def update_keywords(lab_num):
                         "subnet": pcc_subnet,
                         "gateway": pcc_gateway
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3579,7 +3579,7 @@ def update_keywords(lab_num):
                         "subnet": pcc_subnet,
                         "gateway": pcc_gateway
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3620,7 +3620,7 @@ def update_keywords(lab_num):
                         "subnet": pcb_subnet,
                         "gateway": pcb_gateway
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3664,7 +3664,7 @@ def update_keywords(lab_num):
                         "subnet": pc_b_subnet,
                         "gateway": pc_b_gateway
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3710,7 +3710,7 @@ def update_keywords(lab_num):
                         "subnet": pc_c_subnet,
                         "gateway": pc_c_gateway
                     },
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3732,7 +3732,7 @@ def update_keywords(lab_num):
                     "r1_keywords": r1_keywords,
                     "sw1_keywords": sw1_keywords,
                     "sw2_keywords": sw2_keywords,
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )
@@ -3746,7 +3746,7 @@ def update_keywords(lab_num):
                 {"lab_num": lab_num},
                 {"$set": {
                     "general_keywords": general_keywords,
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
                 }},
                 upsert=True
             )

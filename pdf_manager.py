@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash, jsonify
 import os
 from werkzeug.utils import secure_filename
-from datetime import datetime
+from datetime import datetime , timedelta
 
 try:
     from zoneinfo import ZoneInfo
@@ -61,7 +61,7 @@ def upload_pdf():
                 {"$set": {
                     "filename": filename,
                     "path": file_path,
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")),
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")+ timedelta(hours=7)),
                     "updated_by": session.get('username', 'unknown')
                 }},
                 upsert=True

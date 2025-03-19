@@ -198,13 +198,17 @@
                         </svg>
                     </button>
                     <h1 class="ml-4 text-lg font-semibold text-gray-900">
-                        <a href="{{ url_for('dashboard') }}">Network Lab II</a>
+                        <a href="{{ url_for('dashboard_student2') }}">Network Lab II</a>
                     </h1>                </div>
                 <div class="flex items-center space-x-4">
                     <button id="scoreToggle" class="px-3 py-2 text-gray-600 hover:text-gray-900">
                         View Scores
                     </button>
-                    <span class="text-gray-600">{{ first_name }} {{ last_name }}</span>
+                    <span class="mr-2">
+                        <a href="{{ url_for('student_change_password') }}" class="hover:underline">
+                            {{ first_name }} {{ last_name }}
+                        </a>
+                    </span>
                     <a href="{{ url_for('logout') }}" class="text-gray-600 hover:text-gray-900">Logout</a>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import os
 import re
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
-from datetime import datetime
+from datetime import datetime, timedelta
 from pymongo import MongoClient
 
 try:
@@ -393,7 +393,7 @@ def lab2():
                             "gateway": user_pc2_gateway
                         }
                     },
-                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))
+                    "timestamp": datetime.now(ZoneInfo("Asia/Bangkok"))+ timedelta(hours=7)
                 }},
                 upsert=True
             )

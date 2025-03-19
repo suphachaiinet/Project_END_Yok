@@ -47,7 +47,7 @@
         <!-- Left Sidebar -->
         <div class="w-64 bg-white border-r border-gray-200 h-screen fixed left-0 top-0 overflow-y-auto">
             <div class="p-4 border-b border-gray-200">
-                <h1 class="text-xl font-bold text-gray-800">Network Lab System</h1>
+                <a href="{{ url_for('admin.dashboard') }}"> <h1 class="text-xl font-bold text-gray-800">Network Lab System</h1></a>
             </div>
             
             <div class="p-4">
@@ -95,9 +95,7 @@
                             <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
                         </button>
                         <div id="userMenuDropdown" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-1 hidden">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                <i class="fas fa-user mr-2"></i> โปรไฟล์
-                            </a>
+                            
                             <a href="{{ url_for('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 <i class="fas fa-sign-out-alt mr-2"></i> ออกจากระบบ
                             </a>
