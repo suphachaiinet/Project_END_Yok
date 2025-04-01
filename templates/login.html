@@ -64,5 +64,131 @@
             {% endif %}
         </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // สร้าง CSS สำหรับ Popup
+        const style = document.createElement('style');
+        style.textContent = `
+            .popup-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+            }
+            .popup-container {
+                background-color: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                max-width: 400px;
+                width: 100%;
+            }
+            .popup-title {
+                color: #e53e3e;
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+            }
+            .popup-title.success {
+                color: #38a169;
+            }
+            .popup-title i {
+                margin-right: 10px;
+            }
+            .popup-message {
+                margin-bottom: 15px;
+            }
+            .popup-button {
+                background-color: #3182ce;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 100%;
+                font-weight: 500;
+            }
+            .popup-button:hover {
+                background-color: #2c5282;
+            }
+        `;
+        document.head.appendChild(style);
+    
+        // ฟังก์ชันสำหรับแสดง Popup
+        function showPopup(message, isError = true) {
+            // สร้าง overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'popup-overlay';
+            
+            // สร้าง container
+            const container = document.createElement('div');
+            container.className = 'popup-container';
+            
+            // สร้างส่วนหัว
+            const title = document.createElement('div');
+            title.className = isError ? 'popup-title' : 'popup-title success';
+            title.innerHTML = isError ? '<i>⚠️</i> ข้อผิดพลาด' : '<i>✅</i> สำเร็จ';
+            
+            // สร้างข้อความ
+            const content = document.createElement('div');
+            content.className = 'popup-message';
+            content.textContent = message;
+            
+            // สร้างปุ่ม
+            const button = document.createElement('button');
+            button.className = 'popup-button';
+            button.textContent = 'ตกลง';
+            button.onclick = function() {
+                document.body.removeChild(overlay);
+            };
+            
+            // ประกอบส่วนต่างๆ
+            container.appendChild(title);
+            container.appendChild(content);
+            container.appendChild(button);
+            overlay.appendChild(container);
+            document.body.appendChild(overlay);
+        }
+    
+        // ตรวจสอบ Flash messages
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    showPopup("{{ message }}", "{{ category }}" === "danger");
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        // จัดการ Form submission
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(event) {
+                const username = document.getElementById('username');
+                const password = document.getElementById('password');
+                
+                // ตรวจสอบว่ากรอกข้อมูลหรือไม่
+                if (!username.value.trim()) {
+                    event.preventDefault();
+                    showPopup('กรุณากรอกชื่อผู้ใช้');
+                    return;
+                }
+                
+                if (!password.value) {
+                    event.preventDefault();
+                    showPopup('กรุณากรอกรหัสผ่าน');
+                    return;
+                }
+            });
+        }
+    });
+    </script>
 </body>
 </html>

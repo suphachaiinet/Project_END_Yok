@@ -113,28 +113,47 @@ def extract_commands_from_running_config(config_text, switch_num=None):
     
     return "\n".join(extracted_commands)
 def check_keywords(user_config, keywords):
-    """
-    ตรวจสอบคีย์เวิร์ดในคอนฟิกของผู้ใช้
+    # ตรวจสอบว่าเป็น running-config ทั้งไฟล์หรือไม่
+    if "Building configuration" in user_config and "Current configuration" in user_config:
+        # แปลง running-config เป็นคำสั่งที่สำคัญเท่านั้น
+        user_config = extract_commands_from_running_config(user_config)
     
-    Parameters:
-    user_config (str): คอนฟิกของผู้ใช้
-    keywords (list): รายการคีย์เวิร์ดที่ต้องตรวจสอบ
+    # Clean keywords ในกรณีที่มีเครื่องหมาย quotes
+    cleaned_keywords = []
+    for keyword in keywords:
+        if isinstance(keyword, dict):
+            cleaned_dict = {}
+            for key, value in keyword.items():
+                # ลบเครื่องหมาย quotes จาก key
+                cleaned_key = key.strip('"\'[]')
+                # ลบเครื่องหมาย quotes จาก value
+                if isinstance(value, list):
+                    cleaned_value = [v.strip('"\'[]') for v in value]
+                else:
+                    cleaned_value = value
+                cleaned_dict[cleaned_key] = cleaned_value
+            cleaned_keywords.append(cleaned_dict)
+        else:
+            # ลบเครื่องหมาย quotes จากคีย์เวิร์ดทั่วไป
+            cleaned_keywords.append(str(keyword).strip('"\'[]'))
     
-    Returns:
-    tuple: (คะแนน, รายการคำสั่งที่ไม่พบ)
-    """
     user_interfaces = parse_interfaces(user_config)
     missing_keywords = []
     found_keywords = []
 
-    for keyword in keywords:
+    for keyword in cleaned_keywords:
         if isinstance(keyword, dict):
-            # กรณีเป็น interface block
             interface_name = list(keyword.keys())[0]
             expected_commands = keyword[interface_name]
 
-            if interface_name in user_interfaces:
-                missing = check_interface_block(user_interfaces[interface_name], expected_commands)
+            # ตรวจสอบว่ามี interface นี้ในการกำหนดค่าหรือไม่
+            matching_interfaces = [name for name in user_interfaces.keys() 
+                               if interface_name.lower() in name.lower()]
+            
+            if matching_interfaces:
+                # ใช้ interface แรกที่ตรงกัน
+                matching_interface = matching_interfaces[0]
+                missing = check_interface_block(user_interfaces[matching_interface], expected_commands)
                 if not missing:
                     found_keywords.append(interface_name)
                 else:
@@ -142,25 +161,20 @@ def check_keywords(user_config, keywords):
             else:
                 missing_keywords.append(f"{interface_name}: (missing block)")
         else:
-            # กรณีเป็นคำสั่งทั่วไป
-            keyword_found = False
-            for line in user_config.lower().splitlines():
-                if keyword.lower() in line:
-                    keyword_found = True
-                    break
-                    
-            if keyword_found:
+            keyword_str = str(keyword).lower()
+            if any(keyword_str in line.lower() for line in user_config.splitlines()):
                 found_keywords.append(keyword)
             else:
                 missing_keywords.append(keyword)
 
-    total_keywords = len(keywords)
+    total_keywords = len(cleaned_keywords)
     if total_keywords == 0:
         score = 0
     else:
         score = (len(found_keywords) / total_keywords) * 100
 
     return score, missing_keywords
+
 def clean_keywords(keyword_text):
     """ทำความสะอาดข้อความคีย์เวิร์ด ลบเครื่องหมาย quotes และวงเล็บ"""
     if isinstance(keyword_text, str):

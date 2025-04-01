@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>สมัครสมาชิก</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        .form-input.error {
+            border-color: #e53e3e;
+        }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+        .popup-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            max-width: 28rem;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
     <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -18,83 +48,100 @@
                 </h2>
             </div>
             
-            <form method="POST" class="mt-8 space-y-6">
+            <!-- แสดงข้อความแจ้งเตือนจาก Flash (ถ้ามี) -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div id="flash-messages" style="display: none;">
+                        {% for category, message in messages %}
+                            <div class="flash-message" data-category="{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            
+            <form id="registerForm" method="POST" class="mt-8 space-y-6">
                 <div class="rounded-md shadow-sm space-y-4">
                     <!-- Username -->
                     <div>
-                        <label for="username" class="sr-only">ชื่อผู้ใช้งาน</label>
+                        <label for="username" class="block text-sm font-medium text-gray-700">ชื่อผู้ใช้งาน</label>
                         <input id="username" name="username" type="text" required
-                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                            class="form-input appearance-none relative block w-full px-3 py-2 border border-gray-300 
                                    placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
                                    focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                             placeholder="ชื่อผู้ใช้งาน">
+                        <div class="error-message" id="username-error"></div>
                     </div>
 
                     <!-- First Name -->
                     <div>
-                        <label for="first_name" class="sr-only">ชื่อ</label>
+                        <label for="first_name" class="block text-sm font-medium text-gray-700">ชื่อ</label>
                         <input id="first_name" name="first_name" type="text" required
-                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                            class="form-input appearance-none relative block w-full px-3 py-2 border border-gray-300 
                                    placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
                                    focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                             placeholder="ชื่อ">
+                        <div class="error-message" id="first_name-error"></div>
                     </div>
 
                     <!-- Last Name -->
                     <div>
-                        <label for="last_name" class="sr-only">นามสกุล</label>
+                        <label for="last_name" class="block text-sm font-medium text-gray-700">นามสกุล</label>
                         <input id="last_name" name="last_name" type="text" required
-                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                            class="form-input appearance-none relative block w-full px-3 py-2 border border-gray-300 
                                    placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
                                    focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                             placeholder="นามสกุล">
+                        <div class="error-message" id="last_name-error"></div>
                     </div>
 
                     <!-- Email -->
                     <div>
-                        <label for="email" class="sr-only">อีเมล</label>
+                        <label for="email" class="block text-sm font-medium text-gray-700">อีเมล</label>
                         <input id="email" name="email" type="email" required
-                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                            class="form-input appearance-none relative block w-full px-3 py-2 border border-gray-300 
                                    placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
                                    focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                             placeholder="อีเมล">
+                        <div class="error-message" id="email-error"></div>
                     </div>
 
                     <!-- Password -->
                     <div>
-                        <label for="password" class="sr-only">รหัสผ่าน</label>
+                        <label for="password" class="block text-sm font-medium text-gray-700">รหัสผ่าน</label>
                         <input id="password" name="password" type="password" required
-                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                            class="form-input appearance-none relative block w-full px-3 py-2 border border-gray-300 
                                    placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
                                    focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                            placeholder="รหัสผ่าน">
+                            placeholder="รหัสผ่าน (อย่างน้อย 6 ตัวอักษร)">
+                        <div class="error-message" id="password-error"></div>
                     </div>
 
                     <!-- Confirm Password -->
                     <div>
-                        <label for="confirm_password" class="sr-only">ยืนยันรหัสผ่าน</label>
+                        <label for="confirm_password" class="block text-sm font-medium text-gray-700">ยืนยันรหัสผ่าน</label>
                         <input id="confirm_password" name="confirm_password" type="password" required
-                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                            class="form-input appearance-none relative block w-full px-3 py-2 border border-gray-300 
                                    placeholder-gray-500 text-gray-900 rounded-md focus:outline-none 
                                    focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                             placeholder="ยืนยันรหัสผ่าน">
+                        <div class="error-message" id="confirm_password-error"></div>
                     </div>
 
                     <!-- Role Selection -->
                     <div>
-                        <label for="role" class="sr-only">เลือกประเภทผู้ใช้</label>
+                        <label for="role" class="block text-sm font-medium text-gray-700">ประเภทผู้ใช้</label>
                         <select id="role" name="role" required
-                            class="appearance-none relative block w-full px-3 py-2 border border-gray-300 
+                            class="form-input appearance-none relative block w-full px-3 py-2 border border-gray-300 
                                    text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 
                                    focus:border-blue-500 focus:z-10 sm:text-sm">
-                            <option value="student">Student</option>
-                            <option value="teacher">Teacher</option>
+                            <option value="student">นักศึกษา</option>
+                            <option value="teacher">อาจารย์</option>
                         </select>
                     </div>
                 </div>
 
                 <div>
-                    <button type="submit"
+                    <button type="submit" id="submitBtn"
                         class="group relative w-full flex justify-center py-2 px-4 border border-transparent 
                                text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 
                                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
@@ -112,13 +159,226 @@
                     </a>
                 </p>
             </div>
-
-            {% if error %}
-            <div class="mt-4 text-center text-sm text-red-600">
-                {{ error }}
-            </div>
-            {% endif %}
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registerForm');
+            const usernameInput = document.getElementById('username');
+            const firstNameInput = document.getElementById('first_name');
+            const lastNameInput = document.getElementById('last_name');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm_password');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // แสดง Flash Messages ถ้ามี
+            const flashMessages = document.getElementById('flash-messages');
+            if (flashMessages) {
+                const messages = flashMessages.querySelectorAll('.flash-message');
+                messages.forEach(message => {
+                    const category = message.getAttribute('data-category');
+                    const isError = category === 'danger';
+                    showPopup(message.textContent, isError);
+                });
+            }
+            
+            // ฟังก์ชันแสดง popup
+            function showPopup(message, isError = true) {
+                // สร้าง overlay
+                const overlay = document.createElement('div');
+                overlay.className = 'popup-overlay';
+                
+                // สร้าง popup container
+                const container = document.createElement('div');
+                container.className = 'popup-container';
+                
+                // สร้างส่วนหัว
+                const header = document.createElement('div');
+                header.className = 'text-xl font-bold mb-4';
+                header.textContent = isError ? '⚠️ ข้อผิดพลาด' : '✅ สำเร็จ';
+                header.style.color = isError ? '#e53e3e' : '#38a169';
+                
+                // สร้างข้อความ
+                const content = document.createElement('div');
+                content.className = 'mb-6';
+                content.textContent = message;
+                
+                // สร้างปุ่ม
+                const button = document.createElement('button');
+                button.className = 'w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700';
+                button.textContent = 'ตกลง';
+                
+                // เพิ่ม event listener
+                button.addEventListener('click', function() {
+                    document.body.removeChild(overlay);
+                });
+                
+                // ประกอบส่วนต่างๆ
+                container.appendChild(header);
+                container.appendChild(content);
+                container.appendChild(button);
+                overlay.appendChild(container);
+                
+                // แสดง popup
+                document.body.appendChild(overlay);
+            }
+            
+            // ฟังก์ชันแสดงข้อผิดพลาด
+            function showError(input, message) {
+                const errorElement = document.getElementById(`${input.id}-error`);
+                if (errorElement) {
+                    errorElement.textContent = message;
+                }
+                input.classList.add('error');
+                input.style.borderColor = '#e53e3e';
+            }
+            
+            // ฟังก์ชันล้างข้อผิดพลาด
+            function clearError(input) {
+                const errorElement = document.getElementById(`${input.id}-error`);
+                if (errorElement) {
+                    errorElement.textContent = '';
+                }
+                input.classList.remove('error');
+                input.style.borderColor = '';
+            }
+            
+            // ฟังก์ชันตรวจสอบอีเมล
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Event listeners สำหรับการพิมพ์ใน inputs
+            usernameInput.addEventListener('input', () => clearError(usernameInput));
+            firstNameInput.addEventListener('input', () => clearError(firstNameInput));
+            lastNameInput.addEventListener('input', () => clearError(lastNameInput));
+            emailInput.addEventListener('input', () => clearError(emailInput));
+            passwordInput.addEventListener('input', () => clearError(passwordInput));
+            confirmPasswordInput.addEventListener('input', () => clearError(confirmPasswordInput));
+            
+            // จัดการ Form submission
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                let hasErrors = false;
+                
+                // ล้างข้อความผิดพลาดเดิม
+                clearError(usernameInput);
+                clearError(firstNameInput);
+                clearError(lastNameInput);
+                clearError(emailInput);
+                clearError(passwordInput);
+                clearError(confirmPasswordInput);
+                
+                // ตรวจสอบชื่อผู้ใช้
+                if (!usernameInput.value.trim()) {
+                    showError(usernameInput, 'กรุณากรอกชื่อผู้ใช้');
+                    hasErrors = true;
+                } else if (usernameInput.value.length < 4) {
+                    showError(usernameInput, 'ชื่อผู้ใช้ต้องมีอย่างน้อย 4 ตัวอักษร');
+                    hasErrors = true;
+                }
+                
+                // ตรวจสอบชื่อ
+                if (!firstNameInput.value.trim()) {
+                    showError(firstNameInput, 'กรุณากรอกชื่อ');
+                    hasErrors = true;
+                }
+                
+                // ตรวจสอบนามสกุล
+                if (!lastNameInput.value.trim()) {
+                    showError(lastNameInput, 'กรุณากรอกนามสกุล');
+                    hasErrors = true;
+                }
+                
+                // ตรวจสอบอีเมล
+                if (!emailInput.value.trim()) {
+                    showError(emailInput, 'กรุณากรอกอีเมล');
+                    hasErrors = true;
+                } else if (!isValidEmail(emailInput.value)) {
+                    showError(emailInput, 'รูปแบบอีเมลไม่ถูกต้อง');
+                    hasErrors = true;
+                }
+                
+                // ตรวจสอบรหัสผ่าน
+                if (!passwordInput.value) {
+                    showError(passwordInput, 'กรุณากรอกรหัสผ่าน');
+                    hasErrors = true;
+                } else if (passwordInput.value.length < 6) {
+                    showError(passwordInput, 'รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร');
+                    hasErrors = true;
+                }
+                
+                // ตรวจสอบยืนยันรหัสผ่าน
+                if (!confirmPasswordInput.value) {
+                    showError(confirmPasswordInput, 'กรุณายืนยันรหัสผ่าน');
+                    hasErrors = true;
+                } else if (passwordInput.value !== confirmPasswordInput.value) {
+                    showError(confirmPasswordInput, 'รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน');
+                    hasErrors = true;
+                }
+                
+                if (hasErrors) {
+                    showPopup('กรุณาตรวจสอบข้อมูลในฟอร์มให้ถูกต้อง');
+                    return;
+                }
+                
+                // ปิดการใช้งานปุ่ม Submit ขณะกำลังส่งข้อมูล
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'กำลังดำเนินการ...';
+                
+                // ส่งฟอร์มด้วย Fetch API แทนการ submit แบบปกติ
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => Promise.reject(data));
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        // ถ้ามีข้อความเตือน
+                        if (data.warning) {
+                            showPopup(data.warning, false);
+                        }
+                        
+                        // ถ้ามี URL ให้ redirect
+                        if (data.redirect) {
+                            window.location.href = data.redirect;
+                        } else {
+                            showPopup('ลงทะเบียนสำเร็จ!', false);
+                        }
+                    } else {
+                        // รีเซ็ตปุ่ม Submit
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'สมัครสมาชิก';
+                        
+                        // แสดงข้อความผิดพลาด
+                        showPopup(data.error || 'เกิดข้อผิดพลาดในการลงทะเบียน');
+                    }
+                })
+                .catch(error => {
+                    // รีเซ็ตปุ่ม Submit
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'สมัครสมาชิก';
+                    
+                    // แสดงข้อความผิดพลาด
+                    if (error && error.error) {
+                        showPopup(error.error);
+                    } else {
+                        showPopup('เกิดข้อผิดพลาดในการลงทะเบียน');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

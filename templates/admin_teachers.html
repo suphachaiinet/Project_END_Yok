@@ -16,6 +16,9 @@
                 <table id="pendingTeachersTable" class="w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <input type="checkbox" id="select-all-pending" class="h-4 w-4">
+                            </th>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อผู้ใช้</th>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อ-นามสกุล</th>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">อีเมล</th>
@@ -26,6 +29,9 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         {% for teacher in pending_teachers %}
                         <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <input type="checkbox" name="selected_ids" form="pending-bulk-action-form" value="{{ teacher._id }}" class="pending-checkbox h-4 w-4">
+                            </td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ teacher.username }}</td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ teacher.first_name }} {{ teacher.last_name }}</td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ teacher.email }}</td>
@@ -67,6 +73,24 @@
                 <i class="fas fa-plus mr-2"></i>เพิ่มอาจารย์
             </a>
         </div>
+
+        <div class="p-4 border-b border-gray-200">
+            <form id="active-bulk-action-form" action="{{ url_for('admin.bulk_action_delete') }}" method="post">
+                <div class="flex items-center space-x-2">
+                    <button type="button" class="filter-button bg-blue-100 text-blue-700 px-3 py-2 rounded-md text-sm" data-target="activeTeachersTable">
+                        <i class="fas fa-filter mr-1"></i> ฟิลเตอร์
+                    </button>
+                    <select name="action" class="px-3 py-2 border border-gray-300 rounded-md">
+                        <option value="">เลือกการดำเนินการ</option>
+                        <option value="delete">ลบอาจารย์ที่เลือก</option>
+                    </select>
+                    <button type="submit" class="bg-red-500 text-white px-3 py-2 rounded-md text-sm hover:bg-red-600">
+                        ดำเนินการ
+                    </button>
+                    <input type="hidden" name="model" value="active_teachers">
+                </div>
+            </form>
+        </div>
         
         <div class="p-4">
             {% if active_teachers|length > 0 %}
@@ -74,6 +98,9 @@
                 <table id="activeTeachersTable" class="w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <input type="checkbox" id="select-all-active" class="h-4 w-4">
+                            </th>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อผู้ใช้</th>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อ-นามสกุล</th>
                             <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">อีเมล</th>
@@ -84,6 +111,9 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         {% for teacher in active_teachers %}
                         <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                <input type="checkbox" name="selected_ids" form="active-bulk-action-form" value="{{ teacher._id }}" class="active-checkbox h-4 w-4">
+                            </td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ teacher.username }}</td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ teacher.first_name }} {{ teacher.last_name }}</td>
                             <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ teacher.email }}</td>
@@ -119,14 +149,127 @@
 {% block scripts %}
 <script>
     $(document).ready(function() {
-        $('#pendingTeachersTable, #activeTeachersTable').DataTable({
+        // โหลด DataTable
+        const pendingTeachersTable = $('#pendingTeachersTable').DataTable({
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Thai.json"
             },
             "columnDefs": [
-                {"orderable": false, 
-                "targets": 4 
-            }]
+                { "orderable": false, "targets": [0, 5] }
+            ]
+        });
+
+        const activeTeachersTable = $('#activeTeachersTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Thai.json"
+            },
+            "columnDefs": [
+                { "orderable": false, "targets": [0, 5] }
+            ]
+        });
+
+        // เลือกทั้งหมดสำหรับอาจารย์ที่รอการอนุมัติ
+        $('#select-all-pending').on('change', function() {
+            $('.pending-checkbox').prop('checked', $(this).prop('checked'));
+        });
+
+        // เลือกทั้งหมดสำหรับอาจารย์ที่อนุมัติแล้ว
+        $('#select-all-active').on('change', function() {
+            $('.active-checkbox').prop('checked', $(this).prop('checked'));
+        });
+
+        // ตรวจสอบการเลือกทั้งหมดเมื่อมีการเปลี่ยนแปลง checkbox
+        $('.pending-checkbox').on('change', function() {
+            if ($('.pending-checkbox:checked').length === $('.pending-checkbox').length) {
+                $('#select-all-pending').prop('checked', true);
+            } else {
+                $('#select-all-pending').prop('checked', false);
+            }
+        });
+
+        $('.active-checkbox').on('change', function() {
+            if ($('.active-checkbox:checked').length === $('.active-checkbox').length) {
+                $('#select-all-active').prop('checked', true);
+            } else {
+                $('#select-all-active').prop('checked', false);
+            }
+        });
+
+        // จัดการฟิลเตอร์คอลัมน์
+        $('.filter-button').on('click', function() {
+            const targetTable = $(this).data('target');
+            const table = $('#' + targetTable).DataTable();
+            
+            // สร้างเมนูฟิลเตอร์ถ้ายังไม่มี
+            let filterMenu = $('#filter-menu-' + targetTable);
+            if (filterMenu.length === 0) {
+                filterMenu = $('<div id="filter-menu-' + targetTable + '" class="mt-2 p-3 border border-gray-200 rounded-md hidden"></div>');
+                
+                const columnOptions = $('<div class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>');
+                
+                // เพิ่มตัวเลือกสำหรับแต่ละคอลัมน์
+                table.columns().every(function(index) {
+                    if (index > 0 && index < table.columns().nodes().length - 1) { // ข้ามคอลัมน์ checkbox และจัดการ
+                        const column = this;
+                        const title = $(column.header()).text();
+                        
+                        const option = $('<label class="flex items-center space-x-2"></label>');
+                        const checkbox = $('<input type="checkbox" class="column-toggle mr-2" checked>');
+                        checkbox.attr('data-column', index);
+                        checkbox.attr('data-table', targetTable);
+                        
+                        checkbox.on('change', function() {
+                            const i = $(this).data('column');
+                            const t = $(this).data('table');
+                            $('#' + t).DataTable().column(i).visible($(this).is(':checked'));
+                        });
+                        
+                        option.append(checkbox);
+                        option.append($('<span></span>').text(title));
+                        columnOptions.append(option);
+                    }
+                });
+                
+                filterMenu.append($('<h4 class="text-sm font-medium text-gray-700 mb-3">เลือกคอลัมน์ที่ต้องการแสดง</h4>'));
+                filterMenu.append(columnOptions);
+                
+                $(this).after(filterMenu);
+            }
+            
+            // แสดง/ซ่อนเมนูฟิลเตอร์
+            filterMenu.toggleClass('hidden');
+        });
+
+        // ตรวจสอบฟอร์มก่อนส่ง
+        $('#pending-bulk-action-form, #active-bulk-action-form').on('submit', function(e) {
+            const form = $(this);
+            const checkedBoxes = form.find('input[type="checkbox"]:checked').not('#select-all-pending, #select-all-active');
+            const action = form.find('select[name="action"]').val();
+            
+            if (checkedBoxes.length === 0) {
+                alert('กรุณาเลือกอาจารย์อย่างน้อย 1 รายการ');
+                e.preventDefault();
+                return false;
+            }
+            
+            if (!action) {
+                alert('กรุณาเลือกการดำเนินการ');
+                e.preventDefault();
+                return false;
+            }
+            
+            if (action === 'delete' && !confirm(`คุณแน่ใจหรือไม่ที่จะลบอาจารย์ที่เลือกทั้งหมด ${checkedBoxes.length} รายการ?`)) {
+                e.preventDefault();
+                return false;
+            } else if (action === 'approve' && !confirm(`คุณแน่ใจหรือไม่ที่จะอนุมัติอาจารย์ที่เลือกทั้งหมด ${checkedBoxes.length} รายการ?`)) {
+                e.preventDefault();
+                return false;
+            } else if (action === 'reject' && !confirm(`คุณแน่ใจหรือไม่ที่จะปฏิเสธอาจารย์ที่เลือกทั้งหมด ${checkedBoxes.length} รายการ?`)) {
+                e.preventDefault();
+                return false;
+            }
+            
+            return true;
         });
     });
 </script>

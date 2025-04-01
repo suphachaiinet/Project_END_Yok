@@ -176,7 +176,6 @@ def check_keywords(user_config, keywords):
     if "Building configuration" in user_config and "Current configuration" in user_config:
         # แปลง running-config เป็นคำสั่งที่สำคัญเท่านั้น
         user_config = extract_commands_from_running_config(user_config)
-        print("Extracted commands from running-config:", user_config)
     
     # Clean keywords ในกรณีที่มีเครื่องหมาย quotes
     cleaned_keywords = []

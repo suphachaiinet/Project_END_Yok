@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from flask_pymongo import PyMongo
 from flask_bcrypt import Bcrypt
 from flask_mail import Mail, Message
@@ -114,8 +114,9 @@ def send_confirmation_email(user_email, token):
         logging.info(f'ส่งอีเมลยืนยันไปที่ {user_email} สำเร็จ')
     except Exception as e:
         logging.error(f'ข้อผิดพลาดในการส่งอีเมล: {str(e)}')
-        flash(f'ไม่สามารถส่งอีเมลได้: {str(e)}', 'danger')
-        raise e
+        # ไม่เรียก flash ที่นี่ เพราะจะทำให้เกิด exception ซ้อน exception
+        return False
+    return True
 
 @app.route('/')
 def home():
@@ -123,56 +124,148 @@ def home():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    session.pop('_flashes', None)
     if request.method == 'POST':
-        username = request.form['username']
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        email = request.form['email']
-        password = bcrypt.generate_password_hash(request.form['password']).decode('utf-8')
-        role = request.form['role']
-
-        # ตรวจสอบชื่อผู้ใช้ซ้ำ
-        existing_user = mongo.db.users_all.find_one({"username": username})
-        if existing_user:
-            flash('ชื่อผู้ใช้งานนี้ถูกใช้ไปแล้ว!', 'danger')
-            return redirect(url_for('register'))
-
-        # ตรวจสอบอีเมลซ้ำ
-        existing_email = mongo.db.users_all.find_one({"email": email})
-        if existing_email:
-            flash('อีเมลนี้ถูกใช้ไปแล้ว!', 'danger')
-            return redirect(url_for('register'))
-
-        # เก็บข้อมูลผู้ใช้ลงในฐานข้อมูลทันที แต่ตั้งค่า is_verified เป็น False
-        user_data = {
-            "username": username,
-            "first_name": first_name,
-            "last_name": last_name,
-            "email": email,
-            "password": password,
-            "role": role,
-            "is_verified": False,  # ต้องรอการยืนยันอีเมล
-            "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
-        }
-        
-        # เพิ่มผู้ใช้ลงในฐานข้อมูล
-        mongo.db.users_all.insert_one(user_data)
-        
-        # พยายามส่งอีเมลยืนยัน แต่ถ้ามีปัญหา ให้แสดงหน้าสำเร็จโดยไม่ต้องรอ
-        email_sent = False
         try:
-            token = generate_confirmation_token(email)
-            send_confirmation_email(email, token)
-            email_sent = True
-            flash('ส่งอีเมลยืนยันเรียบร้อยแล้ว กรุณาตรวจสอบกล่องจดหมายของคุณ', 'success')
+            # ข้อมูลจากฟอร์ม
+            username = request.form.get('username')
+            first_name = request.form.get('first_name')
+            last_name = request.form.get('last_name')
+            email = request.form.get('email')
+            password = request.form.get('password')
+            confirm_password = request.form.get('confirm_password')
+            role = request.form.get('role')
+
+            # ตรวจสอบว่ามีการส่ง Ajax หรือไม่
+            is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
+            # ตรวจสอบข้อมูล
+            if not all([username, first_name, last_name, email, password, confirm_password, role]):
+                if is_ajax:
+                    return jsonify({"error": "กรุณากรอกข้อมูลให้ครบทุกช่อง"}), 400
+                flash('กรุณากรอกข้อมูลให้ครบทุกช่อง', 'danger')
+                return redirect(url_for('register'))
+
+            # ตรวจสอบรหัสผ่านตรงกัน
+            if password != confirm_password:
+                if is_ajax:
+                    return jsonify({"error": "รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน"}), 400
+                flash('รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน', 'danger')
+                return redirect(url_for('register'))
+
+            # ตรวจสอบความยาวของรหัสผ่าน
+            if len(password) < 6:
+                if is_ajax:
+                    return jsonify({"error": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร"}), 400
+                flash('รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร', 'danger')
+                return redirect(url_for('register'))
+
+            # ตรวจสอบรูปแบบอีเมล
+            import re
+            email_pattern = re.compile(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+            if not email_pattern.match(email):
+                if is_ajax:
+                    return jsonify({"error": "รูปแบบอีเมลไม่ถูกต้อง"}), 400
+                flash('รูปแบบอีเมลไม่ถูกต้อง', 'danger')
+                return redirect(url_for('register'))
+
+            # ตรวจสอบชื่อผู้ใช้ซ้ำ
+            existing_user = mongo.db.users_all.find_one({"username": username})
+            if existing_user:
+                if is_ajax:
+                    return jsonify({"error": "ชื่อผู้ใช้งานนี้ถูกใช้ไปแล้ว!"}), 400
+                flash('ชื่อผู้ใช้งานนี้ถูกใช้ไปแล้ว!', 'danger')
+                return redirect(url_for('register'))
+
+            # ตรวจสอบอีเมลซ้ำ
+            existing_email = mongo.db.users_all.find_one({"email": email})
+            if existing_email:
+                if is_ajax:
+                    return jsonify({"error": "อีเมลนี้ถูกใช้ไปแล้ว!"}), 400
+                flash('อีเมลนี้ถูกใช้ไปแล้ว!', 'danger')
+                return redirect(url_for('register'))
+
+            # เข้ารหัสรหัสผ่าน
+            hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+            
+            # เก็บข้อมูลผู้ใช้ลงในฐานข้อมูลทันที แต่ตั้งค่า is_verified เป็น False
+            user_data = {
+                "username": username,
+                "first_name": first_name,
+                "last_name": last_name,
+                "email": email,
+                "password": hashed_password,
+                "role": role,
+                "is_verified": False,  # ต้องรอการยืนยันอีเมล
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
+            }
+            
+            # เพิ่มผู้ใช้ลงในฐานข้อมูล
+            mongo.db.users_all.insert_one(user_data)
+            
+            # บันทึกล็อก
+            logging.info(f"ผู้ใช้ใหม่ลงทะเบียน: {username} ({email}) เป็น {role}")
+            
+            # พยายามส่งอีเมลยืนยัน
+            email_sent = False
+            try:
+                token = generate_confirmation_token(email)
+                email_sent = send_confirmation_email(email, token)
+                if email_sent:
+                    if is_ajax:
+                        return jsonify({
+                            "success": True, 
+                            "message": "ลงทะเบียนสำเร็จและส่งอีเมลยืนยันแล้ว",
+                            "redirect": url_for('registration_success', email=email, email_sent=True)
+                        })
+                    flash('ส่งอีเมลยืนยันเรียบร้อยแล้ว กรุณาตรวจสอบกล่องจดหมายของคุณ', 'success')
+                else:
+                    if is_ajax:
+                        return jsonify({
+                            "success": True, 
+                            "warning": "ไม่สามารถส่งอีเมลยืนยันได้ในขณะนี้ แต่คุณสามารถเข้าสู่ระบบได้",
+                            "redirect": url_for('registration_success', email=email, email_sent=False)
+                        })
+                    flash('ไม่สามารถส่งอีเมลยืนยันได้ในขณะนี้ แต่คุณสามารถเข้าสู่ระบบได้', 'warning')
+            except Exception as e:
+                logging.error(f'Error sending email: {str(e)}')
+                if is_ajax:
+                    return jsonify({
+                        "success": True, 
+                        "warning": "ไม่สามารถส่งอีเมลยืนยันได้ในขณะนี้ แต่คุณสามารถเข้าสู่ระบบได้",
+                        "redirect": url_for('registration_success', email=email, email_sent=False)
+                    })
+                flash('ไม่สามารถส่งอีเมลยืนยันได้ในขณะนี้ แต่คุณสามารถเข้าสู่ระบบได้', 'warning')
+            
+            # แสดงหน้ายืนยันการลงทะเบียนสำเร็จ
+            if not is_ajax:
+                return render_template('registration_success.html', email=email, email_sent=email_sent)
+            
+            # สำหรับการร้องขอ Ajax ที่ไม่ได้ตอบกลับข้างต้น
+            return jsonify({
+                "success": True, 
+                "redirect": url_for('registration_success') + f"?email={email}&email_sent={str(email_sent)}"
+            })
+            
         except Exception as e:
-            logging.error(f'Error sending email: {str(e)}')
-            flash('ไม่สามารถส่งอีเมลยืนยันได้ในขณะนี้ แต่คุณสามารถเข้าสู่ระบบได้', 'warning')
-        
-        # แสดงหน้ายืนยันการลงทะเบียนสำเร็จแทนการเปลี่ยนเส้นทาง
-        return render_template('registration_success.html', email=email, email_sent=email_sent)
+            # บันทึกข้อผิดพลาด
+            logging.error(f"ข้อผิดพลาดในการลงทะเบียน: {str(e)}")
+            
+            # ตอบกลับตามประเภทของคำขอ
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return jsonify({"error": f"เกิดข้อผิดพลาด: {str(e)}"}), 500
+            
+            # แสดงข้อความแจ้งเตือน
+            flash(f'เกิดข้อผิดพลาดในการลงทะเบียน: {str(e)}', 'danger')
+            return redirect(url_for('register'))
         
     return render_template('register.html')
+
+@app.route('/registration_success')
+def registration_success():
+    email = request.args.get('email', '')
+    email_sent = request.args.get('email_sent', 'False') == 'True'
+    return render_template('registration_success.html', email=email, email_sent=email_sent)
 
 @app.route('/dashboard-student2')
 def dashboard_student2():
@@ -572,12 +665,13 @@ def cleanup_unverified_users():
     while True:
         try:
             # คำนวณเวลาที่ผ่านมาแล้ว 10 นาที
-            cutoff_time = datetime.now(ZoneInfo("Asia/Bangkok"))+ timedelta(hours=7) - timedelta(minutes=10)
-            cutoff_time = datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
+            cutoff_time = datetime.now(ZoneInfo("Asia/Bangkok")) - timedelta(minutes=10)
+            cutoff_time_str = cutoff_time.strftime("%Y-%m-%d %H:%M:%S")
+            
             # ค้นหาผู้ใช้ที่ไม่ยืนยันและสร้างมานานกว่า 10 นาที
             unverified_users = list(mongo.db.users_all.find({
                 "is_verified": False,
-                "created_at": {"$lt": cutoff_time}
+                "created_at": {"$lt": cutoff_time_str}
             }))
             
             # ลบผู้ใช้ที่ไม่ยืนยันแต่ละคน
@@ -700,6 +794,7 @@ def student_change_password():
         return redirect(url_for('dashboard'))
     
     return render_template('student_change_password.html')
+
 
 if __name__ == '__main__':
     with app.app_context():

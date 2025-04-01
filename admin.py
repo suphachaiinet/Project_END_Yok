@@ -1,9 +1,10 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session
+from flask import Blueprint, render_template, request, redirect, url_for, flash, session, jsonify
 from datetime import datetime, timedelta
 from bson import ObjectId
 import json
 import logging
 from flask_bcrypt import Bcrypt
+import traceback
 
 try:
     from zoneinfo import ZoneInfo
@@ -96,13 +97,20 @@ def dashboard():
             "is_approved": {"$ne": True}
         }))
         
+        # *** แก้ไขตรงนี้: ไม่ต้องใช้ strftime กับวันที่ที่เป็น string อยู่แล้ว ***
+        # ไม่ต้องแปลงรูปแบบวันที่ให้กับ pending_teachers
+
+        # เพิ่มตัวแปรจำนวนอาจารย์ที่รออนุมัติ
+        pending_teachers_count = len(pending_teachers)
+        
         return render_template('admin_dashboard.html',
                               first_name=first_name,
                               last_name=last_name,
                               total_students=total_students,
                               total_teachers=total_teachers,
                               total_users=total_users,
-                              pending_teachers=pending_teachers)
+                              pending_teachers=pending_teachers,
+                              pending_teachers_count=pending_teachers_count)
     
     except Exception as e:
         logging.error(f"Error in admin dashboard: {e}")
@@ -208,12 +216,13 @@ def approve_teacher(teacher_id):
             flash('ผู้ใช้นี้ไม่ใช่อาจารย์', 'danger')
             return redirect(url_for('admin.manage_teachers'))
         
+        current_time = datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0)
         # อัพเดตสถานะการอนุมัติ
         users_collection.update_one(
             {"_id": ObjectId(teacher_id)},
             {"$set": {
                 "is_approved": True,
-                "approved_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S"),
+                "approved_at": current_time,
                 "approved_by": session.get('username')
             }}
         )
@@ -225,7 +234,7 @@ def approve_teacher(teacher_id):
             "last_name": teacher.get('last_name'),
             "email": teacher.get('email'),
             "role": "teacher",
-            "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
+            "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0)
         }
         
         # ตรวจสอบว่ามีข้อมูลอยู่แล้วหรือไม่
@@ -258,7 +267,7 @@ def reject_teacher(teacher_id):
             {"_id": ObjectId(teacher_id)},
             {"$set": {
                 "role": "student",
-                "rejected_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S"),
+                "rejected_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0),
                 "rejected_by": session.get('username')
             }}
         )
@@ -321,7 +330,15 @@ def manage_students():
         
         # ดึงรายการนักศึกษาทั้งหมด
         all_students = list(users_collection.find({"role": "student"}))
-        
+        # แปลง string เป็น datetime ถ้าจำเป็น
+        for student in all_students:
+            if 'created_at' in student and isinstance(student['created_at'], str):
+                try:
+                    # แปลง string เป็น datetime (ปรับ format ตามรูปแบบข้อมูลของคุณ)
+                    student['created_at'] = datetime.strptime(student['created_at'], '%Y-%m-%d %H:%M:%S')
+                except:
+                    # ถ้าแปลงไม่ได้ ให้คงค่าเดิมไว้
+                    pass
         return render_template('admin_students.html',
                               first_name=first_name,
                               last_name=last_name,
@@ -366,37 +383,53 @@ def delete_student(student_id):
         flash(f'เกิดข้อผิดพลาด: {str(e)}', 'danger')
     
     return redirect(url_for('admin.manage_students'))
-
 @admin_bp.route('/users')
 def manage_users():
+    logging.info("Entering manage_users function")
+    
     if 'user_id' not in session or session.get('role') != 'admin':
+        logging.info("User not authenticated or not admin, redirecting")
         flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
         return redirect(url_for('login'))
     
     if not check_mongodb_connection():
+        logging.info("MongoDB connection failed, redirecting")
         flash('ไม่สามารถเชื่อมต่อฐานข้อมูลได้', 'danger')
         return redirect(url_for('login'))
     
     try:
-        logging.info("Starting manage_users function - แก้ไขใหม่แล้ว")
+        logging.info("Starting manage_users main logic")
         
         # ดึงข้อมูลผู้ใช้ที่เข้าสู่ระบบ
-        user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
-        first_name = user['first_name'] if user else session.get('first_name', 'Unknown')
-        last_name = user['last_name'] if user else session.get('last_name', 'User')
+        current_user_id = session.get('user_id')
+        logging.info(f"Current user ID: {current_user_id}")
+        
+        user = users_collection.find_one({"_id": ObjectId(current_user_id)})
+        logging.info(f"Current user found: {user is not None}")
+        
+        first_name = user.get('first_name', '') if user else session.get('first_name', 'Unknown') 
+        last_name = user.get('last_name', '') if user else session.get('last_name', 'User')
         
         # ดึงรายการผู้ใช้ทั้งหมด (ยกเว้นผู้ใช้ที่กำลังเข้าสู่ระบบ)
-        all_users = list(users_collection.find({"_id": {"$ne": ObjectId(session['user_id'])}}))
+        logging.info("Fetching all users")
+        all_users = list(users_collection.find({"_id": {"$ne": ObjectId(current_user_id)}}))
+        logging.info(f"Found {len(all_users)} users")
         
-        # IMPORTANT: ลบส่วนการแปลงวันที่ทั้งหมด!
+        # แปลง ObjectId เป็น string
+        for user_obj in all_users:
+            if '_id' in user_obj:
+                user_obj['_id'] = str(user_obj['_id'])
         
+        logging.info("Rendering template")
         return render_template('admin_users.html',
                               first_name=first_name,
                               last_name=last_name,
                               users=all_users)
     
     except Exception as e:
+        stack_trace = traceback.format_exc()
         logging.error(f"Error in manage users: {e}")
+        logging.error(f"Stack trace: {stack_trace}")
         flash('เกิดข้อผิดพลาดในการจัดการผู้ใช้', 'danger')
         return redirect(url_for('admin.dashboard'))
     
@@ -451,7 +484,7 @@ def edit_user(user_id):
                 "email": email,
                 "role": role,
                 "is_verified": is_verified,
-                "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
+                "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0)
             }
             
             if role == 'teacher':
@@ -473,7 +506,7 @@ def edit_user(user_id):
                     "first_name": first_name_edit,
                     "last_name": last_name_edit,
                     "email": email,
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0)
                 }
                 
                 students_collection.update_one(
@@ -492,7 +525,7 @@ def edit_user(user_id):
                     "first_name": first_name_edit,
                     "last_name": last_name_edit,
                     "email": email,
-                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
+                    "updated_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0)
                 }
                 
                 teachers_collection.update_one(
@@ -610,7 +643,7 @@ def add_user():
                 "role": role,
                 "is_verified": is_verified,
                 "is_approved": is_approved if role == 'teacher' else False,
-                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
+                "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0)
             }
             
             # เพิ่มผู้ใช้ลงในคอลเลกชัน users_all
@@ -623,7 +656,7 @@ def add_user():
                     "first_name": first_name_new,
                     "last_name": last_name_new,
                     "email": email,
-                    "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
+                    "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0)
                 })
             elif role == 'teacher' and is_approved:
                 teachers_collection.insert_one({
@@ -631,7 +664,7 @@ def add_user():
                     "first_name": first_name_new,
                     "last_name": last_name_new,
                     "email": email,
-                    "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0).strftime("%Y-%m-%d %H:%M:%S")
+                    "created_at": datetime.now(ZoneInfo("Asia/Bangkok")).replace(microsecond=0)
                 })
             
             logging.info(f"New user added: {username} by {session.get('username')}")
@@ -648,9 +681,60 @@ def add_user():
         flash('เกิดข้อผิดพลาดในการเพิ่มผู้ใช้', 'danger')
         return redirect(url_for('admin.manage_users'))
 
+@admin_bp.route('/users/action=delete', methods=['POST'])
+def bulk_action_delete():
+    if 'user_id' not in session or session.get('role') != 'admin':
+        flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
+        return redirect(url_for('login'))
+    
+    if not check_mongodb_connection():
+        flash('ไม่สามารถเชื่อมต่อฐานข้อมูลได้', 'danger')
+        return redirect(url_for('login'))
+    
+    try:
+        # รับข้อมูลจาก form หรือจาก request.args
+        selected_ids = request.form.getlist('selected_ids')
+        
+        if not selected_ids:
+            flash('กรุณาเลือกผู้ใช้ที่ต้องการลบ', 'warning')
+            return redirect(url_for('admin.manage_users'))
+        
+        # ลบผู้ใช้ที่เลือก
+        deleted_count = 0
+        for user_id in selected_ids:
+            try:
+                # ดึงข้อมูลผู้ใช้ก่อนลบ
+                user = users_collection.find_one({"_id": ObjectId(user_id)})
+                
+                if user:
+                    username = user.get('username')
+                    role = user.get('role')
+                    
+                    # ลบข้อมูลที่เกี่ยวข้อง
+                    if role == 'student':
+                        students_collection.delete_one({"username": username})
+                        scores_collection.delete_many({"student_id": user_id})
+                    elif role == 'teacher':
+                        teachers_collection.delete_one({"username": username})
+                    
+                    # ลบผู้ใช้
+                    users_collection.delete_one({"_id": ObjectId(user_id)})
+                    deleted_count += 1
+            except Exception as e:
+                logging.error(f"Error deleting user {user_id}: {e}")
+        
+        flash(f'ลบผู้ใช้จำนวน {deleted_count} รายการเรียบร้อยแล้ว', 'success')
+        return redirect(url_for('admin.manage_users'))
+    
+    except Exception as e:
+        logging.error(f"Error in bulk action delete: {e}")
+        flash(f'เกิดข้อผิดพลาด: {str(e)}', 'danger')
+        return redirect(url_for('admin.manage_users'))
+    
 # เพิ่มฟังก์ชันที่ขาดหายไป หรือลบการอ้างอิงที่ไม่มีอยู่จริง
 @admin_bp.route('/update_created_at', methods=['GET'])
 def update_created_at():
     # ฟังก์ชันนี้เป็นเพียงตัวอย่าง คุณอาจต้องปรับให้เหมาะสม
     flash('ฟังก์ชันนี้ยังไม่ได้ถูกใช้งาน', 'warning')
     return redirect(url_for('admin.manage_users'))
+

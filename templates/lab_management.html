@@ -7,13 +7,31 @@
             <h2 class="text-lg leading-6 font-medium text-gray-900">Lab {{ lab_num }} - {{ lab_title }}</h2>
             <p class="mt-1 max-w-2xl text-sm text-gray-500">จัดการกำหนดการและคีย์เวิร์ดสำหรับการตรวจสอบ</p>
         </div>
+        
         <div class="flex space-x-3">
             <button id="keywordsModalButton" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">
                 <svg class="mr-2 -ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                 </svg>
                 แก้ไขคีย์เวิร์ด
+                
             </button>
+            <a href="{{ url_for('teacher.reset_lab_data', lab_num=lab_num) }}" 
+        class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700"
+        onclick="return confirm('คุณแน่ใจหรือไม่ที่จะลบข้อมูลการส่งงานทั้งหมดในแล็บนี้?');">
+            <svg class="mr-2 -ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+            </svg>
+            รีเซ็ตข้อมูล
+        </a>
+
+        <a href="{{ url_for('teacher.view_keyword_history', lab_num=lab_num) }}" 
+   class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600">
+    <svg class="mr-2 -ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>
+    ดูประวัติคีย์เวิร์ด
+</a>
         </div>
     </div>
 </div>
@@ -235,21 +253,21 @@
                                        class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                             </div>
                         </div>
-                        {% elif lab_num == 2 or lab_num == 3 %}
-                        <!-- Lab 2-3 Keywords -->
+                        {% elif lab_num == 2 %}
+                        <!-- Lab 2 Keywords -->
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
                             <textarea name="switch1_keywords" rows="8" 
-                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                      placeholder="Enter one keyword per line">{{ switch1_keywords_text }}</textarea>
+                                    class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder="Enter one keyword per line">{{ switch1_keywords_text }}</textarea>
                             <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                         </div>
 
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
                             <textarea name="switch2_keywords" rows="8" 
-                                      class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                                      placeholder="Enter one keyword per line">{{ switch2_keywords_text }}</textarea>
+                                    class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder="Enter one keyword per line">{{ switch2_keywords_text }}</textarea>
                             <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
                         </div>
 
@@ -257,22 +275,80 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">PC 1 Configuration</label>
                                 <input type="text" name="pc1_ip" value="{{ pc1_config.ip }}" placeholder="IP Address"
-                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                    class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 <input type="text" name="pc1_subnet" value="{{ pc1_config.subnet }}" placeholder="Subnet Mask"
-                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                    class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 <input type="text" name="pc1_gateway" value="{{ pc1_config.gateway }}" placeholder="Default Gateway"
-                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                    class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">PC 2 Configuration</label>
                                 <input type="text" name="pc2_ip" value="{{ pc2_config.ip }}" placeholder="IP Address"
-                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                    class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 <input type="text" name="pc2_subnet" value="{{ pc2_config.subnet }}" placeholder="Subnet Mask"
-                                       class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                    class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 <input type="text" name="pc2_gateway" value="{{ pc2_config.gateway }}" placeholder="Default Gateway"
-                                       class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                    class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                             </div>
                         </div>
+
+                        {% elif lab_num == 3 %}
+                        <!-- Lab 3 Keywords -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch 1 Keywords</label>
+                            <textarea name="sw1_keywords" rows="8" 
+                                    class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder="Enter keywords for Switch 1">{{ sw1_keywords_text if sw1_keywords_text is defined else "" }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Switch 2 Keywords</label>
+                            <textarea name="sw2_keywords" rows="8" 
+                                    class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder="Enter keywords for Switch 2">{{ sw2_keywords_text if sw2_keywords_text is defined else "" }}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">วางคำสั่งแต่ละบรรทัด หากเป็น interface ให้วางบรรทัดแรกเป็นชื่อ interface และคำสั่งย่อยให้เพิ่มการเยื้อง</p>
+                        </div>
+
+                        <!-- เพิ่มส่วนของ Expected VLANs -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Expected VLANs for Switch 1</label>
+                            <textarea name="expected_vlans_sw1" rows="8" 
+        class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+        placeholder="JSON format for expected VLANs">{% if expected_vlans_sw1 is defined %}{{ expected_vlans_sw1 | tojson(indent=2) }}{% else %}{}{% endif %}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">รูปแบบ JSON เช่น {"1": {"name": "default", "ports": []}, "10": {"name": "Management", "ports": []}}</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Expected VLANs for Switch 2</label>
+                            <textarea name="expected_vlans_sw2" rows="8" 
+        class="font-mono text-sm w-full border-2 border-gray-300 rounded-md p-2 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+        placeholder="JSON format for expected VLANs">{% if expected_vlans_sw2 is defined %}{{ expected_vlans_sw2 | tojson(indent=2) }}{% else %}{}{% endif %}</textarea>
+                            <p class="mt-1 text-xs text-gray-500">รูปแบบ JSON เช่น {"1": {"name": "default", "ports": []}, "10": {"name": "Management", "ports": []}}</p>
+                        </div>
+
+                        <!-- PC configs for Lab 3 -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">PC 1 Configuration</label>
+                                <input type="text" name="pc1_ip" value="{{ pc1_config.ip if pc1_config is defined and pc1_config.ip is defined else '' }}" placeholder="IP Address"
+                                    class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc1_subnet" value="{{ pc1_config.subnet if pc1_config is defined and pc1_config.subnet is defined else '' }}" placeholder="Subnet Mask"
+                                    class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc1_gateway" value="{{ pc1_config.gateway if pc1_config is defined and pc1_config.gateway is defined else '' }}" placeholder="Default Gateway"
+                                    class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">PC 2 Configuration</label>
+                                <input type="text" name="pc2_ip" value="{{ pc2_config.ip if pc2_config is defined and pc2_config.ip is defined else '' }}" placeholder="IP Address"
+                                    class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc2_subnet" value="{{ pc2_config.subnet if pc2_config is defined and pc2_config.subnet is defined else '' }}" placeholder="Subnet Mask"
+                                    class="mb-2 w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="pc2_gateway" value="{{ pc2_config.gateway if pc2_config is defined and pc2_config.gateway is defined else '' }}" placeholder="Default Gateway"
+                                    class="w-full border-2 border-gray-300 rounded-md p-2 text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                        </div>
+
                         {% elif lab_num == 4 %}
                         <!-- Lab 4 Keywords -->
                         <div class="mb-4">

@@ -47,7 +47,7 @@ def students():
     avg_score = total_score / num_scores if num_scores > 0 else 0
     total_students = len(students)
     completed_students = len(set(score['username'] for score in all_scores))
-    completion_rate = (completed_students / total_students * 100) if total_students > 0 else 0
+    completion_rate = min((completed_students / total_students) * 100, 100) if total_students > 0 else 0
     
     # คำนวณคะแนนสำหรับแต่ละนักศึกษา
     for student in students:
@@ -66,7 +66,7 @@ def students():
         
         student['avg_score'] = total_score / 16 if student_scores else 0
         student['completed_labs'] = completed_labs
-        student['completion_rate'] = (completed_labs / 16) * 100 if completed_labs > 0 else 0
+        student['completion_rate'] = min((completed_labs / 16) * 100, 100) if completed_labs > 0 else 0
     
     user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
     first_name = user['first_name'] if user else session.get('first_name', 'Unknown')
@@ -109,7 +109,7 @@ def stats():
             labs_data[i] = {
                 'total_submissions': len(lab_scores),
                 'avg_score': avg_score,
-                'completion_rate': sum([1 for s in lab_scores if float(s['switch_score'].split('/')[0]) >= 60]) / len(lab_scores) * 100 if lab_scores else 0
+                'completion_rate': min(sum([1 for s in lab_scores if float(s['switch_score'].split('/')[0]) >= 60]) / len(lab_scores) * 100, 100) if lab_scores else 0
             }
         else:
             labs_data[i] = {
@@ -134,7 +134,7 @@ def stats():
     
     # คำนวณอัตราการทำเสร็จรวม
     completed_students = len(set(score['username'] for score in all_scores))
-    completion_rate = (completed_students / total_students * 100) if total_students > 0 else 0
+    completion_rate = min((completed_students / total_students) * 100, 100) if total_students > 0 else 0
     
     highest_completion = max(completion_rates, key=lambda x: x[1]) if completion_rates else (0, 0)
     lowest_completion = min(completion_rates, key=lambda x: x[1]) if completion_rates else (0, 0)
@@ -150,7 +150,7 @@ def stats():
                           total_students=total_students,
                           overall_avg_score=overall_avg_score,
                           avg_score=overall_avg_score,
-                          completion_rate=completion_rate,  # เพิ่มบรรทัดนี้
+                          completion_rate=completion_rate,
                           highest_completion_lab=highest_completion[0],
                           highest_completion_rate=highest_completion[1],
                           lowest_completion_lab=lowest_completion[0],
@@ -200,6 +200,8 @@ def lab_management(lab_num):
     pc2_config = {}
     pc_a_config = {}
     pc_c_config = {}
+    expected_vlans_sw1 = {}  # เพิ่มตรงนี้
+    expected_vlans_sw2 = {}  # เพิ่มตรงนี้
     if not lab_keywords:
         # ถ้ายังไม่มีคีย์เวิร์ด ให้ใช้ค่าเริ่มต้นจากไฟล์ lab.py หรือ lab<n>.py
         if lab_num == 1:
@@ -1615,11 +1617,11 @@ def lab_management(lab_num):
                 try:
                     score = float(submission['switch_score'].split('/')[0])
                     status = 'completed' if score >= 60 else 'in_progress'
-                    status_text = 'เสร็จสมบูรณ์' if score >= 60 else 'กำลังทำ'
+                    status_text = 'เสร็จสมบูรณ์' if score >= 60 else 'ยังไม่สมบูรณ์'
                 except Exception:
                     score = 0
                     status = 'in_progress'
-                    status_text = 'กำลังทำ'
+                    status_text = 'ยังไม่สมบูรณ์'
                 
                 students_data.append({
                     'student_id': username,
@@ -1638,7 +1640,9 @@ def lab_management(lab_num):
     # เรียงลำดับตามคะแนน (มากไปน้อย)
     
     # คำนวณข้อมูลสถิติ
+    total_students = students_collection.count_documents({})
     completed_count = sum(1 for student in students_data if student['status'] == 'completed')
+    completion_rate = min((completed_count / total_students) * 100, 100) if total_students > 0 else 0
     total_students = students_collection.count_documents({})
     completion_rate = (completed_count / total_students) * 100 if total_students > 0 else 0
     
@@ -1706,11 +1710,13 @@ def lab_management(lab_num):
         switch1_keywords_text = format_keywords_for_display(switch1_keywords)
         switch2_keywords_text = format_keywords_for_display(switch2_keywords)
     elif lab_num == 3:
-        # Lab 3 - Implement VLANs and Trunking
+    # Lab 3 - Implement VLANs and Trunking
         sw1_keywords = lab_keywords.get('sw1_keywords', [])
         sw2_keywords = lab_keywords.get('sw2_keywords', [])
         sw1_keywords_text = format_keywords_for_display(sw1_keywords)
         sw2_keywords_text = format_keywords_for_display(sw2_keywords)
+        expected_vlans_sw1 = lab_keywords.get('expected_vlans_sw1', {}) if lab_keywords else {}
+        expected_vlans_sw2 = lab_keywords.get('expected_vlans_sw2', {}) if lab_keywords else {}
     elif lab_num == 4:  # Lab 4 - Redundant Links
         sw1_keywords = lab_keywords.get('sw1_keywords', [])
         sw2_keywords = lab_keywords.get('sw2_keywords', [])
@@ -1972,6 +1978,8 @@ def lab_management(lab_num):
                         pc_a_config=pc_a_config,
                         pc_b_config=pc_b_config,
                         pc_c_config=pc_c_config,
+                        expected_vlans_sw1=expected_vlans_sw1,  # เพิ่มบรรทัดนี้
+                        expected_vlans_sw2=expected_vlans_sw2,  # เพิ่มบรรทัดนี้
                         active_lab=lab_num,
                         first_name=first_name,
                         last_name=last_name)
@@ -3027,11 +3035,11 @@ def view_submission(lab_num, student_id):
     try:
         score = float(submission['switch_score'].split('/')[0])
         status = 'completed' if score >= 60 else 'in_progress'
-        status_text = 'เสร็จสมบูรณ์' if score >= 60 else 'กำลังทำ'
+        status_text = 'เสร็จสมบูรณ์' if score >= 60 else 'ยังไม่สมบูรณ์'
     except Exception:
         score = 0
         status = 'in_progress'
-        status_text = 'กำลังทำ'
+        status_text = 'ยังไม่สมบูรณ์'
     
     submission['score'] = score
     submission['status'] = status
@@ -3281,6 +3289,8 @@ def update_keywords(lab_num):
             # อัพเดทสำหรับ Lab 3
             sw1_keywords_text = request.form.get('sw1_keywords', '')
             sw2_keywords_text = request.form.get('sw2_keywords', '')
+            expected_vlans_sw1_text = request.form.get('expected_vlans_sw1', '{}')
+            expected_vlans_sw2_text = request.form.get('expected_vlans_sw2', '{}')
             pc1_ip = request.form.get('pc1_ip', '')
             pc1_subnet = request.form.get('pc1_subnet', '')
             pc1_gateway = request.form.get('pc1_gateway', '')
@@ -3292,12 +3302,22 @@ def update_keywords(lab_num):
             sw1_keywords = parse_keywords_from_text(sw1_keywords_text)
             sw2_keywords = parse_keywords_from_text(sw2_keywords_text)
             
+            # แปลง JSON string เป็น Python object
+            try:
+                expected_vlans_sw1 = json.loads(expected_vlans_sw1_text)
+                expected_vlans_sw2 = json.loads(expected_vlans_sw2_text)
+            except json.JSONDecodeError:
+                expected_vlans_sw1 = {}
+                expected_vlans_sw2 = {}
+            
             # บันทึกลงฐานข้อมูล
             lab_keywords_collection.update_one(
                 {"lab_num": lab_num},
                 {"$set": {
                     "sw1_keywords": sw1_keywords,
                     "sw2_keywords": sw2_keywords,
+                    "expected_vlans_sw1": expected_vlans_sw1,
+                    "expected_vlans_sw2": expected_vlans_sw2,
                     "pc1_config": {
                         "ip": pc1_ip,
                         "subnet": pc1_subnet,
@@ -3758,12 +3778,7 @@ def update_keywords(lab_num):
                 }},
                 upsert=True
             )
-        
-        # ลบการส่งงานทั้งหมดในแล็บนี้
-        delete_result = scores_collection.delete_many({"lab": f"Lab {lab_num}"})
-        deleted_count = delete_result.deleted_count
-        
-        flash(f'อัพเดทคีย์เวิร์ดเรียบร้อยแล้ว และลบการส่งงาน {deleted_count} รายการ', 'success')
+    
     except Exception as e:
         print(f"Error updating keywords: {str(e)}")
         flash(f'เกิดข้อผิดพลาดในการอัพเดทคีย์เวิร์ด: {str(e)}', 'danger')
@@ -3803,3 +3818,53 @@ def parse_keywords_from_text(text):
     
     return keywords
 
+@teacher_bp.route('/lab/<int:lab_num>/reset', methods=['GET'])
+def reset_lab_data(lab_num):
+    if 'user_id' not in session or (session.get('role') != 'teacher' and session.get('temp_role') != 'teacher'):
+        flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
+        return redirect(url_for('login'))
+    
+    try:
+        # ลบข้อมูลการส่งงานทั้งหมดในแล็บนี้
+        delete_result = scores_collection.delete_many({"lab": f"Lab {lab_num}"})
+        deleted_count = delete_result.deleted_count
+        
+        flash(f'ลบข้อมูลการส่งงานเรียบร้อยแล้ว {deleted_count} รายการ', 'success')
+    except Exception as e:
+        flash(f'เกิดข้อผิดพลาดในการลบข้อมูล: {str(e)}', 'danger')
+    
+    return redirect(url_for('teacher.lab_management', lab_num=lab_num))
+
+@teacher_bp.route('/lab/<int:lab_num>/keyword_history')
+def view_keyword_history(lab_num):
+    if 'user_id' not in session or (session.get('role') != 'teacher' and session.get('temp_role') != 'teacher'):
+        flash('คุณไม่มีสิทธิ์เข้าถึงหน้านี้', 'danger')
+        return redirect(url_for('login'))
+    
+    # ดึงประวัติการแก้ไขคีย์เวิร์ด
+    keyword_history = list(lab_keywords_collection.find(
+        {"lab_num": lab_num}
+    ).sort("updated_at", -1))  # เรียงจากใหม่ไปเก่า
+    
+    # ถ้าไม่มีประวัติ
+    if not keyword_history:
+        flash('ไม่พบประวัติการแก้ไขคีย์เวิร์ดสำหรับแล็บนี้', 'info')
+        return redirect(url_for('teacher.lab_management', lab_num=lab_num))
+    
+    # ดึงข้อมูลผู้ใช้
+    user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
+    first_name = user['first_name'] if user else session.get('first_name', 'Unknown')
+    last_name = user['last_name'] if user else session.get('last_name', 'User')
+    
+    # ชื่อแล็บ
+    lab_titles = {
+        1: "Basic Switch Configuration",
+        # เพิ่มชื่อแล็บอื่นๆ
+    }
+    
+    return render_template('keyword_history.html', 
+                          lab_num=lab_num,
+                          lab_title=lab_titles.get(lab_num, f"Lab {lab_num}"),
+                          keyword_history=keyword_history,
+                          first_name=first_name,
+                          last_name=last_name)

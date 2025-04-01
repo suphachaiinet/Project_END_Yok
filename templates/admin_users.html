@@ -7,14 +7,62 @@
     <div class="p-4 border-b border-gray-200 flex justify-between items-center">
         <h2 class="text-lg font-semibold text-gray-900">จัดการผู้ใช้ทั้งหมด</h2>
         <div class="flex space-x-2">
-            <a href="{{ url_for('admin.update_created_at') }}" class="bg-gray-100 text-gray-700 px-3 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors">
-                <i class="fas fa-sync mr-2"></i>อัพเดตเวลาสมัคร
-            </a>
             <a href="{{ url_for('admin.add_user') }}" class="bg-blue-500 text-white px-3 py-2 rounded-md text-sm hover:bg-blue-600 transition-colors">
                 <i class="fas fa-plus mr-2"></i>เพิ่มผู้ใช้
             </a>
         </div>
     </div>
+    
+    <!-- ส่วนการดำเนินการแบบกลุ่ม -->
+    <div class="p-4 border-b border-gray-200">
+        <form id="bulk-action-form" action="{{ url_for('admin.bulk_action_delete') }}" method="post">
+            <div class="flex items-center space-x-2">
+                <button type="button" id="filter-button" class="bg-blue-100 text-blue-700 px-3 py-2 rounded-md text-sm">
+                    <i class="fas fa-filter mr-2"></i>ฟิลเตอร์
+                </button>
+                <select name="action" class="px-3 py-2 border border-gray-300 rounded-md">
+                    <option value="">เลือกการดำเนินการ</option>
+                    <option value="delete">ลบผู้ใช้ที่เลือก</option>
+                </select>
+                <button type="submit" class="bg-red-500 text-white px-3 py-2 rounded-md text-sm hover:bg-red-600">
+                    ดำเนินการ
+                </button>
+            </div>
+            
+            <!-- เมนูฟิลเตอร์ (ซ่อนไว้ที่เริ่มต้น) -->
+            <div id="filter-menu" class="mt-4 p-4 border border-gray-200 rounded-md hidden">
+                <h4 class="text-sm font-medium text-gray-700 mb-3">เลือกคอลัมน์ที่ต้องการแสดง</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="column-toggle mr-2" data-column="1" checked>
+                        <span>ชื่อผู้ใช้</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="column-toggle mr-2" data-column="2" checked>
+                        <span>ชื่อ-นามสกุล</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="column-toggle mr-2" data-column="3" checked>
+                        <span>อีเมล</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="column-toggle mr-2" data-column="4" checked>
+                        <span>บทบาท</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="column-toggle mr-2" data-column="5" checked>
+                        <span>สถานะ</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="column-toggle mr-2" data-column="6" checked>
+                        <span>สมัครเมื่อ</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="column-toggle mr-2" data-column="7" checked>
+                        <span>เข้าสู่ระบบล่าสุด</span>
+                    </label>
+                </div>
+            </div>
     
     <div class="p-4">
         {% if users|length > 0 %}
@@ -22,6 +70,9 @@
             <table id="userTable" class="w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <input type="checkbox" id="select-all-checkbox">
+                        </th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อผู้ใช้</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ชื่อ-นามสกุล</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">อีเมล</th>
@@ -35,6 +86,9 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                     {% for user in users %}
                     <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 whitespace-nowrap">
+                            <input type="checkbox" name="selected_ids" value="{{ user._id }}" class="user-checkbox">
+                        </td>
                         <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ user.username }}</td>
                         <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-900">{{ user.first_name }} {{ user.last_name }}</td>
                         <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ user.email }}</td>
@@ -74,7 +128,7 @@
                                     รออนุมัติ
                                 </span>
                                 {% endif %}
-                                {% endif %}
+                            {% endif %}
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
                             {% if user.created_at is string and '.' in user.created_at %}
@@ -91,7 +145,8 @@
                                 <a href="{{ url_for('admin.edit_user', user_id=user._id) }}" class="text-blue-500 hover:text-blue-700 transition-colors">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ url_for('admin.delete_user', user_id=user._id) }}" method="post" class="inline" onsubmit="return confirm('คุณแน่ใจหรือไม่ที่จะลบผู้ใช้นี้?');">
+                                <form action="{{ url_for('admin.delete_user', user_id=user._id) }}" method="post" class="inline" 
+                                      onsubmit="return confirm('คุณแน่ใจหรือไม่ที่จะลบผู้ใช้นี้?');">
                                     <button type="submit" class="text-red-500 hover:text-red-700 transition-colors">
                                         <i class="fas fa-trash"></i>
                                     </button>
@@ -109,37 +164,75 @@
         </div>
         {% endif %}
     </div>
+    </form>
 </div>
 
 {% block scripts %}
 <script>
-    // เพิ่มการตรวจสอบก่อนการโหลด DataTables
     $(document).ready(function() {
-    // ทำลาย DataTable เก่าก่อน (หากมี)
-    if ($.fn.DataTable.isDataTable('#userTable')) {
-        $('#userTable').DataTable().destroy();
-    }
+        // โหลด DataTable
+        const userTable = $('#userTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Thai.json"
+            },
+            "pageLength": 25,
+            "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "ทั้งหมด"] ],
+            "dom": '<"top"lf>rt<"bottom"ip><"clear">',  // คงช่องค้นหาไว้
+            "order": [[ 1, "asc" ]]
+        });
 
-    // โหลด DataTable ใหม่
-    $('#userTable').DataTable({
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Thai.json"
-        },
-        "pageLength": 25,
-        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "ทั้งหมด"] ],
-        "columnDefs": [
-            { "width": "10%", "targets": 0 },
-            { "width": "15%", "targets": 1 },
-            { "width": "18%", "targets": 2 },
-            { "width": "7%", "targets": 3 },
-            { "width": "10%", "targets": 4 },
-            { "width": "12%", "targets": 5 },
-            { "width": "15%", "targets": 6 },
-            { "width": "10%", "targets": 7 }
-        ],
-        "order": [[ 5, "desc" ]]
+        // แสดง/ซ่อนเมนูฟิลเตอร์
+        $("#filter-button").click(function() {
+            $("#filter-menu").toggleClass("hidden");
+        });
+
+        // การแสดง/ซ่อนคอลัมน์
+        $(".column-toggle").change(function() {
+            const column = $(this).data("column");
+            userTable.column(column).visible($(this).is(":checked"));
+        });
+
+        // ปุ่มเลือกทั้งหมด
+        $('#select-all-checkbox').change(function() {
+            $('.user-checkbox').prop('checked', $(this).prop('checked'));
+        });
+
+        // เมื่อเลือกหรือยกเลิกการเลือกผู้ใช้
+        $('.user-checkbox').change(function() {
+            if ($('.user-checkbox:checked').length === $('.user-checkbox').length) {
+                $('#select-all-checkbox').prop('checked', true);
+            } else {
+                $('#select-all-checkbox').prop('checked', false);
+            }
+        });
+
+        // ตรวจสอบฟอร์มก่อนส่ง
+        $('#bulk-action-form').submit(function(e) {
+            const selectedAction = $(this).find('select[name="action"]').val();
+            const selectedUsers = $('.user-checkbox:checked').length;
+            
+            if (!selectedAction) {
+                alert('กรุณาเลือกการดำเนินการ');
+                e.preventDefault();
+                return false;
+            }
+            
+            if (selectedUsers === 0) {
+                alert('กรุณาเลือกผู้ใช้อย่างน้อย 1 รายการ');
+                e.preventDefault();
+                return false;
+            }
+            
+            if (selectedAction === 'delete') {
+                if (!confirm(`คุณแน่ใจหรือไม่ที่จะลบผู้ใช้ที่เลือกทั้งหมด ${selectedUsers} รายการ?`)) {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+            
+            return true;
+        });
     });
-});
 </script>
 {% endblock %}
 {% endblock %}

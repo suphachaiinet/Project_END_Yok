@@ -389,8 +389,12 @@
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-xs text-gray-500">สมัครเมื่อ: {{ teacher.created_at.strftime('%d/%m/%Y') }}</span>
-                        <div class="flex space-x-2">
+                                {% if teacher.created_at is string %}
+                                <span class="text-xs text-gray-500">สมัครเมื่อ: {{ teacher.created_at }}</span>
+                            {% else %}
+                                <span class="text-xs text-gray-500">สมัครเมื่อ: {{ teacher.created_at.strftime('%d/%m/%Y') }}</span>
+                            {% endif %}
+                                <div class="flex space-x-2">
                             <form action="{{ url_for('admin.approve_teacher', teacher_id=teacher._id) }}" method="post" class="inline">
                                 <button type="submit" class="btn btn-sm btn-success bg-green-500 text-white px-2 py-1 rounded-md text-xs hover:bg-green-600">
                                     อนุมัติ

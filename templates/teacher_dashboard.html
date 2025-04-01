@@ -349,7 +349,7 @@
                                         Overall Completion Rate
                                     </dt>
                                     <dd class="mt-1 text-3xl font-semibold text-gray-900">
-                                        {{ "%.1f"|format(completion_rate) }}%
+                                        {{ "%.1f"|format(completion_rate if completion_rate <= 100 else 100) }}%
                                     </dd>
                                 </dl>
                             </div>
